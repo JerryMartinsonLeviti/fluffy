@@ -9,6 +9,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'planner_side_nav_bar_model.dart';
 export 'planner_side_nav_bar_model.dart';
 
@@ -61,7 +64,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -82,7 +85,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          boxShadow: const [
+                          boxShadow: [
                             BoxShadow(
                               blurRadius: 4.0,
                               color: Color(0x33000000),
@@ -101,13 +104,13 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Container(
                                     width: 120.0,
                                     height: 120.0,
                                     clipBehavior: Clip.antiAlias,
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.network(
@@ -121,7 +124,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                             Stack(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () {
@@ -131,10 +134,10 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                                     options: FFButtonOptions(
                                       width: 190.0,
                                       height: 43.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -146,7 +149,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                       elevation: 3.0,
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -158,7 +161,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                                   width: 40.0,
                                   height: 40.0,
                                   clipBehavior: Clip.antiAlias,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
                                   child: Image.network(
@@ -169,13 +172,13 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 40.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 0.0, 0.0),
                                     child: Icon(
                                       Icons.dashboard_rounded,
@@ -185,7 +188,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       'Main Dashboard',
@@ -202,7 +205,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 40.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -212,7 +215,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                                   wrapWithModel(
                                     model: _model.iconManageEventsModel,
                                     updateCallback: () => setState(() {}),
-                                    child: const IconManageEventsWidget(),
+                                    child: IconManageEventsWidget(),
                                   ),
                                   Text(
                                     'Manage Events',
@@ -228,7 +231,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 30.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -238,7 +241,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                                   wrapWithModel(
                                     model: _model.iconMessagingModel,
                                     updateCallback: () => setState(() {}),
-                                    child: const IconMessagingWidget(),
+                                    child: IconMessagingWidget(),
                                   ),
                                   Text(
                                     'Communications',
@@ -254,7 +257,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 30.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -264,7 +267,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                                   wrapWithModel(
                                     model: _model.iconCalendarModel,
                                     updateCallback: () => setState(() {}),
-                                    child: const IconCalendarWidget(),
+                                    child: IconCalendarWidget(),
                                   ),
                                   Text(
                                     'Schedules',
@@ -280,7 +283,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 30.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -290,7 +293,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                                   wrapWithModel(
                                     model: _model.iconRequesttoBookPlaneModel,
                                     updateCallback: () => setState(() {}),
-                                    child: const IconRequesttoBookPlaneWidget(),
+                                    child: IconRequesttoBookPlaneWidget(),
                                   ),
                                   Text(
                                     'Requests to Book',
@@ -306,7 +309,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 30.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -316,7 +319,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                                   wrapWithModel(
                                     model: _model.iconHeartModel,
                                     updateCallback: () => setState(() {}),
-                                    child: const IconHeartWidget(),
+                                    child: IconHeartWidget(),
                                   ),
                                   Text(
                                     'Favorites',
@@ -332,7 +335,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 30.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -342,7 +345,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                                   wrapWithModel(
                                     model: _model.iconFinancialsModel,
                                     updateCallback: () => setState(() {}),
-                                    child: const IconFinancialsWidget(),
+                                    child: IconFinancialsWidget(),
                                   ),
                                   Text(
                                     'Financials',
@@ -358,7 +361,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 30.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -368,7 +371,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                                   wrapWithModel(
                                     model: _model.iconAssetFolderModel,
                                     updateCallback: () => setState(() {}),
-                                    child: const IconAssetFolderWidget(),
+                                    child: IconAssetFolderWidget(),
                                   ),
                                   Text(
                                     'Assets',
@@ -388,7 +391,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                               color: FlutterFlowTheme.of(context).accent4,
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 30.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,

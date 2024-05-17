@@ -2,7 +2,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
+import 'package:provider/provider.dart';
 import 'message_user_chip_model.dart';
 export 'message_user_chip_model.dart';
 
@@ -53,21 +56,21 @@ class _MessageUserChipWidgetState extends State<MessageUserChipWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: const BoxConstraints(
+      constraints: BoxConstraints(
         maxWidth: 190.0,
       ),
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsets.all(2.0),
+              padding: EdgeInsets.all(2.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(40.0),
                 child: OctoImage(
-                  placeholderBuilder: (_) => const SizedBox.expand(
+                  placeholderBuilder: (_) => SizedBox.expand(
                     child: Image(
                       image: BlurHashImage('loading'),
                       fit: BoxFit.cover,
@@ -83,10 +86,10 @@ class _MessageUserChipWidgetState extends State<MessageUserChipWidget> {
               ),
             ),
             Container(
-              constraints: const BoxConstraints(
+              constraints: BoxConstraints(
                 maxWidth: 170.0,
               ),
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Wrap(
                 spacing: 10.0,
                 runSpacing: 10.0,

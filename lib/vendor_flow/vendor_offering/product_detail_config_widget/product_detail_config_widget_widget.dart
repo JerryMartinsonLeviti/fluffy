@@ -8,6 +8,9 @@ import '/flutter_flow/form_field_controller.dart';
 import '/vendor_flow/vendor_offering/locations_selector/locations_selector_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'product_detail_config_widget_model.dart';
 export 'product_detail_config_widget_model.dart';
 
@@ -58,37 +61,37 @@ class _ProductDetailConfigWidgetWidgetState
     return Container(
       width: 390.0,
       height: 707.0,
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     wrapWithModel(
                       model: _model.locationsSelectorModel,
                       updateCallback: () => setState(() {}),
-                      child: const LocationsSelectorWidget(),
+                      child: LocationsSelectorWidget(),
                     ),
                     Flexible(
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Container(
-                          decoration: const BoxDecoration(),
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          decoration: BoxDecoration(),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FlutterFlowDropDown<String>(
                               controller: _model.typeDropDownValueController ??=
                                   FormFieldController<String>(
                                 _model.typeDropDownValue ??= 'Package',
                               ),
-                              options: const ['Package', 'Item', 'Modifier'],
+                              options: ['Package', 'Item', 'Modifier'],
                               onChanged: (val) => setState(
                                   () => _model.typeDropDownValue = val),
                               width: 300.0,
@@ -113,7 +116,7 @@ class _ProductDetailConfigWidgetWidgetState
                                   FlutterFlowTheme.of(context).alternate,
                               borderWidth: 2.0,
                               borderRadius: 8.0,
-                              margin: const EdgeInsetsDirectional.fromSTEB(
+                              margin: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 4.0, 16.0, 4.0),
                               hidesUnderline: true,
                               isOverButton: true,
@@ -128,10 +131,10 @@ class _ProductDetailConfigWidgetWidgetState
                 ),
               ),
               Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                  child: SizedBox(
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                  child: Container(
                     width: 300.0,
                     child: TextFormField(
                       controller: _model.internalNameTextFieldTextController,
@@ -192,10 +195,10 @@ class _ProductDetailConfigWidgetWidgetState
                 ),
               ),
               Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                  child: SizedBox(
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                  child: Container(
                     width: 300.0,
                     child: TextFormField(
                       controller: _model.displayNameTextFieldTextController,
@@ -256,7 +259,7 @@ class _ProductDetailConfigWidgetWidgetState
                 ),
               ),
               Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Wrap(
                   spacing: 0.0,
                   runSpacing: 0.0,
@@ -277,9 +280,9 @@ class _ProductDetailConfigWidgetWidgetState
                                 elevation: 0,
                                 insetPadding: EdgeInsets.zero,
                                 backgroundColor: Colors.transparent,
-                                alignment: const AlignmentDirectional(0.0, 0.0)
+                                alignment: AlignmentDirectional(0.0, 0.0)
                                     .resolve(Directionality.of(context)),
-                                child: const MarkdownEntryWidgetWidget(),
+                                child: MarkdownEntryWidgetWidget(),
                               );
                             },
                           ).then((value) => setState(() {}));
@@ -287,9 +290,9 @@ class _ProductDetailConfigWidgetWidgetState
                         text: 'Public Description',
                         options: FFButtonOptions(
                           height: 40.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -299,7 +302,7 @@ class _ProductDetailConfigWidgetWidgetState
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -317,9 +320,9 @@ class _ProductDetailConfigWidgetWidgetState
                                 elevation: 0,
                                 insetPadding: EdgeInsets.zero,
                                 backgroundColor: Colors.transparent,
-                                alignment: const AlignmentDirectional(0.0, 0.0)
+                                alignment: AlignmentDirectional(0.0, 0.0)
                                     .resolve(Directionality.of(context)),
-                                child: const MarkdownEntryWidgetWidget(),
+                                child: MarkdownEntryWidgetWidget(),
                               );
                             },
                           ).then((value) => setState(() {}));
@@ -327,9 +330,9 @@ class _ProductDetailConfigWidgetWidgetState
                         text: 'Internal Description',
                         options: FFButtonOptions(
                           height: 40.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -339,7 +342,7 @@ class _ProductDetailConfigWidgetWidgetState
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -351,7 +354,7 @@ class _ProductDetailConfigWidgetWidgetState
                 ),
               ),
               Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -359,11 +362,11 @@ class _ProductDetailConfigWidgetWidgetState
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 8.0, 0.0),
-                            child: SizedBox(
+                            child: Container(
                               width: 100.0,
                               child: TextFormField(
                                 controller: _model.priceTextFieldTextController,
@@ -473,7 +476,7 @@ class _ProductDetailConfigWidgetWidgetState
                             borderColor: FlutterFlowTheme.of(context).alternate,
                             borderWidth: 2.0,
                             borderRadius: 8.0,
-                            margin: const EdgeInsetsDirectional.fromSTEB(
+                            margin: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 4.0, 16.0, 4.0),
                             hidesUnderline: true,
                             isOverButton: true,
@@ -493,7 +496,7 @@ class _ProductDetailConfigWidgetWidgetState
                   ],
                 ),
               ),
-            ].divide(const SizedBox(height: 10.0)).around(const SizedBox(height: 10.0)),
+            ].divide(SizedBox(height: 10.0)).around(SizedBox(height: 10.0)),
           ),
         ),
       ),

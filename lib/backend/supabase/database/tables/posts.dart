@@ -9,7 +9,7 @@ class PostsTable extends SupabaseTable<PostsRow> {
 }
 
 class PostsRow extends SupabaseDataRow {
-  PostsRow(super.data);
+  PostsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => PostsTable();

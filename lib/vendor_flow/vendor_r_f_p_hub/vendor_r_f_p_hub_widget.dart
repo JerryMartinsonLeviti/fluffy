@@ -1,8 +1,12 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'vendor_r_f_p_hub_model.dart';
 export 'vendor_r_f_p_hub_model.dart';
 
@@ -50,7 +54,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -68,7 +72,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -78,14 +82,14 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Your RFP Hub',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -97,7 +101,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 100.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 100.0, 0.0),
                       child: Icon(
                         Icons.notification_important,
                         color: FlutterFlowTheme.of(context).error,
@@ -114,7 +118,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                 color: FlutterFlowTheme.of(context).accent4,
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                 child: Container(
                   width: 922.0,
                   height: 369.0,
@@ -132,9 +136,9 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(-1.0, 0.0),
+                            alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 10.0, 0.0, 0.0),
                               child: Text(
                                 'All RFPs',
@@ -149,9 +153,9 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(-1.0, 0.0),
+                            alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 10.0, 0.0, 0.0),
                               child: Text(
                                 'Click on an Event to view Request for Proposal details',
@@ -167,7 +171,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 25.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -271,7 +275,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                             color: FlutterFlowTheme.of(context).accent4,
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 20.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -351,7 +355,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                             color: FlutterFlowTheme.of(context).accent4,
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -423,7 +427,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                                     ),
                                   ],
                                 ),
-                                const Column(
+                                Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     FaIcon(
@@ -461,7 +465,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                             color: FlutterFlowTheme.of(context).accent4,
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -574,9 +578,9 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                         ],
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(1.0, 0.0),
+                        alignment: AlignmentDirectional(1.0, 0.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 30.0, 0.0),
                           child: Text(
                             'View All',
@@ -584,7 +588,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: const Color(0xFF507187),
+                                  color: Color(0xFF507187),
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
@@ -592,9 +596,9 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                         ),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(1.0, 0.0),
+                        alignment: AlignmentDirectional(1.0, 0.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 18.0, 30.0, 0.0),
                           child: Text(
                             'Sort by Status',
@@ -602,7 +606,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: const Color(0xFF507187),
+                                  color: Color(0xFF507187),
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                 ),
@@ -614,7 +618,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -633,7 +637,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Text(
                                   'Messages (1 Unread)',
@@ -653,7 +657,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                                 color: FlutterFlowTheme.of(context).accent4,
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -666,7 +670,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                                       size: 20.0,
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           5.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Re: Corporate Legal Reception ...Good morning! We are\nconfirmed for the June 30 event.',
@@ -682,7 +686,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -695,7 +699,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                                       size: 20.0,
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           5.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Allergies Question...We have one guest who is allergic to \ndairy. Can we ...',
@@ -716,7 +720,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -729,7 +733,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                                       size: 20.0,
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           5.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Re: Corporate Legal Reception ...Good morning! We are\nconfirmed for the June 30 event.',
@@ -747,9 +751,9 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                             ],
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(1.0, 0.0),
+                            alignment: AlignmentDirectional(1.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 30.0, 16.0),
                               child: Text(
                                 'Sort by Status',
@@ -757,7 +761,7 @@ class _VendorRFPHubWidgetState extends State<VendorRFPHubWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Readex Pro',
-                                      color: const Color(0xFF507187),
+                                      color: Color(0xFF507187),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                     ),

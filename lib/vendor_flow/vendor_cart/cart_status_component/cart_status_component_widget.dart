@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'cart_status_component_model.dart';
 export 'cart_status_component_model.dart';
 
@@ -41,7 +44,7 @@ class _CartStatusComponentWidgetState extends State<CartStatusComponentWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: 80.0,
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [

@@ -2,9 +2,13 @@ import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'liaison_task_page_details_model.dart';
 export 'liaison_task_page_details_model.dart';
 
@@ -57,7 +61,7 @@ class _LiaisonTaskPageDetailsWidgetState
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -74,7 +78,7 @@ class _LiaisonTaskPageDetailsWidgetState
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -89,13 +93,13 @@ class _LiaisonTaskPageDetailsWidgetState
                 children: [
                   Expanded(
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Container(
                         width: double.infinity,
-                        constraints: const BoxConstraints(
+                        constraints: BoxConstraints(
                           maxWidth: 970.0,
                         ),
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -109,14 +113,14 @@ class _LiaisonTaskPageDetailsWidgetState
                                 Container(
                                   width: double.infinity,
                                   height: 24.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                 ),
                               if (responsiveVisibility(
                                 context: context,
                                 phone: false,
                               ))
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 0.0, 4.0),
                                   child: Text(
                                     'Manhattan City Lights Dinner',
@@ -129,7 +133,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                   ),
                                 ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     30.0, 0.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -139,7 +143,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -159,7 +163,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                                         ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -186,7 +190,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         40.0, 10.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -199,7 +203,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   15.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Awaiting Response ',
@@ -219,7 +223,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                 ],
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 30.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -250,7 +254,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 30.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -281,7 +285,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 30.0, 16.0, 30.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -289,10 +293,10 @@ class _LiaisonTaskPageDetailsWidgetState
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 8.0),
                                       child: FlutterFlowChoiceChips(
-                                        options: const [
+                                        options: [
                                           ChipData('All'),
                                           ChipData('Pending'),
                                           ChipData('In Progress'),
@@ -371,9 +375,9 @@ class _LiaisonTaskPageDetailsWidgetState
                                       phone: false,
                                     ))
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 0.0, 0.0),
-                                        child: SizedBox(
+                                        child: Container(
                                           width: 300.0,
                                           child: TextFormField(
                                             controller: _model.textController,
@@ -441,7 +445,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                                     BorderRadius.circular(12.0),
                                               ),
                                               contentPadding:
-                                                  const EdgeInsetsDirectional
+                                                  EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           20.0, 0.0, 0.0, 0.0),
                                               suffixIcon: Icon(
@@ -475,7 +479,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
-                                  boxShadow: const [
+                                  boxShadow: [
                                     BoxShadow(
                                       blurRadius: 4.0,
                                       color: Color(0x33000000),
@@ -596,13 +600,13 @@ class _LiaisonTaskPageDetailsWidgetState
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                     child: Container(
                       width: 693.0,
                       height: 265.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: const [
+                        boxShadow: [
                           BoxShadow(
                             blurRadius: 4.0,
                             color: Color(0x33000000),
@@ -624,7 +628,7 @@ class _LiaisonTaskPageDetailsWidgetState
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 20.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -653,7 +657,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 10.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -740,7 +744,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Readex Pro',
-                                            color: const Color(0xFF5878F9),
+                                            color: Color(0xFF5878F9),
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                           ),
@@ -753,9 +757,9 @@ class _LiaisonTaskPageDetailsWidgetState
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Align(
-                                    alignment: const AlignmentDirectional(-1.0, 0.0),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           40.0, 0.0, 0.0, 20.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -774,7 +778,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 5.0, 0.0, 0.0),
                                             child: Text(
                                               'Amalfi Dining Room',
@@ -811,9 +815,9 @@ class _LiaisonTaskPageDetailsWidgetState
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(-1.0, 0.0),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           100.0, 0.0, 0.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -832,7 +836,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 5.0, 0.0, 0.0),
                                             child: Text(
                                               'A heads-up that we may have 6 additional guests, \nbut we\'re not sure yet.',
@@ -874,13 +878,13 @@ class _LiaisonTaskPageDetailsWidgetState
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                     child: Container(
                       width: 693.0,
                       height: 269.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: const [
+                        boxShadow: [
                           BoxShadow(
                             blurRadius: 4.0,
                             color: Color(0x33000000),
@@ -899,7 +903,7 @@ class _LiaisonTaskPageDetailsWidgetState
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 20.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -926,7 +930,7 @@ class _LiaisonTaskPageDetailsWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 20.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -1010,7 +1014,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Readex Pro',
-                                        color: const Color(0xFFB73C7E),
+                                        color: Color(0xFFB73C7E),
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                       ),
@@ -1023,9 +1027,9 @@ class _LiaisonTaskPageDetailsWidgetState
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       40.0, 0.0, 0.0, 20.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -1043,7 +1047,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                             ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 0.0),
                                         child: Text(
                                           'Main Dining Room',
@@ -1078,9 +1082,9 @@ class _LiaisonTaskPageDetailsWidgetState
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       100.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -1098,7 +1102,7 @@ class _LiaisonTaskPageDetailsWidgetState
                                             ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 0.0),
                                         child: Text(
                                           'A heads-up that we may have 6 additional guests, \nbut we\'re not sure yet.',

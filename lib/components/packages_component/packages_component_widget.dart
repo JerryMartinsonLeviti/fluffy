@@ -4,6 +4,9 @@ import '/components/food_package_card/food_package_card_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'packages_component_model.dart';
 export 'packages_component_model.dart';
 
@@ -53,9 +56,9 @@ class _PackagesComponentWidgetState extends State<PackagesComponentWidget> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Align(
-              alignment: const AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.0, 0.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(130.0, 10.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(130.0, 10.0, 0.0, 0.0),
                 child: Text(
                   'Packages',
                   textAlign: TextAlign.start,
@@ -68,7 +71,7 @@ class _PackagesComponentWidgetState extends State<PackagesComponentWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 20.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 20.0),
               child: Container(
                 width: 767.0,
                 height: 3.0,
@@ -78,9 +81,9 @@ class _PackagesComponentWidgetState extends State<PackagesComponentWidget> {
               ),
             ),
             Align(
-              alignment: const AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.0, 0.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                 child: Text(
                   'Food',
                   textAlign: TextAlign.start,
@@ -93,9 +96,9 @@ class _PackagesComponentWidgetState extends State<PackagesComponentWidget> {
               ),
             ),
             Align(
-              alignment: const AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.0, 0.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 20.0),
+                padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 20.0),
                 child: Text(
                   'Please select up to two options',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -131,9 +134,9 @@ class _PackagesComponentWidgetState extends State<PackagesComponentWidget> {
               },
             ),
             Align(
-              alignment: const AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.0, 0.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
                 child: Text(
                   'Beverage',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -145,9 +148,9 @@ class _PackagesComponentWidgetState extends State<PackagesComponentWidget> {
               ),
             ),
             Align(
-              alignment: const AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.0, 0.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
                 child: Text(
                   'Please select one option',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -163,19 +166,19 @@ class _PackagesComponentWidgetState extends State<PackagesComponentWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(45.0, 15.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(45.0, 15.0, 0.0, 0.0),
                   child: wrapWithModel(
                     model: _model.beveragePackageCardModel1,
                     updateCallback: () => setState(() {}),
-                    child: const BeveragePackageCardWidget(),
+                    child: BeveragePackageCardWidget(),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(45.0, 15.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(45.0, 15.0, 0.0, 0.0),
                   child: wrapWithModel(
                     model: _model.beveragePackageCardModel2,
                     updateCallback: () => setState(() {}),
-                    child: const BeveragePackageCardWidget(),
+                    child: BeveragePackageCardWidget(),
                   ),
                 ),
               ],

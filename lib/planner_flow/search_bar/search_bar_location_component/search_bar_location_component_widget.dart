@@ -3,7 +3,12 @@ import '/flutter_flow/flutter_flow_place_picker.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/place.dart';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'search_bar_location_component_model.dart';
 export 'search_bar_location_component_model.dart';
 
@@ -43,7 +48,7 @@ class _SearchBarLocationComponentWidgetState
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -51,7 +56,7 @@ class _SearchBarLocationComponentWidgetState
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsets.all(24.0),
+                padding: EdgeInsets.all(24.0),
                 child: Container(
                   width: 449.0,
                   height: 506.0,
@@ -66,9 +71,9 @@ class _SearchBarLocationComponentWidgetState
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            alignment: AlignmentDirectional(0.0, -1.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   10.0, 50.0, 10.0, 0.0),
                               child: Text(
                                 'Where are you headed?',
@@ -84,7 +89,7 @@ class _SearchBarLocationComponentWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 30.0, 0.0, 0.0),
                             child: FlutterFlowPlacePicker(
                               iOSGoogleMapsApiKey: '',
@@ -111,7 +116,7 @@ class _SearchBarLocationComponentWidgetState
                                       letterSpacing: 0.0,
                                     ),
                                 elevation: 2.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -119,7 +124,7 @@ class _SearchBarLocationComponentWidgetState
                               ),
                             ),
                           ),
-                          SizedBox(
+                          Container(
                             height: 200.0,
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -155,7 +160,7 @@ class _SearchBarLocationComponentWidgetState
                           Stack(
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 35.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -169,7 +174,7 @@ class _SearchBarLocationComponentWidgetState
                                       size: 30.0,
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 1.0),
                                       child: FlutterFlowIconButton(
                                         borderRadius: 20.0,
@@ -188,7 +193,7 @@ class _SearchBarLocationComponentWidgetState
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 0.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed: () {
@@ -199,10 +204,10 @@ class _SearchBarLocationComponentWidgetState
                                           width: 100.0,
                                           height: 40.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 0.0, 24.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .accent3,
@@ -217,7 +222,7 @@ class _SearchBarLocationComponentWidgetState
                                                 letterSpacing: 0.0,
                                               ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                           ),
                                           borderRadius:

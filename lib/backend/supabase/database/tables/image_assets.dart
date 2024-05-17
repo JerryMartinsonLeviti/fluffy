@@ -9,7 +9,7 @@ class ImageAssetsTable extends SupabaseTable<ImageAssetsRow> {
 }
 
 class ImageAssetsRow extends SupabaseDataRow {
-  ImageAssetsRow(super.data);
+  ImageAssetsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => ImageAssetsTable();

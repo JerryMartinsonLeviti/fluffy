@@ -10,7 +10,7 @@ class PlannerRoomsViewTable extends SupabaseTable<PlannerRoomsViewRow> {
 }
 
 class PlannerRoomsViewRow extends SupabaseDataRow {
-  PlannerRoomsViewRow(super.data);
+  PlannerRoomsViewRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => PlannerRoomsViewTable();

@@ -1,6 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'wrap_faq_row_model.dart';
 export 'wrap_faq_row_model.dart';
 
@@ -10,7 +13,7 @@ class WrapFaqRowWidget extends StatefulWidget {
     required this.question,
     required this.answer,
     bool? isVisible,
-  }) : isVisible = isVisible ?? true;
+  }) : this.isVisible = isVisible ?? true;
 
   final String? question;
   final String? answer;
@@ -47,7 +50,7 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Wrap(
         spacing: 0.0,
         runSpacing: 0.0,
@@ -95,10 +98,10 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
                                 ),
                           ),
                           Container(
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               maxWidth: 350.0,
                             ),
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Wrap(
                               spacing: 0.0,
                               runSpacing: 0.0,
@@ -151,10 +154,10 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
                                 ),
                           ),
                           Container(
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               maxWidth: 350.0,
                             ),
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Wrap(
                               spacing: 0.0,
                               runSpacing: 0.0,

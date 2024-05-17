@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'event_chat_chip_model.dart';
 export 'event_chat_chip_model.dart';
 
@@ -67,17 +69,17 @@ class _EventChatChipWidgetState extends State<EventChatChipWidget> {
         }
         List<EventsRow> containerEventsRowList = snapshot.data!;
         return Container(
-          decoration: const BoxDecoration(),
+          decoration: BoxDecoration(),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                 child: Container(
                   width: 40.0,
                   height: 40.0,
                   clipBehavior: Clip.antiAlias,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     shape: BoxShape.circle,
                   ),
                   child: Image.network(
@@ -87,7 +89,7 @@ class _EventChatChipWidgetState extends State<EventChatChipWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                 child: Text(
                   valueOrDefault<String>(
                     containerEventsRowList.first.eventName,

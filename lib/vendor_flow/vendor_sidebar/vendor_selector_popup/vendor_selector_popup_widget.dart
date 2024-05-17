@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'vendor_selector_popup_model.dart';
 export 'vendor_selector_popup_model.dart';
@@ -97,7 +98,7 @@ class _VendorSelectorPopupWidgetState extends State<VendorSelectorPopupWidget> {
                 options: List<String>.from(containerVendorsRowList
                     .map((e) => e.pKVendors.toString())
                     .toList()),
-                optionLabels: const [''],
+                optionLabels: [''],
                 onChanged: (val) => setState(() => _model.dropDownValue = val),
                 width: 300.0,
                 height: 0.0,
@@ -116,7 +117,7 @@ class _VendorSelectorPopupWidgetState extends State<VendorSelectorPopupWidget> {
                 borderColor: FlutterFlowTheme.of(context).alternate,
                 borderWidth: 2.0,
                 borderRadius: 8.0,
-                margin: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+                margin: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
                 hidesUnderline: true,
                 isOverButton: true,
                 isSearchable: false,

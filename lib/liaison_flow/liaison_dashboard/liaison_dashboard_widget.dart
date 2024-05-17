@@ -4,10 +4,16 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/home_page/dev_mode/dev_p_k_selection/dev_p_k_selection_widget.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'liaison_dashboard_model.dart';
 export 'liaison_dashboard_model.dart';
 
@@ -93,7 +99,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -111,16 +117,16 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: Padding(
-              padding: const EdgeInsets.all(14.0),
+              padding: EdgeInsets.all(14.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -129,13 +135,13 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                   wrapWithModel(
                     model: _model.devPKSelectionModel,
                     updateCallback: () => setState(() {}),
-                    child: const DevPKSelectionWidget(),
+                    child: DevPKSelectionWidget(),
                   ),
                   Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 20.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 20.0),
                       child: Text(
                         'Liaison Dashboard',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -150,10 +156,10 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 42.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 42.0, 0.0, 0.0),
                       child: GridView(
                         padding: EdgeInsets.zero,
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
                           crossAxisSpacing: 10.0,
                           mainAxisSpacing: 10.0,
@@ -167,7 +173,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -184,19 +190,19 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 42.0, 0.0, 0.0),
                                     child: wrapWithModel(
                                       model: _model.iconManageEventsModel,
                                       updateCallback: () => setState(() {}),
-                                      child: const IconManageEventsWidget(),
+                                      child: IconManageEventsWidget(),
                                     ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Text(
                                     'Manage Events',
@@ -210,9 +216,9 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 14.0, 0.0, 0.0),
                                     child: Text(
                                       'Updates & \nEvent Status',
@@ -240,7 +246,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -257,7 +263,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 42.0, 0.0, 0.0),
                                   child: Icon(
                                     Icons.message_outlined,
@@ -267,7 +273,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Text(
                                     'Communications',
@@ -281,9 +287,9 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 14.0, 0.0, 0.0),
                                     child: Text(
                                       'Messaging & \nNotifications',
@@ -309,7 +315,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -325,7 +331,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                const Padding(
+                                Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 42.0, 0.0, 0.0),
                                   child: FaIcon(
@@ -335,7 +341,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Text(
                                     'Tasks',
@@ -349,9 +355,9 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 14.0, 0.0, 0.0),
                                     child: Text(
                                       'Manage To-Do\'s',
@@ -377,7 +383,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -397,7 +403,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 42.0, 0.0, 0.0),
                                       child: Icon(
                                         Icons.manage_search_rounded,
@@ -407,7 +413,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 0.0),
                                       child: Text(
                                         'Vendor Onboarding',
@@ -421,9 +427,9 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                                       ),
                                     ),
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 14.0, 0.0, 0.0),
                                         child: Text(
                                           'Product Page Review & Approval\nProspecting',
@@ -452,7 +458,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -464,24 +470,24 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                               ],
                               borderRadius: BorderRadius.circular(20.0),
                             ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 42.0, 0.0, 0.0),
                                     child: wrapWithModel(
                                       model: _model.iconRequesttoBookPlaneModel,
                                       updateCallback: () => setState(() {}),
-                                      child: const IconRequesttoBookPlaneWidget(),
+                                      child: IconRequesttoBookPlaneWidget(),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 0.0),
                                     child: Text(
                                       'Requests to Book',
@@ -495,9 +501,9 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 14.0, 0.0, 0.0),
                                       child: Text(
                                         'Incoming, Check Status, Update',
@@ -528,7 +534,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -545,7 +551,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 42.0, 0.0, 0.0),
                                   child: Icon(
                                     Icons.monetization_on_outlined,
@@ -554,7 +560,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Text(
                                     'Financials',
@@ -568,9 +574,9 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 14.0, 0.0, 0.0),
                                     child: Text(
                                       'Invoices &\nPayment Tracking',
@@ -596,7 +602,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -613,7 +619,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 42.0, 0.0, 0.0),
                                   child: Icon(
                                     Icons.calendar_month_rounded,
@@ -622,7 +628,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Text(
                                     'Schedules',
@@ -636,9 +642,9 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 14.0, 0.0, 0.0),
                                     child: Text(
                                       'Important Dates & \nReminders',
@@ -664,7 +670,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -680,7 +686,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                const Padding(
+                                Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 42.0, 0.0, 0.0),
                                   child: Icon(
@@ -690,7 +696,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Text(
                                     'Assets',
@@ -704,9 +710,9 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 14.0, 0.0, 0.0),
                                     child: Text(
                                       'Documents, Logos, \nImages & Branding',

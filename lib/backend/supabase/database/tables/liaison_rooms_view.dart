@@ -10,7 +10,7 @@ class LiaisonRoomsViewTable extends SupabaseTable<LiaisonRoomsViewRow> {
 }
 
 class LiaisonRoomsViewRow extends SupabaseDataRow {
-  LiaisonRoomsViewRow(super.data);
+  LiaisonRoomsViewRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => LiaisonRoomsViewTable();

@@ -10,7 +10,7 @@ class RestaurantLocationsTable extends SupabaseTable<RestaurantLocationsRow> {
 }
 
 class RestaurantLocationsRow extends SupabaseDataRow {
-  RestaurantLocationsRow(super.data);
+  RestaurantLocationsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => RestaurantLocationsTable();

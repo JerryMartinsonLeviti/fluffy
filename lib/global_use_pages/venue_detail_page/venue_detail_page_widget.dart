@@ -10,6 +10,7 @@ import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'venue_detail_page_model.dart';
 export 'venue_detail_page_model.dart';
@@ -87,10 +88,10 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                   ? containerEventsRowList.first
                   : null;
               return Container(
-                constraints: const BoxConstraints(
+                constraints: BoxConstraints(
                   minWidth: 380.0,
                 ),
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -100,7 +101,7 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                         children: [
                           Container(
                             width: double.infinity,
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               minHeight: 50.0,
                               maxHeight: 100.0,
                             ),
@@ -109,11 +110,11 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                   .secondaryBackground,
                             ),
                             child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: wrapWithModel(
                                 model: _model.plannerAppBarComponentModel,
                                 updateCallback: () => setState(() {}),
-                                child: const PlannerAppBarComponentWidget(),
+                                child: PlannerAppBarComponentWidget(),
                               ),
                             ),
                           ),
@@ -141,9 +142,9 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                 text: 'Add to new Cart',
                                 options: FFButtonOptions(
                                   height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -154,7 +155,7 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                         letterSpacing: 0.0,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -184,7 +185,7 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                               ),
                               Text(
                                 '.  Guest Count is: ${valueOrDefault<String>(
-                                  containerEventsRow?.guestCount.toString(),
+                                  containerEventsRow?.guestCount?.toString(),
                                   '0',
                                 )}',
                                 style: FlutterFlowTheme.of(context)
@@ -206,7 +207,7 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                 ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            alignment: AlignmentDirectional(0.0, -1.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -216,7 +217,7 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                   child: Container(
                                     width: 800.0,
                                     height: 700.0,
-                                    constraints: const BoxConstraints(
+                                    constraints: BoxConstraints(
                                       maxWidth: 380.0,
                                       maxHeight: 600.0,
                                     ),
@@ -225,7 +226,7 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                           .secondaryBackground,
                                     ),
                                     child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: SingleChildScrollView(
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
@@ -235,7 +236,7 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
                                               child: ClipRRect(
                                                 borderRadius:
@@ -262,11 +263,11 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           -1.0, 0.0),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(20.0, 0.0,
                                                                 20.0, 0.0),
                                                     child: Text(
@@ -302,11 +303,11 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           -1.0, 0.0),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 20.0,
                                                                 0.0, 20.0),
                                                     child: wrapWithModel(
@@ -315,17 +316,17 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                                       updateCallback: () =>
                                                           setState(() {}),
                                                       child:
-                                                          const ProductDetailPageOptionsLanguageWidget(),
+                                                          ProductDetailPageOptionsLanguageWidget(),
                                                     ),
                                                   ),
                                                 ),
                                               ],
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 0.0, 20.0, 20.0),
                                                 child: FutureBuilder<
@@ -405,7 +406,7 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
-                        child: SizedBox(
+                        child: Container(
                           width: double.infinity,
                           height: 180.0,
                           child: CarouselSlider(
@@ -488,7 +489,7 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                           List<FunctionSpacesRow>
                               containerFunctionSpacesRowList = snapshot.data!;
                           return Container(
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: wrapWithModel(
                               model: _model.eventSpaceComponentModel,
                               updateCallback: () => setState(() {}),
@@ -524,7 +525,7 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                           List<PackagesRow> containerPackagesRowList =
                               snapshot.data!;
                           return Container(
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: wrapWithModel(
                               model: _model.packagesComponentModel,
                               updateCallback: () => setState(() {}),

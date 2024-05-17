@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/region_card/region_card_widget.dart';
 import '/components/venue_card_component/venue_card_component_widget.dart';
@@ -9,6 +10,7 @@ import '/planner_flow/search_bar/search_bar/search_bar_widget.dart';
 import '/planner_flow/search_bar/wrap_faq_row/wrap_faq_row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'marketplace_first_page_model.dart';
 export 'marketplace_first_page_model.dart';
@@ -56,7 +58,7 @@ class _MarketplaceFirstPageWidgetState
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -93,14 +95,14 @@ class _MarketplaceFirstPageWidgetState
                                                 updateCallback: () =>
                                                     setState(() {}),
                                                 child:
-                                                    const PlannerAppBarComponentWidget(),
+                                                    PlannerAppBarComponentWidget(),
                                               ),
                                             ),
                                           ],
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: SingleChildScrollView(
                                             scrollDirection: Axis.horizontal,
                                             child: Row(
@@ -112,11 +114,11 @@ class _MarketplaceFirstPageWidgetState
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 80.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -141,7 +143,7 @@ class _MarketplaceFirstPageWidgetState
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 30.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -149,11 +151,11 @@ class _MarketplaceFirstPageWidgetState
                                               Flexible(
                                                 child: Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, -1.0),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 50.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -183,16 +185,16 @@ class _MarketplaceFirstPageWidgetState
                                 wrapWithModel(
                                   model: _model.searchBarModel,
                                   updateCallback: () => setState(() {}),
-                                  child: const SearchBarWidget(),
+                                  child: SearchBarWidget(),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 50.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Or Browse By City',
@@ -254,7 +256,7 @@ class _MarketplaceFirstPageWidgetState
                                     List<VenuesRow> containerVenuesRowList =
                                         snapshot.data!;
                                     return Container(
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Builder(
                                         builder: (context) {
                                           final venueIndex =
@@ -288,7 +290,7 @@ class _MarketplaceFirstPageWidgetState
                                   },
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: FutureBuilder<List<FaqAssetsRow>>(
                                     future: FaqAssetsTable().queryRows(
                                       queryFn: (q) => q.eq(
@@ -316,13 +318,13 @@ class _MarketplaceFirstPageWidgetState
                                           faqContainerFaqAssetsRowList =
                                           snapshot.data!;
                                       return Container(
-                                        constraints: const BoxConstraints(
+                                        constraints: BoxConstraints(
                                           maxWidth: 390.0,
                                         ),
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 50.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
@@ -330,10 +332,10 @@ class _MarketplaceFirstPageWidgetState
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 10.0),
                                                   child: Text(
@@ -355,7 +357,7 @@ class _MarketplaceFirstPageWidgetState
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Builder(
                                                   builder: (context) {
@@ -398,10 +400,10 @@ class _MarketplaceFirstPageWidgetState
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 12.0, 0.0, 0.0),
                                                   child: FFButtonWidget(
@@ -413,14 +415,14 @@ class _MarketplaceFirstPageWidgetState
                                                     options: FFButtonOptions(
                                                       height: 40.0,
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   24.0,
                                                                   0.0,
                                                                   24.0,
                                                                   0.0),
                                                       iconPadding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -444,7 +446,7 @@ class _MarketplaceFirstPageWidgetState
                                                                     0.0,
                                                               ),
                                                       elevation: 3.0,
-                                                      borderSide: const BorderSide(
+                                                      borderSide: BorderSide(
                                                         color:
                                                             Colors.transparent,
                                                         width: 1.0,
@@ -488,12 +490,12 @@ class _MarketplaceFirstPageWidgetState
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Container(
                                   width: 100.0,
                                   height: 100.0,
                                   clipBehavior: Clip.antiAlias,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
                                   child: Image.network(
@@ -509,7 +511,7 @@ class _MarketplaceFirstPageWidgetState
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 0.0),
                                 child: Text(
                                   'About Us',
@@ -572,7 +574,7 @@ class _MarketplaceFirstPageWidgetState
                                       letterSpacing: 0.0,
                                     ),
                               ),
-                            ].divide(const SizedBox(height: 10.0)),
+                            ].divide(SizedBox(height: 10.0)),
                           ),
                           Column(
                             mainAxisSize: MainAxisSize.max,
@@ -622,13 +624,13 @@ class _MarketplaceFirstPageWidgetState
                                       letterSpacing: 0.0,
                                     ),
                               ),
-                            ].divide(const SizedBox(height: 10.0)),
+                            ].divide(SizedBox(height: 10.0)),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
                         child: Text(
                           'SilverSpike Inc. Copyright 2024. All rights reserved. ',
                           style:

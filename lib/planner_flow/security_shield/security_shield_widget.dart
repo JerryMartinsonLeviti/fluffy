@@ -2,7 +2,11 @@ import '/components/security_warning/security_warning_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'security_shield_model.dart';
 export 'security_shield_model.dart';
 
@@ -50,7 +54,7 @@ class _SecurityShieldWidgetState extends State<SecurityShieldWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -68,7 +72,7 @@ class _SecurityShieldWidgetState extends State<SecurityShieldWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -86,7 +90,7 @@ class _SecurityShieldWidgetState extends State<SecurityShieldWidget> {
                     BoxShadow(
                       blurRadius: 4.0,
                       color: FlutterFlowTheme.of(context).primary,
-                      offset: const Offset(
+                      offset: Offset(
                         0.0,
                         2.0,
                       ),
@@ -97,7 +101,7 @@ class _SecurityShieldWidgetState extends State<SecurityShieldWidget> {
                 child: wrapWithModel(
                   model: _model.securityWarningModel,
                   updateCallback: () => setState(() {}),
-                  child: const SecurityWarningWidget(),
+                  child: SecurityWarningWidget(),
                 ),
               ),
             ],

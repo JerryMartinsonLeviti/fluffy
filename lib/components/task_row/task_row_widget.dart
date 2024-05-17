@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'task_row_model.dart';
 export 'task_row_model.dart';
 
@@ -11,7 +13,7 @@ class TaskRowWidget extends StatefulWidget {
     super.key,
     required this.taskRow,
     int? taskID,
-  }) : taskID = taskID ?? 0;
+  }) : this.taskID = taskID ?? 0;
 
   final TasksRow? taskRow;
   final int taskID;
@@ -47,7 +49,7 @@ class _TaskRowWidgetState extends State<TaskRowWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
       child: FutureBuilder<List<UserInfosRow>>(
         future: UserInfosTable().querySingleRow(
           queryFn: (q) => q.eq(
@@ -81,7 +83,7 @@ class _TaskRowWidgetState extends State<TaskRowWidget> {
                 BoxShadow(
                   blurRadius: 0.0,
                   color: FlutterFlowTheme.of(context).alternate,
-                  offset: const Offset(
+                  offset: Offset(
                     0.0,
                     1.0,
                   ),
@@ -93,14 +95,14 @@ class _TaskRowWidgetState extends State<TaskRowWidget> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
+                      EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
                         flex: 4,
                         child: Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Text(
                             valueOrDefault<String>(
                               widget.taskRow?.taskName,
@@ -127,7 +129,7 @@ class _TaskRowWidgetState extends State<TaskRowWidget> {
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(2.0),
+                          padding: EdgeInsets.all(2.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
                             child: Image.network(
@@ -146,7 +148,7 @@ class _TaskRowWidgetState extends State<TaskRowWidget> {
                         Expanded(
                           flex: 3,
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -158,7 +160,7 @@ class _TaskRowWidgetState extends State<TaskRowWidget> {
                                   children: [
                                     Text(
                                       valueOrDefault<String>(
-                                        containerUserInfosRow.firstName,
+                                        containerUserInfosRow?.firstName,
                                         'fn',
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -170,7 +172,7 @@ class _TaskRowWidgetState extends State<TaskRowWidget> {
                                     ),
                                     Text(
                                       valueOrDefault<String>(
-                                        containerUserInfosRow.lastName,
+                                        containerUserInfosRow?.lastName,
                                         'ln',
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -180,14 +182,14 @@ class _TaskRowWidgetState extends State<TaskRowWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                  ].divide(const SizedBox(width: 5.0)),
+                                  ].divide(SizedBox(width: 5.0)),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 12.0, 0.0),
                                   child: Text(
                                     valueOrDefault<String>(
-                                      containerUserInfosRow.email,
+                                      containerUserInfosRow?.email,
                                       'noEmail',
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -200,7 +202,7 @@ class _TaskRowWidgetState extends State<TaskRowWidget> {
                                         ),
                                   ),
                                 ),
-                              ].divide(const SizedBox(height: 4.0)),
+                              ].divide(SizedBox(height: 4.0)),
                             ),
                           ),
                         ),
@@ -238,9 +240,9 @@ class _TaskRowWidgetState extends State<TaskRowWidget> {
                                 ),
                               ),
                               child: Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 4.0, 8.0, 4.0),
                                   child: Text(
                                     valueOrDefault<String>(

@@ -3,7 +3,9 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'planner_app_bar_component_model.dart';
 export 'planner_app_bar_component_model.dart';
@@ -55,7 +57,7 @@ class _PlannerAppBarComponentWidgetState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Align(
-            alignment: const AlignmentDirectional(-1.0, 0.0),
+            alignment: AlignmentDirectional(-1.0, 0.0),
             child: InkWell(
               splashColor: Colors.transparent,
               focusColor: Colors.transparent,
@@ -71,7 +73,7 @@ class _PlannerAppBarComponentWidgetState
                   width: 140.0,
                   height: 50.0,
                   fit: BoxFit.contain,
-                  alignment: const Alignment(-1.0, 0.0),
+                  alignment: Alignment(-1.0, 0.0),
                 ),
               ),
             ),
@@ -172,7 +174,7 @@ class _PlannerAppBarComponentWidgetState
             width: 50.0,
             height: 50.0,
             clipBehavior: Clip.antiAlias,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               shape: BoxShape.circle,
             ),
             child: Image.network(
@@ -180,7 +182,7 @@ class _PlannerAppBarComponentWidgetState
               fit: BoxFit.cover,
             ),
           ),
-        ].divide(const SizedBox(width: 30.0)),
+        ].divide(SizedBox(width: 30.0)),
       ),
     );
   }

@@ -9,7 +9,7 @@ class FaqAssetsTable extends SupabaseTable<FaqAssetsRow> {
 }
 
 class FaqAssetsRow extends SupabaseDataRow {
-  FaqAssetsRow(super.data);
+  FaqAssetsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => FaqAssetsTable();

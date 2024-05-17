@@ -1,13 +1,22 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:go_router/go_router.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 import '/backend/supabase/supabase.dart';
 
 import '/index.dart';
+import '/main.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -32,47 +41,47 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => const SplashPageWidget(),
+      errorBuilder: (context, state) => SplashPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => const SplashPageWidget(),
+          builder: (context, _) => SplashPageWidget(),
         ),
         FFRoute(
           name: 'HomePage',
           path: '/homePage',
-          builder: (context, params) => const HomePageWidget(),
+          builder: (context, params) => HomePageWidget(),
         ),
         FFRoute(
           name: 'Settings2EditProfile',
           path: '/settings2EditProfile',
-          builder: (context, params) => const Settings2EditProfileWidget(),
+          builder: (context, params) => Settings2EditProfileWidget(),
         ),
         FFRoute(
           name: 'Step2-SearchResultShopping',
           path: '/step2SearchResultShopping',
-          builder: (context, params) => const Step2SearchResultShoppingWidget(),
+          builder: (context, params) => Step2SearchResultShoppingWidget(),
         ),
         FFRoute(
           name: 'ProductDetailPage',
           path: '/productDetailPage',
-          builder: (context, params) => const ProductDetailPageWidget(),
+          builder: (context, params) => ProductDetailPageWidget(),
         ),
         FFRoute(
           name: 'PlannerDashboard',
           path: '/plannerDashboard',
-          builder: (context, params) => const PlannerDashboardWidget(),
+          builder: (context, params) => PlannerDashboardWidget(),
         ),
         FFRoute(
           name: 'ManageEvents_MyEvents',
           path: '/manageEventsMyEvents',
-          builder: (context, params) => const ManageEventsMyEventsWidget(),
+          builder: (context, params) => ManageEventsMyEventsWidget(),
         ),
         FFRoute(
           name: 'AssetsPageDashboard',
           path: '/assetsPageDashboard',
-          builder: (context, params) => const AssetsPageDashboardWidget(),
+          builder: (context, params) => AssetsPageDashboardWidget(),
         ),
         FFRoute(
           name: 'MessagesByEvent',
@@ -87,22 +96,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'MarketplaceFirstPage',
           path: '/marketplaceFirstPage',
-          builder: (context, params) => const MarketplaceFirstPageWidget(),
+          builder: (context, params) => MarketplaceFirstPageWidget(),
         ),
         FFRoute(
           name: 'VisionBoardAddToDrawer',
           path: '/visionBoardAddToDrawer',
-          builder: (context, params) => const VisionBoardAddToDrawerWidget(),
+          builder: (context, params) => VisionBoardAddToDrawerWidget(),
         ),
         FFRoute(
           name: 'VisionBoard',
           path: '/visionBoard',
-          builder: (context, params) => const VisionBoardWidget(),
+          builder: (context, params) => VisionBoardWidget(),
         ),
         FFRoute(
           name: 'SecurityShield',
           path: '/securityShield',
-          builder: (context, params) => const SecurityShieldWidget(),
+          builder: (context, params) => SecurityShieldWidget(),
         ),
         FFRoute(
           name: 'RequesttoBookCart',
@@ -121,97 +130,97 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'PlannerSideNavBar',
           path: '/plannerSideNavBar',
-          builder: (context, params) => const PlannerSideNavBarWidget(),
+          builder: (context, params) => PlannerSideNavBarWidget(),
         ),
         FFRoute(
           name: 'PaymentModal',
           path: '/paymentModal',
-          builder: (context, params) => const PaymentModalWidget(),
+          builder: (context, params) => PaymentModalWidget(),
         ),
         FFRoute(
           name: 'RFP_SentPage',
           path: '/rFPSentPage',
-          builder: (context, params) => const RFPSentPageWidget(),
+          builder: (context, params) => RFPSentPageWidget(),
         ),
         FFRoute(
           name: 'VendorSideNavBar',
           path: '/vendorSideNavBar',
-          builder: (context, params) => const VendorSideNavBarWidget(),
+          builder: (context, params) => VendorSideNavBarWidget(),
         ),
         FFRoute(
           name: 'InvoiceTemplate',
           path: '/invoiceTemplate',
-          builder: (context, params) => const InvoiceTemplateWidget(),
+          builder: (context, params) => InvoiceTemplateWidget(),
         ),
         FFRoute(
           name: 'VendorRFP_Hub',
           path: '/vendorRFPHub',
-          builder: (context, params) => const VendorRFPHubWidget(),
+          builder: (context, params) => VendorRFPHubWidget(),
         ),
         FFRoute(
           name: 'VendorRFP_Detail',
           path: '/vendorRFPDetail',
-          builder: (context, params) => const VendorRFPDetailWidget(),
+          builder: (context, params) => VendorRFPDetailWidget(),
         ),
         FFRoute(
           name: 'VendorRFP_AcceptanceSent',
           path: '/vendorRFPAcceptanceSent',
-          builder: (context, params) => const VendorRFPAcceptanceSentWidget(),
+          builder: (context, params) => VendorRFPAcceptanceSentWidget(),
         ),
         FFRoute(
           name: 'LiaisonDashboard',
           path: '/liaisonDashboard',
-          builder: (context, params) => const LiaisonDashboardWidget(),
+          builder: (context, params) => LiaisonDashboardWidget(),
         ),
         FFRoute(
           name: 'LiaisonAllEventsList',
           path: '/liaisonAllEventsList',
-          builder: (context, params) => const LiaisonAllEventsListWidget(),
+          builder: (context, params) => LiaisonAllEventsListWidget(),
         ),
         FFRoute(
           name: 'LiaisonTaskList',
           path: '/liaisonTaskList',
-          builder: (context, params) => const LiaisonTaskListWidget(),
+          builder: (context, params) => LiaisonTaskListWidget(),
         ),
         FFRoute(
           name: 'VenProductOnboarding-PackageState1',
           path: '/venProductOnboardingPackageState1',
           builder: (context, params) =>
-              const VenProductOnboardingPackageState1Widget(),
+              VenProductOnboardingPackageState1Widget(),
         ),
         FFRoute(
           name: 'VenProductOnboarding-PackageState2',
           path: '/venProductOnboardingPackageState2',
           builder: (context, params) =>
-              const VenProductOnboardingPackageState2Widget(),
+              VenProductOnboardingPackageState2Widget(),
         ),
         FFRoute(
           name: 'VenProductOnboarding-PackageState3',
           path: '/venProductOnboardingPackageState3',
           builder: (context, params) =>
-              const VenProductOnboardingPackageState3Widget(),
+              VenProductOnboardingPackageState3Widget(),
         ),
         FFRoute(
           name: 'VenProductOnboarding-PackageState4',
           path: '/venProductOnboardingPackageState4',
           builder: (context, params) =>
-              const VenProductOnboardingPackageState4Widget(),
+              VenProductOnboardingPackageState4Widget(),
         ),
         FFRoute(
           name: 'VenProductOnboarding-PackageState5',
           path: '/venProductOnboardingPackageState5',
           builder: (context, params) =>
-              const VenProductOnboardingPackageState5Widget(),
+              VenProductOnboardingPackageState5Widget(),
         ),
         FFRoute(
           name: 'ExpandablTest',
           path: '/expandablTest',
-          builder: (context, params) => const ExpandablTestWidget(),
+          builder: (context, params) => ExpandablTestWidget(),
         ),
         FFRoute(
           name: 'Step1-CreateEvent',
           path: '/step1CreateEvent',
-          builder: (context, params) => const Step1CreateEventWidget(),
+          builder: (context, params) => Step1CreateEventWidget(),
         ),
         FFRoute(
           name: 'EventCartReviewPage',
@@ -226,12 +235,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Step3_5-FavoritesPage',
           path: '/step35FavoritesPage',
-          builder: (context, params) => const Step35FavoritesPageWidget(),
+          builder: (context, params) => Step35FavoritesPageWidget(),
         ),
         FFRoute(
           name: 'VendorCartDashboard',
           path: '/vendorCartDashboard',
-          builder: (context, params) => const VendorCartDashboardWidget(),
+          builder: (context, params) => VendorCartDashboardWidget(),
         ),
         FFRoute(
           name: 'PricePredictorCard',
@@ -246,89 +255,89 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'LiaisonTaskPage-Details',
           path: '/liaisonTaskPageDetails',
-          builder: (context, params) => const LiaisonTaskPageDetailsWidget(),
+          builder: (context, params) => LiaisonTaskPageDetailsWidget(),
         ),
         FFRoute(
           name: 'LiaisonTaskPage-TasksPage',
           path: '/liaisonTaskPageTasksPage',
-          builder: (context, params) => const LiaisonTaskPageTasksPageWidget(),
+          builder: (context, params) => LiaisonTaskPageTasksPageWidget(),
         ),
         FFRoute(
           name: 'VendorProductConfig',
           path: '/vendorProductConfig',
-          builder: (context, params) => const VendorProductConfigWidget(),
+          builder: (context, params) => VendorProductConfigWidget(),
         ),
         FFRoute(
           name: 'MarkdownEntryWidgetTest',
           path: '/markdownEntryWidgetTest',
-          builder: (context, params) => const MarkdownEntryWidgetTestWidget(),
+          builder: (context, params) => MarkdownEntryWidgetTestWidget(),
         ),
         FFRoute(
           name: 'SearchBar_BudgetModal',
           path: '/searchBarBudgetModal',
-          builder: (context, params) => const SearchBarBudgetModalWidget(),
+          builder: (context, params) => SearchBarBudgetModalWidget(),
         ),
         FFRoute(
           name: 'SearchBar_LocationModal',
           path: '/searchBarLocationModal',
-          builder: (context, params) => const SearchBarLocationModalWidget(),
+          builder: (context, params) => SearchBarLocationModalWidget(),
         ),
         FFRoute(
           name: 'SearchBar_CategoryModal',
           path: '/searchBarCategoryModal',
-          builder: (context, params) => const SearchBarCategoryModalWidget(),
+          builder: (context, params) => SearchBarCategoryModalWidget(),
         ),
         FFRoute(
           name: 'BookingConfirmed_Step1_Email',
           path: '/bookingConfirmedStep1Email',
-          builder: (context, params) => const BookingConfirmedStep1EmailWidget(),
+          builder: (context, params) => BookingConfirmedStep1EmailWidget(),
         ),
         FFRoute(
           name: 'BookingConfirmedStep2_LogIn',
           path: '/bookingConfirmedStep2LogIn',
-          builder: (context, params) => const BookingConfirmedStep2LogInWidget(),
+          builder: (context, params) => BookingConfirmedStep2LogInWidget(),
         ),
         FFRoute(
           name: 'BookingConfirmed_Step3Dashboard',
           path: '/bookingConfirmedStep3Dashboard',
-          builder: (context, params) => const BookingConfirmedStep3DashboardWidget(),
+          builder: (context, params) => BookingConfirmedStep3DashboardWidget(),
         ),
         FFRoute(
           name: 'WYSIWYG_EventPage',
           path: '/wYSIWYGEventPage',
-          builder: (context, params) => const WYSIWYGEventPageWidget(),
+          builder: (context, params) => WYSIWYGEventPageWidget(),
         ),
         FFRoute(
           name: 'Cart_AddingProducttoEvent_needstooltip',
           path: '/cartAddingProducttoEventNeedstooltip',
           builder: (context, params) =>
-              const CartAddingProducttoEventNeedstooltipWidget(),
+              CartAddingProducttoEventNeedstooltipWidget(),
         ),
         FFRoute(
           name: 'RSVP',
           path: '/rsvp',
-          builder: (context, params) => const RsvpWidget(),
+          builder: (context, params) => RsvpWidget(),
         ),
         FFRoute(
           name: 'GuestManagement_GuestListBuilderOnEventPage',
           path: '/guestManagementGuestListBuilderOnEventPage',
           builder: (context, params) =>
-              const GuestManagementGuestListBuilderOnEventPageWidget(),
+              GuestManagementGuestListBuilderOnEventPageWidget(),
         ),
         FFRoute(
           name: 'SplashPage',
           path: '/splashPage',
-          builder: (context, params) => const SplashPageWidget(),
+          builder: (context, params) => SplashPageWidget(),
         ),
         FFRoute(
           name: 'RTB_SentPage',
           path: '/rTBSentPage',
-          builder: (context, params) => const RTBSentPageWidget(),
+          builder: (context, params) => RTBSentPageWidget(),
         ),
         FFRoute(
           name: 'DevModeAccess',
           path: '/devAccessMode',
-          builder: (context, params) => const DevModeAccessWidget(),
+          builder: (context, params) => DevModeAccessWidget(),
         ),
         FFRoute(
           name: 'VenueDetailPage',
@@ -348,7 +357,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'ManageEvents_MyEvents_EventCommandCtr',
           path: '/manageEventsMyEventsEventCommandCtr',
           builder: (context, params) =>
-              const ManageEventsMyEventsEventCommandCtrWidget(),
+              ManageEventsMyEventsEventCommandCtrWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -514,7 +523,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

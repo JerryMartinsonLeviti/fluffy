@@ -1,7 +1,11 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/r_f_p_sent_modal/r_f_p_sent_modal_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'r_f_p_sent_page_model.dart';
 export 'r_f_p_sent_page_model.dart';
 
@@ -46,7 +50,7 @@ class _RFPSentPageWidgetState extends State<RFPSentPageWidget> {
           child: wrapWithModel(
             model: _model.rFPSentModalModel,
             updateCallback: () => setState(() {}),
-            child: const RFPSentModalWidget(),
+            child: RFPSentModalWidget(),
           ),
         ),
       ),

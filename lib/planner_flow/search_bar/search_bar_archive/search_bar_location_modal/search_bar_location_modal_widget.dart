@@ -1,7 +1,11 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/search_bar/search_bar_location_component/search_bar_location_component_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'search_bar_location_modal_model.dart';
 export 'search_bar_location_modal_model.dart';
 
@@ -48,7 +52,7 @@ class _SearchBarLocationModalWidgetState
           child: wrapWithModel(
             model: _model.searchBarLocationComponentModel,
             updateCallback: () => setState(() {}),
-            child: const SearchBarLocationComponentWidget(),
+            child: SearchBarLocationComponentWidget(),
           ),
         ),
       ),

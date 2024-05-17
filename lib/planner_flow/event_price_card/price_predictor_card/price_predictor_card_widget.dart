@@ -5,7 +5,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
 import 'price_predictor_card_model.dart';
 export 'price_predictor_card_model.dart';
 
@@ -59,7 +62,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -77,7 +80,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -87,7 +90,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(14.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(14.0, 0.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -97,16 +100,16 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(1.0, 0.0),
+                          alignment: AlignmentDirectional(1.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsets.all(28.0),
+                            padding: EdgeInsets.all(28.0),
                             child: Container(
                               width: 436.0,
                               height: 1217.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x33000000),
@@ -129,7 +132,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(1.0, 0.0),
+                                                AlignmentDirectional(1.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -140,11 +143,11 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                     Flexible(
                                                       child: Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 0.0, -1.0),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       20.0,
@@ -184,7 +187,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Row(
                                                     mainAxisSize:
@@ -230,14 +233,14 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 40.0, 20.0, 40.0),
                                             child: wrapWithModel(
                                               model:
                                                   _model.eventBasicDetailsModel,
                                               updateCallback: () =>
                                                   setState(() {}),
-                                              child: const EventBasicDetailsWidget(),
+                                              child: EventBasicDetailsWidget(),
                                             ),
                                           ),
                                         ],
@@ -254,7 +257,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 20.0, 0.0, 0.0),
                                             child: Text(
                                               'All-In Estimate',
@@ -271,7 +274,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 6.0, 0.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () {
@@ -280,14 +283,14 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                               text: '\$17,388.89',
                                               options: FFButtonOptions(
                                                 height: 40.0,
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 iconPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
-                                                color: const Color(0xFFFCFBF5),
+                                                color: Color(0xFFFCFBF5),
                                                 textStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .titleLarge
@@ -313,13 +316,13 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                     ],
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 0.0),
                                     child: Container(
                                       width: 363.0,
                                       height: 412.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFFCFBF5),
+                                        color: Color(0xFFFCFBF5),
                                         borderRadius:
                                             BorderRadius.circular(10.0),
                                         border: Border.all(
@@ -332,7 +335,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 20.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -371,7 +374,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 20.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -380,7 +383,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                       .spaceBetween,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           24.0, 0.0, 0.0, 0.0),
                                                   child: Text(
@@ -397,7 +400,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 24.0, 0.0),
                                                   child: Text(
@@ -418,9 +421,9 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
+                                                AlignmentDirectional(0.0, -1.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 15.0, 0.0, 0.0),
                                               child: Row(
@@ -431,7 +434,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(14.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -448,7 +451,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 14.0, 0.0),
                                                     child: Text(
@@ -473,7 +476,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         14.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -489,7 +492,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -512,7 +515,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         14.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -528,7 +531,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -558,7 +561,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         14.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -574,7 +577,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -593,7 +596,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     14.0, 0.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -613,7 +616,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                       ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 14.0, 0.0),
                                                   child: Text(
@@ -641,7 +644,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(14.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -658,7 +661,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(5.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Icon(
@@ -673,7 +676,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 ],
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -700,7 +703,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(14.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -717,7 +720,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(5.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Icon(
@@ -732,7 +735,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 ],
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -762,7 +765,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         14.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -778,7 +781,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -809,7 +812,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     14.0,
                                                                     0.0,
@@ -841,7 +844,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 ],
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -864,7 +867,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         14.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -880,7 +883,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -903,7 +906,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 30.0, 0.0, 0.0),
                                                 child: Text(
@@ -930,7 +933,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 10.0, 0.0, 0.0),
                                     child: Container(
                                       width: 348.0,
@@ -946,13 +949,13 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 18.0, 0.0, 0.0),
                                                   child: Text(
@@ -971,7 +974,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 20.0, 0.0, 0.0),
                                                   child: Row(
@@ -980,7 +983,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     12.0,
                                                                     0.0,
@@ -1002,7 +1005,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     18.0,
                                                                     0.0,
@@ -1018,14 +1021,14 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                               FFButtonOptions(
                                                             height: 40.0,
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         24.0,
                                                                         0.0,
                                                                         24.0,
                                                                         0.0),
                                                             iconPadding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1049,7 +1052,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                                                     ),
                                                             elevation: 3.0,
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               width: 3.0,
                                                             ),
                                                             borderRadius:
@@ -1083,7 +1086,7 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 30.0, 0.0, 0.0),
                                             child: CircularPercentIndicator(
                                               percent: 0.5,

@@ -14,6 +14,7 @@ import '/vendor_flow/vendor_sidebar/vendor_sidebar_nav_communications_component/
 import '/vendor_flow/vendor_sidebar/vendor_sidebar_nav_schedules_component/vendor_sidebar_nav_schedules_component_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'vendor_side_nav_component_model.dart';
 export 'vendor_side_nav_component_model.dart';
@@ -75,10 +76,10 @@ class _VendorSideNavComponentWidgetState
         }
         List<VendorsRow> containerVendorsRowList = snapshot.data!;
         return Container(
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 300.0,
           ),
-          decoration: const BoxDecoration(),
+          decoration: BoxDecoration(),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -123,14 +124,14 @@ class _VendorSideNavComponentWidgetState
                   borderColor: FlutterFlowTheme.of(context).alternate,
                   borderWidth: 2.0,
                   borderRadius: 8.0,
-                  margin: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+                  margin: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
                   hidesUnderline: true,
                   isOverButton: true,
                   isSearchable: false,
                   isMultiSelect: false,
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -141,7 +142,7 @@ class _VendorSideNavComponentWidgetState
                             width: 120.0,
                             height: 120.0,
                             clipBehavior: Clip.antiAlias,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               shape: BoxShape.circle,
                             ),
                             child: Image.network(
@@ -179,7 +180,7 @@ class _VendorSideNavComponentWidgetState
                                   ? containerVendorsRowList.first
                                   : null;
                           return Container(
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: wrapWithModel(
                               model: _model.vendorChipModel,
                               updateCallback: () => setState(() {}),
@@ -202,14 +203,14 @@ class _VendorSideNavComponentWidgetState
                                   model:
                                       _model.vendorMainDashboardComponentModel,
                                   updateCallback: () => setState(() {}),
-                                  child: const VendorMainDashboardComponentWidget(),
+                                  child: VendorMainDashboardComponentWidget(),
                                 ),
                               ]
-                                  .divide(const SizedBox(height: 30.0))
-                                  .addToStart(const SizedBox(height: 30.0)),
+                                  .divide(SizedBox(height: 30.0))
+                                  .addToStart(SizedBox(height: 30.0)),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   50.0, 0.0, 0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -227,7 +228,7 @@ class _VendorSideNavComponentWidgetState
                                       model: _model
                                           .vendorSidebarNavAssetsComponentModel,
                                       updateCallback: () => setState(() {}),
-                                      child: const VendorSideBarNavComponentWidget(),
+                                      child: VendorSideBarNavComponentWidget(),
                                     ),
                                   ),
                                   wrapWithModel(
@@ -235,21 +236,21 @@ class _VendorSideNavComponentWidgetState
                                         .vendorSidebarNavSchedulesComponentModel,
                                     updateCallback: () => setState(() {}),
                                     child:
-                                        const VendorSidebarNavSchedulesComponentWidget(),
+                                        VendorSidebarNavSchedulesComponentWidget(),
                                   ),
                                   wrapWithModel(
                                     model: _model
                                         .vendorSidebarNavCommunicationsComponentModel,
                                     updateCallback: () => setState(() {}),
                                     child:
-                                        const VendorSidebarNavCommunicationsComponentWidget(),
+                                        VendorSidebarNavCommunicationsComponentWidget(),
                                   ),
                                   wrapWithModel(
                                     model: _model
                                         .vendorSidebarFinancialsCompoentnModel,
                                     updateCallback: () => setState(() {}),
                                     child:
-                                        const VendorSidebarFinancialsCompoentnWidget(),
+                                        VendorSidebarFinancialsCompoentnWidget(),
                                   ),
                                   InkWell(
                                     splashColor: Colors.transparent,
@@ -264,7 +265,7 @@ class _VendorSideNavComponentWidgetState
                                           .vendorSideBarRequestsToBookComponentModel,
                                       updateCallback: () => setState(() {}),
                                       child:
-                                          const VendorSideBarRequestsToBookComponentWidget(),
+                                          VendorSideBarRequestsToBookComponentWidget(),
                                     ),
                                   ),
                                   wrapWithModel(
@@ -272,11 +273,11 @@ class _VendorSideNavComponentWidgetState
                                         .vendorSidebarManageEventComponentModel,
                                     updateCallback: () => setState(() {}),
                                     child:
-                                        const VendorSidebarManageEventComponentWidget(),
+                                        VendorSidebarManageEventComponentWidget(),
                                   ),
                                 ]
-                                    .divide(const SizedBox(height: 10.0))
-                                    .around(const SizedBox(height: 10.0)),
+                                    .divide(SizedBox(height: 10.0))
+                                    .around(SizedBox(height: 10.0)),
                               ),
                             ),
                           ],
@@ -289,7 +290,7 @@ class _VendorSideNavComponentWidgetState
                       wrapWithModel(
                         model: _model.vendorSidebarNavAccountComponentModel,
                         updateCallback: () => setState(() {}),
-                        child: const VendorSidebarNavAccountComponentWidget(),
+                        child: VendorSidebarNavAccountComponentWidget(),
                       ),
                     ],
                   ),

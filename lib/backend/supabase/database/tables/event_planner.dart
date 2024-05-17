@@ -9,7 +9,7 @@ class EventPlannerTable extends SupabaseTable<EventPlannerRow> {
 }
 
 class EventPlannerRow extends SupabaseDataRow {
-  EventPlannerRow(super.data);
+  EventPlannerRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => EventPlannerTable();

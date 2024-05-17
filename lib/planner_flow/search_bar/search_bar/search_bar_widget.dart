@@ -14,6 +14,7 @@ import '/planner_flow/search_bar/search_bar_time_component/search_bar_time_compo
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'search_bar_model.dart';
 export 'search_bar_model.dart';
@@ -56,9 +57,9 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, -1.0),
+      alignment: AlignmentDirectional(0.0, -1.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
         child: FutureBuilder<List<EventPlannerRow>>(
           future: EventPlannerTable().queryRows(
             queryFn: (q) => q.eq(
@@ -83,7 +84,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
             List<EventPlannerRow> containerEventPlannerRowList = snapshot.data!;
             return Container(
               width: double.infinity,
-              constraints: const BoxConstraints(
+              constraints: BoxConstraints(
                 maxWidth: 800.0,
                 maxHeight: 400.0,
               ),
@@ -92,7 +93,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                 borderRadius: BorderRadius.circular(22.0),
                 shape: BoxShape.rectangle,
               ),
-              alignment: const AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: FutureBuilder<List<EventsRow>>(
                 future: EventsTable().querySingleRow(
                   queryFn: (q) => q.eq(
@@ -119,10 +120,10 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                       ? containerEventsRowList.first
                       : null;
                   return Container(
-                    constraints: const BoxConstraints(
+                    constraints: BoxConstraints(
                       maxHeight: 400.0,
                     ),
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -151,10 +152,10 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                             List<EventPlannerRow> containerEventPlannerRowList =
                                 snapshot.data!;
                             return Container(
-                              constraints: const BoxConstraints(
+                              constraints: BoxConstraints(
                                 maxHeight: 400.0,
                               ),
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: FutureBuilder<List<EventsRow>>(
                                 future: EventsTable().queryRows(
                                   queryFn: (q) => q.in_(
@@ -182,26 +183,26 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                   List<EventsRow> containerEventsRowList =
                                       snapshot.data!;
                                   return Container(
-                                    constraints: const BoxConstraints(
+                                    constraints: BoxConstraints(
                                       maxWidth: 380.0,
                                       maxHeight: 300.0,
                                     ),
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Container(
-                                      constraints: const BoxConstraints(
+                                      constraints: BoxConstraints(
                                         maxHeight: 400.0,
                                       ),
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Container(
                                         width: double.infinity,
                                         height: double.infinity,
-                                        color: const Color(0x00000000),
+                                        color: Color(0x00000000),
                                         child: ExpandableNotifier(
                                           controller: _model
                                               .expandableExpandableController,
                                           child: ExpandablePanel(
                                             header: Container(
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
@@ -235,7 +236,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                               ),
                                             ),
                                             collapsed: Container(
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Visibility(
                                                 visible: (containerEventsRowList
                                                         .isNotEmpty) ==
@@ -308,7 +309,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                           .alternate,
                                                   borderWidth: 2.0,
                                                   borderRadius: 8.0,
-                                                  margin: const EdgeInsetsDirectional
+                                                  margin: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 4.0, 16.0, 4.0),
                                                   hidesUnderline: true,
@@ -346,10 +347,10 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                 updateCallback: () =>
                                                     setState(() {}),
                                                 child:
-                                                    const NewEventNameComponentWidget(),
+                                                    NewEventNameComponentWidget(),
                                               ),
                                             ),
-                                            theme: const ExpandableThemeData(
+                                            theme: ExpandableThemeData(
                                               tapHeaderToExpand: true,
                                               tapBodyToExpand: false,
                                               tapBodyToCollapse: false,
@@ -404,12 +405,12 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                 insetPadding: EdgeInsets.zero,
                                                 backgroundColor:
                                                     Colors.transparent,
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                         0.0, 0.0)
                                                     .resolve(Directionality.of(
                                                         context)),
                                                 child:
-                                                    const SearchBarBudgetComponentWidget(),
+                                                    SearchBarBudgetComponentWidget(),
                                               );
                                             },
                                           ).then((value) => setState(() {}));
@@ -418,10 +419,10 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                         options: FFButtonOptions(
                                           height: 40.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 10.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -434,7 +435,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -476,12 +477,12 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                 insetPadding: EdgeInsets.zero,
                                                 backgroundColor:
                                                     Colors.transparent,
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                         0.0, 0.0)
                                                     .resolve(Directionality.of(
                                                         context)),
                                                 child:
-                                                    const SearchBarLocationComponentWidget(),
+                                                    SearchBarLocationComponentWidget(),
                                               );
                                             },
                                           ).then((value) => setState(() {}));
@@ -490,10 +491,10 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                         options: FFButtonOptions(
                                           height: 40.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 10.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -506,7 +507,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -540,7 +541,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                 insetPadding: EdgeInsets.zero,
                                                 backgroundColor:
                                                     Colors.transparent,
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                         0.0, 0.0)
                                                     .resolve(Directionality.of(
                                                         context)),
@@ -556,10 +557,10 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                         options: FFButtonOptions(
                                           height: 40.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 10.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -572,7 +573,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -610,7 +611,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                 insetPadding: EdgeInsets.zero,
                                                 backgroundColor:
                                                     Colors.transparent,
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                         0.0, 0.0)
                                                     .resolve(Directionality.of(
                                                         context)),
@@ -626,10 +627,10 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                         options: FFButtonOptions(
                                           height: 40.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 10.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -642,7 +643,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -680,7 +681,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                 insetPadding: EdgeInsets.zero,
                                                 backgroundColor:
                                                     Colors.transparent,
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                         0.0, 0.0)
                                                     .resolve(Directionality.of(
                                                         context)),
@@ -701,10 +702,10 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                         options: FFButtonOptions(
                                           height: 40.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 10.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -717,7 +718,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -729,7 +730,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                     Text(
                                       valueOrDefault<String>(
                                         containerEventsRow?.guestCount
-                                            .toString(),
+                                            ?.toString(),
                                         '0',
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -755,12 +756,12 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                 insetPadding: EdgeInsets.zero,
                                                 backgroundColor:
                                                     Colors.transparent,
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                         0.0, 0.0)
                                                     .resolve(Directionality.of(
                                                         context)),
                                                 child:
-                                                    const SearchBarCategoryComponentWidget(),
+                                                    SearchBarCategoryComponentWidget(),
                                               );
                                             },
                                           ).then((value) => setState(() {}));
@@ -769,10 +770,10 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                         options: FFButtonOptions(
                                           height: 40.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 10.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -785,7 +786,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),

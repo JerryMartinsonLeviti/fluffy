@@ -3,6 +3,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/message/message_user_chip/message_user_chip_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'room_role_scope_component_model.dart';
 export 'room_role_scope_component_model.dart';
 
@@ -49,11 +52,11 @@ class _RoomRoleScopeComponentWidgetState
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+      padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
       child: Container(
         width: double.infinity,
         height: double.infinity,
-        constraints: const BoxConstraints(
+        constraints: BoxConstraints(
           maxWidth: 180.0,
           maxHeight: 120.0,
         ),
@@ -61,11 +64,11 @@ class _RoomRoleScopeComponentWidgetState
           color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(10.0),
         ),
-        child: SizedBox(
+        child: Container(
           width: 180.0,
           height: 150.0,
           child: Stack(
-            alignment: const AlignmentDirectional(1.0, -1.0),
+            alignment: AlignmentDirectional(1.0, -1.0),
             children: [
               Row(
                 mainAxisSize: MainAxisSize.max,
@@ -90,17 +93,17 @@ class _RoomRoleScopeComponentWidgetState
                 ],
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Container(
                     width: double.infinity,
                     height: double.infinity,
-                    constraints: const BoxConstraints(
+                    constraints: BoxConstraints(
                       maxWidth: 200.0,
                       maxHeight: 180.0,
                     ),
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Builder(
                       builder: (context) {
                         final roomUserIndex = widget.roomUsers!.toList();

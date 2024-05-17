@@ -3,6 +3,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'step35_favorites_page_model.dart';
 export 'step35_favorites_page_model.dart';
 
@@ -46,27 +49,27 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 wrapWithModel(
                   model: _model.plannerAppBarComponentModel,
                   updateCallback: () => setState(() {}),
-                  child: const PlannerAppBarComponentWidget(),
+                  child: PlannerAppBarComponentWidget(),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, -1.0),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'My Favorites',
@@ -103,7 +106,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     60.0, 20.0, 0.0, 0.0),
                                 child: Container(
                                   width: 239.0,
@@ -116,7 +119,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         blurRadius: 4.0,
                                         color: FlutterFlowTheme.of(context)
                                             .accent1,
-                                        offset: const Offset(
+                                        offset: Offset(
                                           0.0,
                                           2.0,
                                         ),
@@ -140,11 +143,11 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 children: [
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, -1.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   60.0,
                                                                   20.0,
@@ -156,7 +159,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                         clipBehavior:
                                                             Clip.antiAlias,
                                                         decoration:
-                                                            const BoxDecoration(
+                                                            BoxDecoration(
                                                           shape:
                                                               BoxShape.circle,
                                                         ),
@@ -170,7 +173,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 ],
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         15.0, 0.0, 0.0, 0.0),
                                                 child: Icon(
@@ -189,10 +192,10 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 20.0, 0.0, 0.0),
                                                   child: Text(
@@ -220,7 +223,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 CrossAxisAlignment.end,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 40.0, 0.0, 0.0),
                                                 child: FFButtonWidget(
@@ -232,14 +235,14 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                     width: 100.0,
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
-                                                    color: const Color(0xFF6E050E),
+                                                    color: Color(0xFF6E050E),
                                                     textStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .titleSmall
@@ -250,7 +253,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -269,7 +272,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     60.0, 20.0, 0.0, 0.0),
                                 child: Container(
                                   width: 239.0,
@@ -282,7 +285,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         blurRadius: 4.0,
                                         color: FlutterFlowTheme.of(context)
                                             .accent1,
-                                        offset: const Offset(
+                                        offset: Offset(
                                           0.0,
                                           2.0,
                                         ),
@@ -302,10 +305,10 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           60.0, 20.0, 0.0, 0.0),
                                                   child: Container(
@@ -313,7 +316,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                     height: 125.0,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.network(
@@ -327,7 +330,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 0.0, 0.0, 0.0),
                                             child: Icon(
                                               Icons.favorite_rounded,
@@ -346,9 +349,9 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
+                                                AlignmentDirectional(0.0, -1.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 20.0, 0.0, 0.0),
                                               child: Text(
@@ -377,7 +380,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 40.0, 0.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () {
@@ -387,14 +390,14 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                               options: FFButtonOptions(
                                                 width: 100.0,
                                                 height: 40.0,
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 iconPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
-                                                color: const Color(0xFF6E050E),
+                                                color: Color(0xFF6E050E),
                                                 textStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
@@ -405,7 +408,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                 elevation: 3.0,
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -421,7 +424,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     60.0, 20.0, 0.0, 0.0),
                                 child: Container(
                                   width: 239.0,
@@ -434,7 +437,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         blurRadius: 4.0,
                                         color: FlutterFlowTheme.of(context)
                                             .accent1,
-                                        offset: const Offset(
+                                        offset: Offset(
                                           0.0,
                                           2.0,
                                         ),
@@ -454,10 +457,10 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           60.0, 20.0, 0.0, 0.0),
                                                   child: Container(
@@ -465,7 +468,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                     height: 125.0,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.network(
@@ -479,7 +482,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 0.0, 0.0, 0.0),
                                             child: Icon(
                                               Icons.favorite_rounded,
@@ -498,9 +501,9 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
+                                                AlignmentDirectional(0.0, -1.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 20.0, 0.0, 0.0),
                                               child: Text(
@@ -529,7 +532,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 40.0, 0.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () {
@@ -539,14 +542,14 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                               options: FFButtonOptions(
                                                 width: 100.0,
                                                 height: 40.0,
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 iconPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
-                                                color: const Color(0xFF6E050E),
+                                                color: Color(0xFF6E050E),
                                                 textStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
@@ -557,7 +560,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                 elevation: 3.0,
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -583,7 +586,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     60.0, 20.0, 0.0, 0.0),
                                 child: Container(
                                   width: 239.0,
@@ -596,7 +599,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         blurRadius: 4.0,
                                         color: FlutterFlowTheme.of(context)
                                             .accent1,
-                                        offset: const Offset(
+                                        offset: Offset(
                                           0.0,
                                           2.0,
                                         ),
@@ -620,11 +623,11 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 children: [
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, -1.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   60.0,
                                                                   20.0,
@@ -636,7 +639,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                         clipBehavior:
                                                             Clip.antiAlias,
                                                         decoration:
-                                                            const BoxDecoration(
+                                                            BoxDecoration(
                                                           shape:
                                                               BoxShape.circle,
                                                         ),
@@ -650,7 +653,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 ],
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         15.0, 0.0, 0.0, 0.0),
                                                 child: Icon(
@@ -669,10 +672,10 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 20.0, 0.0, 0.0),
                                                   child: Text(
@@ -700,7 +703,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 CrossAxisAlignment.end,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 40.0, 0.0, 0.0),
                                                 child: FFButtonWidget(
@@ -712,14 +715,14 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                     width: 100.0,
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
-                                                    color: const Color(0xFF6E050E),
+                                                    color: Color(0xFF6E050E),
                                                     textStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .titleSmall
@@ -730,7 +733,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -749,7 +752,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     60.0, 20.0, 0.0, 0.0),
                                 child: Container(
                                   width: 239.0,
@@ -762,7 +765,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         blurRadius: 4.0,
                                         color: FlutterFlowTheme.of(context)
                                             .accent1,
-                                        offset: const Offset(
+                                        offset: Offset(
                                           0.0,
                                           2.0,
                                         ),
@@ -782,10 +785,10 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           60.0, 20.0, 0.0, 0.0),
                                                   child: Container(
@@ -793,7 +796,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                     height: 125.0,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.network(
@@ -807,7 +810,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 0.0, 0.0, 0.0),
                                             child: Icon(
                                               Icons.favorite_rounded,
@@ -826,9 +829,9 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
+                                                AlignmentDirectional(0.0, -1.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 20.0, 0.0, 0.0),
                                               child: Text(
@@ -857,7 +860,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 40.0, 0.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () {
@@ -867,14 +870,14 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                               options: FFButtonOptions(
                                                 width: 100.0,
                                                 height: 40.0,
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 iconPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
-                                                color: const Color(0xFF6E050E),
+                                                color: Color(0xFF6E050E),
                                                 textStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
@@ -885,7 +888,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                 elevation: 3.0,
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -901,7 +904,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     60.0, 20.0, 0.0, 0.0),
                                 child: Container(
                                   width: 239.0,
@@ -914,7 +917,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         blurRadius: 4.0,
                                         color: FlutterFlowTheme.of(context)
                                             .accent1,
-                                        offset: const Offset(
+                                        offset: Offset(
                                           0.0,
                                           2.0,
                                         ),
@@ -934,10 +937,10 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           60.0, 20.0, 0.0, 0.0),
                                                   child: Container(
@@ -945,7 +948,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                     height: 125.0,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.network(
@@ -959,7 +962,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 0.0, 0.0, 0.0),
                                             child: Icon(
                                               Icons.favorite_rounded,
@@ -978,9 +981,9 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
+                                                AlignmentDirectional(0.0, -1.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 20.0, 0.0, 0.0),
                                               child: Text(
@@ -1009,7 +1012,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 40.0, 0.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () {
@@ -1019,14 +1022,14 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                               options: FFButtonOptions(
                                                 width: 100.0,
                                                 height: 40.0,
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 iconPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
-                                                color: const Color(0xFF6E050E),
+                                                color: Color(0xFF6E050E),
                                                 textStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
@@ -1037,7 +1040,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                 elevation: 3.0,
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -1063,7 +1066,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     60.0, 20.0, 0.0, 0.0),
                                 child: Container(
                                   width: 239.0,
@@ -1076,7 +1079,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         blurRadius: 4.0,
                                         color: FlutterFlowTheme.of(context)
                                             .accent1,
-                                        offset: const Offset(
+                                        offset: Offset(
                                           0.0,
                                           2.0,
                                         ),
@@ -1100,11 +1103,11 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 children: [
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, -1.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   60.0,
                                                                   20.0,
@@ -1116,7 +1119,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                         clipBehavior:
                                                             Clip.antiAlias,
                                                         decoration:
-                                                            const BoxDecoration(
+                                                            BoxDecoration(
                                                           shape:
                                                               BoxShape.circle,
                                                         ),
@@ -1130,7 +1133,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 ],
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         15.0, 0.0, 0.0, 0.0),
                                                 child: Icon(
@@ -1149,10 +1152,10 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 20.0, 0.0, 0.0),
                                                   child: Text(
@@ -1180,7 +1183,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 CrossAxisAlignment.end,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 40.0, 0.0, 0.0),
                                                 child: FFButtonWidget(
@@ -1192,14 +1195,14 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                     width: 100.0,
                                                     height: 40.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
-                                                    color: const Color(0xFF6E050E),
+                                                    color: Color(0xFF6E050E),
                                                     textStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .titleSmall
@@ -1210,7 +1213,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                     elevation: 3.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1229,7 +1232,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     60.0, 20.0, 0.0, 0.0),
                                 child: Container(
                                   width: 239.0,
@@ -1242,7 +1245,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         blurRadius: 4.0,
                                         color: FlutterFlowTheme.of(context)
                                             .accent1,
-                                        offset: const Offset(
+                                        offset: Offset(
                                           0.0,
                                           2.0,
                                         ),
@@ -1262,10 +1265,10 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           60.0, 20.0, 0.0, 0.0),
                                                   child: Container(
@@ -1273,7 +1276,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                     height: 125.0,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.network(
@@ -1287,7 +1290,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 0.0, 0.0, 0.0),
                                             child: Icon(
                                               Icons.favorite_rounded,
@@ -1306,9 +1309,9 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
+                                                AlignmentDirectional(0.0, -1.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 20.0, 0.0, 0.0),
                                               child: Text(
@@ -1337,7 +1340,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 40.0, 0.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () {
@@ -1347,14 +1350,14 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                               options: FFButtonOptions(
                                                 width: 100.0,
                                                 height: 40.0,
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 iconPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
-                                                color: const Color(0xFF6E050E),
+                                                color: Color(0xFF6E050E),
                                                 textStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
@@ -1365,7 +1368,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                 elevation: 3.0,
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -1381,7 +1384,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     60.0, 20.0, 0.0, 0.0),
                                 child: Container(
                                   width: 239.0,
@@ -1394,7 +1397,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         blurRadius: 4.0,
                                         color: FlutterFlowTheme.of(context)
                                             .accent1,
-                                        offset: const Offset(
+                                        offset: Offset(
                                           0.0,
                                           2.0,
                                         ),
@@ -1414,10 +1417,10 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           60.0, 20.0, 0.0, 0.0),
                                                   child: Container(
@@ -1425,7 +1428,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                     height: 125.0,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.network(
@@ -1439,7 +1442,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 0.0, 0.0, 0.0),
                                             child: Icon(
                                               Icons.favorite_rounded,
@@ -1458,9 +1461,9 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
+                                                AlignmentDirectional(0.0, -1.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 20.0, 0.0, 0.0),
                                               child: Text(
@@ -1489,7 +1492,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 40.0, 0.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () {
@@ -1499,14 +1502,14 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                               options: FFButtonOptions(
                                                 width: 100.0,
                                                 height: 40.0,
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 iconPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
-                                                color: const Color(0xFF6E050E),
+                                                color: Color(0xFF6E050E),
                                                 textStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
@@ -1517,7 +1520,7 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                 elevation: 3.0,
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -1537,9 +1540,9 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                         ],
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               30.0, 20.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -1558,16 +1561,16 @@ class _Step35FavoritesPageWidgetState extends State<Step35FavoritesPageWidget> {
                                     FlutterFlowTheme.of(context).primary,
                                     FlutterFlowTheme.of(context).accent3
                                   ],
-                                  stops: const [0.0, 1.0],
-                                  begin: const AlignmentDirectional(0.0, -1.0),
-                                  end: const AlignmentDirectional(0, 1.0),
+                                  stops: [0.0, 1.0],
+                                  begin: AlignmentDirectional(0.0, -1.0),
+                                  end: AlignmentDirectional(0, 1.0),
                                 ),
                                 borderRadius: BorderRadius.circular(18.0),
                               ),
                               child: Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Browse & Add More Favorites',

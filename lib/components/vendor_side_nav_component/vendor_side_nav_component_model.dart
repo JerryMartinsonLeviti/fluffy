@@ -1,3 +1,6 @@
+import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/vendor_flow/vendor_chip/vendor_chip_widget.dart';
@@ -12,6 +15,9 @@ import '/vendor_flow/vendor_sidebar/vendor_sidebar_nav_schedules_component/vendo
 import 'vendor_side_nav_component_widget.dart'
     show VendorSideNavComponentWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class VendorSideNavComponentModel
     extends FlutterFlowModel<VendorSideNavComponentWidget> {

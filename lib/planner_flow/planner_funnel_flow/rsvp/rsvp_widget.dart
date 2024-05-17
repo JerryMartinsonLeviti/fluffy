@@ -3,6 +3,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'rsvp_model.dart';
 export 'rsvp_model.dart';
 
@@ -50,7 +53,7 @@ class _RsvpWidgetState extends State<RsvpWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -68,7 +71,7 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -78,23 +81,23 @@ class _RsvpWidgetState extends State<RsvpWidget> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Align(
-                alignment: const AlignmentDirectional(-1.0, 0.0),
+                alignment: AlignmentDirectional(-1.0, 0.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(14.0, 0.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(14.0, 0.0, 0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
+                        alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
-                          padding: const EdgeInsets.all(28.0),
+                          padding: EdgeInsets.all(28.0),
                           child: Container(
                             width: 436.0,
                             height: 1039.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).secondary,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -114,9 +117,9 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                   children: [
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(1.0, -1.0),
+                                          AlignmentDirectional(1.0, -1.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 20.0, 20.0, 0.0),
                                         child: Icon(
                                           Icons.close_rounded,
@@ -128,9 +131,9 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(0.0, -1.0),
+                                          AlignmentDirectional(0.0, -1.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 30.0, 0.0, 10.0),
                                         child: Text(
                                           'RSVP',
@@ -157,9 +160,9 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             45.0, 30.0, 0.0, 0.0),
                                         child: Text(
                                           'First Name *',
@@ -177,7 +180,7 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Container(
                                         width: 376.0,
@@ -192,9 +195,9 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             45.0, 20.0, 0.0, 0.0),
                                         child: Text(
                                           'Last Name *',
@@ -212,7 +215,7 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Container(
                                         width: 376.0,
@@ -227,9 +230,9 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             45.0, 20.0, 0.0, 0.0),
                                         child: Text(
                                           'Email *',
@@ -247,7 +250,7 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Container(
                                         width: 376.0,
@@ -262,9 +265,9 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             45.0, 20.0, 0.0, 0.0),
                                         child: Text(
                                           'Company Name *',
@@ -282,7 +285,7 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Container(
                                         width: 376.0,
@@ -297,9 +300,9 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             45.0, 20.0, 0.0, 0.0),
                                         child: Text(
                                           'LinkedIn URL',
@@ -317,7 +320,7 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Container(
                                         width: 376.0,
@@ -332,9 +335,9 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             45.0, 20.0, 0.0, 0.0),
                                         child: Text(
                                           'Do you have any dietary restrictions?',
@@ -352,7 +355,7 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Container(
                                         width: 376.0,
@@ -366,7 +369,7 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 40.0, 0.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed: () {
@@ -377,10 +380,10 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                                           width: 350.0,
                                           height: 60.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 0.0, 24.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .accent2,
@@ -414,10 +417,10 @@ class _RsvpWidgetState extends State<RsvpWidget> {
                         ),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
+                        alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Container(
                           width: 300.0,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                         ),
                       ),
                     ],

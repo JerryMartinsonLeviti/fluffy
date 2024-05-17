@@ -2,6 +2,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'markdown_entry_widget_model.dart';
 export 'markdown_entry_widget_model.dart';
 
@@ -56,7 +59,7 @@ class _MarkdownEntryWidgetWidgetState extends State<MarkdownEntryWidgetWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Container(
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -156,7 +159,7 @@ class _MarkdownEntryWidgetWidgetState extends State<MarkdownEntryWidgetWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -171,7 +174,7 @@ class _MarkdownEntryWidgetWidgetState extends State<MarkdownEntryWidgetWidget> {
                     ),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                       child: TextFormField(
                         controller: _model.textController,
                         focusNode: _model.textFieldFocusNode,
@@ -261,7 +264,7 @@ class _MarkdownEntryWidgetWidgetState extends State<MarkdownEntryWidgetWidget> {
                       ],
                     ),
                   ),
-                ].divide(const SizedBox(height: 10.0)).around(const SizedBox(height: 10.0)),
+                ].divide(SizedBox(height: 10.0)).around(SizedBox(height: 10.0)),
               ),
             ),
           ),

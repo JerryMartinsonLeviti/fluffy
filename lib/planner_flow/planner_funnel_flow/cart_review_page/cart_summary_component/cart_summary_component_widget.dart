@@ -5,7 +5,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'cart_summary_component_model.dart';
 export 'cart_summary_component_model.dart';
@@ -67,7 +69,7 @@ class _CartSummaryComponentWidgetState
     return Container(
       width: double.infinity,
       height: double.infinity,
-      constraints: const BoxConstraints(
+      constraints: BoxConstraints(
         maxWidth: 250.0,
         maxHeight: 450.0,
       ),
@@ -77,7 +79,7 @@ class _CartSummaryComponentWidgetState
           BoxShadow(
             blurRadius: 4.0,
             color: FlutterFlowTheme.of(context).accent1,
-            offset: const Offset(
+            offset: Offset(
               0.0,
               2.0,
             ),
@@ -98,12 +100,12 @@ class _CartSummaryComponentWidgetState
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Align(
-                    alignment: const AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Container(
                       width: 125.0,
                       height: 125.0,
                       clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         shape: BoxShape.circle,
                       ),
                       child: Image.network(
@@ -130,12 +132,12 @@ class _CartSummaryComponentWidgetState
                 clipBehavior: Clip.none,
                 children: [
                   Align(
-                    alignment: const AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Text(
-                      valueOrDefault<String>(
+                      '${valueOrDefault<String>(
                         widget.vendorRow?.vendorName,
                         'noVendor ',
-                      ),
+                      )}',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
@@ -145,7 +147,7 @@ class _CartSummaryComponentWidgetState
                     ),
                   ),
                   Align(
-                    alignment: const AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Text(
                       'at',
                       textAlign: TextAlign.center,
@@ -157,12 +159,12 @@ class _CartSummaryComponentWidgetState
                     ),
                   ),
                   Align(
-                    alignment: const AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Text(
-                      valueOrDefault<String>(
+                      '${valueOrDefault<String>(
                         widget.venueRow?.restaurantLocationName,
                         'noVenue',
-                      ),
+                      )}',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
@@ -180,7 +182,7 @@ class _CartSummaryComponentWidgetState
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Text(
                   'Estimated Total: ',
                   textAlign: TextAlign.center,
@@ -192,7 +194,7 @@ class _CartSummaryComponentWidgetState
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Text(
                   valueOrDefault<String>(
                     formatNumber(
@@ -214,13 +216,13 @@ class _CartSummaryComponentWidgetState
             ],
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(6.0),
+                  padding: EdgeInsets.all(6.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       context.pushNamed(
@@ -242,9 +244,9 @@ class _CartSummaryComponentWidgetState
                       width: 88.0,
                       height: 33.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).accent3,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
@@ -253,7 +255,7 @@ class _CartSummaryComponentWidgetState
                                 letterSpacing: 0.0,
                               ),
                       elevation: 3.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),
@@ -293,9 +295,9 @@ class _CartSummaryComponentWidgetState
                     width: 100.0,
                     height: 36.0,
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).accent2,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Readex Pro',
@@ -303,7 +305,7 @@ class _CartSummaryComponentWidgetState
                           letterSpacing: 0.0,
                         ),
                     elevation: 3.0,
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),
@@ -322,7 +324,7 @@ class _CartSummaryComponentWidgetState
                   if (widget.cartRow?.cartState ==
                       functions.convertCartStateEnumToString(CartStates.Rfi)) {
                     return Padding(
-                      padding: const EdgeInsets.all(6.0),
+                      padding: EdgeInsets.all(6.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           await CartsTable().update(
@@ -341,9 +343,9 @@ class _CartSummaryComponentWidgetState
                         options: FFButtonOptions(
                           width: 146.0,
                           height: 41.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).customColor5,
                           textStyle:
@@ -353,7 +355,7 @@ class _CartSummaryComponentWidgetState
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -365,7 +367,7 @@ class _CartSummaryComponentWidgetState
                       functions
                           .convertCartStateEnumToString(CartStates.RfpSent)) {
                     return Padding(
-                      padding: const EdgeInsets.all(6.0),
+                      padding: EdgeInsets.all(6.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           context.pushNamed(
@@ -386,9 +388,9 @@ class _CartSummaryComponentWidgetState
                         options: FFButtonOptions(
                           width: 155.0,
                           height: 41.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).accent1,
                           textStyle:
@@ -398,7 +400,7 @@ class _CartSummaryComponentWidgetState
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -408,7 +410,7 @@ class _CartSummaryComponentWidgetState
                     );
                   } else {
                     return Padding(
-                      padding: const EdgeInsets.all(6.0),
+                      padding: EdgeInsets.all(6.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           await CartsTable().update(
@@ -426,9 +428,9 @@ class _CartSummaryComponentWidgetState
                         options: FFButtonOptions(
                           width: 130.0,
                           height: 41.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).customColor5,
                           textStyle:
@@ -438,7 +440,7 @@ class _CartSummaryComponentWidgetState
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -474,9 +476,9 @@ class _CartSummaryComponentWidgetState
             ],
           ),
           Align(
-            alignment: const AlignmentDirectional(1.0, 0.0),
+            alignment: AlignmentDirectional(1.0, 0.0),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -492,7 +494,7 @@ class _CartSummaryComponentWidgetState
                   FFAppState().update(() {});
                   await widget.onPressRemoved?.call();
                 },
-                child: const FaIcon(
+                child: FaIcon(
                   FontAwesomeIcons.trash,
                   color: Color(0xFF6E050E),
                   size: 20.0,
@@ -500,7 +502,7 @@ class _CartSummaryComponentWidgetState
               ),
             ),
           ),
-        ].divide(const SizedBox(height: 8.0)).around(const SizedBox(height: 8.0)),
+        ].divide(SizedBox(height: 8.0)).around(SizedBox(height: 8.0)),
       ),
     );
   }

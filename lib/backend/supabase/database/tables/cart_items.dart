@@ -9,7 +9,7 @@ class CartItemsTable extends SupabaseTable<CartItemsRow> {
 }
 
 class CartItemsRow extends SupabaseDataRow {
-  CartItemsRow(super.data);
+  CartItemsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => CartItemsTable();

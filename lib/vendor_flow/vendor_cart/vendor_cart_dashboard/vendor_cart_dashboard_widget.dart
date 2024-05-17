@@ -2,10 +2,12 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/vendor_flow/vendor_cart/vendor_cart_line_component/vendor_cart_line_component_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'vendor_cart_dashboard_model.dart';
 export 'vendor_cart_dashboard_model.dart';
@@ -57,7 +59,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -75,7 +77,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -107,7 +109,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                   ? containerVendorsRowList.first
                   : null;
               return Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: FutureBuilder<List<IndexViewRow>>(
                   future: IndexViewTable().queryRows(
                     queryFn: (q) => q.eq(
@@ -132,7 +134,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                     List<IndexViewRow> containerIndexViewRowList =
                         snapshot.data!;
                     return Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: FutureBuilder<List<EventsRow>>(
                         future: EventsTable().queryRows(
                           queryFn: (q) => q.in_(
@@ -160,12 +162,12 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                           List<EventsRow> containerEventsRowList =
                               snapshot.data!;
                           return Container(
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 30.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -173,7 +175,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             40.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Welcome ${valueOrDefault<String>(
@@ -190,7 +192,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 100.0, 0.0),
                                         child: Icon(
                                           Icons.notification_important,
@@ -209,7 +211,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                   color: FlutterFlowTheme.of(context).accent4,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 40.0, 0.0, 0.0),
                                   child: Container(
                                     width: 922.0,
@@ -234,11 +236,11 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           -1.0, 0.0),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(20.0,
                                                                 10.0, 0.0, 0.0),
                                                     child: Text(
@@ -258,10 +260,10 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                               ],
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 10.0, 0.0, 0.0),
                                                 child: Text(
@@ -282,7 +284,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 25.0, 0.0, 0.0),
                                               child: Row(
@@ -292,7 +294,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                         .spaceEvenly,
                                                 children: [
                                                   Container(
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -327,7 +329,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -362,7 +364,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -456,7 +458,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                       .accent4,
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 10.0, 0.0, 0.0),
                                               child: Row(
@@ -553,7 +555,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                       ),
                                                     ],
                                                   ),
-                                                  const Column(
+                                                  Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: [
@@ -602,7 +604,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                       .accent4,
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 10.0, 0.0, 0.0),
                                               child: Row(
@@ -753,10 +755,10 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(1.0, 0.0),
+                                              AlignmentDirectional(1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 30.0, 0.0),
                                             child: Text(
                                               'View All',
@@ -765,7 +767,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Readex Pro',
-                                                    color: const Color(0xFF507187),
+                                                    color: Color(0xFF507187),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                   ),
@@ -774,10 +776,10 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(1.0, 0.0),
+                                              AlignmentDirectional(1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 18.0, 30.0, 0.0),
                                             child: Text(
                                               'Sort by Status',
@@ -786,7 +788,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Readex Pro',
-                                                    color: const Color(0xFF507187),
+                                                    color: Color(0xFF507187),
                                                     fontSize: 16.0,
                                                     letterSpacing: 0.0,
                                                   ),
@@ -798,7 +800,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 50.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -821,7 +823,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 20.0, 0.0, 0.0),
                                                   child: Text(
@@ -846,7 +848,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                       .accent4,
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 20.0, 0.0, 0.0),
                                                   child: Row(
@@ -864,7 +866,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -887,7 +889,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 20.0, 0.0, 0.0),
                                                   child: Row(
@@ -905,7 +907,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -935,7 +937,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 20.0, 0.0, 0.0),
                                                   child: Row(
@@ -953,7 +955,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5.0,
                                                                     0.0,
@@ -978,10 +980,10 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                               ],
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   1.0, 0.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 20.0, 30.0, 16.0),
                                                 child: Text(
@@ -993,7 +995,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                         fontFamily:
                                                             'Readex Pro',
                                                         color:
-                                                            const Color(0xFF507187),
+                                                            Color(0xFF507187),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),

@@ -9,7 +9,7 @@ class LogoAssetsTable extends SupabaseTable<LogoAssetsRow> {
 }
 
 class LogoAssetsRow extends SupabaseDataRow {
-  LogoAssetsRow(super.data);
+  LogoAssetsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => LogoAssetsTable();

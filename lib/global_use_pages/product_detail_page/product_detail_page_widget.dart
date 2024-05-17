@@ -1,8 +1,12 @@
 import '/components/product_detail_page_options_language/product_detail_page_options_language_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'product_detail_page_model.dart';
 export 'product_detail_page_model.dart';
 
@@ -59,16 +63,16 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, -1.0),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: wrapWithModel(
                           model: _model.plannerAppBarComponentModel,
                           updateCallback: () => setState(() {}),
-                          child: const PlannerAppBarComponentWidget(),
+                          child: PlannerAppBarComponentWidget(),
                         ),
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -83,7 +87,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                     .secondaryBackground,
                               ),
                               child: Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -91,7 +95,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                   children: [
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: ClipRRect(
                                         borderRadius:
                                             BorderRadius.circular(8.0),
@@ -105,9 +109,9 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, -1.0),
+                                          AlignmentDirectional(-1.0, -1.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 10.0, 0.0, 15.0),
                                         child: Text(
                                           'Ci Siamo, New York',
@@ -134,10 +138,10 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 0.0, 30.0, 0.0),
                                             child: Text(
                                               'Ci Siamo [CHee see-aH mo] is an Italian term meaning \n\"We\'ve arrived! We\'re here!\"\n\nThis beautiful Manhattan hotspot bridges the traditional with the contemporary, boasting live-fire cooking, housemade pasta, and a robust Italian wine list. IN the heart of ManhattanWest, its sweeping views of the Empire State Building are unparalleled. Your guests will be sure to feel like they\'ve \"made it\" when hosted at this very special venue. Andiamo!\n',
@@ -167,10 +171,10 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 20.0, 0.0, 20.0),
                                             child: wrapWithModel(
                                               model: _model
@@ -178,16 +182,16 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                               updateCallback: () =>
                                                   setState(() {}),
                                               child:
-                                                  const ProductDetailPageOptionsLanguageWidget(),
+                                                  ProductDetailPageOptionsLanguageWidget(),
                                             ),
                                           ),
                                         ),
                                       ],
                                     ),
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 0.0, 20.0, 20.0),
                                         child: Container(
                                           width: double.infinity,

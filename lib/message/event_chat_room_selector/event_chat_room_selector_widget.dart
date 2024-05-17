@@ -6,6 +6,9 @@ import '/flutter_flow/form_field_controller.dart';
 import '/message/event_chat_chip/event_chat_chip_widget.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'event_chat_room_selector_model.dart';
 export 'event_chat_room_selector_model.dart';
 
@@ -52,7 +55,7 @@ class _EventChatRoomSelectorWidgetState
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Container(
         width: double.infinity,
         color: Colors.white,
@@ -107,7 +110,7 @@ class _EventChatRoomSelectorWidgetState
                 ),
               ],
             ),
-            theme: const ExpandableThemeData(
+            theme: ExpandableThemeData(
               tapHeaderToExpand: true,
               tapBodyToExpand: false,
               tapBodyToCollapse: false,

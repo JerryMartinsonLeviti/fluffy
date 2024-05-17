@@ -9,7 +9,7 @@ class UrlAssetsTable extends SupabaseTable<UrlAssetsRow> {
 }
 
 class UrlAssetsRow extends SupabaseDataRow {
-  UrlAssetsRow(super.data);
+  UrlAssetsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => UrlAssetsTable();

@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/region_card/region_card_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -9,6 +10,7 @@ import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget
 import '/planner_flow/search_bar/wrap_faq_row/wrap_faq_row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'step1_create_event_model.dart';
 export 'step1_create_event_model.dart';
@@ -54,7 +56,7 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -88,13 +90,13 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                             updateCallback: () =>
                                                 setState(() {}),
                                             child:
-                                                const PlannerAppBarComponentWidget(),
+                                                PlannerAppBarComponentWidget(),
                                           ),
                                         ),
                                       ],
                                     ),
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: SingleChildScrollView(
                                         scrollDirection: Axis.horizontal,
                                         child: Row(
@@ -105,10 +107,10 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 80.0, 0.0, 0.0),
                                                 child: Text(
@@ -135,17 +137,17 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 30.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Flexible(
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, -1.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 50.0, 0.0, 0.0),
                                                 child: Text(
@@ -176,13 +178,13 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         30.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       'Or Browse By City',
@@ -225,9 +227,9 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, -1.0),
+                              alignment: AlignmentDirectional(0.0, -1.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -259,7 +261,7 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                             faqContainerFaqAssetsRowList =
                                             snapshot.data!;
                                         return Container(
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -275,7 +277,7 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                                         ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 10.0),
                                                 child: Text(
@@ -340,7 +342,7 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                       controller:
                                           _model.dropDownValueController1 ??=
                                               FormFieldController<String>(null),
-                                      options: const ['Option 1'],
+                                      options: ['Option 1'],
                                       onChanged: (val) => setState(
                                           () => _model.dropDownValue1 = val),
                                       width: 524.0,
@@ -368,7 +370,7 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                           .alternate,
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 4.0),
                                       hidesUnderline: true,
                                       isOverButton: true,
@@ -379,7 +381,7 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                       controller:
                                           _model.dropDownValueController2 ??=
                                               FormFieldController<String>(null),
-                                      options: const ['Option 1'],
+                                      options: ['Option 1'],
                                       onChanged: (val) => setState(
                                           () => _model.dropDownValue2 = val),
                                       width: 524.0,
@@ -407,7 +409,7 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                           .alternate,
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 4.0),
                                       hidesUnderline: true,
                                       isOverButton: true,
@@ -418,7 +420,7 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                       controller:
                                           _model.dropDownValueController3 ??=
                                               FormFieldController<String>(null),
-                                      options: const ['Option 1'],
+                                      options: ['Option 1'],
                                       onChanged: (val) => setState(
                                           () => _model.dropDownValue3 = val),
                                       width: 524.0,
@@ -444,7 +446,7 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                           .alternate,
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 4.0),
                                       hidesUnderline: true,
                                       isOverButton: true,
@@ -455,7 +457,7 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                       controller:
                                           _model.dropDownValueController4 ??=
                                               FormFieldController<String>(null),
-                                      options: const ['Option 1'],
+                                      options: ['Option 1'],
                                       onChanged: (val) => setState(
                                           () => _model.dropDownValue4 = val),
                                       width: 524.0,
@@ -481,7 +483,7 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                           .alternate,
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 4.0),
                                       hidesUnderline: true,
                                       isOverButton: true,
@@ -489,7 +491,7 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                       isMultiSelect: false,
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 14.0, 0.0, 10.0),
                                       child: FFButtonWidget(
                                         onPressed: () {
@@ -499,10 +501,10 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                         options: FFButtonOptions(
                                           height: 40.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 0.0, 24.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
@@ -516,7 +518,7 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -543,12 +545,12 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 40.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -558,12 +560,12 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Container(
                                       width: 100.0,
                                       height: 100.0,
                                       clipBehavior: Clip.antiAlias,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                       ),
                                       child: Image.network(
@@ -639,7 +641,7 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                           letterSpacing: 0.0,
                                         ),
                                   ),
-                                ].divide(const SizedBox(height: 10.0)),
+                                ].divide(SizedBox(height: 10.0)),
                               ),
                               Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -680,13 +682,13 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                           letterSpacing: 0.0,
                                         ),
                                   ),
-                                ].divide(const SizedBox(height: 10.0)),
+                                ].divide(SizedBox(height: 10.0)),
                               ),
                             ],
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: Text(
                             'SilverSpike Copyright 2024. All rights reserved. ',

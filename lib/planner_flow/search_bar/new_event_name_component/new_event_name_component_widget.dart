@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'new_event_name_component_model.dart';
 export 'new_event_name_component_model.dart';
@@ -50,7 +52,7 @@ class _NewEventNameComponentWidgetState
     return Container(
       width: 380.0,
       height: 250.0,
-      constraints: const BoxConstraints(
+      constraints: BoxConstraints(
         maxWidth: 380.0,
         maxHeight: 250.0,
       ),
@@ -60,7 +62,7 @@ class _NewEventNameComponentWidgetState
           BoxShadow(
             blurRadius: 4.0,
             color: FlutterFlowTheme.of(context).primaryText,
-            offset: const Offset(
+            offset: Offset(
               0.0,
               2.0,
             ),
@@ -93,7 +95,7 @@ class _NewEventNameComponentWidgetState
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -116,7 +118,7 @@ class _NewEventNameComponentWidgetState
           Container(
             width: double.infinity,
             height: double.infinity,
-            constraints: const BoxConstraints(
+            constraints: BoxConstraints(
               maxWidth: 340.0,
               maxHeight: 80.0,
             ),
@@ -129,7 +131,7 @@ class _NewEventNameComponentWidgetState
               ),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
               child: TextFormField(
                 controller: _model.newEventNameTextFieldTextController,
                 focusNode: _model.newEventNameTextFieldFocusNode,
@@ -207,22 +209,22 @@ class _NewEventNameComponentWidgetState
             text: 'Create',
             options: FFButtonOptions(
               height: 40.0,
-              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-              iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
               color: FlutterFlowTheme.of(context).customColor1,
               textStyle: FlutterFlowTheme.of(context).titleMedium.override(
                     fontFamily: 'Readex Pro',
                     letterSpacing: 0.0,
                   ),
               elevation: 3.0,
-              borderSide: const BorderSide(
+              borderSide: BorderSide(
                 color: Colors.transparent,
                 width: 1.0,
               ),
               borderRadius: BorderRadius.circular(24.0),
             ),
           ),
-        ].divide(const SizedBox(height: 20.0)).around(const SizedBox(height: 20.0)),
+        ].divide(SizedBox(height: 20.0)).around(SizedBox(height: 20.0)),
       ),
     );
   }

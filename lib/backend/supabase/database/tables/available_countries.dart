@@ -10,7 +10,7 @@ class AvailableCountriesTable extends SupabaseTable<AvailableCountriesRow> {
 }
 
 class AvailableCountriesRow extends SupabaseDataRow {
-  AvailableCountriesRow(super.data);
+  AvailableCountriesRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => AvailableCountriesTable();

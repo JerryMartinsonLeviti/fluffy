@@ -9,7 +9,7 @@ class LiaisonsViewTable extends SupabaseTable<LiaisonsViewRow> {
 }
 
 class LiaisonsViewRow extends SupabaseDataRow {
-  LiaisonsViewRow(super.data);
+  LiaisonsViewRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => LiaisonsViewTable();

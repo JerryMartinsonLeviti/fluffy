@@ -9,7 +9,7 @@ class VenuesTable extends SupabaseTable<VenuesRow> {
 }
 
 class VenuesRow extends SupabaseDataRow {
-  VenuesRow(super.data);
+  VenuesRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => VenuesTable();

@@ -4,10 +4,13 @@ import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'liaison_task_list_model.dart';
 export 'liaison_task_list_model.dart';
 
@@ -58,7 +61,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -74,7 +77,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -102,13 +105,13 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -119,7 +122,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                 size: 32.0,
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   'check.io',
@@ -145,7 +148,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 12.0, 0.0, 0.0),
                                 child: Text(
                                   'Platform Navigation',
@@ -158,10 +161,10 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 200),
+                                  duration: Duration(milliseconds: 200),
                                   curve: Curves.easeInOut,
                                   width: double.infinity,
                                   height: 44.0,
@@ -172,7 +175,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 6.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -185,7 +188,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Dashboard',
@@ -203,10 +206,10 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 200),
+                                  duration: Duration(milliseconds: 200),
                                   curve: Curves.easeInOut,
                                   width: double.infinity,
                                   height: 44.0,
@@ -217,7 +220,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 6.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -230,7 +233,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Chats',
@@ -248,10 +251,10 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 200),
+                                  duration: Duration(milliseconds: 200),
                                   curve: Curves.easeInOut,
                                   width: double.infinity,
                                   height: 44.0,
@@ -262,7 +265,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 6.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -276,7 +279,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               'All Tasks',
@@ -301,9 +304,9 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                           ),
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(8.0, 4.0, 8.0, 4.0),
                                               child: Text(
                                                 '12',
@@ -328,10 +331,10 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 200),
+                                  duration: Duration(milliseconds: 200),
                                   curve: Curves.easeInOut,
                                   width: double.infinity,
                                   height: 44.0,
@@ -342,7 +345,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 6.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -355,7 +358,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Projects',
@@ -373,7 +376,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   'Settings',
@@ -386,10 +389,10 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 200),
+                                  duration: Duration(milliseconds: 200),
                                   curve: Curves.easeInOut,
                                   width: double.infinity,
                                   height: 44.0,
@@ -400,7 +403,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 6.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -413,7 +416,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Billing',
@@ -431,10 +434,10 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 200),
+                                  duration: Duration(milliseconds: 200),
                                   curve: Curves.easeInOut,
                                   width: double.infinity,
                                   height: 44.0,
@@ -445,7 +448,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                     shape: BoxShape.rectangle,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 6.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -458,7 +461,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Explore',
@@ -475,13 +478,13 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                   ),
                                 ),
                               ),
-                            ].divide(const SizedBox(height: 12.0)),
+                            ].divide(SizedBox(height: 12.0)),
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(0.0, -1.0),
+                          alignment: AlignmentDirectional(0.0, -1.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 8.0, 0.0, 16.0),
                             child: Container(
                               width: 250.0,
@@ -496,7 +499,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(4.0),
+                                padding: EdgeInsets.all(4.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -556,7 +559,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                 size: 16.0,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         4.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -642,7 +645,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                 size: 16.0,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         4.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -685,7 +688,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                           color: FlutterFlowTheme.of(context).alternate,
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -702,14 +705,14 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(2.0),
+                                  padding: EdgeInsets.all(2.0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: CachedNetworkImage(
                                       fadeInDuration:
-                                          const Duration(milliseconds: 500),
+                                          Duration(milliseconds: 500),
                                       fadeOutDuration:
-                                          const Duration(milliseconds: 500),
+                                          Duration(milliseconds: 500),
                                       imageUrl:
                                           'https://images.unsplash.com/photo-1624561172888-ac93c696e10c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fHVzZXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
                                       width: 44.0,
@@ -721,7 +724,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -754,7 +757,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -775,7 +778,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                 ),
               Expanded(
                 child: Align(
-                  alignment: const AlignmentDirectional(0.0, -1.0),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: FutureBuilder<List<TasksRow>>(
                     future: TasksTable().queryRows(
                       queryFn: (q) => q,
@@ -798,10 +801,10 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                           snapshot.data!;
                       return Container(
                         width: double.infinity,
-                        constraints: const BoxConstraints(
+                        constraints: BoxConstraints(
                           maxWidth: 970.0,
                         ),
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -815,14 +818,14 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                 Container(
                                   width: double.infinity,
                                   height: 24.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                 ),
                               if (responsiveVisibility(
                                 context: context,
                                 phone: false,
                               ))
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 0.0, 4.0),
                                   child: Text(
                                     'All Tasks',
@@ -835,7 +838,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                   ),
                                 ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   'Below is a summary of tasks.',
@@ -848,7 +851,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 12.0, 16.0, 16.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -856,10 +859,10 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 8.0),
                                       child: FlutterFlowChoiceChips(
-                                        options: const [
+                                        options: [
                                           ChipData('All'),
                                           ChipData('Pending'),
                                           ChipData('In Progress'),
@@ -938,9 +941,9 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                       phone: false,
                                     ))
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 0.0, 0.0),
-                                        child: SizedBox(
+                                        child: Container(
                                           width: 300.0,
                                           child: TextFormField(
                                             controller: _model.textController,
@@ -1008,7 +1011,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                     BorderRadius.circular(12.0),
                                               ),
                                               contentPadding:
-                                                  const EdgeInsetsDirectional
+                                                  EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           20.0, 0.0, 0.0, 0.0),
                                               suffixIcon: Icon(
@@ -1037,7 +1040,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
@@ -1047,9 +1050,9 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                         .primaryBackground,
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
-                                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                                  alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -1058,7 +1061,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                           flex: 4,
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Text(
                                               'Task Name',
                                               style:
@@ -1076,9 +1079,9 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                           flex: 3,
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(4.0, 0.0, 0.0, 0.0),
                                               child: Text(
                                                 'Assigned To',
@@ -1101,7 +1104,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                           Expanded(
                                             flex: 2,
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
                                               child: Text(
                                                 'Due Date',
@@ -1120,7 +1123,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                           flex: 2,
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     4.0, 0.0, 16.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1129,7 +1132,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           1.0, 0.0),
                                                   child: Text(
                                                     'Status',
@@ -1153,7 +1156,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                 ),
                               ),
                               ListView(
-                                padding: const EdgeInsets.fromLTRB(
+                                padding: EdgeInsets.fromLTRB(
                                   0,
                                   0.0,
                                   0,
@@ -1163,7 +1166,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                 scrollDirection: Axis.vertical,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -1175,7 +1178,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                             blurRadius: 0.0,
                                             color: FlutterFlowTheme.of(context)
                                                 .alternate,
-                                            offset: const Offset(
+                                            offset: Offset(
                                               0.0,
                                               1.0,
                                             ),
@@ -1183,7 +1186,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                         ],
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -1191,7 +1194,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                             Expanded(
                                               flex: 4,
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Text(
                                                   'Product Testing',
@@ -1223,7 +1226,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsets.all(2.0),
+                                                padding: EdgeInsets.all(2.0),
                                                 child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(
@@ -1244,7 +1247,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                               Expanded(
                                                 flex: 3,
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Column(
@@ -1272,7 +1275,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1295,7 +1298,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                         ),
                                                       ),
                                                     ].divide(
-                                                        const SizedBox(height: 4.0)),
+                                                        SizedBox(height: 4.0)),
                                                   ),
                                                 ),
                                               ),
@@ -1342,11 +1345,11 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                     ),
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     4.0,
@@ -1379,7 +1382,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -1391,7 +1394,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                             blurRadius: 0.0,
                                             color: FlutterFlowTheme.of(context)
                                                 .alternate,
-                                            offset: const Offset(
+                                            offset: Offset(
                                               0.0,
                                               1.0,
                                             ),
@@ -1399,7 +1402,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                         ],
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -1407,7 +1410,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                             Expanded(
                                               flex: 4,
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Text(
                                                   'Product Testing',
@@ -1439,7 +1442,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsets.all(2.0),
+                                                padding: EdgeInsets.all(2.0),
                                                 child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(
@@ -1460,7 +1463,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                               Expanded(
                                                 flex: 3,
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Column(
@@ -1488,7 +1491,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1511,7 +1514,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                         ),
                                                       ),
                                                     ].divide(
-                                                        const SizedBox(height: 4.0)),
+                                                        SizedBox(height: 4.0)),
                                                   ),
                                                 ),
                                               ),
@@ -1558,11 +1561,11 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                     ),
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     4.0,
@@ -1592,7 +1595,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -1604,7 +1607,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                             blurRadius: 0.0,
                                             color: FlutterFlowTheme.of(context)
                                                 .alternate,
-                                            offset: const Offset(
+                                            offset: Offset(
                                               0.0,
                                               1.0,
                                             ),
@@ -1612,7 +1615,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                         ],
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -1620,7 +1623,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                             Expanded(
                                               flex: 4,
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Text(
                                                   'Product Testing',
@@ -1652,7 +1655,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsets.all(2.0),
+                                                padding: EdgeInsets.all(2.0),
                                                 child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(
@@ -1673,7 +1676,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                               Expanded(
                                                 flex: 3,
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Column(
@@ -1701,7 +1704,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1724,7 +1727,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                         ),
                                                       ),
                                                     ].divide(
-                                                        const SizedBox(height: 4.0)),
+                                                        SizedBox(height: 4.0)),
                                                   ),
                                                 ),
                                               ),
@@ -1771,11 +1774,11 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                     ),
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     4.0,
@@ -1805,7 +1808,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -1817,7 +1820,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                             blurRadius: 0.0,
                                             color: FlutterFlowTheme.of(context)
                                                 .alternate,
-                                            offset: const Offset(
+                                            offset: Offset(
                                               0.0,
                                               1.0,
                                             ),
@@ -1825,7 +1828,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                         ],
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 12.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -1833,7 +1836,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                             Expanded(
                                               flex: 4,
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Text(
                                                   'Product Testing',
@@ -1865,7 +1868,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsets.all(2.0),
+                                                padding: EdgeInsets.all(2.0),
                                                 child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(
@@ -1886,7 +1889,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                               Expanded(
                                                 flex: 3,
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Column(
@@ -1914,7 +1917,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1937,7 +1940,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                         ),
                                                       ),
                                                     ].divide(
-                                                        const SizedBox(height: 4.0)),
+                                                        SizedBox(height: 4.0)),
                                                   ),
                                                 ),
                                               ),
@@ -1984,11 +1987,11 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                     ),
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     4.0,
@@ -2045,7 +2048,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                       );
                                     },
                                   ),
-                                ].divide(const SizedBox(height: 1.0)),
+                                ].divide(SizedBox(height: 1.0)),
                               ),
                             ],
                           ),

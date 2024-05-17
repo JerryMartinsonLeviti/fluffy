@@ -3,6 +3,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'dropdown_expandable_model.dart';
 export 'dropdown_expandable_model.dart';
 
@@ -90,7 +93,7 @@ class _DropdownExpandableWidgetState extends State<DropdownExpandableWidget> {
                       letterSpacing: 0.0,
                     ),
               ),
-              theme: const ExpandableThemeData(
+              theme: ExpandableThemeData(
                 tapHeaderToExpand: true,
                 tapBodyToExpand: false,
                 tapBodyToCollapse: false,

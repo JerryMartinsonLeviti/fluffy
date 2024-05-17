@@ -1,6 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'assets_page_dashboard_model.dart';
 export 'assets_page_dashboard_model.dart';
 
@@ -53,14 +57,14 @@ class _AssetsPageDashboardWidgetState extends State<AssetsPageDashboardWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 58.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 58.0, 0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -73,10 +77,10 @@ class _AssetsPageDashboardWidgetState extends State<AssetsPageDashboardWidget> {
                       ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -92,7 +96,7 @@ class _AssetsPageDashboardWidgetState extends State<AssetsPageDashboardWidget> {
                               BoxShadow(
                                 blurRadius: 4.0,
                                 color: FlutterFlowTheme.of(context).accent1,
-                                offset: const Offset(
+                                offset: Offset(
                                   0.0,
                                   2.0,
                                 ),
@@ -104,7 +108,7 @@ class _AssetsPageDashboardWidgetState extends State<AssetsPageDashboardWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 40.0, 0.0, 0.0),
                                 child: Icon(
                                   Icons.drive_folder_upload_outlined,
@@ -114,7 +118,7 @@ class _AssetsPageDashboardWidgetState extends State<AssetsPageDashboardWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 15.0, 0.0, 0.0),
                                 child: Text(
                                   'Add Images, Logos, and Files',
@@ -140,7 +144,7 @@ class _AssetsPageDashboardWidgetState extends State<AssetsPageDashboardWidget> {
                               BoxShadow(
                                 blurRadius: 4.0,
                                 color: FlutterFlowTheme.of(context).accent1,
-                                offset: const Offset(
+                                offset: Offset(
                                   0.0,
                                   2.0,
                                 ),
@@ -152,7 +156,7 @@ class _AssetsPageDashboardWidgetState extends State<AssetsPageDashboardWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 40.0, 0.0, 0.0),
                                 child: Icon(
                                   Icons.folder_copy_outlined,
@@ -162,7 +166,7 @@ class _AssetsPageDashboardWidgetState extends State<AssetsPageDashboardWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 15.0, 0.0, 0.0),
                                 child: Text(
                                   'View Assets',

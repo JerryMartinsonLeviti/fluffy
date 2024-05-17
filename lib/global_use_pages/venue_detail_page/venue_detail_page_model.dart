@@ -1,12 +1,18 @@
+import '/backend/supabase/supabase.dart';
 import '/components/address/address_widget.dart';
 import '/components/event_space_component/event_space_component_widget.dart';
 import '/components/packages_component/packages_component_widget.dart';
 import '/components/product_detail_page_options_language/product_detail_page_options_language_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget.dart';
 import 'venue_detail_page_widget.dart' show VenueDetailPageWidget;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class VenueDetailPageModel extends FlutterFlowModel<VenueDetailPageWidget> {
   ///  State fields for stateful widgets in this page.

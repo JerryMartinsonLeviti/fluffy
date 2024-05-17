@@ -1,6 +1,10 @@
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'icon_requestto_book_plane_model.dart';
 export 'icon_requestto_book_plane_model.dart';
 
@@ -39,7 +43,7 @@ class _IconRequesttoBookPlaneWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return const FaIcon(
+    return FaIcon(
       FontAwesomeIcons.paperPlane,
       color: Color(0xFF620868),
       size: 50.0,

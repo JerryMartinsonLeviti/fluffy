@@ -149,12 +149,12 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color error = const Color(0xFFB93353);
   late Color info = const Color(0xFFFDF9F4);
 
-  late Color customColor4 = const Color(0xFF3D0B32);
-  late Color customColor1 = const Color(0xFF374466);
-  late Color customColor5 = const Color(0xFFAC4630);
-  late Color customColor6 = const Color(0xFFDE9040);
-  late Color customColor2 = const Color(0xFF47191D);
-  late Color customColor3 = const Color(0xFF5F8E56);
+  late Color customColor4 = Color(0xFF3D0B32);
+  late Color customColor1 = Color(0xFF374466);
+  late Color customColor5 = Color(0xFFAC4630);
+  late Color customColor6 = Color(0xFFDE9040);
+  late Color customColor2 = Color(0xFF47191D);
+  late Color customColor3 = Color(0xFF5F8E56);
 }
 
 abstract class Typography {
@@ -327,12 +327,12 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color error = const Color(0xFFB93353);
   late Color info = const Color(0xFFFFFFFF);
 
-  late Color customColor4 = const Color(0xFFA2331D);
-  late Color customColor1 = const Color(0xFF374466);
-  late Color customColor5 = const Color(0xFFA243F5);
-  late Color customColor6 = const Color(0xFFDE9040);
-  late Color customColor2 = const Color(0xFF47191D);
-  late Color customColor3 = const Color(0xFFCBD651);
+  late Color customColor4 = Color(0xFFA2331D);
+  late Color customColor1 = Color(0xFF374466);
+  late Color customColor5 = Color(0xFFA243F5);
+  late Color customColor6 = Color(0xFFDE9040);
+  late Color customColor2 = Color(0xFF47191D);
+  late Color customColor3 = Color(0xFFCBD651);
 }
 
 extension TextStyleHelper on TextStyle {

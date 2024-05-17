@@ -10,7 +10,7 @@ class AssetCollectionsViewTable extends SupabaseTable<AssetCollectionsViewRow> {
 }
 
 class AssetCollectionsViewRow extends SupabaseDataRow {
-  AssetCollectionsViewRow(super.data);
+  AssetCollectionsViewRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => AssetCollectionsViewTable();

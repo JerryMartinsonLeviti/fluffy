@@ -4,10 +4,15 @@ import '/components/icon_requestto_book_plane/icon_requestto_book_plane_widget.d
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'planner_dashboard_model.dart';
 export 'planner_dashboard_model.dart';
@@ -115,25 +120,25 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(100.0),
+          preferredSize: Size.fromHeight(100.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primary,
             automaticallyImplyLeading: false,
             title: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
               child: Container(
-                constraints: const BoxConstraints(
+                constraints: BoxConstraints(
                   maxHeight: 70.0,
                 ),
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: wrapWithModel(
                   model: _model.plannerAppBarComponentModel,
                   updateCallback: () => setState(() {}),
-                  child: const PlannerAppBarComponentWidget(),
+                  child: PlannerAppBarComponentWidget(),
                 ),
               ),
             ),
-            actions: const [],
+            actions: [],
             centerTitle: false,
             elevation: 2.0,
           ),
@@ -141,19 +146,19 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: Padding(
-              padding: const EdgeInsets.all(14.0),
+              padding: EdgeInsets.all(14.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                       child: Text(
                         'Main Dashboard',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -167,10 +172,10 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                   ),
                   Expanded(
                     child: Container(
-                      constraints: const BoxConstraints(
+                      constraints: BoxConstraints(
                         maxWidth: 600.0,
                       ),
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Wrap(
                         spacing: 0.0,
                         runSpacing: 0.0,
@@ -192,14 +197,14 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                             child: Container(
                               width: double.infinity,
                               height: double.infinity,
-                              constraints: const BoxConstraints(
+                              constraints: BoxConstraints(
                                 maxWidth: 190.0,
                                 maxHeight: 190.0,
                               ),
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x33000000),
@@ -217,11 +222,11 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: wrapWithModel(
                                       model: _model.iconManageEventsModel,
                                       updateCallback: () => setState(() {}),
-                                      child: const IconManageEventsWidget(),
+                                      child: IconManageEventsWidget(),
                                     ),
                                   ),
                                   Text(
@@ -236,7 +241,7 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                                         ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       'Updates & \nEvent Status',
                                       textAlign: TextAlign.center,
@@ -261,14 +266,14 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                           Container(
                             width: double.infinity,
                             height: double.infinity,
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               maxWidth: 190.0,
                               maxHeight: 190.0,
                             ),
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -334,9 +339,9 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                                         ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 14.0, 0.0, 0.0),
                                       child: Text(
                                         'Messaging & \nNotifications',
@@ -361,14 +366,14 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                           Container(
                             width: 280.0,
                             height: 280.0,
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               maxWidth: 190.0,
                               maxHeight: 190.0,
                             ),
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -401,7 +406,7 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                                       ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     'Important Dates & \nReminders',
                                     textAlign: TextAlign.center,
@@ -422,14 +427,14 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                           Container(
                             width: 280.0,
                             height: 280.0,
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               maxWidth: 190.0,
                               maxHeight: 190.0,
                             ),
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -462,7 +467,7 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                                       ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     'Invoices &\nPayment Tracking',
                                     textAlign: TextAlign.center,
@@ -483,14 +488,14 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                           Container(
                             width: 280.0,
                             height: 280.0,
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               maxWidth: 190.0,
                               maxHeight: 190.0,
                             ),
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -507,7 +512,7 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                const FaIcon(
+                                FaIcon(
                                   FontAwesomeIcons.briefcase,
                                   color: Color(0xFF2A208F),
                                   size: 52.0,
@@ -523,7 +528,7 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                                       ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     'Company Logos, \nImages & Branding',
                                     textAlign: TextAlign.center,
@@ -544,14 +549,14 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                           Container(
                             width: 280.0,
                             height: 280.0,
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               maxWidth: 190.0,
                               maxHeight: 190.0,
                             ),
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -583,7 +588,7 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                                       ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     'Build New Events \nFrom Your Favorites',
                                     textAlign: TextAlign.center,
@@ -604,14 +609,14 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                           Container(
                             width: 280.0,
                             height: 280.0,
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               maxWidth: 190.0,
                               maxHeight: 190.0,
                             ),
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -623,9 +628,9 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                               ],
                               borderRadius: BorderRadius.circular(20.0),
                             ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -634,7 +639,7 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                                   wrapWithModel(
                                     model: _model.iconRequesttoBookPlaneModel,
                                     updateCallback: () => setState(() {}),
-                                    child: const IconRequesttoBookPlaneWidget(),
+                                    child: IconRequesttoBookPlaneWidget(),
                                   ),
                                   Text(
                                     'Requests to Book',
@@ -660,7 +665,7 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                                     children: [
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           'Check Status, Withdraw, Update',
                                           textAlign: TextAlign.center,
@@ -688,14 +693,14 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                           Container(
                             width: 280.0,
                             height: 280.0,
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               maxWidth: 190.0,
                               maxHeight: 190.0,
                             ),
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -707,9 +712,9 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                               ],
                               borderRadius: BorderRadius.circular(20.0),
                             ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -748,7 +753,7 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                                     ],
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       'Coming Soon!',
                                       textAlign: TextAlign.center,
@@ -773,14 +778,14 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                           Container(
                             width: 280.0,
                             height: 280.0,
-                            constraints: const BoxConstraints(
+                            constraints: BoxConstraints(
                               maxWidth: 190.0,
                               maxHeight: 190.0,
                             ),
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -792,9 +797,9 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                               ],
                               borderRadius: BorderRadius.circular(20.0),
                             ),
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -819,7 +824,7 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                                         ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       'Coming Soon!',
                                       textAlign: TextAlign.center,

@@ -10,7 +10,7 @@ class CartFunctionSpaceTable extends SupabaseTable<CartFunctionSpaceRow> {
 }
 
 class CartFunctionSpaceRow extends SupabaseDataRow {
-  CartFunctionSpaceRow(super.data);
+  CartFunctionSpaceRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => CartFunctionSpaceTable();

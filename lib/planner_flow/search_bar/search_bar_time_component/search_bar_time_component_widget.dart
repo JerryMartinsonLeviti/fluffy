@@ -7,6 +7,9 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'search_bar_time_component_model.dart';
 export 'search_bar_time_component_model.dart';
 
@@ -51,7 +54,7 @@ class _SearchBarTimeComponentWidgetState
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -59,11 +62,11 @@ class _SearchBarTimeComponentWidgetState
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsets.all(24.0),
+                padding: EdgeInsets.all(24.0),
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 350.0,
                     maxHeight: 550.0,
                   ),
@@ -78,9 +81,9 @@ class _SearchBarTimeComponentWidgetState
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            alignment: AlignmentDirectional(0.0, -1.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   10.0, 30.0, 10.0, 0.0),
                               child: Text(
                                 'What\'s Your Preferred Time?',
@@ -96,12 +99,12 @@ class _SearchBarTimeComponentWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 40.0, 0.0, 0.0),
                             child: FlutterFlowDropDown<String>(
                               controller: _model.dropDownValueController ??=
                                   FormFieldController<String>(null),
-                              options: const ['Option 1'],
+                              options: ['Option 1'],
                               onChanged: (val) =>
                                   setState(() => _model.dropDownValue = val),
                               width: 300.0,
@@ -126,7 +129,7 @@ class _SearchBarTimeComponentWidgetState
                                   FlutterFlowTheme.of(context).alternate,
                               borderWidth: 2.0,
                               borderRadius: 8.0,
-                              margin: const EdgeInsetsDirectional.fromSTEB(
+                              margin: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 4.0, 16.0, 4.0),
                               hidesUnderline: true,
                               isOverButton: true,
@@ -135,12 +138,12 @@ class _SearchBarTimeComponentWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 5.0, 0.0, 0.0),
                             child: Stack(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -154,7 +157,7 @@ class _SearchBarTimeComponentWidgetState
                                         size: 30.0,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 1.0),
                                         child: FlutterFlowIconButton(
                                           borderRadius: 20.0,
@@ -174,7 +177,7 @@ class _SearchBarTimeComponentWidgetState
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () {
@@ -185,10 +188,10 @@ class _SearchBarTimeComponentWidgetState
                                             width: 100.0,
                                             height: 40.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
                                                 .accent3,
@@ -204,7 +207,7 @@ class _SearchBarTimeComponentWidgetState
                                                       letterSpacing: 0.0,
                                                     ),
                                             elevation: 3.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                             ),
                                             borderRadius:
@@ -229,7 +232,7 @@ class _SearchBarTimeComponentWidgetState
                               ],
                             ),
                           ),
-                          SizedBox(
+                          Container(
                             width: 300.0,
                             height: 300.0,
                             child: custom_widgets.CupertinoDatePickerWidget2(
@@ -255,7 +258,7 @@ class _SearchBarTimeComponentWidgetState
                           ),
                           Theme(
                             data: ThemeData(
-                              checkboxTheme: const CheckboxThemeData(
+                              checkboxTheme: CheckboxThemeData(
                                 visualDensity: VisualDensity.compact,
                                 materialTapTargetSize:
                                     MaterialTapTargetSize.shrinkWrap,

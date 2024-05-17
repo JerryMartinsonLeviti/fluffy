@@ -2,6 +2,9 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'address_model.dart';
 export 'address_model.dart';
 
@@ -49,14 +52,14 @@ class _AddressWidgetState extends State<AddressWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Align(
-          alignment: const AlignmentDirectional(0.0, 0.0),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Align(
-                alignment: const AlignmentDirectional(-1.0, -1.0),
+                alignment: AlignmentDirectional(-1.0, -1.0),
                 child: Text(
                   'Address',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -67,7 +70,7 @@ class _AddressWidgetState extends State<AddressWidget> {
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(-1.0, 0.0),
+                alignment: AlignmentDirectional(-1.0, 0.0),
                 child: Text(
                   valueOrDefault<String>(
                     widget.addressRow?.streetName1,
@@ -80,7 +83,7 @@ class _AddressWidgetState extends State<AddressWidget> {
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(-1.0, 0.0),
+                alignment: AlignmentDirectional(-1.0, 0.0),
                 child: Text(
                   valueOrDefault<String>(
                     widget.addressRow?.streetName2,
@@ -93,7 +96,7 @@ class _AddressWidgetState extends State<AddressWidget> {
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(-1.0, 0.0),
+                alignment: AlignmentDirectional(-1.0, 0.0),
                 child: Text(
                   '${widget.addressRow?.city} ${valueOrDefault<String>(
                     widget.addressRow?.regionCode,
@@ -115,7 +118,7 @@ class _AddressWidgetState extends State<AddressWidget> {
           ),
         ),
         Align(
-          alignment: const AlignmentDirectional(0.0, -1.0),
+          alignment: AlignmentDirectional(0.0, -1.0),
           child: Container(
             width: 449.0,
             height: 200.0,

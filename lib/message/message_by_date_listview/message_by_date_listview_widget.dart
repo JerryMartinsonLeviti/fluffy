@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'message_by_date_listview_model.dart';
 export 'message_by_date_listview_model.dart';
@@ -84,11 +85,11 @@ class _MessageByDateListviewWidgetState
     context.watch<FFAppState>();
 
     return Container(
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Container(
-        decoration: const BoxDecoration(),
+        decoration: BoxDecoration(),
         child: Container(
-          decoration: const BoxDecoration(),
+          decoration: BoxDecoration(),
           child: FutureBuilder<List<RmuViewRow>>(
             future: (_model.requestCompleter ??= Completer<List<RmuViewRow>>()
                   ..complete(RmuViewTable().queryRows(
@@ -119,7 +120,7 @@ class _MessageByDateListviewWidgetState
                   final byDateListViewRmuViewRow =
                       byDateListViewRmuViewRowList[byDateListViewIndex];
                   return Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [

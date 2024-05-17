@@ -5,6 +5,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'ven_product_onboarding_package_state5_model.dart';
 export 'ven_product_onboarding_package_state5_model.dart';
 
@@ -67,7 +70,7 @@ class _VenProductOnboardingPackageState5WidgetState
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -85,7 +88,7 @@ class _VenProductOnboardingPackageState5WidgetState
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -107,9 +110,9 @@ class _VenProductOnboardingPackageState5WidgetState
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 10.0, 0.0, 0.0),
                             child: Text(
                               'Vendor Portal/Settings/+New Package/Details/Item Groups',
@@ -124,7 +127,7 @@ class _VenProductOnboardingPackageState5WidgetState
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 40.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -137,9 +140,9 @@ class _VenProductOnboardingPackageState5WidgetState
                                 text: 'Details',
                                 options: FFButtonOptions(
                                   height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color:
                                       FlutterFlowTheme.of(context).customColor1,
@@ -151,7 +154,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                         letterSpacing: 0.0,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -165,9 +168,9 @@ class _VenProductOnboardingPackageState5WidgetState
                                 text: 'Item Groups',
                                 options: FFButtonOptions(
                                   height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -178,7 +181,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                         letterSpacing: 0.0,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -199,11 +202,11 @@ class _VenProductOnboardingPackageState5WidgetState
                               text: 'Copy Package',
                               options: FFButtonOptions(
                                 height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: const Color(0xFFD0CDD3),
+                                color: Color(0xFFD0CDD3),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
@@ -213,7 +216,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                       letterSpacing: 0.0,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -227,9 +230,9 @@ class _VenProductOnboardingPackageState5WidgetState
                               text: '+ New Item Group',
                               options: FFButtonOptions(
                                 height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).accent1,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -240,7 +243,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                       letterSpacing: 0.0,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -248,14 +251,14 @@ class _VenProductOnboardingPackageState5WidgetState
                               ),
                             ),
                           ]
-                              .divide(const SizedBox(width: 15.0))
-                              .addToEnd(const SizedBox(width: 20.0)),
+                              .divide(SizedBox(width: 15.0))
+                              .addToEnd(SizedBox(width: 20.0)),
                         ),
                       ],
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                       child: Container(
                         width: 750.0,
                         height: 708.0,
@@ -274,7 +277,7 @@ class _VenProductOnboardingPackageState5WidgetState
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Container(
                                     width: 517.0,
@@ -290,10 +293,10 @@ class _VenProductOnboardingPackageState5WidgetState
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 10.0, 0.0, 0.0),
                                                 child: Text(
@@ -311,7 +314,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(8.0, 0.0, 8.0, 0.0),
                                               child: TextFormField(
                                                 controller:
@@ -428,9 +431,9 @@ class _VenProductOnboardingPackageState5WidgetState
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       20.0, 10.0, 0.0, 0.0),
                                               child: Text(
@@ -449,7 +452,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller:
@@ -616,7 +619,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                                     .dropDownValueController1 ??=
                                                 FormFieldController<String>(
                                                     null),
-                                            options: const ['Option 1'],
+                                            options: ['Option 1'],
                                             onChanged: (val) => setState(() =>
                                                 _model.dropDownValue1 = val),
                                             width: 163.0,
@@ -646,7 +649,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                             borderWidth: 2.0,
                                             borderRadius: 8.0,
                                             margin:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 4.0, 16.0, 4.0),
                                             hidesUnderline: true,
                                             isOverButton: true,
@@ -658,7 +661,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                                     .dropDownValueController2 ??=
                                                 FormFieldController<String>(
                                                     null),
-                                            options: const ['Option 1'],
+                                            options: ['Option 1'],
                                             onChanged: (val) => setState(() =>
                                                 _model.dropDownValue2 = val),
                                             width: 163.0,
@@ -688,7 +691,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                             borderWidth: 2.0,
                                             borderRadius: 8.0,
                                             margin:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 4.0, 16.0, 4.0),
                                             hidesUnderline: true,
                                             isOverButton: true,
@@ -715,9 +718,9 @@ class _VenProductOnboardingPackageState5WidgetState
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       20.0, 30.0, 0.0, 0.0),
                                               child: Text(
@@ -736,7 +739,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller:
@@ -845,9 +848,9 @@ class _VenProductOnboardingPackageState5WidgetState
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       20.0, 10.0, 0.0, 0.0),
                                               child: Text(
@@ -866,7 +869,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller:
@@ -961,7 +964,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       50.0, 40.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -996,7 +999,7 @@ class _VenProductOnboardingPackageState5WidgetState
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 10.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -1028,9 +1031,9 @@ class _VenProductOnboardingPackageState5WidgetState
                                         text: 'Edit',
                                         options: FFButtonOptions(
                                           height: 40.0,
-                                          padding: const EdgeInsets.all(0.0),
+                                          padding: EdgeInsets.all(0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -1043,7 +1046,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -1059,10 +1062,10 @@ class _VenProductOnboardingPackageState5WidgetState
                                         options: FFButtonOptions(
                                           height: 40.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 0.0, 24.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -1075,7 +1078,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -1091,10 +1094,10 @@ class _VenProductOnboardingPackageState5WidgetState
                                         options: FFButtonOptions(
                                           height: 40.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 0.0, 24.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -1107,7 +1110,7 @@ class _VenProductOnboardingPackageState5WidgetState
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -1116,9 +1119,9 @@ class _VenProductOnboardingPackageState5WidgetState
                                         ),
                                       ),
                                     ]
-                                        .divide(const SizedBox(width: 20.0))
-                                        .addToStart(const SizedBox(width: 50.0))
-                                        .addToEnd(const SizedBox(width: 5.0)),
+                                        .divide(SizedBox(width: 20.0))
+                                        .addToStart(SizedBox(width: 50.0))
+                                        .addToEnd(SizedBox(width: 5.0)),
                                   ),
                                 ],
                               ),

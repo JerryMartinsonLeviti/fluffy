@@ -2,6 +2,9 @@ import '/components/icon_messaging/icon_messaging_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'vendor_sidebar_nav_communications_component_model.dart';
 export 'vendor_sidebar_nav_communications_component_model.dart';
 
@@ -42,7 +45,7 @@ class _VendorSidebarNavCommunicationsComponentWidgetState
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -50,7 +53,7 @@ class _VendorSidebarNavCommunicationsComponentWidgetState
           wrapWithModel(
             model: _model.iconMessagingModel,
             updateCallback: () => setState(() {}),
-            child: const IconMessagingWidget(),
+            child: IconMessagingWidget(),
           ),
           Text(
             'Communications',
@@ -60,7 +63,7 @@ class _VendorSidebarNavCommunicationsComponentWidgetState
                   letterSpacing: 0.0,
                 ),
           ),
-        ].divide(const SizedBox(width: 10.0)),
+        ].divide(SizedBox(width: 10.0)),
       ),
     );
   }

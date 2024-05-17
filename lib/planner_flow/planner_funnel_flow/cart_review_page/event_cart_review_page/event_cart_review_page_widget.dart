@@ -1,12 +1,15 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget.dart';
 import '/planner_flow/planner_funnel_flow/cart_review_page/cart_option_review_card/cart_option_review_card_widget.dart';
 import '/planner_flow/planner_funnel_flow/cart_review_page/favorite_card/favorite_card_widget.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'event_cart_review_page_model.dart';
 export 'event_cart_review_page_model.dart';
 
@@ -79,21 +82,21 @@ class _EventCartReviewPageWidgetState extends State<EventCartReviewPageWidget> {
               }
               List<CartsRow> containerCartsRowList = snapshot.data!;
               return Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       wrapWithModel(
                         model: _model.plannerAppBarComponentModel,
                         updateCallback: () => setState(() {}),
-                        child: const PlannerAppBarComponentWidget(),
+                        child: PlannerAppBarComponentWidget(),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
+                        alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 50.0, 0.0, 0.0),
                           child: Text(
                             'Event name: ${valueOrDefault<String>(
@@ -115,16 +118,16 @@ class _EventCartReviewPageWidgetState extends State<EventCartReviewPageWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   100.0, 0.0, 0.0, 10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Align(
-                                    alignment: const AlignmentDirectional(-1.0, 0.0),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
                                       'OPTIONS BASKET',
                                       style: FlutterFlowTheme.of(context)
@@ -138,11 +141,11 @@ class _EventCartReviewPageWidgetState extends State<EventCartReviewPageWidget> {
                                           ),
                                     ),
                                   ),
-                                ].divide(const SizedBox(width: 10.0)),
+                                ].divide(SizedBox(width: 10.0)),
                               ),
                             ),
                           ),
-                        ].addToStart(const SizedBox(height: 10.0)),
+                        ].addToStart(SizedBox(height: 10.0)),
                       ),
                       Container(
                         width: 976.0,
@@ -213,13 +216,13 @@ class _EventCartReviewPageWidgetState extends State<EventCartReviewPageWidget> {
                                     },
                                   ),
                                   Container(
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             'WISHLIST',
                                             textAlign: TextAlign.center,
@@ -235,7 +238,7 @@ class _EventCartReviewPageWidgetState extends State<EventCartReviewPageWidget> {
                                         Container(
                                           width: double.infinity,
                                           height: 846.0,
-                                          constraints: const BoxConstraints(
+                                          constraints: BoxConstraints(
                                             maxWidth: 380.0,
                                             maxHeight: 400.0,
                                           ),
@@ -258,7 +261,7 @@ class _EventCartReviewPageWidgetState extends State<EventCartReviewPageWidget> {
                                               Container(
                                                 width: double.infinity,
                                                 height: double.infinity,
-                                                constraints: const BoxConstraints(
+                                                constraints: BoxConstraints(
                                                   maxWidth: 300.0,
                                                   maxHeight: 300.0,
                                                 ),
@@ -273,7 +276,7 @@ class _EventCartReviewPageWidgetState extends State<EventCartReviewPageWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .accent1,
-                                                      offset: const Offset(
+                                                      offset: Offset(
                                                         0.0,
                                                         2.0,
                                                       ),
@@ -288,7 +291,7 @@ class _EventCartReviewPageWidgetState extends State<EventCartReviewPageWidget> {
                                                       _model.favoriteCardModel,
                                                   updateCallback: () =>
                                                       setState(() {}),
-                                                  child: const FavoriteCardWidget(),
+                                                  child: FavoriteCardWidget(),
                                                 ),
                                               ),
                                             ],

@@ -4,6 +4,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/message/room_role_scope_component/room_role_scope_component_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'chat_room_participants_model.dart';
 export 'chat_room_participants_model.dart';
 
@@ -48,9 +50,9 @@ class _ChatRoomParticipantsWidgetState
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Container(
-        decoration: const BoxDecoration(),
+        decoration: BoxDecoration(),
         child: Wrap(
           spacing: 10.0,
           runSpacing: 10.0,
@@ -91,7 +93,7 @@ class _ChatRoomParticipantsWidgetState
                 List<FinalCombinedViewRow>
                     plannerContainerFinalCombinedViewRowList = snapshot.data!;
                 return Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: wrapWithModel(
                     model: _model.roomRoleScopeComponentModel1,
                     updateCallback: () => setState(() {}),
@@ -133,7 +135,7 @@ class _ChatRoomParticipantsWidgetState
                 List<FinalCombinedViewRow>
                     liaisonContainerFinalCombinedViewRowList = snapshot.data!;
                 return Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: wrapWithModel(
                     model: _model.roomRoleScopeComponentModel2,
                     updateCallback: () => setState(() {}),
@@ -175,7 +177,7 @@ class _ChatRoomParticipantsWidgetState
                 List<FinalCombinedViewRow>
                     vendorContainerFinalCombinedViewRowList = snapshot.data!;
                 return Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: wrapWithModel(
                     model: _model.roomRoleScopeComponentModel3,
                     updateCallback: () => setState(() {}),

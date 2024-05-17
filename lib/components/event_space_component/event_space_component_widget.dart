@@ -3,6 +3,9 @@ import '/components/event_space_card_component/event_space_card_component_widget
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'event_space_component_model.dart';
 export 'event_space_component_model.dart';
 
@@ -49,9 +52,9 @@ class _EventSpaceComponentWidgetState extends State<EventSpaceComponentWidget> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Align(
-          alignment: const AlignmentDirectional(-1.0, 0.0),
+          alignment: AlignmentDirectional(-1.0, 0.0),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(130.0, 10.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(130.0, 10.0, 0.0, 0.0),
             child: Text(
               'Event Spaces',
               textAlign: TextAlign.start,
@@ -64,7 +67,7 @@ class _EventSpaceComponentWidgetState extends State<EventSpaceComponentWidget> {
           ),
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 20.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 20.0),
           child: Container(
             width: 767.0,
             height: 3.0,

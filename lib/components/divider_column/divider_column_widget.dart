@@ -1,6 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'divider_column_model.dart';
 export 'divider_column_model.dart';
 
@@ -38,9 +41,9 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 300.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 300.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +54,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
               color: FlutterFlowTheme.of(context).alternate,
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
               child: Material(
                 color: Colors.transparent,
                 elevation: 0.0,
@@ -65,7 +68,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                     borderRadius: BorderRadius.circular(0.0),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(12.0),
+                    padding: EdgeInsets.all(12.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +85,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(2.0),
+                            padding: EdgeInsets.all(2.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(40.0),
                               child: Image.network(
@@ -96,7 +99,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                         ),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 0.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -122,7 +125,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                                       ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 4.0, 0.0, 0.0),
                                   child: Text(
                                     'Yes, we can definitely do a gluten-free option!',
@@ -146,7 +149,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         'Mon. July 3rd - 4:12pm',
@@ -160,7 +163,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Icon(
                                         Icons.chevron_right_rounded,
                                         color: FlutterFlowTheme.of(context)
@@ -181,7 +184,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
               child: Material(
                 color: Colors.transparent,
                 elevation: 0.0,
@@ -195,7 +198,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                     borderRadius: BorderRadius.circular(0.0),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(12.0),
+                    padding: EdgeInsets.all(12.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -212,7 +215,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(2.0),
+                            padding: EdgeInsets.all(2.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(40.0),
                               child: Image.network(
@@ -226,7 +229,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                         ),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 0.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -253,7 +256,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                                       ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 4.0, 0.0, 0.0),
                                   child: Text(
                                     'That\'s great news!  Thank you!',
@@ -272,7 +275,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         'Mon. July 3rd - 4:45pm',
@@ -286,7 +289,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Icon(
                                         Icons.chevron_right_rounded,
                                         color: FlutterFlowTheme.of(context)
@@ -312,7 +315,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
               color: FlutterFlowTheme.of(context).alternate,
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
               child: Material(
                 color: Colors.transparent,
                 elevation: 0.0,
@@ -326,7 +329,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                     borderRadius: BorderRadius.circular(0.0),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(12.0),
+                    padding: EdgeInsets.all(12.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -343,7 +346,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(2.0),
+                            padding: EdgeInsets.all(2.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(40.0),
                               child: Image.network(
@@ -357,7 +360,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                         ),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 0.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -374,7 +377,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                                       ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 4.0, 0.0, 0.0),
                                   child: Text(
                                     'Julie Clarke (Mastro\'s Beverly Hills)',
@@ -388,7 +391,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 4.0, 0.0, 0.0),
                                   child: Text(
                                     'You bet. We look forward to welcoming you next week !',
@@ -407,7 +410,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         'Mon. July 3rd - 5.02pm',
@@ -421,7 +424,7 @@ class _DividerColumnWidgetState extends State<DividerColumnWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Icon(
                                         Icons.chevron_right_rounded,
                                         color: FlutterFlowTheme.of(context)

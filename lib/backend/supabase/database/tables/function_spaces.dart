@@ -10,7 +10,7 @@ class FunctionSpacesTable extends SupabaseTable<FunctionSpacesRow> {
 }
 
 class FunctionSpacesRow extends SupabaseDataRow {
-  FunctionSpacesRow(super.data);
+  FunctionSpacesRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => FunctionSpacesTable();

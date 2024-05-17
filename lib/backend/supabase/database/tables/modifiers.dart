@@ -9,7 +9,7 @@ class ModifiersTable extends SupabaseTable<ModifiersRow> {
 }
 
 class ModifiersRow extends SupabaseDataRow {
-  ModifiersRow(super.data);
+  ModifiersRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => ModifiersTable();

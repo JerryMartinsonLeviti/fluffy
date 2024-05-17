@@ -9,7 +9,7 @@ class TermAssetsTable extends SupabaseTable<TermAssetsRow> {
 }
 
 class TermAssetsRow extends SupabaseDataRow {
-  TermAssetsRow(super.data);
+  TermAssetsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => TermAssetsTable();

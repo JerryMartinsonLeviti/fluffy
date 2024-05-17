@@ -10,7 +10,7 @@ class PricingVectorsTable extends SupabaseTable<PricingVectorsRow> {
 }
 
 class PricingVectorsRow extends SupabaseDataRow {
-  PricingVectorsRow(super.data);
+  PricingVectorsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => PricingVectorsTable();

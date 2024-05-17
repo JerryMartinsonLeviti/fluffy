@@ -10,7 +10,7 @@ class OrganizationsTable extends SupabaseTable<OrganizationsRow> {
 }
 
 class OrganizationsRow extends SupabaseDataRow {
-  OrganizationsRow(super.data);
+  OrganizationsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => OrganizationsTable();

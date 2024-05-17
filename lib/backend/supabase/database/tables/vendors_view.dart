@@ -9,7 +9,7 @@ class VendorsViewTable extends SupabaseTable<VendorsViewRow> {
 }
 
 class VendorsViewRow extends SupabaseDataRow {
-  VendorsViewRow(super.data);
+  VendorsViewRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => VendorsViewTable();

@@ -5,6 +5,9 @@ import '/message/chat_room_participants/chat_room_participants_widget.dart';
 import '/message/message_by_date_listview/message_by_date_listview_widget.dart';
 import '/message/message_by_room_listview/message_by_room_listview_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'message_box_component_model.dart';
 export 'message_box_component_model.dart';
 
@@ -14,7 +17,7 @@ class MessageBoxComponentWidget extends StatefulWidget {
     required this.bigTableRow,
     required this.roomPK,
     bool? showByRoom,
-  }) : showByRoom = showByRoom ?? true;
+  }) : this.showByRoom = showByRoom ?? true;
 
   final BigTableRow? bigTableRow;
   final int? roomPK;
@@ -57,7 +60,7 @@ class _MessageBoxComponentWidgetState extends State<MessageBoxComponentWidget> {
     return Container(
       width: 720.0,
       height: double.infinity,
-      constraints: const BoxConstraints(
+      constraints: BoxConstraints(
         maxHeight: 750.0,
       ),
       decoration: BoxDecoration(
@@ -73,16 +76,16 @@ class _MessageBoxComponentWidgetState extends State<MessageBoxComponentWidget> {
           Container(
             width: double.infinity,
             height: double.infinity,
-            constraints: const BoxConstraints(
+            constraints: BoxConstraints(
               maxWidth: 0.0,
               maxHeight: 0.0,
             ),
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
           ),
           Container(
             width: 0.0,
             height: 0.0,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
           ),
           Column(
             mainAxisSize: MainAxisSize.min,
@@ -109,7 +112,7 @@ class _MessageBoxComponentWidgetState extends State<MessageBoxComponentWidget> {
                 ],
               ),
               Align(
-                alignment: const AlignmentDirectional(-1.0, 0.0),
+                alignment: AlignmentDirectional(-1.0, 0.0),
                 child: Text(
                   'Collaborator Chat',
                   textAlign: TextAlign.start,
@@ -176,16 +179,16 @@ class _MessageBoxComponentWidgetState extends State<MessageBoxComponentWidget> {
                 ],
               ),
               Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               8.0, 0.0, 8.0, 0.0),
                           child: TextFormField(
                             controller: _model.textController,
@@ -272,8 +275,8 @@ class _MessageBoxComponentWidgetState extends State<MessageBoxComponentWidget> {
                         size: 24.0,
                       ),
                     ]
-                        .divide(const SizedBox(width: 20.0))
-                        .around(const SizedBox(width: 20.0)),
+                        .divide(SizedBox(width: 20.0))
+                        .around(SizedBox(width: 20.0)),
                   ),
                 ),
               ),

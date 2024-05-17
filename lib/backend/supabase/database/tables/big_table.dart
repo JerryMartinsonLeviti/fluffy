@@ -9,7 +9,7 @@ class BigTableTable extends SupabaseTable<BigTableRow> {
 }
 
 class BigTableRow extends SupabaseDataRow {
-  BigTableRow(super.data);
+  BigTableRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => BigTableTable();

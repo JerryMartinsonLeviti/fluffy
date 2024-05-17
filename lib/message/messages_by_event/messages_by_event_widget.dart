@@ -7,6 +7,9 @@ import '/message/events_message_selector/events_message_selector_widget.dart';
 import '/message/message_box_component/message_box_component_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'messages_by_event_model.dart';
 export 'messages_by_event_model.dart';
 
@@ -72,7 +75,7 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -88,16 +91,16 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
           child: Container(
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Container(
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,10 +109,10 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
-                        constraints: const BoxConstraints(
+                        constraints: BoxConstraints(
                           maxWidth: 350.0,
                         ),
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -129,7 +132,7 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
                                   width: 60.0,
                                   height: 60.0,
                                   clipBehavior: Clip.antiAlias,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
                                   child: Image.network(
@@ -171,7 +174,7 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
                                     ),
                                   ],
                                 ),
-                              ].divide(const SizedBox(width: 10.0)),
+                              ].divide(SizedBox(width: 10.0)),
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.min,
@@ -185,9 +188,9 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
                                   text: 'Sort By Event',
                                   options: FFButtonOptions(
                                     height: 35.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context)
                                         .customColor2,
@@ -199,7 +202,7 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
                                           letterSpacing: 0.0,
                                         ),
                                     elevation: 3.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -215,9 +218,9 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
                                   text: 'Sort By Date',
                                   options: FFButtonOptions(
                                     height: 35.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).accent2,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -228,7 +231,7 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
                                           letterSpacing: 0.0,
                                         ),
                                     elevation: 3.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -236,12 +239,12 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
                                   ),
                                 ),
                               ]
-                                  .divide(const SizedBox(width: 10.0))
-                                  .around(const SizedBox(width: 10.0)),
+                                  .divide(SizedBox(width: 10.0))
+                                  .around(SizedBox(width: 10.0)),
                             ),
                           ]
-                              .divide(const SizedBox(height: 10.0))
-                              .around(const SizedBox(height: 10.0)),
+                              .divide(SizedBox(height: 10.0))
+                              .around(SizedBox(height: 10.0)),
                         ),
                       ),
                       if ((_model.userRoomsBigTable != null &&
@@ -273,8 +276,8 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
                           ),
                         ),
                     ]
-                        .divide(const SizedBox(width: 20.0))
-                        .around(const SizedBox(width: 20.0)),
+                        .divide(SizedBox(width: 20.0))
+                        .around(SizedBox(width: 20.0)),
                   ),
                   SizedBox(
                     width: 390.0,

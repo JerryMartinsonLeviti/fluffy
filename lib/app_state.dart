@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
+import 'backend/supabase/supabase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
@@ -87,44 +89,44 @@ class FFAppState extends ChangeNotifier {
 
   int _CurrentUserID = 0;
   int get CurrentUserID => _CurrentUserID;
-  set CurrentUserID(int value) {
-    _CurrentUserID = value;
-    prefs.setInt('ff_CurrentUserID', value);
+  set CurrentUserID(int _value) {
+    _CurrentUserID = _value;
+    prefs.setInt('ff_CurrentUserID', _value);
   }
 
   int _PKVendors = 1;
   int get PKVendors => _PKVendors;
-  set PKVendors(int value) {
-    _PKVendors = value;
-    prefs.setInt('ff_PKVendors', value);
+  set PKVendors(int _value) {
+    _PKVendors = _value;
+    prefs.setInt('ff_PKVendors', _value);
   }
 
   int _PKPlanner = 1;
   int get PKPlanner => _PKPlanner;
-  set PKPlanner(int value) {
-    _PKPlanner = value;
-    prefs.setInt('ff_PKPlanner', value);
+  set PKPlanner(int _value) {
+    _PKPlanner = _value;
+    prefs.setInt('ff_PKPlanner', _value);
   }
 
   int _PKLiaison = 1;
   int get PKLiaison => _PKLiaison;
-  set PKLiaison(int value) {
-    _PKLiaison = value;
-    prefs.setInt('ff_PKLiaison', value);
+  set PKLiaison(int _value) {
+    _PKLiaison = _value;
+    prefs.setInt('ff_PKLiaison', _value);
   }
 
   String _DevAccessCode = '3030';
   String get DevAccessCode => _DevAccessCode;
-  set DevAccessCode(String value) {
-    _DevAccessCode = value;
-    prefs.setString('ff_DevAccessCode', value);
+  set DevAccessCode(String _value) {
+    _DevAccessCode = _value;
+    prefs.setString('ff_DevAccessCode', _value);
   }
 
   bool _DevModeEnabled = false;
   bool get DevModeEnabled => _DevModeEnabled;
-  set DevModeEnabled(bool value) {
-    _DevModeEnabled = value;
-    prefs.setBool('ff_DevModeEnabled', value);
+  set DevModeEnabled(bool _value) {
+    _DevModeEnabled = _value;
+    prefs.setBool('ff_DevModeEnabled', _value);
   }
 
   List<SiteFaqsStruct> _VendorFaqs = [
@@ -134,41 +136,41 @@ class FFAppState extends ChangeNotifier {
         '{\"Question\":\"Hello World\",\"Answer\":\"Hello World\",\"displayOnFrontPage\":\"false\"}'))
   ];
   List<SiteFaqsStruct> get VendorFaqs => _VendorFaqs;
-  set VendorFaqs(List<SiteFaqsStruct> value) {
-    _VendorFaqs = value;
+  set VendorFaqs(List<SiteFaqsStruct> _value) {
+    _VendorFaqs = _value;
     prefs.setStringList(
-        'ff_VendorFaqs', value.map((x) => x.serialize()).toList());
+        'ff_VendorFaqs', _value.map((x) => x.serialize()).toList());
   }
 
-  void addToVendorFaqs(SiteFaqsStruct value) {
-    _VendorFaqs.add(value);
-    prefs.setStringList(
-        'ff_VendorFaqs', _VendorFaqs.map((x) => x.serialize()).toList());
-  }
-
-  void removeFromVendorFaqs(SiteFaqsStruct value) {
-    _VendorFaqs.remove(value);
+  void addToVendorFaqs(SiteFaqsStruct _value) {
+    _VendorFaqs.add(_value);
     prefs.setStringList(
         'ff_VendorFaqs', _VendorFaqs.map((x) => x.serialize()).toList());
   }
 
-  void removeAtIndexFromVendorFaqs(int index) {
-    _VendorFaqs.removeAt(index);
+  void removeFromVendorFaqs(SiteFaqsStruct _value) {
+    _VendorFaqs.remove(_value);
+    prefs.setStringList(
+        'ff_VendorFaqs', _VendorFaqs.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromVendorFaqs(int _index) {
+    _VendorFaqs.removeAt(_index);
     prefs.setStringList(
         'ff_VendorFaqs', _VendorFaqs.map((x) => x.serialize()).toList());
   }
 
   void updateVendorFaqsAtIndex(
-    int index,
+    int _index,
     SiteFaqsStruct Function(SiteFaqsStruct) updateFn,
   ) {
-    _VendorFaqs[index] = updateFn(_VendorFaqs[index]);
+    _VendorFaqs[_index] = updateFn(_VendorFaqs[_index]);
     prefs.setStringList(
         'ff_VendorFaqs', _VendorFaqs.map((x) => x.serialize()).toList());
   }
 
-  void insertAtIndexInVendorFaqs(int index, SiteFaqsStruct value) {
-    _VendorFaqs.insert(index, value);
+  void insertAtIndexInVendorFaqs(int _index, SiteFaqsStruct _value) {
+    _VendorFaqs.insert(_index, _value);
     prefs.setStringList(
         'ff_VendorFaqs', _VendorFaqs.map((x) => x.serialize()).toList());
   }
@@ -184,79 +186,79 @@ class FFAppState extends ChangeNotifier {
         '{\"id\":\"0\",\"region_name\":\"Las Vegas\",\"region_image\":\"https://picsum.photos/seed/164/600\"}'))
   ];
   List<RegionTypeStruct> get SilverSpikeLocations => _SilverSpikeLocations;
-  set SilverSpikeLocations(List<RegionTypeStruct> value) {
-    _SilverSpikeLocations = value;
+  set SilverSpikeLocations(List<RegionTypeStruct> _value) {
+    _SilverSpikeLocations = _value;
     prefs.setStringList(
-        'ff_SilverSpikeLocations', value.map((x) => x.serialize()).toList());
+        'ff_SilverSpikeLocations', _value.map((x) => x.serialize()).toList());
   }
 
-  void addToSilverSpikeLocations(RegionTypeStruct value) {
-    _SilverSpikeLocations.add(value);
+  void addToSilverSpikeLocations(RegionTypeStruct _value) {
+    _SilverSpikeLocations.add(_value);
     prefs.setStringList('ff_SilverSpikeLocations',
         _SilverSpikeLocations.map((x) => x.serialize()).toList());
   }
 
-  void removeFromSilverSpikeLocations(RegionTypeStruct value) {
-    _SilverSpikeLocations.remove(value);
+  void removeFromSilverSpikeLocations(RegionTypeStruct _value) {
+    _SilverSpikeLocations.remove(_value);
     prefs.setStringList('ff_SilverSpikeLocations',
         _SilverSpikeLocations.map((x) => x.serialize()).toList());
   }
 
-  void removeAtIndexFromSilverSpikeLocations(int index) {
-    _SilverSpikeLocations.removeAt(index);
+  void removeAtIndexFromSilverSpikeLocations(int _index) {
+    _SilverSpikeLocations.removeAt(_index);
     prefs.setStringList('ff_SilverSpikeLocations',
         _SilverSpikeLocations.map((x) => x.serialize()).toList());
   }
 
   void updateSilverSpikeLocationsAtIndex(
-    int index,
+    int _index,
     RegionTypeStruct Function(RegionTypeStruct) updateFn,
   ) {
-    _SilverSpikeLocations[index] = updateFn(_SilverSpikeLocations[index]);
+    _SilverSpikeLocations[_index] = updateFn(_SilverSpikeLocations[_index]);
     prefs.setStringList('ff_SilverSpikeLocations',
         _SilverSpikeLocations.map((x) => x.serialize()).toList());
   }
 
   void insertAtIndexInSilverSpikeLocations(
-      int index, RegionTypeStruct value) {
-    _SilverSpikeLocations.insert(index, value);
+      int _index, RegionTypeStruct _value) {
+    _SilverSpikeLocations.insert(_index, _value);
     prefs.setStringList('ff_SilverSpikeLocations',
         _SilverSpikeLocations.map((x) => x.serialize()).toList());
   }
 
   int _PKActiveEvent = 0;
   int get PKActiveEvent => _PKActiveEvent;
-  set PKActiveEvent(int value) {
-    _PKActiveEvent = value;
-    prefs.setInt('ff_PKActiveEvent', value);
+  set PKActiveEvent(int _value) {
+    _PKActiveEvent = _value;
+    prefs.setInt('ff_PKActiveEvent', _value);
   }
 
   List<DateTime> _ChoosableTimes = [];
   List<DateTime> get ChoosableTimes => _ChoosableTimes;
-  set ChoosableTimes(List<DateTime> value) {
-    _ChoosableTimes = value;
+  set ChoosableTimes(List<DateTime> _value) {
+    _ChoosableTimes = _value;
     prefs.setStringList('ff_ChoosableTimes',
-        value.map((x) => x.millisecondsSinceEpoch.toString()).toList());
+        _value.map((x) => x.millisecondsSinceEpoch.toString()).toList());
   }
 
-  void addToChoosableTimes(DateTime value) {
-    _ChoosableTimes.add(value);
+  void addToChoosableTimes(DateTime _value) {
+    _ChoosableTimes.add(_value);
     prefs.setStringList(
         'ff_ChoosableTimes',
         _ChoosableTimes.map((x) => x.millisecondsSinceEpoch.toString())
             .toList());
   }
 
-  void removeFromChoosableTimes(DateTime value) {
-    _ChoosableTimes.remove(value);
+  void removeFromChoosableTimes(DateTime _value) {
+    _ChoosableTimes.remove(_value);
     prefs.setStringList(
         'ff_ChoosableTimes',
         _ChoosableTimes.map((x) => x.millisecondsSinceEpoch.toString())
             .toList());
   }
 
-  void removeAtIndexFromChoosableTimes(int index) {
-    _ChoosableTimes.removeAt(index);
+  void removeAtIndexFromChoosableTimes(int _index) {
+    _ChoosableTimes.removeAt(_index);
     prefs.setStringList(
         'ff_ChoosableTimes',
         _ChoosableTimes.map((x) => x.millisecondsSinceEpoch.toString())
@@ -264,18 +266,18 @@ class FFAppState extends ChangeNotifier {
   }
 
   void updateChoosableTimesAtIndex(
-    int index,
+    int _index,
     DateTime Function(DateTime) updateFn,
   ) {
-    _ChoosableTimes[index] = updateFn(_ChoosableTimes[index]);
+    _ChoosableTimes[_index] = updateFn(_ChoosableTimes[_index]);
     prefs.setStringList(
         'ff_ChoosableTimes',
         _ChoosableTimes.map((x) => x.millisecondsSinceEpoch.toString())
             .toList());
   }
 
-  void insertAtIndexInChoosableTimes(int index, DateTime value) {
-    _ChoosableTimes.insert(index, value);
+  void insertAtIndexInChoosableTimes(int _index, DateTime _value) {
+    _ChoosableTimes.insert(_index, _value);
     prefs.setStringList(
         'ff_ChoosableTimes',
         _ChoosableTimes.map((x) => x.millisecondsSinceEpoch.toString())

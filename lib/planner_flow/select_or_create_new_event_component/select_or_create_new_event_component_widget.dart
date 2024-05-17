@@ -8,6 +8,7 @@ import '/planner_flow/search_bar/new_event_name_component/new_event_name_compone
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'select_or_create_new_event_component_model.dart';
 export 'select_or_create_new_event_component_model.dart';
@@ -86,10 +87,10 @@ class _SelectOrCreateNewEventComponentWidgetState
         }
         List<EventPlannerRow> containerEventPlannerRowList = snapshot.data!;
         return Container(
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 390.0,
           ),
-          decoration: const BoxDecoration(),
+          decoration: BoxDecoration(),
           child: FutureBuilder<List<EventsRow>>(
             future: EventsTable().queryRows(
               queryFn: (q) => q.in_(
@@ -113,14 +114,14 @@ class _SelectOrCreateNewEventComponentWidgetState
               }
               List<EventsRow> containerEventsRowList = snapshot.data!;
               return Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
                       width: double.infinity,
                       height: double.infinity,
-                      constraints: const BoxConstraints(
+                      constraints: BoxConstraints(
                         maxWidth: 330.0,
                         maxHeight: 400.0,
                       ),
@@ -130,7 +131,7 @@ class _SelectOrCreateNewEventComponentWidgetState
                           BoxShadow(
                             blurRadius: 4.0,
                             color: FlutterFlowTheme.of(context).primaryText,
-                            offset: const Offset(
+                            offset: Offset(
                               0.0,
                               2.0,
                             ),
@@ -145,7 +146,7 @@ class _SelectOrCreateNewEventComponentWidgetState
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -153,7 +154,7 @@ class _SelectOrCreateNewEventComponentWidgetState
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 10.0, 0.0, 0.0),
                                       child: Text(
                                         'Select to apply criteria',
@@ -167,7 +168,7 @@ class _SelectOrCreateNewEventComponentWidgetState
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 15.0, 0.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
@@ -190,9 +191,9 @@ class _SelectOrCreateNewEventComponentWidgetState
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -213,13 +214,13 @@ class _SelectOrCreateNewEventComponentWidgetState
                                                   backgroundColor:
                                                       Colors.transparent,
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                               0.0, 0.0)
                                                           .resolve(
                                                               Directionality.of(
                                                                   context)),
                                                   child:
-                                                      const NewEventNameComponentWidget(),
+                                                      NewEventNameComponentWidget(),
                                                 );
                                               },
                                             ).then((value) => safeSetState(() =>
@@ -242,12 +243,12 @@ class _SelectOrCreateNewEventComponentWidgetState
                                             setState(() {});
                                           },
                                           child: Container(
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                                   child: Icon(
@@ -260,7 +261,7 @@ class _SelectOrCreateNewEventComponentWidgetState
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                                   child: Text(
@@ -355,7 +356,7 @@ class _SelectOrCreateNewEventComponentWidgetState
                                         FlutterFlowTheme.of(context).alternate,
                                     borderWidth: 2.0,
                                     borderRadius: 8.0,
-                                    margin: const EdgeInsetsDirectional.fromSTEB(
+                                    margin: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 4.0, 16.0, 4.0),
                                     hidesUnderline: true,
                                     isOverButton: true,
@@ -384,7 +385,7 @@ class _SelectOrCreateNewEventComponentWidgetState
                                     Container(
                                       width: double.infinity,
                                       height: double.infinity,
-                                      constraints: const BoxConstraints(
+                                      constraints: BoxConstraints(
                                         maxHeight: 190.0,
                                       ),
                                       decoration: BoxDecoration(

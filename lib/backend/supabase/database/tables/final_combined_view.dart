@@ -10,7 +10,7 @@ class FinalCombinedViewTable extends SupabaseTable<FinalCombinedViewRow> {
 }
 
 class FinalCombinedViewRow extends SupabaseDataRow {
-  FinalCombinedViewRow(super.data);
+  FinalCombinedViewRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => FinalCombinedViewTable();

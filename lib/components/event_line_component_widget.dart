@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'event_line_component_model.dart';
 export 'event_line_component_model.dart';
@@ -75,9 +76,9 @@ class _EventLineComponentWidgetState extends State<EventLineComponentWidget> {
             ? containerEventLiaisonRowList.first
             : null;
         return Container(
-          decoration: const BoxDecoration(),
+          decoration: BoxDecoration(),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
             child: FutureBuilder<List<LiaisonsRow>>(
               future: LiaisonsTable().querySingleRow(
                 queryFn: (q) => q.eq(
@@ -112,7 +113,7 @@ class _EventLineComponentWidgetState extends State<EventLineComponentWidget> {
                       BoxShadow(
                         blurRadius: 0.0,
                         color: FlutterFlowTheme.of(context).alternate,
-                        offset: const Offset(
+                        offset: Offset(
                           0.0,
                           1.0,
                         ),
@@ -147,9 +148,9 @@ class _EventLineComponentWidgetState extends State<EventLineComponentWidget> {
                               ? containerUserInfosRowList.first
                               : null;
                       return Container(
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -160,14 +161,14 @@ class _EventLineComponentWidgetState extends State<EventLineComponentWidget> {
                                 children: [
                                   Container(
                                     width: 220.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Text(
                                           valueOrDefault<String>(
                                             widget.eventRow?.pKEvents
-                                                .toString(),
+                                                ?.toString(),
                                             '#',
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -179,7 +180,7 @@ class _EventLineComponentWidgetState extends State<EventLineComponentWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
                                               widget.eventRow?.eventName,
@@ -193,10 +194,10 @@ class _EventLineComponentWidgetState extends State<EventLineComponentWidget> {
                                                 ),
                                           ),
                                         ),
-                                      ].divide(const SizedBox(width: 5.0)),
+                                      ].divide(SizedBox(width: 5.0)),
                                     ),
                                   ),
-                                ].divide(const SizedBox(width: 5.0)),
+                                ].divide(SizedBox(width: 5.0)),
                               ),
                               Flexible(
                                 child: Container(
@@ -224,7 +225,7 @@ class _EventLineComponentWidgetState extends State<EventLineComponentWidget> {
                                 phone: false,
                               ))
                                 Align(
-                                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                                  alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Text(
                                     valueOrDefault<String>(
                                       dateTimeFormat(
@@ -256,9 +257,9 @@ class _EventLineComponentWidgetState extends State<EventLineComponentWidget> {
                                       ),
                                     ),
                                     child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 4.0, 8.0, 4.0),
                                         child: Text(
                                           valueOrDefault<String>(

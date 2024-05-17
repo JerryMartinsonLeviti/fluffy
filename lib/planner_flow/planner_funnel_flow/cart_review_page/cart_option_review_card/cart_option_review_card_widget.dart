@@ -4,6 +4,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/planner_flow/planner_funnel_flow/cart_review_page/cart_summary_component/cart_summary_component_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'cart_option_review_card_model.dart';
 export 'cart_option_review_card_model.dart';
 
@@ -79,7 +81,7 @@ class _CartOptionReviewCardWidgetState
             ? containerVenuesRowList.first
             : null;
         return Container(
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 300.0,
           ),
           decoration: BoxDecoration(
@@ -115,7 +117,7 @@ class _CartOptionReviewCardWidgetState
                   ? containerVendorsRowList.first
                   : null;
               return Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -135,9 +137,9 @@ class _CartOptionReviewCardWidgetState
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(-1.0, -1.0),
+                                  alignment: AlignmentDirectional(-1.0, -1.0),
                                   child: Text(
-                                    'Option  ${widget.cartRow?.pKCarts.toString()}',
+                                    'Option  ${widget.cartRow?.pKCarts?.toString()}',
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium

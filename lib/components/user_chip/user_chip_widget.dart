@@ -1,6 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'user_chip_model.dart';
 export 'user_chip_model.dart';
 
@@ -51,7 +54,7 @@ class _UserChipWidgetState extends State<UserChipWidget> {
     return Container(
       width: 200.0,
       height: 80.0,
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -67,7 +70,7 @@ class _UserChipWidgetState extends State<UserChipWidget> {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(2.0),
+              padding: EdgeInsets.all(2.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.network(
@@ -84,7 +87,7 @@ class _UserChipWidgetState extends State<UserChipWidget> {
             phone: false,
           ))
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -110,11 +113,11 @@ class _UserChipWidgetState extends State<UserChipWidget> {
                               letterSpacing: 0.0,
                             ),
                       ),
-                    ].divide(const SizedBox(width: 5.0)),
+                    ].divide(SizedBox(width: 5.0)),
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                     child: Text(
                       widget.email!,
                       style: FlutterFlowTheme.of(context).labelSmall.override(
@@ -124,7 +127,7 @@ class _UserChipWidgetState extends State<UserChipWidget> {
                           ),
                     ),
                   ),
-                ].divide(const SizedBox(height: 4.0)),
+                ].divide(SizedBox(height: 4.0)),
               ),
             ),
         ],

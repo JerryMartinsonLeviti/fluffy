@@ -9,7 +9,7 @@ class ItemGroupsTable extends SupabaseTable<ItemGroupsRow> {
 }
 
 class ItemGroupsRow extends SupabaseDataRow {
-  ItemGroupsRow(super.data);
+  ItemGroupsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => ItemGroupsTable();

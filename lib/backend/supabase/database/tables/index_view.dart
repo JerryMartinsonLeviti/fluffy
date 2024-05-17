@@ -9,7 +9,7 @@ class IndexViewTable extends SupabaseTable<IndexViewRow> {
 }
 
 class IndexViewRow extends SupabaseDataRow {
-  IndexViewRow(super.data);
+  IndexViewRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => IndexViewTable();

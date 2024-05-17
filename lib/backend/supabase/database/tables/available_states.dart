@@ -10,7 +10,7 @@ class AvailableStatesTable extends SupabaseTable<AvailableStatesRow> {
 }
 
 class AvailableStatesRow extends SupabaseDataRow {
-  AvailableStatesRow(super.data);
+  AvailableStatesRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => AvailableStatesTable();

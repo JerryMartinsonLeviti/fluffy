@@ -2,10 +2,13 @@ import '/backend/supabase/supabase.dart';
 import '/components/venue_card_component/venue_card_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget.dart';
 import '/planner_flow/search_bar/search_bar/search_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'step2_search_result_shopping_model.dart';
 export 'step2_search_result_shopping_model.dart';
 
@@ -50,30 +53,30 @@ class _Step2SearchResultShoppingWidgetState
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 wrapWithModel(
                   model: _model.plannerAppBarComponentModel,
                   updateCallback: () => setState(() {}),
-                  child: const PlannerAppBarComponentWidget(),
+                  child: PlannerAppBarComponentWidget(),
                 ),
                 wrapWithModel(
                   model: _model.searchBarModel,
                   updateCallback: () => setState(() {}),
-                  child: const SearchBarWidget(),
+                  child: SearchBarWidget(),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 28.0, 0.0, 0.0),
                           child: Text(
                             'Select & Add Your Favorites To a Proposal',
@@ -97,7 +100,7 @@ class _Step2SearchResultShoppingWidgetState
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 28.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 28.0),
                       child: Text(
                         '< 1 2 3 4 5 6 7 8 ...11 >',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -109,7 +112,7 @@ class _Step2SearchResultShoppingWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(100.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(100.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Sort By ',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -142,7 +145,7 @@ class _Step2SearchResultShoppingWidgetState
                     }
                     List<VenuesRow> containerVenuesRowList = snapshot.data!;
                     return Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Builder(
                         builder: (context) {
                           final venueIndex = containerVenuesRowList.toList();

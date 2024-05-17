@@ -10,7 +10,7 @@ class PricingElementsTable extends SupabaseTable<PricingElementsRow> {
 }
 
 class PricingElementsRow extends SupabaseDataRow {
-  PricingElementsRow(super.data);
+  PricingElementsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => PricingElementsTable();

@@ -2,7 +2,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'price_predictor_model.dart';
 export 'price_predictor_model.dart';
@@ -44,7 +47,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Align(
-          alignment: const AlignmentDirectional(0.0, 0.0),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: Text(
             'SilverSpike AI PRICE PREDICTOR',
             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -63,7 +66,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
         SwitchListTile.adaptive(
           value: _model.switchListTileValue1 ??= true,
           onChanged: (newValue) async {
-            setState(() => _model.switchListTileValue1 = newValue);
+            setState(() => _model.switchListTileValue1 = newValue!);
           },
           title: Text(
             'Estimate',
@@ -88,7 +91,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
         SwitchListTile.adaptive(
           value: _model.switchListTileValue2 ??= true,
           onChanged: (newValue) async {
-            setState(() => _model.switchListTileValue2 = newValue);
+            setState(() => _model.switchListTileValue2 = newValue!);
           },
           title: Text(
             'Per Person or Total Event',
@@ -104,7 +107,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
           controlAffinity: ListTileControlAffinity.trailing,
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -207,7 +210,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
           ],
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -230,18 +233,18 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
           ),
         ),
         Align(
-          alignment: const AlignmentDirectional(0.0, 0.0),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: Container(
             width: 475.0,
             height: 5.0,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).accent3,
             ),
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
           ),
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -304,7 +307,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
           ],
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -327,18 +330,18 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
           ),
         ),
         Align(
-          alignment: const AlignmentDirectional(0.0, 0.0),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: Container(
             width: 475.0,
             height: 5.0,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).accent3,
             ),
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
           ),
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -381,13 +384,13 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
           ],
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Text(
                   'Payment balance will be due and processed 30 days \nbefore the event date of 05/01/2024\n',
                   textAlign: TextAlign.center,
@@ -401,7 +404,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
           ),
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
           child: Container(
             width: 348.0,
             height: 300.0,
@@ -413,13 +416,13 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 0.0),
                         child: Text(
                           'BUDGET WHEEL',
                           style:
@@ -433,12 +436,12 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 'My Budget',
@@ -452,7 +455,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   18.0, 0.0, 18.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () {
@@ -461,9 +464,9 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                 text: '\$15,000',
                                 options: FFButtonOptions(
                                   height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).accent4,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -491,9 +494,9 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                               options: FFButtonOptions(
                                 width: 90.0,
                                 height: 40.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).accent3,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -506,7 +509,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                       fontWeight: FontWeight.w300,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -522,10 +525,10 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                 Stack(
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                         child: Icon(
                           Icons.circle_outlined,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -534,10 +537,10 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 0.0),
                         child: GradientText(
                           '116%',
                           textAlign: TextAlign.center,
@@ -563,9 +566,9 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
           ),
         ),
         Align(
-          alignment: const AlignmentDirectional(0.0, 1.0),
+          alignment: AlignmentDirectional(0.0, 1.0),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 28.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 28.0, 0.0, 0.0),
             child: FFButtonWidget(
               onPressed: () {
                 print('Button pressed ...');
@@ -573,8 +576,8 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
               text: 'Add to Cart',
               options: FFButtonOptions(
                 height: 48.0,
-                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                 color: FlutterFlowTheme.of(context).primary,
                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                       fontFamily: 'Readex Pro',
@@ -583,7 +586,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                       letterSpacing: 0.0,
                     ),
                 elevation: 3.0,
-                borderSide: const BorderSide(
+                borderSide: BorderSide(
                   color: Colors.transparent,
                   width: 1.0,
                 ),

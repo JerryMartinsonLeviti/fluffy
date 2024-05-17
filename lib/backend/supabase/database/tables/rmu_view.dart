@@ -9,7 +9,7 @@ class RmuViewTable extends SupabaseTable<RmuViewRow> {
 }
 
 class RmuViewRow extends SupabaseDataRow {
-  RmuViewRow(super.data);
+  RmuViewRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => RmuViewTable();

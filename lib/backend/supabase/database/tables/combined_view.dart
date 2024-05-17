@@ -9,7 +9,7 @@ class CombinedViewTable extends SupabaseTable<CombinedViewRow> {
 }
 
 class CombinedViewRow extends SupabaseDataRow {
-  CombinedViewRow(super.data);
+  CombinedViewRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => CombinedViewTable();

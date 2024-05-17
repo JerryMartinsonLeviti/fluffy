@@ -1,6 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'product_card_component_model.dart';
 export 'product_card_component_model.dart';
 
@@ -53,7 +56,7 @@ class _ProductCardComponentWidgetState
           Stack(
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.81, -0.72),
+                alignment: AlignmentDirectional(0.81, -0.72),
                 child: Icon(
                   Icons.favorite_border,
                   color: FlutterFlowTheme.of(context).primary,
@@ -61,12 +64,12 @@ class _ProductCardComponentWidgetState
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   width: 160.0,
                   height: 160.0,
                   clipBehavior: Clip.antiAlias,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     shape: BoxShape.circle,
                   ),
                   child: Image.network(
@@ -78,9 +81,9 @@ class _ProductCardComponentWidgetState
             ],
           ),
           Align(
-            alignment: const AlignmentDirectional(-1.0, 0.0),
+            alignment: AlignmentDirectional(-1.0, 0.0),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
               child: Text(
                 'Hello World',
                 textAlign: TextAlign.center,
@@ -92,9 +95,9 @@ class _ProductCardComponentWidgetState
             ),
           ),
           Align(
-            alignment: const AlignmentDirectional(-1.0, 0.0),
+            alignment: AlignmentDirectional(-1.0, 0.0),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
               child: Text(
                 'Hello World',
                 textAlign: TextAlign.center,
@@ -109,7 +112,7 @@ class _ProductCardComponentWidgetState
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                 child: Text(
                   '\$196 Per Person',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(

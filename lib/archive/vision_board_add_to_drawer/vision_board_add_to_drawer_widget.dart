@@ -3,6 +3,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'vision_board_add_to_drawer_model.dart';
 export 'vision_board_add_to_drawer_model.dart';
 
@@ -53,7 +56,7 @@ class _VisionBoardAddToDrawerWidgetState
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(24.0),
+                    padding: EdgeInsets.all(24.0),
                     child: Text(
                       'Add to Vision Board',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -75,27 +78,27 @@ class _VisionBoardAddToDrawerWidgetState
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: wrapWithModel(
                           model: _model.visionBoardOptionModel1,
                           updateCallback: () => setState(() {}),
-                          child: const VisionBoardOptionWidget(),
+                          child: VisionBoardOptionWidget(),
                         ),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: wrapWithModel(
                           model: _model.visionBoardOptionModel2,
                           updateCallback: () => setState(() {}),
-                          child: const VisionBoardOptionWidget(),
+                          child: VisionBoardOptionWidget(),
                         ),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: wrapWithModel(
                           model: _model.visionBoardOptionModel3,
                           updateCallback: () => setState(() {}),
-                          child: const VisionBoardOptionWidget(),
+                          child: VisionBoardOptionWidget(),
                         ),
                       ),
                     ],
@@ -103,7 +106,7 @@ class _VisionBoardAddToDrawerWidgetState
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(24.0),
+                padding: EdgeInsets.all(24.0),
                 child: FFButtonWidget(
                   onPressed: () {
                     print('Button pressed ...');
@@ -112,9 +115,9 @@ class _VisionBoardAddToDrawerWidgetState
                   options: FFButtonOptions(
                     height: 30.0,
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).secondaryText,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Readex Pro',
@@ -122,7 +125,7 @@ class _VisionBoardAddToDrawerWidgetState
                           letterSpacing: 0.0,
                         ),
                     elevation: 3.0,
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),

@@ -3,6 +3,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'locations_selector_model.dart';
 export 'locations_selector_model.dart';
 
@@ -43,11 +46,11 @@ class _LocationsSelectorWidgetState extends State<LocationsSelectorWidget> {
     return Container(
       width: 150.0,
       height: 40.0,
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(),
       child: FlutterFlowDropDown<String>(
         multiSelectController: _model.dropDownValueController ??=
             FormFieldController<List<String>>(null),
-        options: const ['Los Angeles', 'New York', 'San Francisco'],
+        options: ['Los Angeles', 'New York', 'San Francisco'],
         width: 300.0,
         height: 56.0,
         textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -65,7 +68,7 @@ class _LocationsSelectorWidgetState extends State<LocationsSelectorWidget> {
         borderColor: FlutterFlowTheme.of(context).alternate,
         borderWidth: 2.0,
         borderRadius: 8.0,
-        margin: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+        margin: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
         hidesUnderline: true,
         isOverButton: true,
         isSearchable: false,

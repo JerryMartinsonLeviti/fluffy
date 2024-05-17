@@ -6,6 +6,8 @@ import '/vendor_flow/vendor_cart/vendor_cart_detail/vendor_cart_detail_widget.da
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'vendor_cart_line_component_model.dart';
 export 'vendor_cart_line_component_model.dart';
 
@@ -87,7 +89,7 @@ class _VendorCartLineComponentWidgetState
         List<IndexViewRow> containerIndexViewRowList = snapshot.data!;
         return Container(
           width: 390.0,
-          decoration: const BoxDecoration(),
+          decoration: BoxDecoration(),
           child: FutureBuilder<List<PlannersRow>>(
             future: PlannersTable().querySingleRow(
               queryFn: (q) => q.eq(
@@ -114,21 +116,21 @@ class _VendorCartLineComponentWidgetState
                   ? containerPlannersRowList.first
                   : null;
               return Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                     ),
                     Container(
                       width: double.infinity,
-                      color: const Color(0x00000000),
+                      color: Color(0x00000000),
                       child: ExpandableNotifier(
                         controller: _model.expandableExpandableController,
                         child: ExpandablePanel(
                           header: Container(
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -139,7 +141,7 @@ class _VendorCartLineComponentWidgetState
                                   children: [
                                     Container(
                                       width: 100.0,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -190,7 +192,7 @@ class _VendorCartLineComponentWidgetState
                                     ),
                                     Container(
                                       width: 100.0,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -217,11 +219,11 @@ class _VendorCartLineComponentWidgetState
                                     ),
                                     Container(
                                       width: 50.0,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Text(
                                         valueOrDefault<String>(
                                           widget.eventRow?.guestCount
-                                              .toString(),
+                                              ?.toString(),
                                           '-1',
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -235,7 +237,7 @@ class _VendorCartLineComponentWidgetState
                                     wrapWithModel(
                                       model: _model.cartStatusComponentModel,
                                       updateCallback: () => setState(() {}),
-                                      child: const CartStatusComponentWidget(),
+                                      child: CartStatusComponentWidget(),
                                     ),
                                   ],
                                 ),
@@ -245,16 +247,16 @@ class _VendorCartLineComponentWidgetState
                           collapsed: Container(
                             width: 0.0,
                             height: 0.0,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                           ),
                           expanded: Container(
                             width: 390.0,
                             height: 800.0,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: wrapWithModel(
                               model: _model.vendorCartDetailModel,
                               updateCallback: () => setState(() {}),
-                              child: const VendorCartDetailWidget(),
+                              child: VendorCartDetailWidget(),
                             ),
                           ),
                           theme: ExpandableThemeData(

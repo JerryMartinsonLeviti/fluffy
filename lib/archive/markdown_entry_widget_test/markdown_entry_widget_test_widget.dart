@@ -1,7 +1,11 @@
 import '/archive/markdown_entry_widget/markdown_entry_widget_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'markdown_entry_widget_test_model.dart';
 export 'markdown_entry_widget_test_model.dart';
 
@@ -55,7 +59,7 @@ class _MarkdownEntryWidgetTestWidgetState
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -67,7 +71,7 @@ class _MarkdownEntryWidgetTestWidgetState
               wrapWithModel(
                 model: _model.markdownEntryWidgetModel,
                 updateCallback: () => setState(() {}),
-                child: const MarkdownEntryWidgetWidget(),
+                child: MarkdownEntryWidgetWidget(),
               ),
             ],
           ),

@@ -3,7 +3,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/vendor_flow/vendor_offering/product_detail_config_widget/product_detail_config_widget_widget.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'product_entry_row_model.dart';
 export 'product_entry_row_model.dart';
 
@@ -43,19 +46,19 @@ class _ProductEntryRowWidgetState extends State<ProductEntryRowWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           Expanded(
             child: Container(
               width: double.infinity,
-              color: const Color(0x00000000),
+              color: Color(0x00000000),
               child: ExpandableNotifier(
                 controller: _model.expandableExpandableController,
                 child: ExpandablePanel(
                   header: Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -64,7 +67,7 @@ class _ProductEntryRowWidgetState extends State<ProductEntryRowWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Container(
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: FaIcon(
                                 FontAwesomeIcons.angleDown,
                                 color:
@@ -73,9 +76,9 @@ class _ProductEntryRowWidgetState extends State<ProductEntryRowWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(1.0, 0.0),
+                              alignment: AlignmentDirectional(1.0, 0.0),
                               child: Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Icon(
                                   Icons.question_mark,
                                   color: FlutterFlowTheme.of(context)
@@ -86,7 +89,7 @@ class _ProductEntryRowWidgetState extends State<ProductEntryRowWidget> {
                             ),
                             Container(
                               width: 100.0,
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -120,7 +123,7 @@ class _ProductEntryRowWidgetState extends State<ProductEntryRowWidget> {
                             ),
                             Container(
                               width: 50.0,
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -139,7 +142,7 @@ class _ProductEntryRowWidgetState extends State<ProductEntryRowWidget> {
                             ),
                             Container(
                               width: 50.0,
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -168,9 +171,9 @@ class _ProductEntryRowWidgetState extends State<ProductEntryRowWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(1.0, 0.0),
+                              alignment: AlignmentDirectional(1.0, 0.0),
                               child: Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Icon(
                                   Icons.settings_outlined,
                                   color: FlutterFlowTheme.of(context)
@@ -180,9 +183,9 @@ class _ProductEntryRowWidgetState extends State<ProductEntryRowWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(1.0, 0.0),
+                              alignment: AlignmentDirectional(1.0, 0.0),
                               child: Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Icon(
                                   Icons.add,
                                   color: FlutterFlowTheme.of(context)
@@ -199,12 +202,12 @@ class _ProductEntryRowWidgetState extends State<ProductEntryRowWidget> {
                   collapsed: Container(
                     width: 0.0,
                     height: 0.0,
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                   ),
                   expanded: wrapWithModel(
                     model: _model.productDetailConfigWidgetModel,
                     updateCallback: () => setState(() {}),
-                    child: const ProductDetailConfigWidgetWidget(),
+                    child: ProductDetailConfigWidgetWidget(),
                   ),
                   theme: ExpandableThemeData(
                     tapHeaderToExpand: true,

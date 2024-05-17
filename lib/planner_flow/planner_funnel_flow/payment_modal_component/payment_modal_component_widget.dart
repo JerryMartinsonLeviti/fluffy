@@ -6,6 +6,9 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/planner_flow/r_t_b_sent_modal/r_t_b_sent_modal_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'payment_modal_component_model.dart';
 export 'payment_modal_component_model.dart';
 
@@ -53,13 +56,13 @@ class _PaymentModalComponentWidgetState
     return Container(
       width: double.infinity,
       height: double.infinity,
-      constraints: const BoxConstraints(
+      constraints: BoxConstraints(
         maxWidth: 390.0,
         maxHeight: 900.0,
       ),
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
             blurRadius: 4.0,
             color: Color(0x33000000),
@@ -72,12 +75,12 @@ class _PaymentModalComponentWidgetState
         borderRadius: BorderRadius.circular(24.0),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
               child: Text(
                 'Please enter your payment information below to continue',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -88,9 +91,9 @@ class _PaymentModalComponentWidgetState
               ),
             ),
             Align(
-              alignment: const AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.0, 0.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 0.0, 0.0),
                 child: Text(
                   'Saved Payment Methods',
                   textAlign: TextAlign.start,
@@ -103,9 +106,9 @@ class _PaymentModalComponentWidgetState
               ),
             ),
             Align(
-              alignment: const AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 25.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 25.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -140,9 +143,9 @@ class _PaymentModalComponentWidgetState
                         ),
                         Container(
                           width: 261.0,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 8.0, 0.0),
                             child: TextFormField(
                               controller: _model.textController1,
@@ -239,9 +242,9 @@ class _PaymentModalComponentWidgetState
                         ),
                         Container(
                           width: 267.0,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 8.0, 0.0),
                             child: TextFormField(
                               controller: _model.textController2,
@@ -307,7 +310,7 @@ class _PaymentModalComponentWidgetState
                         ),
                       ],
                     ),
-                  ].divide(const SizedBox(height: 20.0)),
+                  ].divide(SizedBox(height: 20.0)),
                 ),
               ),
             ),
@@ -318,9 +321,9 @@ class _PaymentModalComponentWidgetState
               color: FlutterFlowTheme.of(context).accent4,
             ),
             Align(
-              alignment: const AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.0, 0.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                 child: Text(
                   'Add Payment Method',
                   textAlign: TextAlign.start,
@@ -333,7 +336,7 @@ class _PaymentModalComponentWidgetState
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 15.0, 12.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(12.0, 15.0, 12.0, 0.0),
               child: FlutterFlowCreditCardForm(
                 formKey: _model.creditCardFormKey,
                 creditCardModel: _model.creditCardInfo,
@@ -363,7 +366,7 @@ class _PaymentModalComponentWidgetState
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
               child: Text(
                 'By providing your card information, you allow SilverSpike to charge your selected payment method for future payments in accordance with required terms, including deposit processing. ',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -376,7 +379,7 @@ class _PaymentModalComponentWidgetState
             ),
             Builder(
               builder: (context) => Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     await showDialog(
@@ -386,9 +389,9 @@ class _PaymentModalComponentWidgetState
                           elevation: 0,
                           insetPadding: EdgeInsets.zero,
                           backgroundColor: Colors.transparent,
-                          alignment: const AlignmentDirectional(0.0, 0.0)
+                          alignment: AlignmentDirectional(0.0, 0.0)
                               .resolve(Directionality.of(context)),
-                          child: const RTBSentModalWidget(),
+                          child: RTBSentModalWidget(),
                         );
                       },
                     ).then((value) => setState(() {}));
@@ -397,9 +400,9 @@ class _PaymentModalComponentWidgetState
                   options: FFButtonOptions(
                     height: 45.0,
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).customColor2,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Readex Pro',
@@ -407,7 +410,7 @@ class _PaymentModalComponentWidgetState
                           letterSpacing: 0.0,
                         ),
                     elevation: 3.0,
-                    borderSide: const BorderSide(
+                    borderSide: BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),
@@ -417,7 +420,7 @@ class _PaymentModalComponentWidgetState
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -430,9 +433,9 @@ class _PaymentModalComponentWidgetState
                     options: FFButtonOptions(
                       height: 40.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
@@ -442,7 +445,7 @@ class _PaymentModalComponentWidgetState
                                 letterSpacing: 0.0,
                               ),
                       elevation: 3.0,
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),
@@ -452,7 +455,7 @@ class _PaymentModalComponentWidgetState
                 ],
               ),
             ),
-          ].divide(const SizedBox(height: 10.0)).around(const SizedBox(height: 10.0)),
+          ].divide(SizedBox(height: 10.0)).around(SizedBox(height: 10.0)),
         ),
       ),
     );

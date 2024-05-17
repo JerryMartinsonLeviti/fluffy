@@ -3,6 +3,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'events_message_selector_model.dart';
 export 'events_message_selector_model.dart';
 
@@ -56,7 +59,7 @@ class _EventsMessageSelectorWidgetState
     return Container(
       width: double.infinity,
       height: double.infinity,
-      constraints: const BoxConstraints(
+      constraints: BoxConstraints(
         maxWidth: 380.0,
         maxHeight: 500.0,
       ),
@@ -80,7 +83,7 @@ class _EventsMessageSelectorWidgetState
                   ),
             ),
             Align(
-              alignment: const AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.0, 0.0),
               child: Builder(
                 builder: (context) {
                   final roomIndex = widget.thisUsersTableRows!.toList();
@@ -93,7 +96,7 @@ class _EventsMessageSelectorWidgetState
                           List.generate(roomIndex.length, (roomIndexIndex) {
                         final roomIndexItem = roomIndex[roomIndexIndex];
                         return Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -136,8 +139,8 @@ class _EventsMessageSelectorWidgetState
                                           ),
                                     ),
                                   ]
-                                      .divide(const SizedBox(width: 10.0))
-                                      .around(const SizedBox(width: 10.0)),
+                                      .divide(SizedBox(width: 10.0))
+                                      .around(SizedBox(width: 10.0)),
                                 ),
                               ),
                               Text(

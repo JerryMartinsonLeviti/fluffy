@@ -1,8 +1,12 @@
 import '/components/vision_board_product_card/vision_board_product_card_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/event_price_card/price_predictor/price_predictor_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'vision_board_model.dart';
 export 'vision_board_model.dart';
 
@@ -54,7 +58,7 @@ class _VisionBoardWidgetState extends State<VisionBoardWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -71,7 +75,7 @@ class _VisionBoardWidgetState extends State<VisionBoardWidget> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(24.0),
+                        padding: EdgeInsets.all(24.0),
                         child: Text(
                           'Vision Board',
                           style:
@@ -90,7 +94,7 @@ class _VisionBoardWidgetState extends State<VisionBoardWidget> {
                         color: FlutterFlowTheme.of(context).accent4,
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(24.0),
+                        padding: EdgeInsets.all(24.0),
                         child: Text(
                           'Manhattan City Lights  Dinner',
                           style:
@@ -110,28 +114,28 @@ class _VisionBoardWidgetState extends State<VisionBoardWidget> {
                       wrapWithModel(
                         model: _model.visionBoardProductCardModel1,
                         updateCallback: () => setState(() {}),
-                        child: const VisionBoardProductCardWidget(),
+                        child: VisionBoardProductCardWidget(),
                       ),
                       wrapWithModel(
                         model: _model.visionBoardProductCardModel2,
                         updateCallback: () => setState(() {}),
-                        child: const VisionBoardProductCardWidget(),
+                        child: VisionBoardProductCardWidget(),
                       ),
                       wrapWithModel(
                         model: _model.visionBoardProductCardModel3,
                         updateCallback: () => setState(() {}),
-                        child: const VisionBoardProductCardWidget(),
+                        child: VisionBoardProductCardWidget(),
                       ),
                     ],
                   ),
                 ],
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                 child: wrapWithModel(
                   model: _model.pricePredictorModel,
                   updateCallback: () => setState(() {}),
-                  child: const PricePredictorWidget(),
+                  child: PricePredictorWidget(),
                 ),
               ),
             ],

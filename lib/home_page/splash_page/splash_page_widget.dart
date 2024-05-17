@@ -3,8 +3,12 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'splash_page_model.dart';
 export 'splash_page_model.dart';
@@ -37,14 +41,14 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(1.0, 1.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.0, 1.0),
           ),
           ShimmerEffect(
             curve: Curves.easeInOut,
             delay: 600.0.ms,
             duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
+            color: Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -86,7 +90,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                       child: wrapWithModel(
                         model: _model.plannerAppBarComponentModel,
                         updateCallback: () => setState(() {}),
-                        child: const PlannerAppBarComponentWidget(),
+                        child: PlannerAppBarComponentWidget(),
                       ),
                     ),
                   ],
@@ -114,10 +118,10 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                     children: [
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
+                                            AlignmentDirectional(-1.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   30.0, 40.0, 0.0, 0.0),
                                           child: ClipRRect(
                                             borderRadius:
@@ -127,13 +131,13 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                               width: 343.0,
                                               height: 164.0,
                                               fit: BoxFit.contain,
-                                              alignment: const Alignment(0.0, 0.0),
+                                              alignment: Alignment(0.0, 0.0),
                                             ),
                                           ),
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 20.0, 0.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -150,10 +154,10 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                   CrossAxisAlignment.center,
                                               children: [
                                                 Container(
-                                                  constraints: const BoxConstraints(
+                                                  constraints: BoxConstraints(
                                                     maxWidth: 500.0,
                                                   ),
-                                                  decoration: const BoxDecoration(),
+                                                  decoration: BoxDecoration(),
                                                   child: Wrap(
                                                     spacing: 0.0,
                                                     runSpacing: 0.0,
@@ -190,7 +194,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                             opacity: 0.9,
                                                             child: Align(
                                                               alignment:
-                                                                  const AlignmentDirectional(
+                                                                  AlignmentDirectional(
                                                                       -1.0,
                                                                       0.0),
                                                               child: Text(
@@ -238,12 +242,12 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                             opacity: 0.9,
                                                             child: Align(
                                                               alignment:
-                                                                  const AlignmentDirectional(
+                                                                  AlignmentDirectional(
                                                                       -1.0,
                                                                       0.0),
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             18.0,
@@ -277,13 +281,13 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                   ),
                                                 ),
                                                 Container(
-                                                  decoration: const BoxDecoration(),
+                                                  decoration: BoxDecoration(),
                                                   child: Container(
                                                     width: 340.0,
                                                     height: 340.0,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.network(
@@ -296,10 +300,10 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                               ],
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         60.0, 40.0, 0.0, 0.0),
                                                 child: Row(
@@ -310,11 +314,11 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               -1.0, -1.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -335,20 +339,20 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                             width: 219.0,
                                                             height: 62.0,
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         24.0,
                                                                         0.0,
                                                                         24.0,
                                                                         0.0),
                                                             iconPadding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
                                                                         0.0,
                                                                         0.0),
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF1E3B41),
                                                             textStyle:
                                                                 FlutterFlowTheme.of(
@@ -365,7 +369,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                                     ),
                                                             elevation: 3.0,
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Colors
                                                                   .transparent,
                                                               width: 1.0,
@@ -380,7 +384,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                     ),
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: FFButtonWidget(
                                                         onPressed: () async {
@@ -397,21 +401,21 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                           width: 207.0,
                                                           height: 62.0,
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       24.0,
                                                                       0.0,
                                                                       24.0,
                                                                       0.0),
                                                           iconPadding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
                                                                       0.0,
                                                                       0.0),
                                                           color:
-                                                              const Color(0xFF1E3B41),
+                                                              Color(0xFF1E3B41),
                                                           textStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -427,7 +431,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                                   ),
                                                           elevation: 3.0,
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Colors
                                                                 .transparent,
                                                             width: 1.0,
@@ -440,7 +444,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                       ),
                                                     ),
                                                   ].divide(
-                                                      const SizedBox(width: 60.0)),
+                                                      SizedBox(width: 60.0)),
                                                 ),
                                               ),
                                             ),
@@ -459,7 +463,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                   child: Container(
                     width: 1004.0,
                     height: 230.0,
@@ -467,14 +471,14 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
                     child: Align(
-                      alignment: const AlignmentDirectional(-1.0, 0.0),
+                      alignment: AlignmentDirectional(-1.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -507,7 +511,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 30.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -515,7 +519,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       70.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Send Out Your Custom Webpage',
@@ -534,16 +538,16 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 100.0, 30.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         230.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       'Manage, Track, & Shine!',
@@ -575,7 +579,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                   color: FlutterFlowTheme.of(context).customColor3,
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Container(
                     width: 1029.0,
                     height: 337.0,
@@ -586,7 +590,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -596,7 +600,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
@@ -609,7 +613,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                         width: 100.0,
                                         height: 100.0,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
@@ -620,9 +624,9 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(-1.0, -1.0),
+                                    alignment: AlignmentDirectional(-1.0, -1.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           5.0, 0.0, 5.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
@@ -637,10 +641,10 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                           width: 245.0,
                                           height: 62.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   24.0, 0.0, 24.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .alternate,
@@ -656,7 +660,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                 letterSpacing: 0.0,
                                               ),
                                           elevation: 3.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -674,7 +678,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 0.0),
                                     child: Text(
                                       'About Us',
@@ -737,7 +741,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                           letterSpacing: 0.0,
                                         ),
                                   ),
-                                ].divide(const SizedBox(height: 10.0)),
+                                ].divide(SizedBox(height: 10.0)),
                               ),
                               Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -778,13 +782,13 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                           letterSpacing: 0.0,
                                         ),
                                   ),
-                                ].divide(const SizedBox(height: 10.0)),
+                                ].divide(SizedBox(height: 10.0)),
                               ),
                             ],
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 80.0, 0.0, 0.0),
                           child: Text(
                             'SilverSpike Inc. Copyright 2024. All rights reserved. ',

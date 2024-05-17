@@ -9,7 +9,10 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/planner_funnel_flow/payment_modal_component/payment_modal_component_widget.dart';
 import '/planner_flow/r_t_b_sent_modal/r_t_b_sent_modal_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
 import 'requestto_book_cart_model.dart';
 export 'requestto_book_cart_model.dart';
 
@@ -65,7 +68,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -83,7 +86,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
@@ -93,7 +96,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(14.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(14.0, 0.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -103,10 +106,10 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          constraints: const BoxConstraints(
+                          constraints: BoxConstraints(
                             maxWidth: 300.0,
                           ),
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -115,9 +118,9 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Align(
-                                    alignment: const AlignmentDirectional(-1.0, 0.0),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Review Your Order',
@@ -140,7 +143,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                 ],
                               ),
                               Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -165,9 +168,9 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 0.0, 0.0),
                                               child: Text(
@@ -195,13 +198,13 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                 ),
                               ),
                               Container(
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Icon(
                                         Icons.check_box_outline_blank_rounded,
                                         color: FlutterFlowTheme.of(context)
@@ -212,10 +215,10 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                     Flexible(
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
+                                            AlignmentDirectional(-1.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'By checking this box‚ I agree that‚ if my booking request is accepted‚ SilverSpike Inc. may process my deposit payment with the payment method on file and that it can later process payment of any remaining balance upon its due date. I agree to SilverSpike\'s Cancellation Policy and Terms and acknowledge its Privacy Policy.',
@@ -247,7 +250,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                           elevation: 0,
                                           insetPadding: EdgeInsets.zero,
                                           backgroundColor: Colors.transparent,
-                                          alignment: const AlignmentDirectional(
+                                          alignment: AlignmentDirectional(
                                                   0.0, 0.0)
                                               .resolve(
                                                   Directionality.of(context)),
@@ -260,7 +263,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 : FocusScope.of(context)
                                                     .unfocus(),
                                             child:
-                                                const PaymentModalComponentWidget(),
+                                                PaymentModalComponentWidget(),
                                           ),
                                         );
                                       },
@@ -269,9 +272,9 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                   text: 'PaymentMethod',
                                   options: FFButtonOptions(
                                     height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context)
                                         .customColor1,
@@ -284,7 +287,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                           letterSpacing: 0.0,
                                         ),
                                     elevation: 3.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -302,7 +305,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                           elevation: 0,
                                           insetPadding: EdgeInsets.zero,
                                           backgroundColor: Colors.transparent,
-                                          alignment: const AlignmentDirectional(
+                                          alignment: AlignmentDirectional(
                                                   0.0, 0.0)
                                               .resolve(
                                                   Directionality.of(context)),
@@ -314,7 +317,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                         _model.unfocusNode)
                                                 : FocusScope.of(context)
                                                     .unfocus(),
-                                            child: const RTBSentModalWidget(),
+                                            child: RTBSentModalWidget(),
                                           ),
                                         );
                                       },
@@ -333,9 +336,9 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                   text: 'Request to Book',
                                   options: FFButtonOptions(
                                     height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context)
                                         .customColor1,
@@ -348,7 +351,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                           letterSpacing: 0.0,
                                         ),
                                     elevation: 3.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -357,7 +360,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Container(
                                   width: 284.0,
@@ -370,24 +373,24 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                   child: wrapWithModel(
                                     model: _model.securityWarningModel,
                                     updateCallback: () => setState(() {}),
-                                    child: const SecurityWarningWidget(),
+                                    child: SecurityWarningWidget(),
                                   ),
                                 ),
                               ),
-                            ].divide(const SizedBox(height: 50.0)),
+                            ].divide(SizedBox(height: 50.0)),
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(1.0, 0.0),
+                          alignment: AlignmentDirectional(1.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsets.all(28.0),
+                            padding: EdgeInsets.all(28.0),
                             child: Container(
                               width: 436.0,
                               height: 1208.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x33000000),
@@ -410,7 +413,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(1.0, 0.0),
+                                                AlignmentDirectional(1.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -421,11 +424,11 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                     Flexible(
                                                       child: Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 0.0, -1.0),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       20.0,
@@ -465,7 +468,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Row(
                                                     mainAxisSize:
@@ -511,14 +514,14 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 40.0, 20.0, 40.0),
                                             child: wrapWithModel(
                                               model:
                                                   _model.eventBasicDetailsModel,
                                               updateCallback: () =>
                                                   setState(() {}),
-                                              child: const EventBasicDetailsWidget(),
+                                              child: EventBasicDetailsWidget(),
                                             ),
                                           ),
                                         ],
@@ -535,7 +538,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 20.0, 0.0, 0.0),
                                             child: Text(
                                               'All-In Estimate',
@@ -552,7 +555,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 6.0, 0.0, 0.0),
                                             child: FFButtonWidget(
                                               onPressed: () {
@@ -561,11 +564,11 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                               text: '\$17,388.89',
                                               options: FFButtonOptions(
                                                 height: 40.0,
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 iconPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
                                                 color:
@@ -596,7 +599,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                     ],
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 0.0),
                                     child: Container(
                                       width: 363.0,
@@ -616,7 +619,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 20.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -655,7 +658,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 20.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -664,7 +667,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                       .spaceBetween,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           24.0, 0.0, 0.0, 0.0),
                                                   child: Text(
@@ -681,7 +684,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 24.0, 0.0),
                                                   child: Text(
@@ -702,9 +705,9 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
+                                                AlignmentDirectional(0.0, -1.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 15.0, 0.0, 0.0),
                                               child: Row(
@@ -715,7 +718,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(14.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -732,7 +735,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 14.0, 0.0),
                                                     child: Text(
@@ -757,7 +760,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         14.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -773,7 +776,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -796,7 +799,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         14.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -812,7 +815,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -842,7 +845,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         14.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -858,7 +861,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -877,7 +880,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     14.0, 0.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -897,7 +900,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                       ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 14.0, 0.0),
                                                   child: Text(
@@ -925,7 +928,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(14.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -942,7 +945,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(5.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Icon(
@@ -957,7 +960,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 ],
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -984,7 +987,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(14.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -1001,7 +1004,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(5.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Icon(
@@ -1016,7 +1019,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 ],
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -1046,7 +1049,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         14.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -1062,7 +1065,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -1093,7 +1096,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     14.0,
                                                                     0.0,
@@ -1125,7 +1128,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 ],
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -1148,7 +1151,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         14.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -1164,7 +1167,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 14.0, 0.0),
                                                 child: Text(
@@ -1187,7 +1190,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 16.0, 0.0, 0.0),
                                                 child: Text(
@@ -1214,7 +1217,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 10.0, 0.0, 0.0),
                                     child: Container(
                                       width: 348.0,
@@ -1226,13 +1229,13 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                             BorderRadius.circular(22.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 1.0, 0.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 24.0, 0.0, 0.0),
                                               child: Column(
@@ -1240,7 +1243,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 18.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -1261,7 +1264,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 20.0,
                                                                 0.0, 10.0),
                                                     child: Row(
@@ -1270,7 +1273,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       12.0,
                                                                       0.0,
@@ -1293,7 +1296,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       18.0,
                                                                       0.0,
@@ -1309,14 +1312,14 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                                 FFButtonOptions(
                                                               height: 40.0,
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           24.0,
                                                                           0.0,
                                                                           24.0,
                                                                           0.0),
                                                               iconPadding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1339,7 +1342,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                                       ),
                                                               elevation: 3.0,
                                                               borderSide:
-                                                                  const BorderSide(
+                                                                  BorderSide(
                                                                 width: 3.0,
                                                               ),
                                                               borderRadius:
@@ -1360,14 +1363,14 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                             width: 106.0,
                                                             height: 40.0,
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         24.0,
                                                                         0.0,
                                                                         24.0,
                                                                         0.0),
                                                             iconPadding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1388,7 +1391,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                                     ),
                                                             elevation: 3.0,
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Colors
                                                                   .transparent,
                                                               width: 1.0,
@@ -1406,7 +1409,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 40.0, 0.0, 0.0),
                                               child: CircularPercentIndicator(

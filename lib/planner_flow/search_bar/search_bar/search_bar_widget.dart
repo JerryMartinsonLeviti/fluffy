@@ -190,6 +190,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                     decoration: BoxDecoration(),
                                     child: Container(
                                       constraints: BoxConstraints(
+                                        minHeight: 100.0,
                                         maxHeight: 400.0,
                                       ),
                                       decoration: BoxDecoration(),
@@ -212,17 +213,6 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                           ?.eventName,
                                                       'noEventName',
                                                     )}',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                  Text(
-                                                    'Hello World',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -360,6 +350,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                               hasIcon: true,
                                               expandIcon: Icons.add_box,
                                               collapseIcon: Icons.add,
+                                              iconColor: Color(0xFFBB5757),
                                             ),
                                           ),
                                         ),

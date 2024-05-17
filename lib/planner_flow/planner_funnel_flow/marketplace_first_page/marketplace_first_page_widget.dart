@@ -322,144 +322,126 @@ class _MarketplaceFirstPageWidgetState
                                           maxWidth: 390.0,
                                         ),
                                         decoration: BoxDecoration(),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 50.0, 0.0, 0.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 10.0),
-                                                  child: Text(
-                                                    'FAQ\'s',
-                                                    textAlign: TextAlign.start,
-                                                    style: FlutterFlowTheme.of(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 10.0),
+                                                child: Text(
+                                                  'FAQ\'s',
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent2,
+                                                        fontSize: 30.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  -1.0, 0.0),
+                                              child: Builder(
+                                                builder: (context) {
+                                                  final faqIndex =
+                                                      faqContainerFaqAssetsRowList
+                                                          .toList();
+                                                  return Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: List.generate(
+                                                        faqIndex.length,
+                                                        (faqIndexIndex) {
+                                                      final faqIndexItem =
+                                                          faqIndex[
+                                                              faqIndexIndex];
+                                                      return WrapFaqRowWidget(
+                                                        key: Key(
+                                                            'Keyrj2_${faqIndexIndex}_of_${faqIndex.length}'),
+                                                        question:
+                                                            valueOrDefault<
+                                                                String>(
+                                                          faqIndexItem.question,
+                                                          'q',
+                                                        ),
+                                                        answer: valueOrDefault<
+                                                            String>(
+                                                          faqIndexItem.answer,
+                                                          'a',
+                                                        ),
+                                                        isVisible: true,
+                                                      );
+                                                    }),
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 12.0, 0.0, 0.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () {
+                                                    print('Button pressed ...');
+                                                  },
+                                                  text: 'See All FAQ\'s',
+                                                  options: FFButtonOptions(
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(24.0, 0.0,
+                                                                24.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium
+                                                        .accent2,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .accent2,
-                                                          fontSize: 30.0,
+                                                          color: Colors.white,
+                                                          fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                         ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    -1.0, 0.0),
-                                                child: Builder(
-                                                  builder: (context) {
-                                                    final faqIndex =
-                                                        faqContainerFaqAssetsRowList
-                                                            .toList();
-                                                    return Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: List.generate(
-                                                          faqIndex.length,
-                                                          (faqIndexIndex) {
-                                                        final faqIndexItem =
-                                                            faqIndex[
-                                                                faqIndexIndex];
-                                                        return WrapFaqRowWidget(
-                                                          key: Key(
-                                                              'Keyrj2_${faqIndexIndex}_of_${faqIndex.length}'),
-                                                          question:
-                                                              valueOrDefault<
-                                                                  String>(
-                                                            faqIndexItem
-                                                                .question,
-                                                            'q',
-                                                          ),
-                                                          answer:
-                                                              valueOrDefault<
-                                                                  String>(
-                                                            faqIndexItem.answer,
-                                                            'a',
-                                                          ),
-                                                          isVisible: true,
-                                                        );
-                                                      }),
-                                                    );
-                                                  },
-                                                ),
-                                              ),
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 12.0, 0.0, 0.0),
-                                                  child: FFButtonWidget(
-                                                    onPressed: () {
-                                                      print(
-                                                          'Button pressed ...');
-                                                    },
-                                                    text: 'See All FAQ\'s',
-                                                    options: FFButtonOptions(
-                                                      height: 40.0,
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  24.0,
-                                                                  0.0,
-                                                                  24.0,
-                                                                  0.0),
-                                                      iconPadding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent2,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 14.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      elevation: 3.0,
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            Colors.transparent,
-                                                        width: 1.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              22.0),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
                                                     ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            22.0),
                                                   ),
                                                 ),
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
                                       );
                                     },
@@ -480,7 +462,7 @@ class _MarketplaceFirstPageWidgetState
                     color: FlutterFlowTheme.of(context).accent4,
                   ),
                   child: Column(
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
@@ -507,7 +489,7 @@ class _MarketplaceFirstPageWidgetState
                             ],
                           ),
                           Column(
-                            mainAxisSize: MainAxisSize.max,
+                            mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
@@ -577,7 +559,7 @@ class _MarketplaceFirstPageWidgetState
                             ].divide(SizedBox(height: 10.0)),
                           ),
                           Column(
-                            mainAxisSize: MainAxisSize.max,
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               InkWell(
                                 splashColor: Colors.transparent,
@@ -628,18 +610,13 @@ class _MarketplaceFirstPageWidgetState
                           ),
                         ],
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
-                        child: Text(
-                          'SilverSpike Inc. Copyright 2024. All rights reserved. ',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
+                      Text(
+                        'SilverSpike Inc. Copyright 2024. All rights reserved. ',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              color: FlutterFlowTheme.of(context).primary,
+                              letterSpacing: 0.0,
+                            ),
                       ),
                     ],
                   ),

@@ -11,6 +11,7 @@ import '/planner_flow/search_bar/search_bar_date_component/search_bar_date_compo
 import '/planner_flow/search_bar/search_bar_guest_count_component/search_bar_guest_count_component_widget.dart';
 import '/planner_flow/search_bar/search_bar_location_component/search_bar_location_component_widget.dart';
 import '/planner_flow/search_bar/search_bar_time_component/search_bar_time_component_widget.dart';
+import '/planner_flow/search_bar/select_or_create_new_event_component/select_or_create_new_event_component_widget.dart';
 import 'search_bar_widget.dart' show SearchBarWidget;
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';

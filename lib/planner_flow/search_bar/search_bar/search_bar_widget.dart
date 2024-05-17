@@ -11,6 +11,7 @@ import '/planner_flow/search_bar/search_bar_date_component/search_bar_date_compo
 import '/planner_flow/search_bar/search_bar_guest_count_component/search_bar_guest_count_component_widget.dart';
 import '/planner_flow/search_bar/search_bar_location_component/search_bar_location_component_widget.dart';
 import '/planner_flow/search_bar/search_bar_time_component/search_bar_time_component_widget.dart';
+import '/planner_flow/search_bar/select_or_create_new_event_component/select_or_create_new_event_component_widget.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -382,6 +383,79 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                               verticalDirection: VerticalDirection.down,
                               clipBehavior: Clip.none,
                               children: [
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Builder(
+                                      builder: (context) => FFButtonWidget(
+                                        onPressed: () async {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child:
+                                                    SelectOrCreateNewEventComponentWidget(
+                                                  eventRow: containerEventsRow!,
+                                                  onEventChange:
+                                                      (newSelectedEvent) async {
+                                                    FFAppState().update(() {});
+                                                  },
+                                                ),
+                                              );
+                                            },
+                                          ).then((value) => setState(() {}));
+                                        },
+                                        text: 'Event',
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 10.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: Colors.white,
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(18.0),
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      valueOrDefault<String>(
+                                        containerEventsRow?.eventName,
+                                        'noName',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ],
+                                ),
                                 Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [

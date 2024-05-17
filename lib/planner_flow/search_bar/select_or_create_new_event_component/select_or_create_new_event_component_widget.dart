@@ -295,81 +295,82 @@ class _SelectOrCreateNewEventComponentWidgetState
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                if (containerEventsRowList.isNotEmpty)
-                                  FlutterFlowDropDown<int>(
-                                    controller:
-                                        _model.dropDownValueController ??=
-                                            FormFieldController<int>(
-                                      _model.dropDownValue ??=
-                                          FFAppState().PKActiveEvent,
-                                    ),
-                                    options: List<int>.from(
-                                        containerEventsRowList
-                                            .map((e) => e.pKEvents)
-                                            .toList()),
-                                    optionLabels: containerEventsRowList
-                                        .map((e) => e.eventName)
-                                        .toList(),
-                                    onChanged: (val) async {
-                                      setState(
-                                          () => _model.dropDownValue = val);
-                                      FFAppState().update(() {
-                                        FFAppState().PKActiveEvent =
-                                            _model.dropDownValue!;
-                                      });
-                                      _model.selectedEventRows =
-                                          await EventsTable().queryRows(
-                                        queryFn: (q) => q.eq(
-                                          'PK_Events',
-                                          _model.dropDownValue,
-                                        ),
-                                      );
-                                      setState(() {
-                                        _model.selectedEventRow =
-                                            _model.selectedEventRows?.first;
-                                      });
-                                      await widget.onEventChange?.call(
-                                        _model.selectedEventRows?.first,
-                                      );
+                                Container(
+                                  decoration: BoxDecoration(),
+                                  child: Visibility(
+                                    visible:
+                                        (containerEventsRowList.isNotEmpty) ==
+                                            true,
+                                    child: FlutterFlowDropDown<int>(
+                                      controller:
+                                          _model.dropDownValueController ??=
+                                              FormFieldController<int>(
+                                        _model.dropDownValue ??=
+                                            FFAppState().PKActiveEvent,
+                                      ),
+                                      options: List<int>.from(
+                                          containerEventsRowList
+                                              .map((e) => e.pKEvents)
+                                              .toList()),
+                                      optionLabels: containerEventsRowList
+                                          .map((e) => e.eventName)
+                                          .toList(),
+                                      onChanged: (val) async {
+                                        setState(
+                                            () => _model.dropDownValue = val);
+                                        FFAppState().update(() {
+                                          FFAppState().PKActiveEvent =
+                                              _model.dropDownValue!;
+                                        });
+                                        _model.selectedEventRows =
+                                            await EventsTable().queryRows(
+                                          queryFn: (q) => q.eq(
+                                            'PK_Events',
+                                            _model.dropDownValue,
+                                          ),
+                                        );
+                                        setState(() {});
 
-                                      setState(() {});
-                                    },
-                                    width: 300.0,
-                                    height: 56.0,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    hintText: 'Please select...',
-                                    icon: Icon(
-                                      Icons.keyboard_arrow_down_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
+                                        setState(() {});
+                                      },
+                                      maxHeight: 300.0,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      hintText: 'Please select...',
+                                      icon: Icon(
+                                        Icons.keyboard_arrow_down_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      elevation: 2.0,
+                                      borderColor: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      borderWidth: 2.0,
+                                      borderRadius: 8.0,
+                                      margin: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 4.0, 16.0, 4.0),
+                                      hidesUnderline: true,
+                                      isOverButton: true,
+                                      isSearchable: false,
+                                      isMultiSelect: false,
+                                      labelText: 'Select An Existing Event',
+                                      labelTextStyle:
+                                          FlutterFlowTheme.of(context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
                                     ),
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    elevation: 2.0,
-                                    borderColor:
-                                        FlutterFlowTheme.of(context).alternate,
-                                    borderWidth: 2.0,
-                                    borderRadius: 8.0,
-                                    margin: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 4.0, 16.0, 4.0),
-                                    hidesUnderline: true,
-                                    isOverButton: true,
-                                    isSearchable: false,
-                                    isMultiSelect: false,
-                                    labelText: 'Select An Existing Event',
-                                    labelTextStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
                                   ),
+                                ),
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [

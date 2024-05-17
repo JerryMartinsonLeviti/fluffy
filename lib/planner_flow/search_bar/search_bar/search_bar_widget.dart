@@ -582,8 +582,11 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                       ),
                                     ),
                                     Text(
-                                      dateTimeFormat('MMMEd',
-                                          containerEventsRow!.dateTime!),
+                                      valueOrDefault<String>(
+                                        dateTimeFormat('MMMEd',
+                                            containerEventsRow?.dateTime),
+                                        '0',
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -613,7 +616,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                         context)),
                                                 child:
                                                     SearchBarTimeComponentWidget(
-                                                  eventRow: containerEventsRow,
+                                                  eventRow: containerEventsRow!,
                                                 ),
                                               );
                                             },
@@ -649,8 +652,11 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                       ),
                                     ),
                                     Text(
-                                      dateTimeFormat(
-                                          'jm', containerEventsRow.dateTime!),
+                                      valueOrDefault<String>(
+                                        dateTimeFormat(
+                                            'jm', containerEventsRow?.dateTime),
+                                        '0',
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -681,7 +687,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                 child:
                                                     SearchBarGuestCountComponentWidget(
                                                   eventRowIn:
-                                                      containerEventsRow,
+                                                      containerEventsRow!,
                                                   onGuestChangeApplied:
                                                       (guestCount) async {
                                                     FFAppState().update(() {});
@@ -722,7 +728,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                     ),
                                     Text(
                                       valueOrDefault<String>(
-                                        containerEventsRow.guestCount
+                                        containerEventsRow?.guestCount
                                             .toString(),
                                         '0',
                                       ),

@@ -22,9 +22,10 @@ class DescriptionAssetsRow extends SupabaseDataRow {
   DateTime get createdAt => getField<DateTime>('created_at')!;
   set createdAt(DateTime value) => setField<DateTime>('created_at', value);
 
-  String? get description => getField<String>('description');
-  set description(String? value) => setField<String>('description', value);
+  String get description => getField<String>('description')!;
+  set description(String value) => setField<String>('description', value);
 
-  String? get name => getField<String>('name');
-  set name(String? value) => setField<String>('name', value);
+  String? get descriptionName => getField<String>('description_name');
+  set descriptionName(String? value) =>
+      setField<String>('description_name', value);
 }

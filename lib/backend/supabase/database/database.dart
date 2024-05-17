@@ -45,6 +45,7 @@ export 'tables/planners_view.dart';
 export 'tables/cart_package.dart';
 export 'tables/organizations.dart';
 export 'tables/image_assets.dart';
+export 'tables/acv.dart';
 export 'tables/combined_view.dart';
 export 'tables/rmu_view.dart';
 export 'tables/carts.dart';

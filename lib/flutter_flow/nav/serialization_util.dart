@@ -299,6 +299,8 @@ dynamic deserializeParam<T>(
             return OrganizationsRow(data);
           case ImageAssetsRow:
             return ImageAssetsRow(data);
+          case AcvRow:
+            return AcvRow(data);
           case CombinedViewRow:
             return CombinedViewRow(data);
           case RmuViewRow:

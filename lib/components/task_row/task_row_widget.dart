@@ -133,7 +133,7 @@ class _TaskRowWidgetState extends State<TaskRowWidget> {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
                             child: Image.network(
-                              containerUserInfosRow!.photoUrl!,
+                              containerUserInfosRow!.photoUrl,
                               width: 120.0,
                               height: 120.0,
                               fit: BoxFit.cover,

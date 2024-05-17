@@ -71,3 +71,19 @@ String decodeUoMBoolIntoString(bool eventUoMBool) {
   }
   return response;
 }
+
+String? filterACV(
+  String typeKey,
+  List<AcvRow> acvIn,
+) {
+  // Filter the list for rows where typeKey is not null
+  List<AcvRow> filteredList =
+      acvIn.where((row) => row.typeKey != null).toList();
+
+  // Return the typeKey if any rows match, otherwise return null
+  if (filteredList.isNotEmpty) {
+    return typeKey;
+  } else {
+    return null;
+  }
+}

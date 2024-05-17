@@ -140,7 +140,7 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
                                     fadeInDuration: Duration(milliseconds: 500),
                                     fadeOutDuration:
                                         Duration(milliseconds: 500),
-                                    imageUrl: widget.userInfoRow!.photoUrl!,
+                                    imageUrl: widget.userInfoRow!.photoUrl,
                                     fit: BoxFit.cover,
                                     errorWidget: (context, error, stackTrace) =>
                                         Image.asset(

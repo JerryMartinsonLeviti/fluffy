@@ -92,10 +92,13 @@ class _EventSpaceComponentWidgetState extends State<EventSpaceComponentWidget> {
                   (functionSpaceIdxIndex) {
                 final functionSpaceIdxItem =
                     functionSpaceIdx[functionSpaceIdxIndex];
-                return EventSpaceCardComponentWidget(
-                  key: Key(
-                      'Keydri_${functionSpaceIdxIndex}_of_${functionSpaceIdx.length}'),
-                  functionSpaceRow: functionSpaceIdxItem,
+                return Container(
+                  decoration: BoxDecoration(),
+                  child: EventSpaceCardComponentWidget(
+                    key: Key(
+                        'Keydri_${functionSpaceIdxIndex}_of_${functionSpaceIdx.length}'),
+                    functionSpaceRow: functionSpaceIdxItem,
+                  ),
                 );
               }),
             );

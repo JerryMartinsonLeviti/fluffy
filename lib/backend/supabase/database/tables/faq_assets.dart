@@ -20,11 +20,11 @@ class FaqAssetsRow extends SupabaseDataRow {
   DateTime get createdAt => getField<DateTime>('created_at')!;
   set createdAt(DateTime value) => setField<DateTime>('created_at', value);
 
-  String? get answer => getField<String>('answer');
-  set answer(String? value) => setField<String>('answer', value);
+  String get answer => getField<String>('answer')!;
+  set answer(String value) => setField<String>('answer', value);
 
-  String? get question => getField<String>('question');
-  set question(String? value) => setField<String>('question', value);
+  String get question => getField<String>('question')!;
+  set question(String value) => setField<String>('question', value);
 
   bool get siteFaq => getField<bool>('SiteFaq')!;
   set siteFaq(bool value) => setField<bool>('SiteFaq', value);

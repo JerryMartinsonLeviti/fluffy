@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/message/events_message_selector/events_message_selector_widget.dart';
 import '/message/message_box_component/message_box_component_widget.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -135,9 +136,17 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Image.network(
-                                    widget.userInfoRow!.photoUrl!,
+                                  child: CachedNetworkImage(
+                                    fadeInDuration: Duration(milliseconds: 500),
+                                    fadeOutDuration:
+                                        Duration(milliseconds: 500),
+                                    imageUrl: widget.userInfoRow!.photoUrl!,
                                     fit: BoxFit.cover,
+                                    errorWidget: (context, error, stackTrace) =>
+                                        Image.asset(
+                                      'assets/images/error_image.png',
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                                 Column(

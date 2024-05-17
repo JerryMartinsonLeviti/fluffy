@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/message/events_message_selector/events_message_selector_widget.dart';
 import '/message/message_box_component/message_box_component_widget.dart';
 import 'messages_by_event_widget.dart' show MessagesByEventWidget;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

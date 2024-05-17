@@ -33,7 +33,6 @@ dependencies:
   dropdown_button2: 2.3.9
   expandable: 5.0.1
   flutter_animate: 4.1.1+1
-  flutter_blurhash: 0.8.2
   flutter_cache_manager: 3.3.1
   flutter_credit_card: 3.0.6
   flutter_google_places: 
@@ -51,7 +50,6 @@ dependencies:
   hive: 2.2.3
   intl: 0.18.1
   json_path: 0.6.2
-  octo_image: 2.0.0
   package_info_plus: 4.2.0
   package_info_plus_platform_interface: 2.0.1
   page_transition: 2.1.0

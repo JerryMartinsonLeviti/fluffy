@@ -63,7 +63,7 @@ class _RsvpWidgetState extends State<RsvpWidget> {
             },
           ),
           title: Text(
-            'Page Title',
+            'RSVP',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
                   color: Colors.white,

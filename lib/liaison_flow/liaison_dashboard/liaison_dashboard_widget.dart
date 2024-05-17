@@ -109,7 +109,7 @@ class _LiaisonDashboardWidgetState extends State<LiaisonDashboardWidget>
             },
           ),
           title: Text(
-            'Page Title',
+            'Liaison Dashboard',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
                   color: Colors.white,

@@ -60,11 +60,14 @@ class _MessageByRoomListviewWidgetState
             'posts',
           );
           await Future.delayed(const Duration(milliseconds: 1000));
-        }),
-        Future(() async {
-          setState(() => _model.requestCompleter = null);
-          await _model.waitForRequestCompleted();
-          FFAppState().update(() {});
+          await actions.subscribe(
+            'posts',
+            () async {
+              setState(() => _model.requestCompleter = null);
+              await _model.waitForRequestCompleted();
+              FFAppState().update(() {});
+            },
+          );
         }),
       ]);
     });

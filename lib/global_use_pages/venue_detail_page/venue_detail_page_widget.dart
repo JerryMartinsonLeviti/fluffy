@@ -7,6 +7,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -467,37 +469,65 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
                               ),
-                              child: Container(
-                                width: double.infinity,
-                                height: 180.0,
-                                child: CarouselSlider(
-                                  items: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.network(
-                                        'https://picsum.photos/seed/76/600',
-                                        width: 300.0,
-                                        height: 200.0,
-                                        fit: BoxFit.cover,
+                              child: Builder(
+                                builder: (context) {
+                                  final acvImageRow = functions
+                                          .filterACV('PK_ImageAssets',
+                                              containerAcvRowList.toList())
+                                          ?.toList() ??
+                                      [];
+                                  return Container(
+                                    width: double.infinity,
+                                    height: 180.0,
+                                    child: CarouselSlider.builder(
+                                      itemCount: acvImageRow.length,
+                                      itemBuilder:
+                                          (context, acvImageRowIndex, _) {
+                                        final acvImageRowItem =
+                                            acvImageRow[acvImageRowIndex];
+                                        return ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: CachedNetworkImage(
+                                            fadeInDuration:
+                                                Duration(milliseconds: 500),
+                                            fadeOutDuration:
+                                                Duration(milliseconds: 500),
+                                            imageUrl:
+                                                'https://picsum.photos/seed/76/600',
+                                            width: 300.0,
+                                            height: 200.0,
+                                            fit: BoxFit.cover,
+                                            errorWidget:
+                                                (context, error, stackTrace) =>
+                                                    Image.asset(
+                                              'assets/images/error_image.png',
+                                              width: 300.0,
+                                              height: 200.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      carouselController:
+                                          _model.carouselController ??=
+                                              CarouselController(),
+                                      options: CarouselOptions(
+                                        initialPage: max(
+                                            0, min(1, acvImageRow.length - 1)),
+                                        viewportFraction: 0.5,
+                                        disableCenter: true,
+                                        enlargeCenterPage: true,
+                                        enlargeFactor: 0.25,
+                                        enableInfiniteScroll: true,
+                                        scrollDirection: Axis.horizontal,
+                                        autoPlay: false,
+                                        onPageChanged: (index, _) =>
+                                            _model.carouselCurrentIndex = index,
                                       ),
                                     ),
-                                  ],
-                                  carouselController:
-                                      _model.carouselController ??=
-                                          CarouselController(),
-                                  options: CarouselOptions(
-                                    initialPage: 0,
-                                    viewportFraction: 0.5,
-                                    disableCenter: true,
-                                    enlargeCenterPage: true,
-                                    enlargeFactor: 0.25,
-                                    enableInfiniteScroll: true,
-                                    scrollDirection: Axis.horizontal,
-                                    autoPlay: false,
-                                    onPageChanged: (index, _) =>
-                                        _model.carouselCurrentIndex = index,
-                                  ),
-                                ),
+                                  );
+                                },
                               ),
                             ),
                             FutureBuilder<List<FunctionSpacesRow>>(

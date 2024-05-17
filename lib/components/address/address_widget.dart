@@ -47,69 +47,58 @@ class _AddressWidgetState extends State<AddressWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(
-        maxWidth: 380.0,
-      ),
       decoration: BoxDecoration(),
-      child: Wrap(
-        spacing: 0.0,
-        runSpacing: 0.0,
-        alignment: WrapAlignment.start,
-        crossAxisAlignment: WrapCrossAlignment.start,
-        direction: Axis.horizontal,
-        runAlignment: WrapAlignment.start,
-        verticalDirection: VerticalDirection.down,
-        clipBehavior: Clip.none,
-        children: [
-          Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
-            child: Container(
+      child: Align(
+        alignment: AlignmentDirectional(-1.0, -1.0),
+        child: Wrap(
+          spacing: 5.0,
+          runSpacing: 5.0,
+          alignment: WrapAlignment.start,
+          crossAxisAlignment: WrapCrossAlignment.start,
+          direction: Axis.horizontal,
+          runAlignment: WrapAlignment.start,
+          verticalDirection: VerticalDirection.down,
+          clipBehavior: Clip.none,
+          children: [
+            Container(
+              constraints: BoxConstraints(
+                maxWidth: 280.0,
+                maxHeight: 150.0,
+              ),
               decoration: BoxDecoration(),
               child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
                 children: [
-                  Align(
-                    alignment: AlignmentDirectional(-1.0, -1.0),
-                    child: Text(
-                      'Address',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            fontSize: 20.0,
-                            letterSpacing: 0.0,
-                          ),
-                    ),
+                  Text(
+                    'Address',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          fontSize: 20.0,
+                          letterSpacing: 0.0,
+                        ),
                   ),
-                  Align(
-                    alignment: AlignmentDirectional(-1.0, 0.0),
-                    child: Text(
-                      valueOrDefault<String>(
-                        widget.addressRow?.streetName1,
-                        'noStreet1',
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            letterSpacing: 0.0,
-                          ),
+                  Text(
+                    valueOrDefault<String>(
+                      widget.addressRow?.streetName1,
+                      'noStreet1',
                     ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
                   ),
-                  Align(
-                    alignment: AlignmentDirectional(-1.0, 0.0),
-                    child: Text(
-                      valueOrDefault<String>(
-                        widget.addressRow?.streetName2,
-                        'noStreet2',
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            letterSpacing: 0.0,
-                          ),
+                  Text(
+                    valueOrDefault<String>(
+                      widget.addressRow?.streetName2,
+                      'noStreet2',
                     ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
                   ),
-                  Align(
-                    alignment: AlignmentDirectional(-1.0, 0.0),
-                    child: Text(
+                  Text(
+                    valueOrDefault<String>(
                       '${widget.addressRow?.city} ${valueOrDefault<String>(
                         widget.addressRow?.regionCode,
                         'NS',
@@ -120,40 +109,44 @@ class _AddressWidgetState extends State<AddressWidget> {
                         widget.addressRow?.countryCode,
                         'US',
                       )}',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            letterSpacing: 0.0,
-                          ),
+                      'Madison, WI 53558 USA',
                     ),
+                    textAlign: TextAlign.start,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                 ],
               ),
             ),
-          ),
-          Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              constraints: BoxConstraints(
-                maxWidth: 380.0,
-                maxHeight: 200.0,
-              ),
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryText,
-              ),
+            Align(
               alignment: AlignmentDirectional(0.0, 0.0),
-              child: Text(
-                'GOOGLE MAP TBA',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Readex Pro',
-                      fontSize: 25.0,
-                      letterSpacing: 0.0,
-                    ),
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                constraints: BoxConstraints(
+                  minWidth: 380.0,
+                  minHeight: 200.0,
+                  maxWidth: 500.0,
+                  maxHeight: 300.0,
+                ),
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryText,
+                ),
+                alignment: AlignmentDirectional(0.0, 0.0),
+                child: Text(
+                  'GOOGLE MAP TBA',
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        fontSize: 25.0,
+                        letterSpacing: 0.0,
+                      ),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

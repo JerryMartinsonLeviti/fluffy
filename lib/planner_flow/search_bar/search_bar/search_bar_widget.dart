@@ -1,10 +1,7 @@
 import '/backend/supabase/supabase.dart';
-import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
-import '/planner_flow/search_bar/new_event_name_component/new_event_name_component_widget.dart';
 import '/planner_flow/search_bar/search_bar_budget_component/search_bar_budget_component_widget.dart';
 import '/planner_flow/search_bar/search_bar_category_component/search_bar_category_component_widget.dart';
 import '/planner_flow/search_bar/search_bar_date_component/search_bar_date_component_widget.dart';
@@ -12,7 +9,6 @@ import '/planner_flow/search_bar/search_bar_guest_count_component/search_bar_gue
 import '/planner_flow/search_bar/search_bar_location_component/search_bar_location_component_widget.dart';
 import '/planner_flow/search_bar/search_bar_time_component/search_bar_time_component_widget.dart';
 import '/planner_flow/search_bar/select_or_create_new_event_component/select_or_create_new_event_component_widget.dart';
-import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -41,8 +37,6 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
     super.initState();
     _model = createModel(context, () => SearchBarModel());
 
-    _model.expandableExpandableController =
-        ExpandableController(initialExpanded: false);
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -128,241 +122,6 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        FutureBuilder<List<EventPlannerRow>>(
-                          future: EventPlannerTable().queryRows(
-                            queryFn: (q) => q.eq(
-                              'FK_Planner',
-                              FFAppState().PKPlanner,
-                            ),
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: SpinKitChasingDots(
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    size: 50.0,
-                                  ),
-                                ),
-                              );
-                            }
-                            List<EventPlannerRow> containerEventPlannerRowList =
-                                snapshot.data!;
-                            return Container(
-                              constraints: BoxConstraints(
-                                maxHeight: 400.0,
-                              ),
-                              decoration: BoxDecoration(),
-                              child: FutureBuilder<List<EventsRow>>(
-                                future: EventsTable().queryRows(
-                                  queryFn: (q) => q.in_(
-                                    'PK_Events',
-                                    containerEventPlannerRowList
-                                        .map((e) => e.fKEvent)
-                                        .toList(),
-                                  ),
-                                ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: SpinKitChasingDots(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          size: 50.0,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  List<EventsRow> containerEventsRowList =
-                                      snapshot.data!;
-                                  return Container(
-                                    constraints: BoxConstraints(
-                                      maxWidth: 380.0,
-                                      maxHeight: 300.0,
-                                    ),
-                                    decoration: BoxDecoration(),
-                                    child: Container(
-                                      constraints: BoxConstraints(
-                                        minHeight: 100.0,
-                                        maxHeight: 400.0,
-                                      ),
-                                      decoration: BoxDecoration(),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 100.0,
-                                        color: Color(0x00000000),
-                                        child: ExpandableNotifier(
-                                          controller: _model
-                                              .expandableExpandableController,
-                                          child: ExpandablePanel(
-                                            header: Container(
-                                              decoration: BoxDecoration(),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    'Slected Event Name: ${valueOrDefault<String>(
-                                                      containerEventsRow
-                                                          ?.eventName,
-                                                      'noEventName',
-                                                    )}',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            collapsed: Container(
-                                              decoration: BoxDecoration(),
-                                              child: Visibility(
-                                                visible: (containerEventsRowList
-                                                        .isNotEmpty) ==
-                                                    true,
-                                                child: FlutterFlowDropDown<int>(
-                                                  controller: _model
-                                                          .dropDownValueController ??=
-                                                      FormFieldController<int>(
-                                                    _model.dropDownValue ??=
-                                                        FFAppState()
-                                                            .PKActiveEvent,
-                                                  ),
-                                                  options: List<int>.from(
-                                                      containerEventsRowList
-                                                          .map(
-                                                              (e) => e.pKEvents)
-                                                          .toList()),
-                                                  optionLabels:
-                                                      containerEventsRowList
-                                                          .map((e) =>
-                                                              e.eventName)
-                                                          .toList(),
-                                                  onChanged: (val) async {
-                                                    setState(() => _model
-                                                        .dropDownValue = val);
-                                                    FFAppState().update(() {
-                                                      FFAppState()
-                                                              .PKActiveEvent =
-                                                          _model.dropDownValue!;
-                                                    });
-                                                    _model.selectedEventRows =
-                                                        await EventsTable()
-                                                            .queryRows(
-                                                      queryFn: (q) => q.eq(
-                                                        'PK_Events',
-                                                        _model.dropDownValue,
-                                                      ),
-                                                    );
-                                                    setState(() {});
-
-                                                    setState(() {});
-                                                  },
-                                                  maxHeight: 300.0,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                  hintText: 'Please select...',
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_down_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 24.0,
-                                                  ),
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
-                                                  elevation: 2.0,
-                                                  borderColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                  borderWidth: 2.0,
-                                                  borderRadius: 8.0,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          16.0, 4.0, 16.0, 4.0),
-                                                  hidesUnderline: true,
-                                                  isOverButton: true,
-                                                  isSearchable: false,
-                                                  isMultiSelect: false,
-                                                  labelText:
-                                                      'Select An Existing Event',
-                                                  labelTextStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                ),
-                                              ),
-                                            ),
-                                            expanded: Container(
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                border: Border.all(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondary,
-                                                ),
-                                              ),
-                                              child: wrapWithModel(
-                                                model: _model
-                                                    .newEventNameComponentModel,
-                                                updateCallback: () =>
-                                                    setState(() {}),
-                                                child:
-                                                    NewEventNameComponentWidget(),
-                                              ),
-                                            ),
-                                            theme: ExpandableThemeData(
-                                              tapHeaderToExpand: true,
-                                              tapBodyToExpand: false,
-                                              tapBodyToCollapse: false,
-                                              headerAlignment:
-                                                  ExpandablePanelHeaderAlignment
-                                                      .center,
-                                              hasIcon: true,
-                                              expandIcon: Icons.add_box,
-                                              collapseIcon: Icons.add,
-                                              iconColor: Color(0xFFBB5757),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            );
-                          },
-                        ),
                         Wrap(
                           spacing: 15.0,
                           runSpacing: 15.0,

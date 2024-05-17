@@ -1,5 +1,4 @@
 import '/backend/supabase/supabase.dart';
-import '/components/event_basics/event_basics_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -28,16 +27,10 @@ class SelectOrCreateNewEventComponentModel
   FormFieldController<int>? dropDownValueController;
   // Stores action output result for [Backend Call - Query Rows] action in DropDown widget.
   List<EventsRow>? selectedEventRows;
-  // Model for EventBasics component.
-  late EventBasicsModel eventBasicsModel;
 
   @override
-  void initState(BuildContext context) {
-    eventBasicsModel = createModel(context, () => EventBasicsModel());
-  }
+  void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    eventBasicsModel.dispose();
-  }
+  void dispose() {}
 }

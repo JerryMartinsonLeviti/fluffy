@@ -1,5 +1,4 @@
 import '/backend/supabase/supabase.dart';
-import '/components/event_basics/event_basics_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -382,32 +381,6 @@ class _SelectOrCreateNewEventComponentWidgetState
                                             fontFamily: 'Readex Pro',
                                             letterSpacing: 0.0,
                                           ),
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      height: double.infinity,
-                                      constraints: BoxConstraints(
-                                        maxHeight: 190.0,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          if (_model.selectedEventRow != null)
-                                            wrapWithModel(
-                                              model: _model.eventBasicsModel,
-                                              updateCallback: () =>
-                                                  setState(() {}),
-                                              child: EventBasicsWidget(
-                                                currentEventRow:
-                                                    _model.selectedEventRow!,
-                                              ),
-                                            ),
-                                        ],
-                                      ),
                                     ),
                                   ],
                                 ),

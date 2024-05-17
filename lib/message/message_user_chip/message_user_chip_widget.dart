@@ -77,7 +77,10 @@ class _MessageUserChipWidgetState extends State<MessageUserChipWidget> {
                     ),
                   ),
                   image: NetworkImage(
-                    widget.userImageURL!,
+                    valueOrDefault<String>(
+                      widget.userImageURL,
+                      'https://picsum.photos/200',
+                    ),
                   ),
                   width: 44.0,
                   height: 44.0,

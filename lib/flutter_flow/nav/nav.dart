@@ -41,12 +41,40 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => RTBSentPageWidget(),
+      errorBuilder: (context, state) => appStateNotifier.showSplashImage
+          ? Builder(
+              builder: (context) => Container(
+                color: Color(0x006D2A2A),
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/SilverSpike_Logo_Standalone.png',
+                    width: 200.0,
+                    height: 200.0,
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+              ),
+            )
+          : SplashPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => RTBSentPageWidget(),
+          builder: (context, _) => appStateNotifier.showSplashImage
+              ? Builder(
+                  builder: (context) => Container(
+                    color: Color(0x006D2A2A),
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/SilverSpike_Logo_Standalone.png',
+                        width: 200.0,
+                        height: 200.0,
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ),
+                  ),
+                )
+              : SplashPageWidget(),
         ),
         FFRoute(
           name: 'HomePage',

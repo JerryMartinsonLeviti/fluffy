@@ -72,7 +72,7 @@ String decodeUoMBoolIntoString(bool eventUoMBool) {
   return response;
 }
 
-String? filterACV(
+List<AcvRow>? filterACV(
   String typeKey,
   List<AcvRow> acvIn,
 ) {
@@ -80,10 +80,6 @@ String? filterACV(
   List<AcvRow> filteredList =
       acvIn.where((row) => row.data[typeKey] != null).toList();
 
-  // Return the typeKey if any rows match, otherwise return null
-  if (filteredList.isNotEmpty) {
-    return typeKey;
-  } else {
-    return null;
-  }
+  // Return the list of matching AcvRow objects
+  return filteredList;
 }

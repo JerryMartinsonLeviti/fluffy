@@ -196,7 +196,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                       decoration: BoxDecoration(),
                                       child: Container(
                                         width: double.infinity,
-                                        height: double.infinity,
+                                        height: 100.0,
                                         color: Color(0x00000000),
                                         child: ExpandableNotifier(
                                           controller: _model

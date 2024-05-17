@@ -41,12 +41,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => SplashPageWidget(),
+      errorBuilder: (context, state) => RTBSentPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => SplashPageWidget(),
+          builder: (context, _) => RTBSentPageWidget(),
         ),
         FFRoute(
           name: 'HomePage',
@@ -271,11 +271,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'MarkdownEntryWidgetTest',
           path: '/markdownEntryWidgetTest',
           builder: (context, params) => MarkdownEntryWidgetTestWidget(),
-        ),
-        FFRoute(
-          name: 'SearchBar_BudgetModal',
-          path: '/searchBarBudgetModal',
-          builder: (context, params) => SearchBarBudgetModalWidget(),
         ),
         FFRoute(
           name: 'SearchBar_LocationModal',

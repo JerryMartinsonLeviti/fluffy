@@ -179,7 +179,10 @@ class _SearchBarGuestCountComponentWidgetState
                                             ),
                                       ),
                                       count: _model.countControllerValue ??=
-                                          _model.guestCount!,
+                                          valueOrDefault<int>(
+                                        _model.guestCount,
+                                        10,
+                                      ),
                                       updateCount: (count) async {
                                         setState(() => _model
                                             .countControllerValue = count);

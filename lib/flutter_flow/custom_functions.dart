@@ -24,3 +24,50 @@ List<String> convertCartStateEnumToStringList(
 String convertCartStateEnumToString(CartStates cartStateEnumValue) {
   return cartStateEnumValue.serialize();
 }
+
+int stringToCents(String dollarStringWithDecimal) {
+  // Split the string at the decimal point
+  List<String> parts = dollarStringWithDecimal.split('.');
+
+  // If there is no decimal point, multiply by 100 and return
+  if (parts.length == 1) {
+    return int.parse(parts[0]) * 100;
+  }
+
+  // If there is a decimal point, process the dollars and cents
+  int dollars = int.parse(parts[0]);
+  // Pad the cents to ensure two digits and parse as integer
+  int cents = int.parse(parts[1].padRight(2, '0'));
+
+  // Combine dollars and cents into total cents
+  int totalCents = dollars * 100 + cents;
+  return totalCents;
+}
+
+double centsIntToDollarDouble(int centsInt) {
+  double dollarDouble = centsInt / 100;
+  return dollarDouble;
+}
+
+bool encodeBudgetStringtoBool(String budgetString) {
+  switch (budgetString) {
+    case "Per Event":
+      return true;
+    case "Per Guest":
+      return false;
+    case "Per Person":
+      return false;
+    default:
+      throw ArgumentError("Invalid budget string: $budgetString");
+  }
+}
+
+String decodeUoMBoolIntoString(bool eventUoMBool) {
+  String response = "Per Event";
+  if (eventUoMBool == true) {
+    response = "Per Event";
+  } else {
+    response = "Per Guest";
+  }
+  return response;
+}

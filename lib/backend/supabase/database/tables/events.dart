@@ -34,4 +34,7 @@ class EventsRow extends SupabaseDataRow {
 
   int get budgetInCents => getField<int>('budgetInCents')!;
   set budgetInCents(int value) => setField<int>('budgetInCents', value);
+
+  bool get budgetIsPerEvent => getField<bool>('budgetIsPerEvent')!;
+  set budgetIsPerEvent(bool value) => setField<bool>('budgetIsPerEvent', value);
 }

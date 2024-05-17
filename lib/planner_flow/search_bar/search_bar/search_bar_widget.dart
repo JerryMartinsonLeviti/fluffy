@@ -234,7 +234,14 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                     .resolve(Directionality.of(
                                                         context)),
                                                 child:
-                                                    SearchBarBudgetComponentWidget(),
+                                                    SearchBarBudgetComponentWidget(
+                                                  eventRowIn:
+                                                      containerEventsRow!,
+                                                  onBudgetApplied:
+                                                      (newBudgetInCents) async {
+                                                    FFAppState().update(() {});
+                                                  },
+                                                ),
                                               );
                                             },
                                           ).then((value) => setState(() {}));
@@ -555,7 +562,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                       valueOrDefault<String>(
                                         containerEventsRow?.guestCount
                                             ?.toString(),
-                                        '0',
+                                        '-1',
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium

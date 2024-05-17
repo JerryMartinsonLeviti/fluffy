@@ -75,8 +75,6 @@ export '/vendor_flow/vendor_product_config/vendor_product_config_widget.dart'
     show VendorProductConfigWidget;
 export '/archive/markdown_entry_widget_test/markdown_entry_widget_test_widget.dart'
     show MarkdownEntryWidgetTestWidget;
-export '/planner_flow/search_bar/search_bar_archive/search_bar_budget_modal/search_bar_budget_modal_widget.dart'
-    show SearchBarBudgetModalWidget;
 export '/planner_flow/search_bar/search_bar_archive/search_bar_location_modal/search_bar_location_modal_widget.dart'
     show SearchBarLocationModalWidget;
 export '/planner_flow/search_bar/search_bar_archive/search_bar_category_modal/search_bar_category_modal_widget.dart'

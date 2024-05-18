@@ -6,7 +6,6 @@ import '/components/product_detail_page_options_language/product_detail_page_opt
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -64,11 +63,11 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
-          child: FutureBuilder<List<AcvRow>>(
-            future: AcvTable().queryRows(
+          child: FutureBuilder<List<VacvRow>>(
+            future: VacvTable().queryRows(
               queryFn: (q) => q.eq(
-                'PK_Venues',
-                widget.venueRow?.pKVenues,
+                'PK_ParentVendor',
+                widget.venueRow?.fKVendor,
               ),
             ),
             builder: (context, snapshot) {
@@ -85,7 +84,7 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                   ),
                 );
               }
-              List<AcvRow> containerAcvRowList = snapshot.data!;
+              List<VacvRow> containerVacvRowList = snapshot.data!;
               return Container(
                 decoration: BoxDecoration(),
                 child: FutureBuilder<List<EventsRow>>(
@@ -122,6 +121,36 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
+                            Builder(
+                              builder: (context) {
+                                final idx = containerVacvRowList.toList();
+                                return Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children:
+                                      List.generate(idx.length, (idxIndex) {
+                                    final idxItem = idx[idxIndex];
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          'Hello World',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [],
+                                        ),
+                                      ],
+                                    );
+                                  }),
+                                );
+                              },
+                            ),
                             Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -134,14 +163,6 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
-                                  ),
-                                  child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: wrapWithModel(
-                                      model: _model.plannerAppBarComponentModel,
-                                      updateCallback: () => setState(() {}),
-                                      child: PlannerAppBarComponentWidget(),
-                                    ),
                                   ),
                                 ),
                                 Row(
@@ -471,20 +492,20 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                               ),
                               child: Builder(
                                 builder: (context) {
-                                  final acvImageRow = functions
-                                          .filterACV('PK_ImageAssets',
-                                              containerAcvRowList.toList())
+                                  final imageIdx = functions
+                                          .filterVacv(
+                                              containerVacvRowList.toList(),
+                                              'PK_ImageAssets')
                                           ?.toList() ??
                                       [];
                                   return Container(
                                     width: double.infinity,
                                     height: 180.0,
                                     child: CarouselSlider.builder(
-                                      itemCount: acvImageRow.length,
-                                      itemBuilder:
-                                          (context, acvImageRowIndex, _) {
-                                        final acvImageRowItem =
-                                            acvImageRow[acvImageRowIndex];
+                                      itemCount: imageIdx.length,
+                                      itemBuilder: (context, imageIdxIndex, _) {
+                                        final imageIdxItem =
+                                            imageIdx[imageIdxIndex];
                                         return ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
@@ -513,8 +534,8 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                           _model.carouselController ??=
                                               CarouselController(),
                                       options: CarouselOptions(
-                                        initialPage: max(
-                                            0, min(1, acvImageRow.length - 1)),
+                                        initialPage:
+                                            max(0, min(1, imageIdx.length - 1)),
                                         viewportFraction: 0.5,
                                         disableCenter: true,
                                         enlargeCenterPage: true,

@@ -83,3 +83,15 @@ List<AcvRow>? filterACV(
   // Return the list of matching AcvRow objects
   return filteredList;
 }
+
+List<VacvRow>? filterVacv(
+  List<VacvRow> vacvIn,
+  String typeKey,
+) {
+  // Filter the list for rows where the typeKey column is not null
+  List<VacvRow> filteredList =
+      vacvIn.where((row) => row.data[typeKey] != null).toList();
+
+  // Return the list of matching AcvRow objects
+  return filteredList;
+}

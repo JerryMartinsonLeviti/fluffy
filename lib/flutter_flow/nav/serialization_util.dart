@@ -263,6 +263,8 @@ dynamic deserializeParam<T>(
             return MessagesRow(data);
           case AddressesRow:
             return AddressesRow(data);
+          case VdrXrefRow:
+            return VdrXrefRow(data);
           case FaqAssetsRow:
             return FaqAssetsRow(data);
           case DescriptionAssetsRow:
@@ -307,6 +309,8 @@ dynamic deserializeParam<T>(
             return RmuViewRow(data);
           case CartsRow:
             return CartsRow(data);
+          case VacvRow:
+            return VacvRow(data);
           case VendorRoomsViewRow:
             return VendorRoomsViewRow(data);
           case TasksRow:

@@ -15,6 +15,8 @@ import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 //import 'package:supaflow/supaflow.dart';
 import 'package:storage_client/src/types.dart';
+import 'package:flutter/services.dart';
+
 
 Future<String?> loadImageToSupabase(String imageFilePathString) async {
   // Add your function code here!
@@ -47,7 +49,10 @@ Future<String?> loadImageToSupabase(String imageFilePathString) async {
     // Define the bucket name and file path for Supabase
     const bucketName = 'UserAssets';
     filePath = basename(file.path);
-
+    final now = DateTime.now();
+    final formatter = DateFormat('yyyyMMddHHmmssSSS');
+    final formatted = formatter.format(now);
+    filePath = 'Vendor/$formatted';
     final storageBucket = SupaFlow.client.storage.from(bucketName);
     await storageBucket.uploadBinary(
       filePath,

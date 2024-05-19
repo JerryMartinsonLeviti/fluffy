@@ -146,7 +146,7 @@ class _CartOptionReviewCardWidgetState
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                              .alternate,
                                           fontSize: 30.0,
                                           letterSpacing: 0.0,
                                         ),

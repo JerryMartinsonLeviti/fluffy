@@ -470,9 +470,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                   child: Container(
                     width: 1004.0,
                     height: 230.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
+                    decoration: BoxDecoration(),
                     child: Align(
                       alignment: AlignmentDirectional(-1.0, 0.0),
                       child: Column(

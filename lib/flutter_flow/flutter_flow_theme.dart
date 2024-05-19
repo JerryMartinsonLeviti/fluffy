@@ -34,10 +34,8 @@ abstract class FlutterFlowTheme {
 
   late Color customColor2;
   late Color customColor24;
-  late Color customColor13;
   late Color customColor14;
   late Color customColor12;
-  late Color customColor15;
   late Color customColor18;
   late Color customColor20;
   late Color customColor21;
@@ -45,14 +43,16 @@ abstract class FlutterFlowTheme {
   late Color customColor27;
   late Color customColor28;
   late Color customColor5;
-  late Color customColor1;
-  late Color customColor3;
   late Color customColor6;
   late Color customColor7;
   late Color customColor8;
   late Color customColor9;
   late Color customColor11;
   late Color customColor4;
+  late Color customColor10;
+  late Color customColor15;
+  late Color customColor3;
+  late Color customColor1;
 
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
@@ -131,23 +131,21 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color alternate = const Color(0xFF722C2A);
   late Color primaryText = const Color(0xFF474B4E);
   late Color secondaryText = const Color(0xFF57636C);
-  late Color primaryBackground = const Color(0xFFFDEFEA);
-  late Color secondaryBackground = const Color(0xFFFCEBDF);
+  late Color primaryBackground = const Color(0xFFFDF9F4);
+  late Color secondaryBackground = const Color(0xFFFAEFDE);
   late Color accent1 = const Color(0xFFA05547);
-  late Color accent2 = const Color(0xFF435331);
+  late Color accent2 = const Color(0xFF354E5C);
   late Color accent3 = const Color(0xFFA1685B);
   late Color accent4 = const Color(0xFFE07C5A);
-  late Color success = const Color(0xFF3D6039);
+  late Color success = const Color(0xFF435331);
   late Color warning = const Color(0xFF7A1010);
-  late Color error = const Color(0xFFB93353);
+  late Color error = const Color(0xFF0B788C);
   late Color info = const Color(0xFFFDF9F4);
 
   late Color customColor2 = Color(0xFFEABEA7);
   late Color customColor24 = Color(0xFF4D3D34);
-  late Color customColor13 = Color(0xFFE3D8B4);
   late Color customColor14 = Color(0xFF8B736A);
   late Color customColor12 = Color(0xFF6D2623);
-  late Color customColor15 = Color(0xFFE07C5A);
   late Color customColor18 = Color(0xFF7D3430);
   late Color customColor20 = Color(0xFFA67E7B);
   late Color customColor21 = Color(0xFFE07C5A);
@@ -155,14 +153,16 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color customColor27 = Color(0xFFCD6753);
   late Color customColor28 = Color(0xFF977B65);
   late Color customColor5 = Color(0xFFDC9843);
-  late Color customColor1 = Color(0xFF8AAA71);
-  late Color customColor3 = Color(0xFF63804C);
   late Color customColor6 = Color(0xFFDD9944);
   late Color customColor7 = Color(0xFFEC7E01);
   late Color customColor8 = Color(0xFFF4C292);
   late Color customColor9 = Color(0xFFEAC489);
-  late Color customColor11 = Color(0xFFBE5B3F);
-  late Color customColor4 = Color(0xFFFFCFB1);
+  late Color customColor11 = Color(0xFF435331);
+  late Color customColor4 = Color(0xFF7F8E7B);
+  late Color customColor10 = Color(0xFF626F5F);
+  late Color customColor15 = Color(0xFFE07C5A);
+  late Color customColor3 = Color(0xFF63804C);
+  late Color customColor1 = Color(0xFF8AAA71);
 }
 
 abstract class Typography {

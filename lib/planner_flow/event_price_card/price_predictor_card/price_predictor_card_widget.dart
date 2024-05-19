@@ -120,6 +120,9 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                   )
                                 ],
                                 borderRadius: BorderRadius.circular(24.0),
+                                border: Border.all(
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                ),
                               ),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,

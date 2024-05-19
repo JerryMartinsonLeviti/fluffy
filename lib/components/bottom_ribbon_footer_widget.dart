@@ -135,7 +135,7 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                         'About Us',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
-                              color: FlutterFlowTheme.of(context).customColor4,
+                              color: FlutterFlowTheme.of(context).customColor2,
                               fontSize: 22.0,
                               letterSpacing: 0.0,
                             ),
@@ -145,7 +145,7 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                       'Our Story',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).customColor4,
+                            color: FlutterFlowTheme.of(context).customColor2,
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                           ),
@@ -154,7 +154,7 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                       'FAQs',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).customColor4,
+                            color: FlutterFlowTheme.of(context).customColor2,
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                           ),
@@ -163,7 +163,7 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                       'Help Center',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).customColor4,
+                            color: FlutterFlowTheme.of(context).customColor2,
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                           ),
@@ -172,7 +172,7 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                       'Terms & Privacy',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).customColor4,
+                            color: FlutterFlowTheme.of(context).customColor2,
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                           ),
@@ -186,7 +186,7 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                       'Partner Portal',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).customColor4,
+                            color: FlutterFlowTheme.of(context).customColor2,
                             fontSize: 22.0,
                             letterSpacing: 0.0,
                           ),
@@ -195,7 +195,7 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                       'Become a Partner',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).customColor4,
+                            color: FlutterFlowTheme.of(context).customColor2,
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                           ),
@@ -204,7 +204,7 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                       'Partner FAQs',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).customColor4,
+                            color: FlutterFlowTheme.of(context).customColor2,
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                           ),

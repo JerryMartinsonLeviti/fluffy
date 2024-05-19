@@ -690,159 +690,167 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                               ),
                             ),
                           ),
-                          Container(
-                            width: 280.0,
-                            height: 280.0,
-                            constraints: BoxConstraints(
-                              maxWidth: 190.0,
-                              maxHeight: 190.0,
-                            ),
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 4.0,
-                                  color: Color(0x33000000),
-                                  offset: Offset(
-                                    0.0,
-                                    2.0,
-                                  ),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Align(
+                          Opacity(
+                            opacity: 0.5,
+                            child: Container(
+                              width: 280.0,
+                              height: 280.0,
+                              constraints: BoxConstraints(
+                                maxWidth: 190.0,
+                                maxHeight: 190.0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 4.0,
+                                    color: Color(0x33000000),
+                                    offset: Offset(
+                                      0.0,
+                                      2.0,
+                                    ),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
                               alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.people_alt_outlined,
-                                    color: FlutterFlowTheme.of(context)
-                                        .customColor1,
-                                    size: 58.0,
-                                  ),
-                                  Wrap(
-                                    spacing: 0.0,
-                                    runSpacing: 0.0,
-                                    alignment: WrapAlignment.start,
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.start,
-                                    direction: Axis.horizontal,
-                                    runAlignment: WrapAlignment.start,
-                                    verticalDirection: VerticalDirection.down,
-                                    clipBehavior: Clip.none,
-                                    children: [
-                                      Text(
-                                        'Team Projects',
+                              child: Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.people_alt_outlined,
+                                      color: FlutterFlowTheme.of(context)
+                                          .customColor1,
+                                      size: 58.0,
+                                    ),
+                                    Wrap(
+                                      spacing: 0.0,
+                                      runSpacing: 0.0,
+                                      alignment: WrapAlignment.start,
+                                      crossAxisAlignment:
+                                          WrapCrossAlignment.start,
+                                      direction: Axis.horizontal,
+                                      runAlignment: WrapAlignment.start,
+                                      verticalDirection: VerticalDirection.down,
+                                      clipBehavior: Clip.none,
+                                      children: [
+                                        Text(
+                                          'Team Projects',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .customColor1,
+                                                fontSize: 28.0,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                    Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Text(
+                                        'Coming Soon!',
+                                        textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .customColor1,
-                                              fontSize: 28.0,
+                                                      .accent4,
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
-                                    ],
-                                  ),
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Text(
-                                      'Coming Soon!',
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent4,
-                                            fontSize: 18.0,
-                                            letterSpacing: 0.0,
-                                          ),
                                     ),
-                                  ),
-                                ],
-                              ).animateOnActionTrigger(
-                                animationsMap[
-                                    'columnOnActionTriggerAnimation3']!,
+                                  ],
+                                ).animateOnActionTrigger(
+                                  animationsMap[
+                                      'columnOnActionTriggerAnimation3']!,
+                                ),
                               ),
                             ),
                           ),
-                          Container(
-                            width: 280.0,
-                            height: 280.0,
-                            constraints: BoxConstraints(
-                              maxWidth: 190.0,
-                              maxHeight: 190.0,
-                            ),
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 4.0,
-                                  color: Color(0x33000000),
-                                  offset: Offset(
-                                    0.0,
-                                    2.0,
-                                  ),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Align(
+                          Opacity(
+                            opacity: 0.5,
+                            child: Container(
+                              width: 280.0,
+                              height: 280.0,
+                              constraints: BoxConstraints(
+                                maxWidth: 190.0,
+                                maxHeight: 190.0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 4.0,
+                                    color: Color(0x33000000),
+                                    offset: Offset(
+                                      0.0,
+                                      2.0,
+                                    ),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
                               alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  FaIcon(
-                                    FontAwesomeIcons.poll,
-                                    color: FlutterFlowTheme.of(context)
-                                        .customColor1,
-                                    size: 58.0,
-                                  ),
-                                  Text(
-                                    'Polling',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .customColor1,
-                                          fontSize: 28.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Text(
-                                      'Coming Soon!',
-                                      textAlign: TextAlign.center,
+                              child: Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    FaIcon(
+                                      FontAwesomeIcons.poll,
+                                      color: FlutterFlowTheme.of(context)
+                                          .customColor1,
+                                      size: 58.0,
+                                    ),
+                                    Text(
+                                      'Polling',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             color: FlutterFlowTheme.of(context)
-                                                .accent4,
-                                            fontSize: 18.0,
+                                                .customColor1,
+                                            fontSize: 28.0,
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                  ),
-                                ],
-                              ).animateOnActionTrigger(
-                                animationsMap[
-                                    'columnOnActionTriggerAnimation4']!,
+                                    Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Text(
+                                        'Coming Soon!',
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent4,
+                                              fontSize: 18.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ),
+                                  ],
+                                ).animateOnActionTrigger(
+                                  animationsMap[
+                                      'columnOnActionTriggerAnimation4']!,
+                                ),
                               ),
                             ),
                           ),

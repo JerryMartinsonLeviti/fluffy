@@ -160,7 +160,7 @@ class _EventCartReviewPageWidgetState extends State<EventCartReviewPageWidget> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
-                                'Find Your Perfect Match ',
+                                'Decide On Your Perfect Match ',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(

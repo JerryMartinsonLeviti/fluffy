@@ -21,9 +21,11 @@ import 'package:flutter/services.dart';
 Future<String?> loadImageToSupabase(String imageFilePathString) async {
   // Add your function code here!
   String filePath = "Vendor";
+  String fileExtension = imageFilePathString.split('.').last;
   try {
     String path = imageFilePathString;
     File file;
+
 
     if (Uri.parse(path).isAbsolute) {
       // It's a URL, download the file
@@ -52,7 +54,7 @@ Future<String?> loadImageToSupabase(String imageFilePathString) async {
     final now = DateTime.now();
     final formatter = DateFormat('yyyyMMddHHmmssSSS');
     final formatted = formatter.format(now);
-    filePath = 'Vendor/$formatted';
+    filePath = 'Vendor/$formatted.$fileExtension';
     final storageBucket = SupaFlow.client.storage.from(bucketName);
     await storageBucket.uploadBinary(
       filePath,

@@ -49,140 +49,146 @@ class _PlannerAppBarComponentWidgetState
 
     return Container(
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).tertiary,
+        color: Color(0x00FFCFB1),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Align(
-            alignment: AlignmentDirectional(-1.0, 0.0),
-            child: InkWell(
-              splashColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onTap: () async {
-                context.pushNamed('SplashPage');
-              },
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Image.network(
-                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/planner-flow-i-i-3cona6/assets/i7w5u08iinav/SilverSpike_Logo_Version_2.png',
-                  width: 140.0,
-                  height: 50.0,
-                  fit: BoxFit.contain,
-                  alignment: Alignment(-1.0, 0.0),
+      child: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 30.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: AlignmentDirectional(-1.0, 0.0),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed('SplashPage');
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.network(
+                    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/planner-flow-i-i-3cona6/assets/i7w5u08iinav/SilverSpike_Logo_Version_2.png',
+                    width: 140.0,
+                    height: 50.0,
+                    fit: BoxFit.contain,
+                    alignment: Alignment(-1.0, 0.0),
+                  ),
                 ),
               ),
             ),
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              FlutterFlowIconButton(
-                borderRadius: 20.0,
-                borderWidth: 1.0,
-                buttonSize: 50.0,
-                icon: FaIcon(
-                  FontAwesomeIcons.storeAlt,
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 25.0,
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                FlutterFlowIconButton(
+                  borderRadius: 20.0,
+                  borderWidth: 1.0,
+                  buttonSize: 50.0,
+                  icon: FaIcon(
+                    FontAwesomeIcons.storeAlt,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 25.0,
+                  ),
+                  onPressed: () async {
+                    context.pushNamed('MarketplaceFirstPage');
+                  },
                 ),
-                onPressed: () async {
-                  context.pushNamed('MarketplaceFirstPage');
-                },
-              ),
-              FlutterFlowIconButton(
-                borderRadius: 20.0,
-                borderWidth: 1.0,
-                buttonSize: 50.0,
-                icon: Icon(
-                  Icons.favorite_rounded,
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 30.0,
+                FlutterFlowIconButton(
+                  borderRadius: 20.0,
+                  borderWidth: 1.0,
+                  buttonSize: 50.0,
+                  icon: Icon(
+                    Icons.favorite_rounded,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 30.0,
+                  ),
+                  onPressed: () async {
+                    context.pushNamed('Step3_5-FavoritesPage');
+                  },
                 ),
-                onPressed: () async {
-                  context.pushNamed('Step3_5-FavoritesPage');
-                },
-              ),
-              FlutterFlowIconButton(
-                borderRadius: 20.0,
-                borderWidth: 1.0,
-                icon: Icon(
-                  Icons.notifications_active_rounded,
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 30.0,
-                ),
-                onPressed: () async {
-                  _model.plannerRows = await PlannersTable().queryRows(
-                    queryFn: (q) => q.eq(
-                      'PK_Planners',
-                      FFAppState().PKPlanner,
-                    ),
-                  );
-                  _model.userInfoRows = await UserInfosTable().queryRows(
-                    queryFn: (q) => q.eq(
-                      'FK_Planner',
-                      FFAppState().PKPlanner,
-                    ),
-                  );
-
-                  context.pushNamed(
-                    'MessagesByEvent',
-                    queryParameters: {
-                      'userInfoRow': serializeParam(
-                        _model.userInfoRows?.first,
-                        ParamType.SupabaseRow,
+                FlutterFlowIconButton(
+                  borderRadius: 20.0,
+                  borderWidth: 1.0,
+                  icon: Icon(
+                    Icons.notifications_active_rounded,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 30.0,
+                  ),
+                  onPressed: () async {
+                    _model.plannerRows = await PlannersTable().queryRows(
+                      queryFn: (q) => q.eq(
+                        'PK_Planners',
+                        FFAppState().PKPlanner,
                       ),
-                    }.withoutNulls,
-                  );
+                    );
+                    _model.userInfoRows = await UserInfosTable().queryRows(
+                      queryFn: (q) => q.eq(
+                        'FK_Planner',
+                        FFAppState().PKPlanner,
+                      ),
+                    );
 
-                  setState(() {});
-                },
-              ),
-              FlutterFlowIconButton(
-                borderRadius: 0.0,
-                borderWidth: 1.0,
-                buttonSize: 50.0,
-                icon: Icon(
-                  Icons.dashboard,
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 30.0,
+                    context.pushNamed(
+                      'MessagesByEvent',
+                      queryParameters: {
+                        'userInfoRow': serializeParam(
+                          _model.userInfoRows?.first,
+                          ParamType.SupabaseRow,
+                        ),
+                      }.withoutNulls,
+                    );
+
+                    setState(() {});
+                  },
                 ),
-                onPressed: () async {
-                  context.pushNamed('PlannerDashboard');
-                },
-              ),
-              FlutterFlowIconButton(
-                borderRadius: 20.0,
-                borderWidth: 1.0,
-                buttonSize: 40.0,
-                icon: Icon(
-                  Icons.quiz,
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 26.0,
+                FlutterFlowIconButton(
+                  borderRadius: 0.0,
+                  borderWidth: 1.0,
+                  buttonSize: 50.0,
+                  icon: Icon(
+                    Icons.dashboard,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 30.0,
+                  ),
+                  onPressed: () async {
+                    context.pushNamed('PlannerDashboard');
+                  },
                 ),
-                onPressed: () {
-                  print('IconButton pressed ...');
-                },
+                FlutterFlowIconButton(
+                  borderRadius: 20.0,
+                  borderWidth: 1.0,
+                  buttonSize: 40.0,
+                  icon: Icon(
+                    Icons.question_mark,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 26.0,
+                  ),
+                  onPressed: () {
+                    print('IconButton pressed ...');
+                  },
+                ),
+              ],
+            ),
+            Align(
+              alignment: AlignmentDirectional(1.0, -1.0),
+              child: Container(
+                width: 50.0,
+                height: 50.0,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: Image.network(
+                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/bjcNcUcJFzipGWqoNchx/assets/wez2vnbwfphg/stock_organizer_image_(cropped).png',
+                  fit: BoxFit.cover,
+                ),
               ),
-            ],
-          ),
-          Container(
-            width: 50.0,
-            height: 50.0,
-            clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
             ),
-            child: Image.network(
-              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/bjcNcUcJFzipGWqoNchx/assets/wez2vnbwfphg/stock_organizer_image_(cropped).png',
-              fit: BoxFit.cover,
-            ),
-          ),
-        ].divide(SizedBox(width: 30.0)),
+          ].divide(SizedBox(width: 30.0)),
+        ),
       ),
     );
   }

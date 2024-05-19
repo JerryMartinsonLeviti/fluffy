@@ -92,9 +92,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => Step2SearchResultShoppingWidget(),
         ),
         FFRoute(
-          name: 'ProductDetailPage',
-          path: '/productDetailPage',
-          builder: (context, params) => ProductDetailPageWidget(),
+          name: 'Archived-ProductDetailPage',
+          path: '/archivedProductDetailPage',
+          builder: (context, params) => ArchivedProductDetailPageWidget(),
         ),
         FFRoute(
           name: 'PlannerDashboard',
@@ -381,6 +381,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/manageEventsMyEventsEventCommandCtr',
           builder: (context, params) =>
               ManageEventsMyEventsEventCommandCtrWidget(),
+        ),
+        FFRoute(
+          name: 'ListingPage',
+          path: '/listingPage',
+          builder: (context, params) => ListingPageWidget(),
+        ),
+        FFRoute(
+          name: 'ListingPage_Grayed_Out',
+          path: '/listingPageGrayedOut',
+          builder: (context, params) => ListingPageGrayedOutWidget(),
+        ),
+        FFRoute(
+          name: 'ListingPageCopy',
+          path: '/listingPageCopy',
+          builder: (context, params) => ListingPageCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

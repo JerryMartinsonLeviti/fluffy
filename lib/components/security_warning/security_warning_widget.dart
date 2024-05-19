@@ -46,7 +46,7 @@ class _SecurityWarningWidgetState extends State<SecurityWarningWidget> {
       children: [
         Icon(
           Icons.security_rounded,
-          color: FlutterFlowTheme.of(context).accent2,
+          color: FlutterFlowTheme.of(context).customColor15,
           size: 50.0,
         ),
         Align(

@@ -1,3 +1,4 @@
+import '/components/bottom_ribbon_footer_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -210,7 +211,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                                           'Outfit',
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondary,
+                                                                          .primary,
                                                                       fontSize:
                                                                           44.0,
                                                                       letterSpacing:
@@ -265,7 +266,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                                         fontFamily:
                                                                             'Outfit',
                                                                         color: FlutterFlowTheme.of(context)
-                                                                            .secondary,
+                                                                            .tertiary,
                                                                         fontSize:
                                                                             30.0,
                                                                         letterSpacing:
@@ -352,8 +353,9 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                                         0.0,
                                                                         0.0,
                                                                         0.0),
-                                                            color: Color(
-                                                                0xFF1E3B41),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondary,
                                                             textStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -414,8 +416,9 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                                       0.0,
                                                                       0.0,
                                                                       0.0),
-                                                          color:
-                                                              Color(0xFF1E3B41),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondary,
                                                           textStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -496,7 +499,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                       ),
                                 ),
                                 Text(
-                                  '...always within budget',
+                                  '...always in budget',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -574,234 +577,22 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                 ),
                 Divider(
                   thickness: 1.5,
-                  indent: 150.0,
-                  endIndent: 150.0,
-                  color: FlutterFlowTheme.of(context).customColor3,
+                  indent: 180.0,
+                  endIndent: 0.0,
+                  color: FlutterFlowTheme.of(context).accent2,
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Container(
                     width: 1029.0,
-                    height: 337.0,
+                    height: 302.0,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).alternate,
                     ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 30.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed('DevModeAccess');
-                                      },
-                                      child: Container(
-                                        width: 100.0,
-                                        height: 100.0,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Image.network(
-                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/bjcNcUcJFzipGWqoNchx/assets/w179wbqfa7ql/SilverSpike_Logo_Standalone_White.png',
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: AlignmentDirectional(-1.0, -1.0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5.0, 0.0, 5.0, 0.0),
-                                      child: FFButtonWidget(
-                                        onPressed: () async {
-                                          if (FFAppState().DevModeEnabled ==
-                                              true) {
-                                            context
-                                                .pushNamed('LiaisonDashboard');
-                                          }
-                                        },
-                                        text: 'SilverSpike',
-                                        options: FFButtonOptions(
-                                          width: 245.0,
-                                          height: 62.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  24.0, 0.0, 24.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          textStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .titleLarge
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .info,
-                                                fontSize: 40.0,
-                                                letterSpacing: 0.0,
-                                              ),
-                                          elevation: 3.0,
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(24.0),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 20.0, 0.0, 0.0),
-                                    child: Text(
-                                      'About Us',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context)
-                                                .tertiary,
-                                            fontSize: 22.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
-                                  ),
-                                  Text(
-                                    'Our Story',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          fontSize: 16.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                  Text(
-                                    'FAQs',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          fontSize: 16.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                  Text(
-                                    'Help Center',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          fontSize: 16.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                  Text(
-                                    'Terms & Privacy',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          fontSize: 16.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ].divide(SizedBox(height: 10.0)),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'Partner Portal',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          fontSize: 22.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                  Text(
-                                    'Become a Partner',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          fontSize: 16.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                  Text(
-                                    'Partner FAQs',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          fontSize: 16.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ].divide(SizedBox(height: 10.0)),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 80.0, 0.0, 0.0),
-                          child: Text(
-                            'SilverSpike Inc. Copyright 2024. All rights reserved. ',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: FlutterFlowTheme.of(context).secondary,
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                        ),
-                      ],
+                    child: wrapWithModel(
+                      model: _model.bottomRibbonFooterModel,
+                      updateCallback: () => setState(() {}),
+                      child: BottomRibbonFooterWidget(),
                     ),
                   ),
                 ),

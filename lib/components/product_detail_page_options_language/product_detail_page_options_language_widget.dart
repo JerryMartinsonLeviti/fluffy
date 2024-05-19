@@ -46,16 +46,21 @@ class _ProductDetailPageOptionsLanguageWidgetState
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
       child: Column(
-        mainAxisSize: MainAxisSize.max,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            'Please select your preferred event options below. Event options‚ such as event spaces and packages are subject to availability and seasonality. To view all price details‚ please select “Show All-In Fees & Costs” in our AI Price Predictor.',
-            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Readex Pro',
-                  color: FlutterFlowTheme.of(context).primary,
-                  letterSpacing: 0.0,
-                  fontStyle: FontStyle.italic,
-                ),
+          Align(
+            alignment: AlignmentDirectional(0.0, 0.0),
+            child: Text(
+              'Please select your preferred event options below. Event options‚ such as event spaces and packages are subject to availability and seasonality. To view all price details‚ select “Show All-In Fees & Costs” in our AI Price Predictor.',
+              textAlign: TextAlign.center,
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    fontFamily: 'Readex Pro',
+                    color: FlutterFlowTheme.of(context).alternate,
+                    fontSize: 18.0,
+                    letterSpacing: 0.0,
+                    fontStyle: FontStyle.italic,
+                  ),
+            ),
           ),
         ],
       ),

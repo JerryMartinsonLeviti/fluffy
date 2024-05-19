@@ -237,7 +237,7 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondary,
+                                                        .primary,
                                                     textStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .titleSmall
@@ -272,7 +272,7 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
-                                                    color: Color(0xFF4B1212),
+                                                    color: Color(0xFF3D0F0F),
                                                     textStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .titleSmall

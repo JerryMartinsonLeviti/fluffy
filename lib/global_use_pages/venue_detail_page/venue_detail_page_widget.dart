@@ -132,14 +132,105 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                     return Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Text(
-                                          'Hello World',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              valueOrDefault<String>(
+                                                idxItem.pKParentVendor
+                                                    ?.toString(),
+                                                'no Parent',
                                               ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                            Text(
+                                              valueOrDefault<String>(
+                                                idxItem.pKImageAssets
+                                                    ?.toString(),
+                                                'no Image Key',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ]
+                                              .divide(SizedBox(width: 10.0))
+                                              .around(SizedBox(width: 10.0)),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [],
+                                        ),
+                                      ],
+                                    );
+                                  }),
+                                );
+                              },
+                            ),
+                            Builder(
+                              builder: (context) {
+                                final idx2 = functions
+                                        .filterVacv(
+                                            containerVacvRowList.toList(),
+                                            'PK_ImageAssets')
+                                        ?.toList() ??
+                                    [];
+                                return Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children:
+                                      List.generate(idx2.length, (idx2Index) {
+                                    final idx2Item = idx2[idx2Index];
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              valueOrDefault<String>(
+                                                idx2Item.pKParentVendor
+                                                    ?.toString(),
+                                                'no Parent',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                            Text(
+                                              valueOrDefault<String>(
+                                                idx2Item.pKImageAssets
+                                                    ?.toString(),
+                                                'no Image Key',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ]
+                                              .divide(SizedBox(width: 10.0))
+                                              .around(SizedBox(width: 10.0)),
                                         ),
                                         Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -492,20 +583,24 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                               ),
                               child: Builder(
                                 builder: (context) {
-                                  final imageIdx = functions
+                                  final idx3 = functions
                                           .filterVacv(
                                               containerVacvRowList.toList(),
                                               'PK_ImageAssets')
                                           ?.toList() ??
                                       [];
+                                  if (idx3.isEmpty) {
+                                    return Image.asset(
+                                      'https://picsum.photos/200',
+                                    );
+                                  }
                                   return Container(
                                     width: double.infinity,
                                     height: 180.0,
                                     child: CarouselSlider.builder(
-                                      itemCount: imageIdx.length,
-                                      itemBuilder: (context, imageIdxIndex, _) {
-                                        final imageIdxItem =
-                                            imageIdx[imageIdxIndex];
+                                      itemCount: idx3.length,
+                                      itemBuilder: (context, idx3Index, _) {
+                                        final idx3Item = idx3[idx3Index];
                                         return ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
@@ -514,8 +609,7 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                                 Duration(milliseconds: 500),
                                             fadeOutDuration:
                                                 Duration(milliseconds: 500),
-                                            imageUrl:
-                                                'https://picsum.photos/seed/76/600',
+                                            imageUrl: idx3Item.imageUrl!,
                                             width: 300.0,
                                             height: 200.0,
                                             fit: BoxFit.cover,
@@ -535,7 +629,7 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                               CarouselController(),
                                       options: CarouselOptions(
                                         initialPage:
-                                            max(0, min(1, imageIdx.length - 1)),
+                                            max(0, min(1, idx3.length - 1)),
                                         viewportFraction: 0.5,
                                         disableCenter: true,
                                         enlargeCenterPage: true,

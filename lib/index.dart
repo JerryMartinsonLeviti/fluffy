@@ -4,8 +4,8 @@ export '/global_use_pages/settings2_edit_profile/settings2_edit_profile_widget.d
     show Settings2EditProfileWidget;
 export '/planner_flow/search_bar/step2_search_result_shopping/step2_search_result_shopping_widget.dart'
     show Step2SearchResultShoppingWidget;
-export '/global_use_pages/product_detail_page/product_detail_page_widget.dart'
-    show ProductDetailPageWidget;
+export '/global_use_pages/archived_product_detail_page/archived_product_detail_page_widget.dart'
+    show ArchivedProductDetailPageWidget;
 export '/planner_flow/planner_dashboard/planner_dashboard_widget.dart'
     show PlannerDashboardWidget;
 export '/planner_flow/planner_funnel_flow/manage_events_my_events/manage_events_my_events_widget.dart'
@@ -102,3 +102,8 @@ export '/global_use_pages/venue_detail_page/venue_detail_page_widget.dart'
     show VenueDetailPageWidget;
 export '/planner_flow/planner_funnel_flow/manage_events_my_events_event_command_ctr/manage_events_my_events_event_command_ctr_widget.dart'
     show ManageEventsMyEventsEventCommandCtrWidget;
+export '/listing/listing_page/listing_page_widget.dart' show ListingPageWidget;
+export '/listing/listing_page_grayed_out/listing_page_grayed_out_widget.dart'
+    show ListingPageGrayedOutWidget;
+export '/listing/listing_page_copy/listing_page_copy_widget.dart'
+    show ListingPageCopyWidget;

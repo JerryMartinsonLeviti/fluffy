@@ -478,29 +478,13 @@ class _LiaisonAllEventsListWidgetState
                                             width: 115.0,
                                             height: 100.0,
                                             decoration: BoxDecoration(
-                                              color: Theme.of(context)
-                                                          .brightness ==
-                                                      Brightness.light
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .secondaryBackground
-                                                  : FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               borderRadius:
                                                   BorderRadius.circular(10.0),
                                               border: Border.all(
-                                                color: valueOrDefault<Color>(
-                                                  Theme.of(context)
-                                                              .brightness ==
-                                                          Brightness.light
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate
-                                                      : FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryBackground,
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                                ),
+                                                color: Color(0xFFE0E3E7),
                                                 width: 1.0,
                                               ),
                                             ),
@@ -511,15 +495,9 @@ class _LiaisonAllEventsListWidgetState
                                               children: [
                                                 Icon(
                                                   Icons.wb_sunny_rounded,
-                                                  color: Theme.of(context)
-                                                              .brightness ==
-                                                          Brightness.light
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText
-                                                      : FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryText,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                   size: 16.0,
                                                 ),
                                                 Padding(
@@ -528,26 +506,17 @@ class _LiaisonAllEventsListWidgetState
                                                           4.0, 0.0, 0.0, 0.0),
                                                   child: Text(
                                                     'Light Mode',
-                                                    style:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              color: Theme.of(context)
-                                                                          .brightness ==
-                                                                      Brightness
-                                                                          .light
-                                                                  ? FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText
-                                                                  : FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ),
                                               ],
@@ -566,29 +535,15 @@ class _LiaisonAllEventsListWidgetState
                                             width: 115.0,
                                             height: 100.0,
                                             decoration: BoxDecoration(
-                                              color: Theme.of(context)
-                                                          .brightness ==
-                                                      Brightness.dark
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .secondaryBackground
-                                                  : FlutterFlowTheme.of(context)
+                                              color:
+                                                  FlutterFlowTheme.of(context)
                                                       .primaryBackground,
                                               borderRadius:
                                                   BorderRadius.circular(10.0),
                                               border: Border.all(
-                                                color: valueOrDefault<Color>(
-                                                  Theme.of(context)
-                                                              .brightness ==
-                                                          Brightness.dark
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate
-                                                      : FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryBackground,
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
-                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
                                                 width: 1.0,
                                               ),
                                             ),
@@ -599,15 +554,9 @@ class _LiaisonAllEventsListWidgetState
                                               children: [
                                                 Icon(
                                                   Icons.nightlight_round,
-                                                  color: Theme.of(context)
-                                                              .brightness ==
-                                                          Brightness.dark
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText
-                                                      : FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryText,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                   size: 16.0,
                                                 ),
                                                 Padding(
@@ -616,26 +565,17 @@ class _LiaisonAllEventsListWidgetState
                                                           4.0, 0.0, 0.0, 0.0),
                                                   child: Text(
                                                     'Dark Mode',
-                                                    style:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              color: Theme.of(context)
-                                                                          .brightness ==
-                                                                      Brightness
-                                                                          .dark
-                                                                  ? FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText
-                                                                  : FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ),
                                               ],

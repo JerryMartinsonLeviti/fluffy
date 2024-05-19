@@ -3,31 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
-
-const kThemeModeKey = '__theme_mode__';
-SharedPreferences? _prefs;
-
 abstract class FlutterFlowTheme {
-  static Future initialize() async =>
-      _prefs = await SharedPreferences.getInstance();
-  static ThemeMode get themeMode {
-    final darkMode = _prefs?.getBool(kThemeModeKey);
-    return darkMode == null
-        ? ThemeMode.system
-        : darkMode
-            ? ThemeMode.dark
-            : ThemeMode.light;
-  }
-
-  static void saveThemeMode(ThemeMode mode) => mode == ThemeMode.system
-      ? _prefs?.remove(kThemeModeKey)
-      : _prefs?.setBool(kThemeModeKey, mode == ThemeMode.dark);
-
   static FlutterFlowTheme of(BuildContext context) {
-    return Theme.of(context).brightness == Brightness.dark
-        ? DarkModeTheme()
-        : LightModeTheme();
+    return LightModeTheme();
   }
 
   @Deprecated('Use primary instead')
@@ -54,12 +32,27 @@ abstract class FlutterFlowTheme {
   late Color error;
   late Color info;
 
-  late Color customColor4;
-  late Color customColor1;
-  late Color customColor5;
-  late Color customColor6;
   late Color customColor2;
+  late Color customColor24;
+  late Color customColor13;
+  late Color customColor14;
+  late Color customColor12;
+  late Color customColor15;
+  late Color customColor18;
+  late Color customColor20;
+  late Color customColor21;
+  late Color customColor23;
+  late Color customColor27;
+  late Color customColor28;
+  late Color customColor5;
+  late Color customColor1;
   late Color customColor3;
+  late Color customColor6;
+  late Color customColor7;
+  late Color customColor8;
+  late Color customColor9;
+  late Color customColor11;
+  late Color customColor4;
 
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
@@ -132,29 +125,44 @@ class LightModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF2C0725);
-  late Color secondary = const Color(0xFFEFA625);
-  late Color tertiary = const Color(0xFFF8F3E6);
-  late Color alternate = const Color(0xFF374346);
+  late Color primary = const Color(0xFFEFA625);
+  late Color secondary = const Color(0xFFA05547);
+  late Color tertiary = const Color(0xFFFFCFB1);
+  late Color alternate = const Color(0xFF722C2A);
   late Color primaryText = const Color(0xFF474B4E);
   late Color secondaryText = const Color(0xFF57636C);
-  late Color primaryBackground = const Color(0xFFF1F4F8);
-  late Color secondaryBackground = const Color(0xFFFFFFFF);
-  late Color accent1 = const Color(0xFF59263E);
-  late Color accent2 = const Color(0xFF626F5F);
-  late Color accent3 = const Color(0xFFF6CE86);
-  late Color accent4 = const Color(0xFF656563);
+  late Color primaryBackground = const Color(0xFFFDEFEA);
+  late Color secondaryBackground = const Color(0xFFFCEBDF);
+  late Color accent1 = const Color(0xFFA05547);
+  late Color accent2 = const Color(0xFF435331);
+  late Color accent3 = const Color(0xFFA1685B);
+  late Color accent4 = const Color(0xFFE07C5A);
   late Color success = const Color(0xFF3D6039);
-  late Color warning = const Color(0xFF730E0E);
+  late Color warning = const Color(0xFF7A1010);
   late Color error = const Color(0xFFB93353);
   late Color info = const Color(0xFFFDF9F4);
 
-  late Color customColor4 = Color(0xFF3D0B32);
-  late Color customColor1 = Color(0xFF374466);
-  late Color customColor5 = Color(0xFFAC4630);
-  late Color customColor6 = Color(0xFFDE9040);
-  late Color customColor2 = Color(0xFF47191D);
-  late Color customColor3 = Color(0xFF5F8E56);
+  late Color customColor2 = Color(0xFFEABEA7);
+  late Color customColor24 = Color(0xFF4D3D34);
+  late Color customColor13 = Color(0xFFE3D8B4);
+  late Color customColor14 = Color(0xFF8B736A);
+  late Color customColor12 = Color(0xFF6D2623);
+  late Color customColor15 = Color(0xFFE07C5A);
+  late Color customColor18 = Color(0xFF7D3430);
+  late Color customColor20 = Color(0xFFA67E7B);
+  late Color customColor21 = Color(0xFFE07C5A);
+  late Color customColor23 = Color(0xFFF4E9E3);
+  late Color customColor27 = Color(0xFFCD6753);
+  late Color customColor28 = Color(0xFF977B65);
+  late Color customColor5 = Color(0xFFDC9843);
+  late Color customColor1 = Color(0xFF8AAA71);
+  late Color customColor3 = Color(0xFF63804C);
+  late Color customColor6 = Color(0xFFDD9944);
+  late Color customColor7 = Color(0xFFEC7E01);
+  late Color customColor8 = Color(0xFFF4C292);
+  late Color customColor9 = Color(0xFFEAC489);
+  late Color customColor11 = Color(0xFFBE5B3F);
+  late Color customColor4 = Color(0xFFFFCFB1);
 }
 
 abstract class Typography {
@@ -300,39 +308,6 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
       );
-}
-
-class DarkModeTheme extends FlutterFlowTheme {
-  @Deprecated('Use primary instead')
-  Color get primaryColor => primary;
-  @Deprecated('Use secondary instead')
-  Color get secondaryColor => secondary;
-  @Deprecated('Use tertiary instead')
-  Color get tertiaryColor => tertiary;
-
-  late Color primary = const Color(0xFF59263E);
-  late Color secondary = const Color(0xFFEFA625);
-  late Color tertiary = const Color(0xFFFDF9F4);
-  late Color alternate = const Color(0xFFE0E3E7);
-  late Color primaryText = const Color(0xFFFFFFFF);
-  late Color secondaryText = const Color(0xFF95A1AC);
-  late Color primaryBackground = const Color(0xFF1B2327);
-  late Color secondaryBackground = const Color(0xFF14181B);
-  late Color accent1 = const Color(0xFF6A8477);
-  late Color accent2 = const Color(0xFF620F4F);
-  late Color accent3 = const Color(0xFF7D8182);
-  late Color accent4 = const Color(0xFF797977);
-  late Color success = const Color(0xFF626F5F);
-  late Color warning = const Color(0xFFFAD767);
-  late Color error = const Color(0xFFB93353);
-  late Color info = const Color(0xFFFFFFFF);
-
-  late Color customColor4 = Color(0xFFA2331D);
-  late Color customColor1 = Color(0xFF374466);
-  late Color customColor5 = Color(0xFFA243F5);
-  late Color customColor6 = Color(0xFFDE9040);
-  late Color customColor2 = Color(0xFF47191D);
-  late Color customColor3 = Color(0xFFCBD651);
 }
 
 extension TextStyleHelper on TextStyle {

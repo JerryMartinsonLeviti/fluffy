@@ -75,7 +75,7 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                'Page Title',
+                'Planner Side Nav',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: Colors.white,
@@ -384,27 +384,36 @@ class _PlannerSideNavBarWidgetState extends State<PlannerSideNavBarWidget> {
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 30.0, 0.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  wrapWithModel(
-                                    model: _model.iconAssetFolderModel,
-                                    updateCallback: () => setState(() {}),
-                                    child: IconAssetFolderWidget(),
-                                  ),
-                                  Text(
-                                    'Assets',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          fontSize: 18.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ],
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('HomePage');
+                                },
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    wrapWithModel(
+                                      model: _model.iconAssetFolderModel,
+                                      updateCallback: () => setState(() {}),
+                                      child: IconAssetFolderWidget(),
+                                    ),
+                                    Text(
+                                      'Assets',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            fontSize: 18.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             Divider(

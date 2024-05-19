@@ -3,13 +3,14 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget.dart';
-import 'product_detail_page_widget.dart' show ProductDetailPageWidget;
+import 'listing_page_grayed_out_widget.dart' show ListingPageGrayedOutWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class ProductDetailPageModel extends FlutterFlowModel<ProductDetailPageWidget> {
+class ListingPageGrayedOutModel
+    extends FlutterFlowModel<ListingPageGrayedOutWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

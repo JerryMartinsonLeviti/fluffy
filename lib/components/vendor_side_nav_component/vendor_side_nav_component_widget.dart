@@ -268,12 +268,21 @@ class _VendorSideNavComponentWidgetState
                                           VendorSideBarRequestsToBookComponentWidget(),
                                     ),
                                   ),
-                                  wrapWithModel(
-                                    model: _model
-                                        .vendorSidebarManageEventComponentModel,
-                                    updateCallback: () => setState(() {}),
-                                    child:
-                                        VendorSidebarManageEventComponentWidget(),
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed('HomePage');
+                                    },
+                                    child: wrapWithModel(
+                                      model: _model
+                                          .vendorSidebarManageEventComponentModel,
+                                      updateCallback: () => setState(() {}),
+                                      child:
+                                          VendorSidebarManageEventComponentWidget(),
+                                    ),
                                   ),
                                 ]
                                     .divide(SizedBox(height: 10.0))
@@ -287,10 +296,19 @@ class _VendorSideNavComponentWidgetState
                         thickness: 1.0,
                         color: FlutterFlowTheme.of(context).accent4,
                       ),
-                      wrapWithModel(
-                        model: _model.vendorSidebarNavAccountComponentModel,
-                        updateCallback: () => setState(() {}),
-                        child: VendorSidebarNavAccountComponentWidget(),
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed('HomePage');
+                        },
+                        child: wrapWithModel(
+                          model: _model.vendorSidebarNavAccountComponentModel,
+                          updateCallback: () => setState(() {}),
+                          child: VendorSidebarNavAccountComponentWidget(),
+                        ),
                       ),
                     ],
                   ),

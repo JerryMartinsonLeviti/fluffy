@@ -389,7 +389,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                               height: 1208.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
+                                    .primaryBackground,
                                 boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4.0,
@@ -606,7 +606,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                       height: 456.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiary,
+                                            .primaryBackground,
                                         borderRadius:
                                             BorderRadius.circular(10.0),
                                         border: Border.all(

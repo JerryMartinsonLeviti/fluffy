@@ -149,18 +149,6 @@ class _CartSummaryComponentWidgetState
                   Align(
                     alignment: AlignmentDirectional(0.0, -1.0),
                     child: Text(
-                      'at',
-                      textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            fontSize: 18.0,
-                            letterSpacing: 0.0,
-                          ),
-                    ),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
-                    child: Text(
                       '${valueOrDefault<String>(
                         widget.venueRow?.restaurantLocationName,
                         'noVenue',

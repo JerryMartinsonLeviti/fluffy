@@ -129,7 +129,7 @@ class _EventCartReviewPageWidgetState extends State<EventCartReviewPageWidget> {
                                   Align(
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
-                                      'OPTIONS BASKET',
+                                      'OPTIONS BOARD',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

@@ -99,7 +99,7 @@ class _VendorRFPAcceptanceSentWidgetState
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Color(0xFFF9CE81),
+                            FlutterFlowTheme.of(context).primaryBackground,
                             FlutterFlowTheme.of(context).tertiary
                           ],
                           stops: [0.0, 1.0],
@@ -123,7 +123,7 @@ class _VendorRFPAcceptanceSentWidgetState
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Readex Pro',
-                                  color: FlutterFlowTheme.of(context).primary,
+                                  color: FlutterFlowTheme.of(context).alternate,
                                   fontSize: 18.0,
                                   letterSpacing: 0.0,
                                 ),

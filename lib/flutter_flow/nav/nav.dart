@@ -508,6 +508,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.SupabaseRow,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'RFP_Submission',
+          path: '/rFPSubmission',
+          builder: (context, params) => RFPSubmissionWidget(
+            cartRow: params.getParam<CartsRow>(
+              'cartRow',
+              ParamType.SupabaseRow,
+            ),
+            eventRow: params.getParam<EventsRow>(
+              'eventRow',
+              ParamType.SupabaseRow,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

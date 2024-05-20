@@ -143,3 +143,5 @@ export '/neda_user_flow_pages/neda_vendor/proposal_banquet_event_order/proposal_
     show ProposalBanquetEventOrderWidget;
 export '/neda_user_flow_pages/neda_planner/requestto_book_cart_copy/requestto_book_cart_copy_widget.dart'
     show RequesttoBookCartCopyWidget;
+export '/neda_user_flow_pages/neda_planner/r_f_p_submission/r_f_p_submission_widget.dart'
+    show RFPSubmissionWidget;

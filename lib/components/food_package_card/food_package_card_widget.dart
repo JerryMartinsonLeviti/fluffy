@@ -965,6 +965,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                                 .requestCompleter1 = null);
                                             await _model
                                                 .waitForRequestCompleted1();
+                                            setState(() {});
+                                            await widget.dbRefresh?.call();
                                             FFAppState().update(() {});
                                           },
                                         );

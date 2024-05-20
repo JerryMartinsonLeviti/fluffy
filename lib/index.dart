@@ -125,3 +125,5 @@ export '/neda_user_flow_pages/vendor_r_f_p_detail_copy/vendor_r_f_p_detail_copy_
     show VendorRFPDetailCopyWidget;
 export '/neda_user_flow_pages/vendor_r_f_p_confirmation_sent_copy/vendor_r_f_p_confirmation_sent_copy_widget.dart'
     show VendorRFPConfirmationSentCopyWidget;
+export '/neda_user_flow_pages/liaison_dashboard_copy/liaison_dashboard_copy_widget.dart'
+    show LiaisonDashboardCopyWidget;

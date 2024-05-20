@@ -257,22 +257,15 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                               ],
                                             ),
                                             FutureBuilder<List<ImageAssetsRow>>(
-                                              future: (_model
-                                                          .requestCompleter1 ??=
-                                                      Completer<
-                                                          List<
-                                                              ImageAssetsRow>>()
-                                                        ..complete(
-                                                            ImageAssetsTable()
-                                                                .queryRows(
-                                                          queryFn: (q) => q
-                                                              .eq(
-                                                                'FK_Venue',
-                                                                widget.venuePK,
-                                                              )
-                                                              .order('order'),
-                                                        )))
-                                                  .future,
+                                              future:
+                                                  ImageAssetsTable().queryRows(
+                                                queryFn: (q) => q
+                                                    .eq(
+                                                      'FK_Venue',
+                                                      widget.venuePK,
+                                                    )
+                                                    .order('order'),
+                                              ),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
                                                 if (!snapshot.hasData) {
@@ -365,7 +358,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                   FutureBuilder<
                                                       List<ImageAssetsRow>>(
                                                     future: (_model
-                                                                .requestCompleter4 ??=
+                                                                .requestCompleter5 ??=
                                                             Completer<
                                                                 List<
                                                                     ImageAssetsRow>>()
@@ -413,81 +406,35 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                   MainAxisSize
                                                                       .max,
                                                               children: [
-                                                                Builder(
-                                                                  builder:
-                                                                      (context) =>
-                                                                          InkWell(
-                                                                    splashColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    focusColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    hoverColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    highlightColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    onTap:
-                                                                        () async {
-                                                                      await showDialog(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (dialogContext) {
-                                                                          return Dialog(
-                                                                            elevation:
-                                                                                0,
-                                                                            insetPadding:
-                                                                                EdgeInsets.zero,
-                                                                            backgroundColor:
-                                                                                Colors.transparent,
-                                                                            alignment:
-                                                                                AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                            child:
-                                                                                GestureDetector(
-                                                                              onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                              child: ImageGalleryManagerComponentWidget(
-                                                                                immageAssetRows: venueImageEditImageAssetsRowList,
-                                                                                onUpload: (originalURL, newURL) async {
-                                                                                  await ImageAssetsTable().insert({
-                                                                                    'FK_Venue': widget.venuePK,
-                                                                                    'image_url': newURL,
-                                                                                    'originalURL': originalURL,
-                                                                                  });
-                                                                                  setState(() => _model.requestCompleter4 = null);
-                                                                                  await _model.waitForRequestCompleted4();
-                                                                                  setState(() {});
-                                                                                },
-                                                                                onDbUpdate: () async {
-                                                                                  setState(() => _model.requestCompleter4 = null);
-                                                                                  await _model.waitForRequestCompleted4();
-                                                                                  setState(() => _model.requestCompleter1 = null);
-                                                                                  await _model.waitForRequestCompleted1();
-                                                                                  setState(() {});
-                                                                                  FFAppState().update(() {});
-                                                                                },
-                                                                              ),
-                                                                            ),
-                                                                          );
-                                                                        },
-                                                                      ).then((value) =>
-                                                                          setState(
-                                                                              () {}));
-
-                                                                      setState(
-                                                                          () {});
-                                                                    },
-                                                                    child: Icon(
-                                                                      Icons
-                                                                          .settings_outlined,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      size:
-                                                                          24.0,
-                                                                    ),
+                                                                InkWell(
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  focusColor: Colors
+                                                                      .transparent,
+                                                                  hoverColor: Colors
+                                                                      .transparent,
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  onTap:
+                                                                      () async {
+                                                                    setState(
+                                                                        () {
+                                                                      _model.galleryEditorDisabled =
+                                                                          !_model
+                                                                              .galleryEditorDisabled;
+                                                                    });
+                                                                    setState(
+                                                                        () {});
+                                                                  },
+                                                                  child: Icon(
+                                                                    Icons
+                                                                        .settings_outlined,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    size: 24.0,
                                                                   ),
                                                                 ),
                                                                 Text(
@@ -504,6 +451,34 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                 ),
                                                               ],
                                                             ),
+                                                            if (!_model
+                                                                .galleryEditorDisabled)
+                                                              wrapWithModel(
+                                                                model: _model
+                                                                    .imageGalleryManagerComponentModel,
+                                                                updateCallback:
+                                                                    () => setState(
+                                                                        () {}),
+                                                                child:
+                                                                    ImageGalleryManagerComponentWidget(
+                                                                  immageAssetRows:
+                                                                      venueImageEditImageAssetsRowList,
+                                                                  onUpload:
+                                                                      (originalURL,
+                                                                          newURL) async {},
+                                                                  onDbUpdate:
+                                                                      () async {
+                                                                    setState(() =>
+                                                                        _model.requestCompleter5 =
+                                                                            null);
+                                                                    await _model
+                                                                        .waitForRequestCompleted5();
+                                                                    FFAppState()
+                                                                        .update(
+                                                                            () {});
+                                                                  },
+                                                                ),
+                                                              ),
                                                           ],
                                                         ),
                                                       );
@@ -3745,7 +3720,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                 FutureBuilder<
                                                     List<FunctionSpacesRow>>(
                                                   future: (_model
-                                                              .requestCompleter2 ??=
+                                                              .requestCompleter3 ??=
                                                           Completer<
                                                               List<
                                                                   FunctionSpacesRow>>()
@@ -3796,10 +3771,10 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                               fsdbFunctionSpacesRowList,
                                                           onSave: () async {
                                                             setState(() => _model
-                                                                    .requestCompleter2 =
+                                                                    .requestCompleter3 =
                                                                 null);
                                                             await _model
-                                                                .waitForRequestCompleted2();
+                                                                .waitForRequestCompleted3();
                                                             setState(() {});
                                                           },
                                                         ),
@@ -3810,7 +3785,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                 FutureBuilder<
                                                     List<PackagesRow>>(
                                                   future: (_model
-                                                              .requestCompleter3 ??=
+                                                              .requestCompleter4 ??=
                                                           Completer<
                                                               List<
                                                                   PackagesRow>>()
@@ -3861,10 +3836,10 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                               packagesPackagesRowList,
                                                           dbRefesh: () async {
                                                             setState(() => _model
-                                                                    .requestCompleter3 =
+                                                                    .requestCompleter4 =
                                                                 null);
                                                             await _model
-                                                                .waitForRequestCompleted3();
+                                                                .waitForRequestCompleted4();
                                                             FFAppState()
                                                                 .update(() {});
                                                           },

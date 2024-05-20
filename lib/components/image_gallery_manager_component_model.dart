@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -18,7 +19,7 @@ class ImageGalleryManagerComponentModel
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
   // Stores action output result for [Custom Action - loadImageToSupabase] action in TextField widget.
-  String? outputURL;
+  ImageUploadResultStruct? outputURL;
 
   @override
   void initState(BuildContext context) {}

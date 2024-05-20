@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -27,7 +28,7 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
   // Stores action output result for [Custom Action - loadImageToSupabase] action in TextField widget.
-  String? output;
+  ImageUploadResultStruct? output;
 
   @override
   void initState(BuildContext context) {}

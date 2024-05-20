@@ -8,18 +8,18 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class ImageUploadResultStruct extends BaseStruct {
   ImageUploadResultStruct({
-    bool? succss,
+    bool? success,
     String? url,
     String? error,
-  })  : _succss = succss,
+  })  : _success = success,
         _url = url,
         _error = error;
 
-  // "succss" field.
-  bool? _succss;
-  bool get succss => _succss ?? true;
-  set succss(bool? val) => _succss = val;
-  bool hasSuccss() => _succss != null;
+  // "success" field.
+  bool? _success;
+  bool get success => _success ?? true;
+  set success(bool? val) => _success = val;
+  bool hasSuccess() => _success != null;
 
   // "url" field.
   String? _url;
@@ -35,7 +35,7 @@ class ImageUploadResultStruct extends BaseStruct {
 
   static ImageUploadResultStruct fromMap(Map<String, dynamic> data) =>
       ImageUploadResultStruct(
-        succss: data['succss'] as bool?,
+        success: data['success'] as bool?,
         url: data['url'] as String?,
         error: data['error'] as String?,
       );
@@ -45,15 +45,15 @@ class ImageUploadResultStruct extends BaseStruct {
       : null;
 
   Map<String, dynamic> toMap() => {
-        'succss': _succss,
+        'success': _success,
         'url': _url,
         'error': _error,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'succss': serializeParam(
-          _succss,
+        'success': serializeParam(
+          _success,
           ParamType.bool,
         ),
         'url': serializeParam(
@@ -69,8 +69,8 @@ class ImageUploadResultStruct extends BaseStruct {
   static ImageUploadResultStruct fromSerializableMap(
           Map<String, dynamic> data) =>
       ImageUploadResultStruct(
-        succss: deserializeParam(
-          data['succss'],
+        success: deserializeParam(
+          data['success'],
           ParamType.bool,
           false,
         ),
@@ -92,22 +92,22 @@ class ImageUploadResultStruct extends BaseStruct {
   @override
   bool operator ==(Object other) {
     return other is ImageUploadResultStruct &&
-        succss == other.succss &&
+        success == other.success &&
         url == other.url &&
         error == other.error;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([succss, url, error]);
+  int get hashCode => const ListEquality().hash([success, url, error]);
 }
 
 ImageUploadResultStruct createImageUploadResultStruct({
-  bool? succss,
+  bool? success,
   String? url,
   String? error,
 }) =>
     ImageUploadResultStruct(
-      succss: succss,
+      success: success,
       url: url,
       error: error,
     );

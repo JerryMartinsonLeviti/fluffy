@@ -17,27 +17,21 @@ import 'package:path/path.dart';
 import 'package:storage_client/src/types.dart';
 import 'package:flutter/services.dart';
 
-// class result {
-//   String? url;
-//   String? error;
-//   bool? success;
-//   result({this.url, this.error});
-// }
-
-Future<String?> loadImageToSupabase(String imageFilePathString) async {
-  // Add your function code here!
-  String filePath = "Vendor";
-  String fileExtension = imageFilePathString.split('.').last;
+Future<ImageUploadResultStruct?> loadImageToSupabase(
+    String imageFilePathString) async {
   try {
-    String path = imageFilePathString;
+    String filePath = "Vendor";
+    String fileExtension = imageFilePathString.split('.').last;
+    bool success = true;
+    String error = "no error";
     File file;
 
-    if (Uri.parse(path).isAbsolute) {
+    if (Uri.parse(imageFilePathString).isAbsolute) {
       // It's a URL, download the file
-      final response = await http.get(Uri.parse(path));
+      final response = await http.get(Uri.parse(imageFilePathString));
       if (response.statusCode == 200) {
         final tempDir = Directory.systemTemp;
-        final fileName = basename(path);
+        final fileName = basename(imageFilePathString);
         file = File('${tempDir.path}/$fileName');
         await file.writeAsBytes(response.bodyBytes);
       } else {
@@ -45,7 +39,7 @@ Future<String?> loadImageToSupabase(String imageFilePathString) async {
       }
     } else {
       // It's a local file path
-      file = File(path);
+      file = File(imageFilePathString);
       if (!(await file.exists())) {
         throw Exception('Local file does not exist');
       }
@@ -66,9 +60,11 @@ Future<String?> loadImageToSupabase(String imageFilePathString) async {
       fileBytes,
       fileOptions: FileOptions(contentType: null),
     );
-    return storageBucket.getPublicUrl(filePath);
+    final url = storageBucket.getPublicUrl(filePath);
+    return ImageUploadResultStruct(url: url, error: "", success: true);
   } catch (e) {
     print('Error: $e');
-    return 'Error : $e.  $filePath';
+    return ImageUploadResultStruct(
+        url: "", error: e.toString(), success: false);
   }
 }

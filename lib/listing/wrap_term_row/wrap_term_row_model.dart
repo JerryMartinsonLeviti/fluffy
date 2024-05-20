@@ -13,24 +13,25 @@ class WrapTermRowModel extends FlutterFlowModel<WrapTermRowWidget> {
 
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for Q_TF widget.
-  FocusNode? qTfFocusNode;
-  TextEditingController? qTfTextController;
-  String? Function(BuildContext, String?)? qTfTextControllerValidator;
-  // State field(s) for A_TF widget.
-  FocusNode? aTfFocusNode;
-  TextEditingController? aTfTextController;
-  String? Function(BuildContext, String?)? aTfTextControllerValidator;
+  // State field(s) for TermHeadlineTF widget.
+  FocusNode? termHeadlineTFFocusNode;
+  TextEditingController? termHeadlineTFTextController;
+  String? Function(BuildContext, String?)?
+      termHeadlineTFTextControllerValidator;
+  // State field(s) for TerTF widget.
+  FocusNode? terTFFocusNode;
+  TextEditingController? terTFTextController;
+  String? Function(BuildContext, String?)? terTFTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
 
   @override
   void dispose() {
-    qTfFocusNode?.dispose();
-    qTfTextController?.dispose();
+    termHeadlineTFFocusNode?.dispose();
+    termHeadlineTFTextController?.dispose();
 
-    aTfFocusNode?.dispose();
-    aTfTextController?.dispose();
+    terTFFocusNode?.dispose();
+    terTFTextController?.dispose();
   }
 }

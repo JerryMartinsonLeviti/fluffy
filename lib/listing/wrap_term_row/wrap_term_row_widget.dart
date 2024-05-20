@@ -43,12 +43,12 @@ class _WrapTermRowWidgetState extends State<WrapTermRowWidget> {
     super.initState();
     _model = createModel(context, () => WrapTermRowModel());
 
-    _model.qTfTextController ??=
+    _model.termHeadlineTFTextController ??=
         TextEditingController(text: widget.termHeadline);
-    _model.qTfFocusNode ??= FocusNode();
+    _model.termHeadlineTFFocusNode ??= FocusNode();
 
-    _model.aTfTextController ??= TextEditingController(text: widget.term);
-    _model.aTfFocusNode ??= FocusNode();
+    _model.terTFTextController ??= TextEditingController(text: widget.term);
+    _model.terTFFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -286,18 +286,18 @@ class _WrapTermRowWidgetState extends State<WrapTermRowWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                   child: TextFormField(
-                    controller: _model.qTfTextController,
-                    focusNode: _model.qTfFocusNode,
+                    controller: _model.termHeadlineTFTextController,
+                    focusNode: _model.termHeadlineTFFocusNode,
                     onFieldSubmitted: (_) async {
                       await widget.onUpdate?.call(
-                        _model.qTfTextController.text,
-                        _model.aTfTextController.text,
+                        _model.termHeadlineTFTextController.text,
+                        _model.terTFTextController.text,
                       );
                     },
                     autofocus: true,
                     obscureText: false,
                     decoration: InputDecoration(
-                      labelText: 'Question',
+                      labelText: 'Term Headline',
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
                                 fontFamily: 'Readex Pro',
@@ -341,25 +341,25 @@ class _WrapTermRowWidgetState extends State<WrapTermRowWidget> {
                           fontFamily: 'Readex Pro',
                           letterSpacing: 0.0,
                         ),
-                    validator:
-                        _model.qTfTextControllerValidator.asValidator(context),
+                    validator: _model.termHeadlineTFTextControllerValidator
+                        .asValidator(context),
                   ),
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                   child: TextFormField(
-                    controller: _model.aTfTextController,
-                    focusNode: _model.aTfFocusNode,
+                    controller: _model.terTFTextController,
+                    focusNode: _model.terTFFocusNode,
                     onFieldSubmitted: (_) async {
                       await widget.onUpdate?.call(
-                        _model.qTfTextController.text,
-                        _model.aTfTextController.text,
+                        _model.termHeadlineTFTextController.text,
+                        _model.terTFTextController.text,
                       );
                     },
                     autofocus: true,
                     obscureText: false,
                     decoration: InputDecoration(
-                      labelText: 'Answer',
+                      labelText: 'Term',
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
                                 fontFamily: 'Readex Pro',
@@ -403,8 +403,8 @@ class _WrapTermRowWidgetState extends State<WrapTermRowWidget> {
                           fontFamily: 'Readex Pro',
                           letterSpacing: 0.0,
                         ),
-                    validator:
-                        _model.aTfTextControllerValidator.asValidator(context),
+                    validator: _model.terTFTextControllerValidator
+                        .asValidator(context),
                   ),
                 ),
               ],

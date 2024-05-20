@@ -956,6 +956,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                           itemRow: itemRowItem,
                                           packageRow: widget.packageRow!,
                                           onItemDbChange: () async {
+                                            await widget.dbRefresh?.call();
                                             setState(() => _model
                                                 .requestCompleter2 = null);
                                             await _model
@@ -965,7 +966,6 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                             await _model
                                                 .waitForRequestCompleted1();
                                             FFAppState().update(() {});
-                                            await widget.dbRefresh?.call();
                                           },
                                         );
                                       }),

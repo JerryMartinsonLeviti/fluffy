@@ -7,7 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/planner_funnel_flow/payment_modal_component/payment_modal_component_widget.dart';
-import '/planner_flow/r_t_b_sent_modal/r_t_b_sent_modal_widget.dart';
+import '/planner_flow/r_f_p_sent_modalx/r_f_p_sent_modalx_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -317,7 +317,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                         _model.unfocusNode)
                                                 : FocusScope.of(context)
                                                     .unfocus(),
-                                            child: RTBSentModalWidget(),
+                                            child: RFPSentModalxWidget(),
                                           ),
                                         );
                                       },

@@ -8,28 +8,27 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'manage_events_my_events_event_command_ctr_model.dart';
-export 'manage_events_my_events_event_command_ctr_model.dart';
+import 'my_events_event_command_ctr_model.dart';
+export 'my_events_event_command_ctr_model.dart';
 
-class ManageEventsMyEventsEventCommandCtrWidget extends StatefulWidget {
-  const ManageEventsMyEventsEventCommandCtrWidget({super.key});
+class MyEventsEventCommandCtrWidget extends StatefulWidget {
+  const MyEventsEventCommandCtrWidget({super.key});
 
   @override
-  State<ManageEventsMyEventsEventCommandCtrWidget> createState() =>
-      _ManageEventsMyEventsEventCommandCtrWidgetState();
+  State<MyEventsEventCommandCtrWidget> createState() =>
+      _MyEventsEventCommandCtrWidgetState();
 }
 
-class _ManageEventsMyEventsEventCommandCtrWidgetState
-    extends State<ManageEventsMyEventsEventCommandCtrWidget> {
-  late ManageEventsMyEventsEventCommandCtrModel _model;
+class _MyEventsEventCommandCtrWidgetState
+    extends State<MyEventsEventCommandCtrWidget> {
+  late MyEventsEventCommandCtrModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model =
-        createModel(context, () => ManageEventsMyEventsEventCommandCtrModel());
+    _model = createModel(context, () => MyEventsEventCommandCtrModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }

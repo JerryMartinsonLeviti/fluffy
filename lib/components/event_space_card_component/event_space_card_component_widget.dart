@@ -2,6 +2,7 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -85,127 +86,246 @@ class _EventSpaceCardComponentWidgetState
             borderRadius: BorderRadius.circular(18.0),
           ),
           alignment: AlignmentDirectional(0.0, 0.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: CachedNetworkImage(
-                  fadeInDuration: Duration(milliseconds: 500),
-                  fadeOutDuration: Duration(milliseconds: 500),
-                  imageUrl: 'https://picsum.photos/seed/760/600',
-                  width: 300.0,
-                  height: 200.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Text(
-                valueOrDefault<String>(
-                  widget.functionSpaceRow?.functionSpaceName,
-                  'noName',
-                ),
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Readex Pro',
-                      letterSpacing: 0.0,
-                    ),
-              ),
-              Container(
-                width: 100.0,
-                height: 3.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondary,
-                ),
-              ),
-              Text(
-                'Seated Capacity: ${valueOrDefault<String>(
-                  widget.functionSpaceRow?.seatingCapacity?.toString(),
-                  '0',
-                )}',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Readex Pro',
-                      letterSpacing: 0.0,
-                    ),
-              ),
-              Text(
-                '- Hello World',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Readex Pro',
-                      letterSpacing: 0.0,
-                    ),
-              ),
-              Text(
-                '- Hello World',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Readex Pro',
-                      letterSpacing: 0.0,
-                    ),
-              ),
-              Text(
-                'View Floorplan',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Readex Pro',
-                      letterSpacing: 0.0,
-                    ),
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
-                    },
-                    text: 'Select',
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 3.0,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
+          child: Align(
+            alignment: AlignmentDirectional(0.0, -1.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: CachedNetworkImage(
+                      fadeInDuration: Duration(milliseconds: 500),
+                      fadeOutDuration: Duration(milliseconds: 500),
+                      imageUrl:
+                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/bjcNcUcJFzipGWqoNchx/assets/ygz6lyiuzdyp/Image_5-18-24_at_3.09_PM.jpeg',
+                      width: 300.0,
+                      height: 200.0,
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
-                    },
-                    text: 'More Info',
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 3.0,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
+                ),
+                Text(
+                  valueOrDefault<String>(
+                    widget.functionSpaceRow?.functionSpaceName,
+                    'noName',
                   ),
-                ],
-              ),
-            ],
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        fontSize: 16.0,
+                        letterSpacing: 0.0,
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
+                if (widget.functionSpaceRow?.functionSpaceDescription != null &&
+                    widget.functionSpaceRow?.functionSpaceDescription != '')
+                  Text(
+                    valueOrDefault<String>(
+                      widget.functionSpaceRow?.functionSpaceDescription,
+                      'no_desc',
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                Container(
+                  width: 100.0,
+                  height: 3.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondary,
+                  ),
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      'Guest Capacity',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Wrap(
+                        spacing: 5.0,
+                        runSpacing: 5.0,
+                        alignment: WrapAlignment.center,
+                        crossAxisAlignment: WrapCrossAlignment.start,
+                        direction: Axis.horizontal,
+                        runAlignment: WrapAlignment.start,
+                        verticalDirection: VerticalDirection.down,
+                        clipBehavior: Clip.none,
+                        children: [
+                          if (widget.functionSpaceRow?.seatingCapacity != null)
+                            Text(
+                              'Seated:${valueOrDefault<String>(
+                                widget.functionSpaceRow?.seatingCapacity
+                                    ?.toString(),
+                                '0',
+                              )}',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                          if (widget.functionSpaceRow?.standingCapacity != null)
+                            Text(
+                              'Standing: ${valueOrDefault<String>(
+                                widget.functionSpaceRow?.standingCapacity
+                                    ?.toString(),
+                                '0',
+                              )}',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                          if (widget.functionSpaceRow?.conferenceCapacity !=
+                              null)
+                            Text(
+                              'Conference:${valueOrDefault<String>(
+                                widget.functionSpaceRow?.conferenceCapacity
+                                    ?.toString(),
+                                '0',
+                              )}',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                          if (widget.functionSpaceRow?.squareFootage != null)
+                            Text(
+                              'Sq Ft:${valueOrDefault<String>(
+                                widget.functionSpaceRow?.squareFootage
+                                    ?.toString(),
+                                '0',
+                              )}',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  'Food and Beverage Minimum:  ${valueOrDefault<String>(
+                    formatNumber(
+                      functions.centsIntToDollarDouble(valueOrDefault<int>(
+                        widget.functionSpaceRow?.foodAndBevMinimumInCents,
+                        0,
+                      )),
+                      formatType: FormatType.decimal,
+                      decimalType: DecimalType.automatic,
+                      currency: '',
+                    ),
+                    '0',
+                  )}',
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0.0,
+                      ),
+                ),
+                Text(
+                  'Rental Fee: ${valueOrDefault<String>(
+                    formatNumber(
+                      functions.centsIntToDollarDouble(valueOrDefault<int>(
+                        widget.functionSpaceRow?.rentalFeeInCents,
+                        0,
+                      )),
+                      formatType: FormatType.decimal,
+                      decimalType: DecimalType.automatic,
+                      currency: '',
+                    ),
+                    '0',
+                  )}',
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0.0,
+                      ),
+                ),
+                Text(
+                  'View Floorplan',
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0.0,
+                        decoration: TextDecoration.underline,
+                      ),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    FFButtonWidget(
+                      onPressed: () {
+                        print('Button pressed ...');
+                      },
+                      text: 'Select',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            24.0, 0.0, 24.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 3.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                    FFButtonWidget(
+                      onPressed: () {
+                        print('Button pressed ...');
+                      },
+                      text: 'More Info',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            24.0, 0.0, 24.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 3.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ],
+                ),
+              ].divide(SizedBox(height: 5.0)),
+            ),
           ),
         );
       },

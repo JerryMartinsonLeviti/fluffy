@@ -60,18 +60,18 @@ class _RTBSentModalWidgetState extends State<RTBSentModalWidget> {
         borderRadius: BorderRadius.circular(22.0),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
               child: Text(
                 'You Did It!',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Readex Pro',
-                      color: FlutterFlowTheme.of(context).primary,
-                      fontSize: 22.0,
+                      color: Color(0xFFE2930A),
+                      fontSize: 24.0,
                       letterSpacing: 0.0,
                     ),
               ),
@@ -81,11 +81,11 @@ class _RTBSentModalWidgetState extends State<RTBSentModalWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 18.0, 0.0, 12.0),
                 child: Text(
-                  ' Request for Proposal Sent',
+                  ' Your Request To Book is on its way!',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
-                        fontSize: 18.0,
+                        fontSize: 22.0,
                         letterSpacing: 0.0,
                       ),
                 ),
@@ -98,19 +98,19 @@ class _RTBSentModalWidgetState extends State<RTBSentModalWidget> {
               color: FlutterFlowTheme.of(context).accent4,
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
               child: FaIcon(
                 FontAwesomeIcons.solidPaperPlane,
-                color: FlutterFlowTheme.of(context).secondary,
+                color: FlutterFlowTheme.of(context).customColor10,
                 size: 70.0,
               ),
             ),
             Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 30.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 25.0, 0.0, 0.0),
                 child: Text(
-                  'A copy of your Request for Proposal has been sent to your email & can also be found in your Dashboard',
+                  'A copy of your Request to Book has been sent to your email & can also be found in your Dashboard',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
@@ -123,7 +123,7 @@ class _RTBSentModalWidgetState extends State<RTBSentModalWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
               child: Text(
-                'You will receive an email notification within 48 hours with news on whether your Request for Proposal has been accepted, declined, or requires modifications',
+                'You will receive an email notification within 24 hours of your booking confirmation ',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Readex Pro',
@@ -131,6 +131,22 @@ class _RTBSentModalWidgetState extends State<RTBSentModalWidget> {
                       fontSize: 15.0,
                       letterSpacing: 0.0,
                     ),
+              ),
+            ),
+            Align(
+              alignment: AlignmentDirectional(-1.0, -1.0),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                child: Text(
+                  'Once your Request to Book is confirmed, your deposit will be automatically processed. You will have 24 hours to request cancellation for a full refund of your deposit. ',
+                  textAlign: TextAlign.center,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        color: FlutterFlowTheme.of(context).secondary,
+                        letterSpacing: 0.0,
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
               ),
             ),
             Row(
@@ -150,7 +166,7 @@ class _RTBSentModalWidgetState extends State<RTBSentModalWidget> {
                           EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
+                      color: FlutterFlowTheme.of(context).secondary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Readex Pro',
@@ -179,7 +195,7 @@ class _RTBSentModalWidgetState extends State<RTBSentModalWidget> {
                           EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
+                      color: FlutterFlowTheme.of(context).alternate,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Readex Pro',

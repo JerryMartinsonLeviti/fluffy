@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/planner_flow/planner_funnel_flow/cart_review_page/cart_summary_component/cart_summary_component_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'cart_option_review_card_model.dart';
@@ -138,58 +139,78 @@ class _CartOptionReviewCardWidgetState
                               children: [
                                 Align(
                                   alignment: AlignmentDirectional(-1.0, -1.0),
-                                  child: Text(
-                                    'Option  ${widget.cartRow?.pKCarts?.toString()}',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          fontSize: 30.0,
-                                          letterSpacing: 0.0,
-                                        ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Option  ${widget.cartRow?.pKCarts?.toString()}',
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
+                                            fontSize: 30.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 30.0,
-                                  child: VerticalDivider(
-                                    thickness: 1.0,
-                                    color: FlutterFlowTheme.of(context).accent4,
-                                  ),
-                                ),
-                                Text(
-                                  'Price Details',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        fontSize: 20.0,
-                                        letterSpacing: 0.0,
-                                      ),
                                 ),
                               ],
                             ),
                           ],
                         ),
-                        wrapWithModel(
-                          model: _model.cartSummaryComponentModel,
-                          updateCallback: () => setState(() {}),
-                          child: CartSummaryComponentWidget(
-                            cartRow: widget.cartRow!,
-                            venueRow: containerVenuesRow!,
-                            vendorRow: containerVendorsRow!,
-                            eventRow: widget.eventRow!,
-                            onPressRemoved: () async {
-                              await widget.onPressRemove?.call();
-                            },
-                            onPressSendProposal: () async {
-                              await widget.onUpdateCartState?.call();
-                            },
-                            onPressVerifyCart: () async {
-                              await widget.onUpdateCartState?.call();
-                            },
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 0.0),
+                              child: Text(
+                                'Price Details',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 16.0,
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  5.0, 15.0, 0.0, 0.0),
+                              child: FaIcon(
+                                FontAwesomeIcons.angleDown,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 16.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 20.0, 0.0, 0.0),
+                          child: wrapWithModel(
+                            model: _model.cartSummaryComponentModel,
+                            updateCallback: () => setState(() {}),
+                            child: CartSummaryComponentWidget(
+                              cartRow: widget.cartRow!,
+                              venueRow: containerVenuesRow!,
+                              vendorRow: containerVendorsRow!,
+                              eventRow: widget.eventRow!,
+                              onPressRemoved: () async {
+                                await widget.onPressRemove?.call();
+                              },
+                              onPressSendProposal: () async {
+                                await widget.onUpdateCartState?.call();
+                              },
+                              onPressVerifyCart: () async {
+                                await widget.onUpdateCartState?.call();
+                              },
+                            ),
                           ),
                         ),
                       ],

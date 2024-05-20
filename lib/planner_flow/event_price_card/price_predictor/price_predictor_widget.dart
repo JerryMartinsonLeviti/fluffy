@@ -66,22 +66,34 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
-            child: Text(
-              'SilverSpike AI Price Estimator',
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Readex Pro',
-                    color: FlutterFlowTheme.of(context).customColor3,
-                    fontSize: 20.0,
-                    letterSpacing: 0.0,
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Align(
+                alignment: AlignmentDirectional(0.0, 0.0),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  child: Text(
+                    'SilverSpike AI Price Estimator',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          color: FlutterFlowTheme.of(context).customColor3,
+                          fontSize: 20.0,
+                          letterSpacing: 0.0,
+                        ),
                   ),
-            ),
-          ),
-          FaIcon(
-            FontAwesomeIcons.caretDown,
-            color: FlutterFlowTheme.of(context).secondaryText,
-            size: 28.0,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(5.0, 18.0, 0.0, 0.0),
+                child: FaIcon(
+                  FontAwesomeIcons.caretDown,
+                  color: FlutterFlowTheme.of(context).secondaryText,
+                  size: 20.0,
+                ),
+              ),
+            ],
           ),
           SwitchListTile.adaptive(
             value: _model.switchListTileValue1 ??= true,
@@ -429,7 +441,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
               width: 348.0,
               height: 285.0,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).customColor23,
+                color: FlutterFlowTheme.of(context).secondaryBackground,
                 borderRadius: BorderRadius.circular(22.0),
                 border: Border.all(
                   color: FlutterFlowTheme.of(context).tertiary,
@@ -519,7 +531,8 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                       24.0, 0.0, 24.0, 0.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).accent3,
+                                  color: FlutterFlowTheme.of(context)
+                                      .customColor14,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
@@ -599,7 +612,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                     onPressed: () {
                       print('Button pressed ...');
                     },
-                    text: 'Request to Book',
+                    text: 'Request for Proposal',
                     options: FFButtonOptions(
                       height: 48.0,
                       padding:
@@ -646,7 +659,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                           EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).customColor10,
+                      color: FlutterFlowTheme.of(context).accent2,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Readex Pro',

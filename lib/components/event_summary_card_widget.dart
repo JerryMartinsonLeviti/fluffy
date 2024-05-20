@@ -197,7 +197,7 @@ class _EventSummaryCardWidgetState extends State<EventSummaryCardWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Icon(
-                      Icons.notifications_none_rounded,
+                      Icons.hourglass_bottom_rounded,
                       color: FlutterFlowTheme.of(context).secondaryText,
                       size: 24.0,
                     ),
@@ -224,6 +224,28 @@ class _EventSummaryCardWidgetState extends State<EventSummaryCardWidget> {
                 ),
               ),
             ].divide(SizedBox(height: 5.0)),
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(
+                'Back to Options Board',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Readex Pro',
+                      letterSpacing: 0.0,
+                      decoration: TextDecoration.underline,
+                    ),
+              ),
+              Text(
+                'Event Details',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Readex Pro',
+                      letterSpacing: 0.0,
+                      decoration: TextDecoration.underline,
+                    ),
+              ),
+            ],
           ),
         ].divide(SizedBox(height: 10.0)).around(SizedBox(height: 10.0)),
       ),

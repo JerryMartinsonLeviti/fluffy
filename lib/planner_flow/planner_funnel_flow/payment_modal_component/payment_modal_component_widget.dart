@@ -4,7 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/planner_flow/r_t_b_sent_modal/r_t_b_sent_modal_widget.dart';
+import '/planner_flow/r_f_p_sent_modalx/r_f_p_sent_modalx_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -391,7 +391,7 @@ class _PaymentModalComponentWidgetState
                           backgroundColor: Colors.transparent,
                           alignment: AlignmentDirectional(0.0, 0.0)
                               .resolve(Directionality.of(context)),
-                          child: RTBSentModalWidget(),
+                          child: RFPSentModalxWidget(),
                         );
                       },
                     ).then((value) => setState(() {}));

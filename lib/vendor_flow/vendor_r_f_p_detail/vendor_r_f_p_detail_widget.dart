@@ -64,7 +64,7 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
             },
           ),
           title: Text(
-            'Request For Proposal Detial',
+            'Request For Proposal Detail',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
                   color: Colors.white,
@@ -210,95 +210,167 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
                                               ),
                                             ],
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 50.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                FFButtonWidget(
-                                                  onPressed: () {
-                                                    print('Button pressed ...');
-                                                  },
-                                                  text: 'Accept & Generate BEO',
-                                                  options: FFButtonOptions(
-                                                    height: 40.0,
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(24.0, 0.0,
-                                                                24.0, 0.0),
-                                                    iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color: Colors.white,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                    elevation: 3.0,
-                                                    borderSide: BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                ),
-                                                FFButtonWidget(
-                                                  onPressed: () {
-                                                    print('Button pressed ...');
-                                                  },
-                                                  text: 'Decline',
-                                                  options: FFButtonOptions(
-                                                    height: 40.0,
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(24.0, 0.0,
-                                                                24.0, 0.0),
-                                                    iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: Color(0xFF3D0F0F),
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color: Colors.white,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                    elevation: 3.0,
-                                                    borderSide: BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                ),
-                                              ]
-                                                  .divide(SizedBox(width: 20.0))
-                                                  .around(
-                                                      SizedBox(width: 20.0)),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 10.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          FFButtonWidget(
+                                            onPressed: () {
+                                              print('Button pressed ...');
+                                            },
+                                            text: 'Accept & Generate Proposal',
+                                            options: FFButtonOptions(
+                                              height: 39.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      24.0, 0.0, 24.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        color: Colors.white,
+                                                        fontSize: 18.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              elevation: 3.0,
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(24.0),
                                             ),
                                           ),
-                                        ],
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(1.0, 0.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () {
+                                                print('Button pressed ...');
+                                              },
+                                              text: 'Message Planner',
+                                              options: FFButtonOptions(
+                                                height: 40.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        24.0, 0.0, 24.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent1,
+                                                textStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                                elevation: 3.0,
+                                                borderSide: BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(24.0),
+                                              ),
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(1.0, 0.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () {
+                                                print('Button pressed ...');
+                                              },
+                                              text: 'Message SilverSpike',
+                                              options: FFButtonOptions(
+                                                height: 40.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        24.0, 0.0, 24.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent1,
+                                                textStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                                elevation: 3.0,
+                                                borderSide: BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(24.0),
+                                              ),
+                                            ),
+                                          ),
+                                          FFButtonWidget(
+                                            onPressed: () {
+                                              print('Button pressed ...');
+                                            },
+                                            text: 'Decline',
+                                            options: FFButtonOptions(
+                                              height: 40.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      24.0, 0.0, 24.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color: Color(0xFF3D0F0F),
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        color: Colors.white,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              elevation: 3.0,
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                          ),
+                                        ]
+                                            .divide(SizedBox(width: 20.0))
+                                            .around(SizedBox(width: 20.0)),
                                       ),
                                     ),
                                     Divider(
@@ -322,12 +394,12 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        'Customer: Autodesk',
+                                        'Company: Autodesk',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              fontSize: 18.0,
+                                              fontSize: 20.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -337,12 +409,12 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        'Customer Contact: Victoria Hanacek',
+                                        'Company Planner: Victoria Hanacek',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              fontSize: 18.0,
+                                              fontSize: 20.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -370,7 +442,7 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              fontSize: 15.0,
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -380,7 +452,7 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              fontSize: 15.0,
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -390,7 +462,7 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              fontSize: 15.0,
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -400,7 +472,7 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              fontSize: 15.0,
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -412,63 +484,28 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'SilverSpike Estimate:  \$10,145.74',
+                                        'SilverSpike Quoted Estimate:  \$10,145.74',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              fontSize: 15.0,
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
                                       Text(
-                                        'Proposed Deposit: \$5,072.87',
+                                        'Deposit Due: \$5,072.87',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              fontSize: 15.0,
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
                                     ],
                                   ),
                                 ],
-                              ),
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(1.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 200.0, 0.0),
-                                child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
-                                  },
-                                  text: 'Message Customer',
-                                  options: FFButtonOptions(
-                                    height: 40.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color:
-                                              FlutterFlowTheme.of(context).info,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(24.0),
-                                  ),
-                                ),
                               ),
                             ),
                             Row(
@@ -479,7 +516,7 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
                                   alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        40.0, 0.0, 0.0, 20.0),
+                                        90.0, 0.0, 0.0, 20.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
@@ -491,7 +528,7 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Readex Pro',
-                                                fontSize: 15.0,
+                                                fontSize: 20.0,
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
@@ -535,7 +572,7 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
                                   alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        100.0, 0.0, 0.0, 0.0),
+                                        40.0, 0.0, 0.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
@@ -547,7 +584,7 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Readex Pro',
-                                                fontSize: 16.0,
+                                                fontSize: 20.0,
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
@@ -561,6 +598,7 @@ class _VendorRFPDetailWidgetState extends State<VendorRFPDetailWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Readex Pro',
+                                                  fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                 ),
                                           ),

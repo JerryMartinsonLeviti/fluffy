@@ -26,6 +26,6 @@ class ImageAssetsRow extends SupabaseDataRow {
   String get imageUrl => getField<String>('image_url')!;
   set imageUrl(String value) => setField<String>('image_url', value);
 
-  int? get imageType => getField<int>('image_type');
-  set imageType(int? value) => setField<int>('image_type', value);
+  String? get imageType => getField<String>('image_type');
+  set imageType(String? value) => setField<String>('image_type', value);
 }

@@ -20,6 +20,9 @@ class TermAssetsRow extends SupabaseDataRow {
   DateTime get createdAt => getField<DateTime>('created_at')!;
   set createdAt(DateTime value) => setField<DateTime>('created_at', value);
 
-  String? get term => getField<String>('term');
-  set term(String? value) => setField<String>('term', value);
+  String get term => getField<String>('term')!;
+  set term(String value) => setField<String>('term', value);
+
+  String get header => getField<String>('header')!;
+  set header(String value) => setField<String>('header', value);
 }

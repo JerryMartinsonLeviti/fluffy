@@ -130,7 +130,7 @@ class _FavoriteCardWidgetState extends State<FavoriteCardWidget> {
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: Color(0xFF6E050E),
+                        color: FlutterFlowTheme.of(context).customColor12,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Readex Pro',

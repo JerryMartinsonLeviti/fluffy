@@ -554,8 +554,22 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                                                       () {}),
                                                               child:
                                                                   AddressWidget(
-                                                                addressRow:
-                                                                    containerAddressesRow!,
+                                                                street1:
+                                                                    containerAddressesRow
+                                                                        ?.streetName1,
+                                                                street2:
+                                                                    containerAddressesRow
+                                                                        ?.streetName2,
+                                                                city:
+                                                                    containerAddressesRow
+                                                                        ?.city,
+                                                                state: containerAddressesRow
+                                                                    ?.regionCode,
+                                                                zip: containerAddressesRow
+                                                                    ?.postalCode,
+                                                                country:
+                                                                    containerAddressesRow
+                                                                        ?.countryCode,
                                                               ),
                                                             ),
                                                           );

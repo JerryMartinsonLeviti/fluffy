@@ -104,6 +104,7 @@ class _ImageGalleryManagerComponentWidgetState
                               _model.textController.text,
                               _model.outputURL,
                             );
+                            await widget.onDbUpdate?.call();
 
                             setState(() {});
                           },
@@ -234,6 +235,7 @@ class _ImageGalleryManagerComponentWidgetState
                                                 imageAssetItem.pKImageAssets,
                                               ),
                                             );
+                                            await widget.onDbUpdate?.call();
                                           },
                                           child: Icon(
                                             Icons.visibility_off,
@@ -258,6 +260,7 @@ class _ImageGalleryManagerComponentWidgetState
                                                 imageAssetItem.pKImageAssets,
                                               ),
                                             );
+                                            await widget.onDbUpdate?.call();
                                           },
                                           child: Icon(
                                             Icons.visibility_sharp,
@@ -280,6 +283,7 @@ class _ImageGalleryManagerComponentWidgetState
                                           imageAssetItem.pKImageAssets,
                                         ),
                                       );
+                                      await widget.onDbUpdate?.call();
                                     },
                                     child: Icon(
                                       Icons.delete_forever_sharp,

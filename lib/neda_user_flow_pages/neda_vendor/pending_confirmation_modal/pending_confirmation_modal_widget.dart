@@ -44,7 +44,7 @@ class _PendingConfirmationModalWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: 806.0,
-      height: 210.0,
+      height: 156.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         boxShadow: [
@@ -60,7 +60,7 @@ class _PendingConfirmationModalWidgetState
         borderRadius: BorderRadius.circular(22.0),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -76,50 +76,41 @@ class _PendingConfirmationModalWidgetState
               ),
             ),
             Row(
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
-                  'NEW',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Readex Pro',
-                        color: FlutterFlowTheme.of(context).error,
-                        fontSize: 28.0,
-                        letterSpacing: 0.0,
-                        fontWeight: FontWeight.w600,
-                      ),
-                ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 100.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 20.0, 0.0),
                   child: Icon(
                     Icons.notification_important,
                     color: FlutterFlowTheme.of(context).error,
-                    size: 35.0,
+                    size: 30.0,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                  child: Text(
+                    'You have 2 Requests for Proposal awating response',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          color: FlutterFlowTheme.of(context).secondary,
+                          fontSize: 24.0,
+                          letterSpacing: 0.0,
+                        ),
                   ),
                 ),
               ],
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-              child: Text(
-                'You have 2 Requests for Proposal awating response',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Readex Pro',
-                      color: Color(0xFFE2930A),
-                      fontSize: 24.0,
-                      letterSpacing: 0.0,
-                    ),
-              ),
             ),
             Divider(
               thickness: 1.0,
               indent: 150.0,
               endIndent: 150.0,
-              color: FlutterFlowTheme.of(context).accent4,
+              color: FlutterFlowTheme.of(context).primary,
             ),
             Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 25.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 0.0, 0.0),
                 child: Text(
                   'View ',
                   textAlign: TextAlign.center,

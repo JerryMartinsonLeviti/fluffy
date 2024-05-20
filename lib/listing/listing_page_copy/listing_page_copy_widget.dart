@@ -397,10 +397,12 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                                           });
                                                                                           setState(() => _model.requestCompleter3 = null);
                                                                                           await _model.waitForRequestCompleted3();
+                                                                                          setState(() {});
                                                                                         },
                                                                                         onDbUpdate: () async {
                                                                                           setState(() => _model.requestCompleter3 = null);
                                                                                           await _model.waitForRequestCompleted3();
+                                                                                          setState(() {});
                                                                                         },
                                                                                       ),
                                                                                     ),

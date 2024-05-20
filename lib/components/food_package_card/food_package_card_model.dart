@@ -3,6 +3,7 @@ import '/components/item_config_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'food_package_card_widget.dart' show FoodPackageCardWidget;
 import 'package:flutter/material.dart';

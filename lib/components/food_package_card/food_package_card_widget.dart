@@ -3,6 +3,7 @@ import '/components/item_config_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -93,14 +94,12 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                     ),
               ),
               Text(
-                valueOrDefault<String>(
-                  formatNumber(
-                    widget.packageRow?.priceInCents,
-                    formatType: FormatType.decimal,
-                    decimalType: DecimalType.automatic,
-                    currency: '',
-                  ),
-                  '0',
+                formatNumber(
+                  functions
+                      .centsIntToDollarDouble(widget.packageRow!.priceInCents!),
+                  formatType: FormatType.decimal,
+                  decimalType: DecimalType.automatic,
+                  currency: '',
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Readex Pro',
@@ -296,7 +295,13 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                               'Keyvhg_${itemRowIndex}_of_${itemRow.length}'),
                                           itemRow: itemRowItem,
                                           packageRow: widget.packageRow!,
-                                          onItemDbChange: () async {},
+                                          onItemDbChange: () async {
+                                            setState(() =>
+                                                _model.requestCompleter = null);
+                                            await _model
+                                                .waitForRequestCompleted();
+                                            FFAppState().update(() {});
+                                          },
                                         );
                                       }),
                                     );

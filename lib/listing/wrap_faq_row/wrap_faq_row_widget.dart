@@ -154,18 +154,40 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
                                         ),
                                   ),
                                   if (_model.collapsed)
-                                    Icon(
-                                      Icons.arrow_right,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        setState(() {
+                                          _model.collapsed = !_model.collapsed;
+                                        });
+                                      },
+                                      child: Icon(
+                                        Icons.arrow_right,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
                                     ),
                                   if (!_model.collapsed)
-                                    Icon(
-                                      Icons.arrow_drop_down,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        setState(() {
+                                          _model.collapsed = !_model.collapsed;
+                                        });
+                                      },
+                                      child: Icon(
+                                        Icons.arrow_drop_down,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
                                     ),
                                 ],
                               ),

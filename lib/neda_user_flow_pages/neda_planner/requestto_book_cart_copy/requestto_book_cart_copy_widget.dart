@@ -387,7 +387,7 @@ class _RequesttoBookCartCopyWidgetState
                             padding: EdgeInsets.all(28.0),
                             child: Container(
                               width: 436.0,
-                              height: 1180.0,
+                              height: 1138.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .primaryBackground,
@@ -447,7 +447,7 @@ class _RequesttoBookCartCopyWidgetState
                                                                       'Readex Pro',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primary,
+                                                                      .accent2,
                                                                   fontSize:
                                                                       20.0,
                                                                   letterSpacing:
@@ -574,12 +574,15 @@ class _RequesttoBookCartCopyWidgetState
                                                             0.0, 0.0, 0.0, 0.0),
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .tertiary,
+                                                        .customColor23,
                                                 textStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .titleLarge
                                                         .override(
                                                           fontFamily: 'Outfit',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .customColor3,
                                                           fontSize: 18.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -1215,7 +1218,7 @@ class _RequesttoBookCartCopyWidgetState
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primary,
+                                                                .customColor3,
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -1228,9 +1231,9 @@ class _RequesttoBookCartCopyWidgetState
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 10.0, 0.0, 0.0),
+                                        0.0, 15.0, 0.0, 0.0),
                                     child: Container(
-                                      width: 359.0,
+                                      width: 272.0,
                                       height: 254.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
@@ -1331,7 +1334,7 @@ class _RequesttoBookCartCopyWidgetState
                                                                           0.0),
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .accent4,
+                                                                  .primary,
                                                               textStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -1348,7 +1351,7 @@ class _RequesttoBookCartCopyWidgetState
                                                               borderSide:
                                                                   BorderSide(
                                                                 color: Color(
-                                                                    0x6E474B4E),
+                                                                    0xA6474B4E),
                                                                 width: 3.0,
                                                               ),
                                                               borderRadius:
@@ -1404,8 +1407,7 @@ class _RequesttoBookCartCopyWidgetState
                                                     FlutterFlowTheme.of(context)
                                                         .primary,
                                                 backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .customColor2,
+                                                    Color(0x83A05547),
                                                 center: Text(
                                                   '50%',
                                                   style: FlutterFlowTheme.of(

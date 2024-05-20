@@ -438,7 +438,7 @@ class _ListingRestaurantDetailComponentWidgetState
                     onSave: () async {
                       setState(() => _model.requestCompleter = null);
                       await _model.waitForRequestCompleted();
-                      setState(() {});
+                      FFAppState().update(() {});
                     },
                   ),
                 );

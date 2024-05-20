@@ -301,286 +301,305 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                             context)
                                                         .secondaryBackground,
                                                   ),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    children: [
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceAround,
-                                                        children: [
-                                                          FutureBuilder<
-                                                              List<
-                                                                  ImageAssetsRow>>(
-                                                            future: (_model
-                                                                        .requestCompleter4 ??=
-                                                                    Completer<
-                                                                        List<
-                                                                            ImageAssetsRow>>()
-                                                                      ..complete(
-                                                                          ImageAssetsTable()
-                                                                              .queryRows(
-                                                                        queryFn:
-                                                                            (q) =>
-                                                                                q.eq(
-                                                                          'FK_Venue',
-                                                                          widget
-                                                                              .venuePK,
-                                                                        ),
-                                                                      )))
-                                                                .future,
-                                                            builder: (context,
-                                                                snapshot) {
-                                                              // Customize what your widget looks like when it's loading.
-                                                              if (!snapshot
-                                                                  .hasData) {
-                                                                return Center(
-                                                                  child:
-                                                                      SizedBox(
-                                                                    width: 50.0,
-                                                                    height:
-                                                                        50.0,
-                                                                    child:
-                                                                        SpinKitChasingDots(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondary,
-                                                                      size:
-                                                                          50.0,
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              }
-                                                              List<ImageAssetsRow>
-                                                                  venueImageEditImageAssetsRowList =
-                                                                  snapshot
-                                                                      .data!;
-                                                              return Container(
-                                                                decoration:
-                                                                    BoxDecoration(),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        Builder(
-                                                                          builder: (context) =>
-                                                                              InkWell(
-                                                                            splashColor:
-                                                                                Colors.transparent,
-                                                                            focusColor:
-                                                                                Colors.transparent,
-                                                                            hoverColor:
-                                                                                Colors.transparent,
-                                                                            highlightColor:
-                                                                                Colors.transparent,
-                                                                            onTap:
-                                                                                () async {
-                                                                              await showDialog(
-                                                                                context: context,
-                                                                                builder: (dialogContext) {
-                                                                                  return Dialog(
-                                                                                    elevation: 0,
-                                                                                    insetPadding: EdgeInsets.zero,
-                                                                                    backgroundColor: Colors.transparent,
-                                                                                    alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                                    child: GestureDetector(
-                                                                                      onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                                      child: ImageGalleryManagerComponentWidget(
-                                                                                        immageAssetRows: venueImageEditImageAssetsRowList,
-                                                                                        onUpload: (originalURL, newURL) async {
-                                                                                          await ImageAssetsTable().insert({
-                                                                                            'FK_Venue': widget.venuePK,
-                                                                                            'image_url': newURL,
-                                                                                            'originalURL': originalURL,
-                                                                                          });
-                                                                                          setState(() => _model.requestCompleter4 = null);
-                                                                                          await _model.waitForRequestCompleted4();
-                                                                                          setState(() {});
-                                                                                        },
-                                                                                        onDbUpdate: () async {
-                                                                                          setState(() => _model.requestCompleter4 = null);
-                                                                                          await _model.waitForRequestCompleted4();
-                                                                                          setState(() => _model.requestCompleter1 = null);
-                                                                                          await _model.waitForRequestCompleted1();
-                                                                                          setState(() {});
-                                                                                        },
-                                                                                      ),
-                                                                                    ),
-                                                                                  );
-                                                                                },
-                                                                              ).then((value) => setState(() {}));
-
-                                                                              setState(() {});
-                                                                            },
-                                                                            child:
-                                                                                Icon(
-                                                                              Icons.settings_outlined,
-                                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                                              size: 24.0,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        Text(
-                                                                          'Venue Images',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Readex Pro',
-                                                                                letterSpacing: 0.0,
-                                                                              ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              );
-                                                            },
-                                                          ),
-                                                          FutureBuilder<
-                                                              List<
-                                                                  ImageAssetsRow>>(
-                                                            future:
-                                                                ImageAssetsTable()
-                                                                    .queryRows(
-                                                              queryFn: (q) =>
-                                                                  q.eq(
-                                                                'FK_Vendor',
-                                                                widget.vendorPK,
+                                                  child: Builder(
+                                                    builder: (context) {
+                                                      final imageAsset =
+                                                          galleryRowImageAssetsRowList
+                                                              .toList();
+                                                      return ListView.builder(
+                                                        padding:
+                                                            EdgeInsets.zero,
+                                                        shrinkWrap: true,
+                                                        scrollDirection:
+                                                            Axis.horizontal,
+                                                        itemCount:
+                                                            imageAsset.length,
+                                                        itemBuilder: (context,
+                                                            imageAssetIndex) {
+                                                          final imageAssetItem =
+                                                              imageAsset[
+                                                                  imageAssetIndex];
+                                                          return Container(
+                                                            constraints:
+                                                                BoxConstraints(
+                                                              maxWidth: 300.0,
+                                                              maxHeight: 250.0,
+                                                            ),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                            ),
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              child:
+                                                                  Image.network(
+                                                                imageAssetItem
+                                                                    .imageUrl,
+                                                                width: 300.0,
+                                                                height: 200.0,
+                                                                fit: BoxFit
+                                                                    .cover,
                                                               ),
                                                             ),
-                                                            builder: (context,
-                                                                snapshot) {
-                                                              // Customize what your widget looks like when it's loading.
-                                                              if (!snapshot
-                                                                  .hasData) {
-                                                                return Center(
-                                                                  child:
-                                                                      SizedBox(
-                                                                    width: 50.0,
-                                                                    height:
-                                                                        50.0,
-                                                                    child:
-                                                                        SpinKitChasingDots(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondary,
-                                                                      size:
-                                                                          50.0,
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              }
-                                                              List<ImageAssetsRow>
-                                                                  vendorImageEditImageAssetsRowList =
-                                                                  snapshot
-                                                                      .data!;
-                                                              return Container(
-                                                                decoration:
-                                                                    BoxDecoration(),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        InkWell(
-                                                                          splashColor:
-                                                                              Colors.transparent,
-                                                                          focusColor:
-                                                                              Colors.transparent,
-                                                                          hoverColor:
-                                                                              Colors.transparent,
-                                                                          highlightColor:
-                                                                              Colors.transparent,
-                                                                          onTap:
-                                                                              () async {
-                                                                            setState(() {
-                                                                              _model.galleryEditorDisabled = !_model.galleryEditorDisabled;
-                                                                            });
-                                                                          },
-                                                                          child:
-                                                                              Icon(
-                                                                            Icons.settings_outlined,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).secondaryText,
-                                                                            size:
-                                                                                24.0,
-                                                                          ),
-                                                                        ),
-                                                                        Text(
-                                                                          'Vendor Images',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Readex Pro',
-                                                                                letterSpacing: 0.0,
-                                                                              ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              );
-                                                            },
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Builder(
-                                                        builder: (context) {
-                                                          final imageAsset =
-                                                              galleryRowImageAssetsRowList
-                                                                  .toList();
-                                                          return ListView
-                                                              .builder(
-                                                            padding:
-                                                                EdgeInsets.zero,
-                                                            shrinkWrap: true,
-                                                            scrollDirection:
-                                                                Axis.vertical,
-                                                            itemCount:
-                                                                imageAsset
-                                                                    .length,
-                                                            itemBuilder: (context,
-                                                                imageAssetIndex) {
-                                                              final imageAssetItem =
-                                                                  imageAsset[
-                                                                      imageAssetIndex];
-                                                              return ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                                child: Image
-                                                                    .network(
-                                                                  imageAssetItem
-                                                                      .imageUrl,
-                                                                  width: 300.0,
-                                                                  height: 200.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              );
-                                                            },
                                                           );
                                                         },
-                                                      ),
-                                                    ],
+                                                      );
+                                                    },
                                                   ),
                                                 );
                                               },
+                                            ),
+                                            Container(
+                                              decoration: BoxDecoration(),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  FutureBuilder<
+                                                      List<ImageAssetsRow>>(
+                                                    future: (_model
+                                                                .requestCompleter4 ??=
+                                                            Completer<
+                                                                List<
+                                                                    ImageAssetsRow>>()
+                                                              ..complete(
+                                                                  ImageAssetsTable()
+                                                                      .queryRows(
+                                                                queryFn: (q) =>
+                                                                    q.eq(
+                                                                  'FK_Venue',
+                                                                  widget
+                                                                      .venuePK,
+                                                                ),
+                                                              )))
+                                                        .future,
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 50.0,
+                                                            height: 50.0,
+                                                            child:
+                                                                SpinKitChasingDots(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondary,
+                                                              size: 50.0,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      List<ImageAssetsRow>
+                                                          venueImageEditImageAssetsRowList =
+                                                          snapshot.data!;
+                                                      return Container(
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Builder(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onTap:
+                                                                        () async {
+                                                                      await showDialog(
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (dialogContext) {
+                                                                          return Dialog(
+                                                                            elevation:
+                                                                                0,
+                                                                            insetPadding:
+                                                                                EdgeInsets.zero,
+                                                                            backgroundColor:
+                                                                                Colors.transparent,
+                                                                            alignment:
+                                                                                AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                            child:
+                                                                                GestureDetector(
+                                                                              onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                              child: ImageGalleryManagerComponentWidget(
+                                                                                immageAssetRows: venueImageEditImageAssetsRowList,
+                                                                                onUpload: (originalURL, newURL) async {
+                                                                                  await ImageAssetsTable().insert({
+                                                                                    'FK_Venue': widget.venuePK,
+                                                                                    'image_url': newURL,
+                                                                                    'originalURL': originalURL,
+                                                                                  });
+                                                                                  setState(() => _model.requestCompleter4 = null);
+                                                                                  await _model.waitForRequestCompleted4();
+                                                                                  setState(() {});
+                                                                                },
+                                                                                onDbUpdate: () async {
+                                                                                  setState(() => _model.requestCompleter4 = null);
+                                                                                  await _model.waitForRequestCompleted4();
+                                                                                  setState(() => _model.requestCompleter1 = null);
+                                                                                  await _model.waitForRequestCompleted1();
+                                                                                  setState(() {});
+                                                                                },
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                      ).then((value) =>
+                                                                          setState(
+                                                                              () {}));
+
+                                                                      setState(
+                                                                          () {});
+                                                                    },
+                                                                    child: Icon(
+                                                                      Icons
+                                                                          .settings_outlined,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  'Venue Images',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                  FutureBuilder<
+                                                      List<ImageAssetsRow>>(
+                                                    future: ImageAssetsTable()
+                                                        .queryRows(
+                                                      queryFn: (q) => q.eq(
+                                                        'FK_Vendor',
+                                                        widget.vendorPK,
+                                                      ),
+                                                    ),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 50.0,
+                                                            height: 50.0,
+                                                            child:
+                                                                SpinKitChasingDots(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondary,
+                                                              size: 50.0,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      List<ImageAssetsRow>
+                                                          vendorImageEditImageAssetsRowList =
+                                                          snapshot.data!;
+                                                      return Container(
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                InkWell(
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  focusColor: Colors
+                                                                      .transparent,
+                                                                  hoverColor: Colors
+                                                                      .transparent,
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  onTap:
+                                                                      () async {
+                                                                    setState(
+                                                                        () {
+                                                                      _model.galleryEditorDisabled =
+                                                                          !_model
+                                                                              .galleryEditorDisabled;
+                                                                    });
+                                                                  },
+                                                                  child: Icon(
+                                                                    Icons
+                                                                        .settings_outlined,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    size: 24.0,
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  'Vendor Images',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Readex Pro',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -1242,6 +1261,127 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 10.0, 0.0, 10.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0),
+                                                      child: Text(
+                                                        'Package Includes',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Readex Pro',
+                                                              fontSize: 20.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  30.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Selection of 3 Antipastis',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Readex Pro',
+                                                              fontSize: 18.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Selection of 2 Pastas ',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Readex Pro',
+                                                              fontSize: 18.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Selection of 2 Secondis/Verdures',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Readex Pro',
+                                                              fontSize: 18.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
                                             Align(
                                               alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
@@ -2270,137 +2410,6 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      10.0,
-                                                                      0.0,
-                                                                      10.0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceEvenly,
-                                                            children: [
-                                                              Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          10.0),
-                                                                  child: Text(
-                                                                    'Package Includes',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
-                                                                          fontSize:
-                                                                              20.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                        ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        -1.0,
-                                                                        0.0),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          30.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child: Text(
-                                                                    'Selection of 3 Antipastis',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
-                                                                          fontSize:
-                                                                              18.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                        ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        -1.0,
-                                                                        0.0),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child: Text(
-                                                                    'Selection of 2 Pastas ',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
-                                                                          fontSize:
-                                                                              18.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                        ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        -1.0,
-                                                                        0.0),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child: Text(
-                                                                    'Selection of 2 Secondis/Verdures',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Readex Pro',
-                                                                          fontSize:
-                                                                              18.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                        ),
-                                                                  ),
                                                                 ),
                                                               ),
                                                             ],

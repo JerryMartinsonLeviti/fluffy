@@ -220,7 +220,12 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                 () => setState(
                                                                     () {}),
                                                             child:
-                                                                ListingRestaurantDetailComponentWidget(),
+                                                                ListingRestaurantDetailComponentWidget(
+                                                              vendorRow:
+                                                                  vendorDBContainerVendorsRow!,
+                                                              venueRow:
+                                                                  venueDBContainerVenuesRow!,
+                                                            ),
                                                           ),
                                                         ),
                                                         Expanded(

@@ -12,7 +12,14 @@ import 'listing_restaurant_detail_component_model.dart';
 export 'listing_restaurant_detail_component_model.dart';
 
 class ListingRestaurantDetailComponentWidget extends StatefulWidget {
-  const ListingRestaurantDetailComponentWidget({super.key});
+  const ListingRestaurantDetailComponentWidget({
+    super.key,
+    required this.vendorRow,
+    required this.venueRow,
+  });
+
+  final VendorsRow? vendorRow;
+  final VenuesRow? venueRow;
 
   @override
   State<ListingRestaurantDetailComponentWidget> createState() =>
@@ -86,14 +93,14 @@ class _ListingRestaurantDetailComponentWidgetState
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    if (vendorDBContainerVendorsRow?.vendorName != null &&
-                        vendorDBContainerVendorsRow?.vendorName != '')
+                    if (widget.vendorRow?.vendorName != null &&
+                        widget.vendorRow?.vendorName != '')
                       Align(
                         alignment: AlignmentDirectional(-1.0, -1.0),
                         child: Text(
                           valueOrDefault<String>(
-                            vendorDBContainerVendorsRow?.vendorName,
-                            'Vendor Name',
+                            widget.vendorRow?.vendorName,
+                            'vend_name',
                           ),
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
@@ -105,15 +112,14 @@ class _ListingRestaurantDetailComponentWidgetState
                               ),
                         ),
                       ),
-                    if (venueDBContainerVenuesRow?.restaurantLocationName !=
-                            null &&
-                        venueDBContainerVenuesRow?.restaurantLocationName != '')
+                    if (widget.venueRow?.restaurantLocationName != null &&
+                        widget.venueRow?.restaurantLocationName != '')
                       Align(
                         alignment: AlignmentDirectional(-1.0, -1.0),
                         child: Text(
                           valueOrDefault<String>(
-                            venueDBContainerVenuesRow?.restaurantLocationName,
-                            'Venue Name',
+                            widget.venueRow?.restaurantLocationName,
+                            'venueName',
                           ),
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
@@ -207,9 +213,9 @@ class _ListingRestaurantDetailComponentWidgetState
                                                                     context)),
                                                     child:
                                                         TextBoxUpdateModalWidget(
-                                                      existingText:
-                                                          vendorDBContainerVendorsRow
-                                                              ?.vendorDescription,
+                                                      existingText: widget
+                                                          .vendorRow
+                                                          ?.vendorDescription,
                                                       onSave: (newText) async {
                                                         await VendorsTable()
                                                             .update(
@@ -220,7 +226,8 @@ class _ListingRestaurantDetailComponentWidgetState
                                                           matchingRows:
                                                               (rows) => rows.eq(
                                                             'PK_Vendors',
-                                                            widget.vendorPK,
+                                                            widget.vendorRow
+                                                                ?.pKVendors,
                                                           ),
                                                         );
                                                         setState(() {});
@@ -242,12 +249,8 @@ class _ListingRestaurantDetailComponentWidgetState
                                   ],
                                 ),
                               ),
-                              if (vendorDBContainerVendorsRow
-                                          ?.vendorDescription !=
-                                      null &&
-                                  vendorDBContainerVendorsRow
-                                          ?.vendorDescription !=
-                                      '')
+                              if (widget.vendorRow?.vendorDescription != null &&
+                                  widget.vendorRow?.vendorDescription != '')
                                 Align(
                                   alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Padding(
@@ -255,9 +258,8 @@ class _ListingRestaurantDetailComponentWidgetState
                                         20.0, 0.0, 30.0, 0.0),
                                     child: Text(
                                       valueOrDefault<String>(
-                                        vendorDBContainerVendorsRow
-                                            ?.vendorDescription,
-                                        'Vendor Description',
+                                        widget.vendorRow?.vendorDescription,
+                                        'vend desc',
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -324,9 +326,9 @@ class _ListingRestaurantDetailComponentWidgetState
                                                                     context)),
                                                     child:
                                                         TextBoxUpdateModalWidget(
-                                                      existingText:
-                                                          venueDBContainerVenuesRow
-                                                              ?.venueDescription,
+                                                      existingText: widget
+                                                          .venueRow
+                                                          ?.venueDescription,
                                                       onSave: (newText) async {
                                                         await VenuesTable()
                                                             .update(
@@ -337,7 +339,8 @@ class _ListingRestaurantDetailComponentWidgetState
                                                           matchingRows:
                                                               (rows) => rows.eq(
                                                             'PK_Venues',
-                                                            widget.venuePK,
+                                                            widget.venueRow
+                                                                ?.pKVenues,
                                                           ),
                                                         );
                                                         setState(() {});
@@ -359,10 +362,8 @@ class _ListingRestaurantDetailComponentWidgetState
                                   ],
                                 ),
                               ),
-                              if (venueDBContainerVenuesRow?.venueDescription !=
-                                      null &&
-                                  venueDBContainerVenuesRow?.venueDescription !=
-                                      '')
+                              if (widget.venueRow?.venueDescription != null &&
+                                  widget.venueRow?.venueDescription != '')
                                 Align(
                                   alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Padding(
@@ -370,9 +371,8 @@ class _ListingRestaurantDetailComponentWidgetState
                                         20.0, 0.0, 30.0, 0.0),
                                     child: Text(
                                       valueOrDefault<String>(
-                                        venueDBContainerVenuesRow
-                                            ?.venueDescription,
-                                        'Venue Description',
+                                        widget.venueRow?.venueDescription,
+                                        'venue_desc',
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -402,7 +402,7 @@ class _ListingRestaurantDetailComponentWidgetState
                         ..complete(AddressesTable().querySingleRow(
                           queryFn: (q) => q.eq(
                             'PK_Addresses',
-                            venueDBContainerVenuesRow?.fKAddress,
+                            widget.venueRow?.fKAddress,
                           ),
                         )))
                       .future,

@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -499,14 +500,24 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                                                   20.0),
                                                       child: FutureBuilder<
                                                           List<AddressesRow>>(
-                                                        future: AddressesTable()
-                                                            .querySingleRow(
-                                                          queryFn: (q) => q.eq(
-                                                            'PK_Addresses',
-                                                            widget.vendorRow
-                                                                ?.pKVendors,
-                                                          ),
-                                                        ),
+                                                        future: (_model
+                                                                    .requestCompleter ??=
+                                                                Completer<
+                                                                    List<
+                                                                        AddressesRow>>()
+                                                                  ..complete(
+                                                                      AddressesTable()
+                                                                          .querySingleRow(
+                                                                    queryFn:
+                                                                        (q) => q
+                                                                            .eq(
+                                                                      'PK_Addresses',
+                                                                      widget
+                                                                          .vendorRow
+                                                                          ?.pKVendors,
+                                                                    ),
+                                                                  )))
+                                                            .future,
                                                         builder: (context,
                                                             snapshot) {
                                                           // Customize what your widget looks like when it's loading.
@@ -527,12 +538,12 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                                             );
                                                           }
                                                           List<AddressesRow>
-                                                              containerAddressesRowList =
+                                                              addressDBAddressesRowList =
                                                               snapshot.data!;
-                                                          final containerAddressesRow =
-                                                              containerAddressesRowList
+                                                          final addressDBAddressesRow =
+                                                              addressDBAddressesRowList
                                                                       .isNotEmpty
-                                                                  ? containerAddressesRowList
+                                                                  ? addressDBAddressesRowList
                                                                       .first
                                                                   : null;
                                                           return Container(
@@ -555,21 +566,32 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                                               child:
                                                                   AddressWidget(
                                                                 street1:
-                                                                    containerAddressesRow
+                                                                    addressDBAddressesRow
                                                                         ?.streetName1,
                                                                 street2:
-                                                                    containerAddressesRow
+                                                                    addressDBAddressesRow
                                                                         ?.streetName2,
                                                                 city:
-                                                                    containerAddressesRow
+                                                                    addressDBAddressesRow
                                                                         ?.city,
-                                                                state: containerAddressesRow
+                                                                state: addressDBAddressesRow
                                                                     ?.regionCode,
-                                                                zip: containerAddressesRow
+                                                                zip: addressDBAddressesRow
                                                                     ?.postalCode,
                                                                 country:
-                                                                    containerAddressesRow
+                                                                    addressDBAddressesRow
                                                                         ?.countryCode,
+                                                                addressPK:
+                                                                    addressDBAddressesRow!
+                                                                        .pKAddresses,
+                                                                onSave:
+                                                                    () async {
+                                                                  setState(() =>
+                                                                      _model.requestCompleter =
+                                                                          null);
+                                                                  await _model
+                                                                      .waitForRequestCompleted();
+                                                                },
                                                               ),
                                                             ),
                                                           );

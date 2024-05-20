@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'dart:async';
 import 'venue_detail_page_widget.dart' show VenueDetailPageWidget;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -24,6 +25,7 @@ class VenueDetailPageModel extends FlutterFlowModel<VenueDetailPageWidget> {
       productDetailPageOptionsLanguageModel;
   // Model for Address component.
   late AddressModel addressModel;
+  Completer<List<AddressesRow>>? requestCompleter;
   // State field(s) for Carousel widget.
   CarouselController? carouselController;
 
@@ -52,5 +54,21 @@ class VenueDetailPageModel extends FlutterFlowModel<VenueDetailPageWidget> {
     addressModel.dispose();
     eventSpaceComponentModel.dispose();
     packagesComponentModel.dispose();
+  }
+
+  /// Additional helper methods.
+  Future waitForRequestCompleted({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
   }
 }

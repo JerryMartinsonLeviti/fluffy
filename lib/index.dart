@@ -127,3 +127,5 @@ export '/neda_user_flow_pages/vendor_r_f_p_confirmation_sent_copy/vendor_r_f_p_c
     show VendorRFPConfirmationSentCopyWidget;
 export '/neda_user_flow_pages/liaison_dashboard_copy/liaison_dashboard_copy_widget.dart'
     show LiaisonDashboardCopyWidget;
+export '/neda_user_flow_pages/liaison_all_events_list_copy/liaison_all_events_list_copy_widget.dart'
+    show LiaisonAllEventsListCopyWidget;

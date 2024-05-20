@@ -65,6 +65,19 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
           ),
         ],
       ),
+      'columnOnActionTriggerAnimation3': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          RotateEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
     });
     setupAnimations(
       animationsMap.values.where((anim) =>
@@ -142,13 +155,13 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 20.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                       child: Text(
                         'Liaison Dashboard',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
-                              color: FlutterFlowTheme.of(context).primary,
-                              fontSize: 30.0,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 40.0,
                               letterSpacing: 0.0,
                             ),
                       ),
@@ -176,7 +189,7 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 100.0, 0.0),
+                                0.0, 0.0, 30.0, 0.0),
                             child: Icon(
                               Icons.notification_important,
                               color: FlutterFlowTheme.of(context).error,
@@ -190,7 +203,7 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 42.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                       child: GridView(
                         padding: EdgeInsets.zero,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -262,7 +275,7 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             color: FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .secondary,
                                             fontSize: 18.0,
                                             letterSpacing: 0.0,
                                           ),
@@ -326,14 +339,14 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 14.0, 0.0, 0.0),
                                     child: Text(
-                                      'Messaging & \nNotifications',
+                                      'Messaging & \nNotifications\nIncoming RFP\'s & RTB\'s',
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             color: FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .secondary,
                                             fontSize: 18.0,
                                             letterSpacing: 0.0,
                                           ),
@@ -401,7 +414,7 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             color: FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .secondary,
                                             fontSize: 18.0,
                                             letterSpacing: 0.0,
                                           ),
@@ -440,7 +453,7 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 42.0, 0.0, 0.0),
                                       child: Icon(
-                                        Icons.manage_search_rounded,
+                                        Icons.rowing,
                                         color:
                                             FlutterFlowTheme.of(context).error,
                                         size: 60.0,
@@ -466,7 +479,7 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 14.0, 0.0, 0.0),
                                         child: Text(
-                                          'Product Page Review & Approval\nProspecting',
+                                          'New Vendor Info, Listings Review & Approval, Prospecting',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -474,7 +487,7 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                                                 fontFamily: 'Readex Pro',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .accent4,
+                                                        .secondary,
                                                 fontSize: 18.0,
                                                 letterSpacing: 0.0,
                                               ),
@@ -514,17 +527,18 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 42.0, 0.0, 0.0),
-                                    child: wrapWithModel(
-                                      model: _model.iconRequesttoBookPlaneModel,
-                                      updateCallback: () => setState(() {}),
-                                      child: IconRequesttoBookPlaneWidget(),
+                                    child: Icon(
+                                      Icons.manage_search_rounded,
+                                      color:
+                                          FlutterFlowTheme.of(context).accent4,
+                                      size: 60.0,
                                     ),
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 0.0),
                                     child: Text(
-                                      'Requests to Book',
+                                      'Requests for Proposal',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -540,7 +554,7 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 14.0, 0.0, 0.0),
                                       child: Text(
-                                        'Incoming, Check Status, Update',
+                                        'Check Status, Update',
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -548,7 +562,7 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                                               fontFamily: 'Readex Pro',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .accent4,
+                                                      .secondary,
                                               fontSize: 18.0,
                                               letterSpacing: 0.0,
                                             ),
@@ -584,48 +598,55 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 42.0, 0.0, 0.0),
-                                  child: Icon(
-                                    Icons.monetization_on_outlined,
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                    size: 58.0,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 20.0, 0.0, 0.0),
-                                  child: Text(
-                                    'Financials',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          fontSize: 28.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 14.0, 0.0, 0.0),
-                                    child: Text(
-                                      'Invoices &\nPayment Tracking',
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent4,
-                                            fontSize: 18.0,
-                                            letterSpacing: 0.0,
-                                          ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 44.0, 0.0, 0.0),
+                                      child: wrapWithModel(
+                                        model:
+                                            _model.iconRequesttoBookPlaneModel,
+                                        updateCallback: () => setState(() {}),
+                                        child: IconRequesttoBookPlaneWidget(),
+                                      ),
                                     ),
-                                  ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 20.0, 0.0, 0.0),
+                                      child: Text(
+                                        'Requests to Book',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              fontSize: 28.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 14.0, 0.0, 0.0),
+                                        child: Text(
+                                          'Product Page Review & Approval\nProspecting',
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
+                                                fontSize: 18.0,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -657,7 +678,8 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                                       0.0, 42.0, 0.0, 0.0),
                                   child: Icon(
                                     Icons.calendar_month_rounded,
-                                    color: FlutterFlowTheme.of(context).accent3,
+                                    color: FlutterFlowTheme.of(context)
+                                        .customColor12,
                                     size: 58.0,
                                   ),
                                 ),
@@ -688,7 +710,7 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             color: FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .secondary,
                                             fontSize: 18.0,
                                             letterSpacing: 0.0,
                                           ),
@@ -756,7 +778,7 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             color: FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .secondary,
                                             fontSize: 18.0,
                                             letterSpacing: 0.0,
                                           ),
@@ -764,6 +786,77 @@ class _LiaisonDashboardCopyWidgetState extends State<LiaisonDashboardCopyWidget>
                                   ),
                                 ),
                               ],
+                            ),
+                          ),
+                          Container(
+                            width: 280.0,
+                            height: 134.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 4.0,
+                                  color: Color(0x33000000),
+                                  offset: Offset(
+                                    0.0,
+                                    2.0,
+                                  ),
+                                )
+                              ],
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 42.0, 0.0, 0.0),
+                                  child: Icon(
+                                    Icons.monetization_on_outlined,
+                                    color: FlutterFlowTheme.of(context)
+                                        .customColor1,
+                                    size: 58.0,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 20.0, 0.0, 0.0),
+                                  child: Text(
+                                    'Financials',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 28.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 14.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Invoices &\nPayment Tracking',
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            fontSize: 18.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ).animateOnActionTrigger(
+                              animationsMap['columnOnActionTriggerAnimation3']!,
                             ),
                           ),
                         ],

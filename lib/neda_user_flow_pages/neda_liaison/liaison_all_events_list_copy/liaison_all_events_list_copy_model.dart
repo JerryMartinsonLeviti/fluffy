@@ -1,11 +1,11 @@
 import '/backend/supabase/supabase.dart';
-import '/components/event_line_component_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/neda_user_flow_pages/neda_planner/event_line_component/event_line_component_widget.dart';
 import 'liaison_all_events_list_copy_widget.dart'
     show LiaisonAllEventsListCopyWidget;
 import 'package:cached_network_image/cached_network_image.dart';

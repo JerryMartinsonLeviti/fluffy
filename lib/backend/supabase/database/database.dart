@@ -51,6 +51,7 @@ export 'tables/acv.dart';
 export 'tables/combined_view.dart';
 export 'tables/rmu_view.dart';
 export 'tables/carts.dart';
+export 'tables/package_item.dart';
 export 'tables/vacv.dart';
 export 'tables/vendor_rooms_view.dart';
 export 'tables/tasks.dart';

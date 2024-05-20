@@ -27,9 +27,12 @@ class ItemGroupsRow extends SupabaseDataRow {
   int? get fKPackage => getField<int>('FK_Package');
   set fKPackage(int? value) => setField<int>('FK_Package', value);
 
-  int? get fKItem => getField<int>('FK_Item');
-  set fKItem(int? value) => setField<int>('FK_Item', value);
-
   int? get fKVendor => getField<int>('FK_Vendor');
   set fKVendor(int? value) => setField<int>('FK_Vendor', value);
+
+  int? get minSelections => getField<int>('minSelections');
+  set minSelections(int? value) => setField<int>('minSelections', value);
+
+  int? get maxSelections => getField<int>('maxSelections');
+  set maxSelections(int? value) => setField<int>('maxSelections', value);
 }

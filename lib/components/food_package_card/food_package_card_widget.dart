@@ -1,7 +1,9 @@
 import '/backend/supabase/supabase.dart';
+import '/components/item_config_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -223,6 +225,125 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
             Column(
               mainAxisSize: MainAxisSize.max,
               children: [
+                FutureBuilder<List<ItemsRow>>(
+                  future:
+                      (_model.requestCompleter ??= Completer<List<ItemsRow>>()
+                            ..complete(ItemsTable().queryRows(
+                              queryFn: (q) => q
+                                  .eq(
+                                    'FK_Vendor',
+                                    widget.packageRow?.fKVendor,
+                                  )
+                                  .order('created_at'),
+                            )))
+                          .future,
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: SpinKitChasingDots(
+                            color: FlutterFlowTheme.of(context).secondary,
+                            size: 50.0,
+                          ),
+                        ),
+                      );
+                    }
+                    List<ItemsRow> itemDBItemsRowList = snapshot.data!;
+                    return Container(
+                      decoration: BoxDecoration(),
+                      child: FutureBuilder<List<PackageItemRow>>(
+                        future: PackageItemTable().queryRows(
+                          queryFn: (q) => q.eq(
+                            'FK_Package',
+                            widget.packageRow?.pKPackages,
+                          ),
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: SpinKitChasingDots(
+                                  color: FlutterFlowTheme.of(context).secondary,
+                                  size: 50.0,
+                                ),
+                              ),
+                            );
+                          }
+                          List<PackageItemRow> pkgItemDBPackageItemRowList =
+                              snapshot.data!;
+                          return Container(
+                            decoration: BoxDecoration(),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Builder(
+                                  builder: (context) {
+                                    final itemRow = itemDBItemsRowList.toList();
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: List.generate(itemRow.length,
+                                          (itemRowIndex) {
+                                        final itemRowItem =
+                                            itemRow[itemRowIndex];
+                                        return ItemConfigComponentWidget(
+                                          key: Key(
+                                              'Keyvhg_${itemRowIndex}_of_${itemRow.length}'),
+                                          itemRow: itemRowItem,
+                                          packageRow: widget.packageRow!,
+                                          onItemDbChange: () async {},
+                                        );
+                                      }),
+                                    );
+                                  },
+                                ),
+                                FFButtonWidget(
+                                  onPressed: () async {
+                                    await ItemsTable().insert({
+                                      'public_description': 'no Description',
+                                      'display_name': 'no Name',
+                                    });
+                                    setState(
+                                        () => _model.requestCompleter = null);
+                                    await _model.waitForRequestCompleted();
+                                    _model.updatePage(() {});
+                                  },
+                                  text: 'AddNewItem',
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: Colors.white,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  },
+                ),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

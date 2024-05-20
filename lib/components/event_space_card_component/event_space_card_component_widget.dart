@@ -305,7 +305,7 @@ class _EventSpaceCardComponentWidgetState
                             letterSpacing: 0.0,
                           ),
                     ),
-                    if (widget.functionSpaceRow?.foodAndBevApplies ?? true)
+                    if (widget.functionSpaceRow?.rentalFeeApplies ?? true)
                       Text(
                         'Rental Fee: ${valueOrDefault<String>(
                           formatNumber(
@@ -1073,8 +1073,7 @@ class _EventSpaceCardComponentWidgetState
                                       'food_and_bev_minimum_in_cents':
                                           functions.stringToCents(
                                               _model.fnbTextController.text),
-                                      'food_and_bev_applies': widget
-                                          .functionSpaceRow?.foodAndBevApplies,
+                                      'food_and_bev_applies': _model.fnbValue,
                                       'conference_capacity': int.tryParse(
                                           _model.confTextController.text),
                                     },

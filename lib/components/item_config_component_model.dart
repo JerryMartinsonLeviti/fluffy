@@ -1,29 +1,39 @@
 import '/backend/supabase/supabase.dart';
-import '/components/item_config_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
-import 'food_package_card_widget.dart' show FoodPackageCardWidget;
+import 'item_config_component_widget.dart' show ItemConfigComponentWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class FoodPackageCardModel extends FlutterFlowModel<FoodPackageCardWidget> {
-  ///  Local state fields for this component.
-
-  bool noEdit = true;
-
+class ItemConfigComponentModel
+    extends FlutterFlowModel<ItemConfigComponentWidget> {
   ///  State fields for stateful widgets in this component.
 
-  Completer<List<ItemsRow>>? requestCompleter;
+  Completer<List<PackageItemRow>>? requestCompleter;
+  // State field(s) for ItemName widget.
+  FocusNode? itemNameFocusNode;
+  TextEditingController? itemNameTextController;
+  String? Function(BuildContext, String?)? itemNameTextControllerValidator;
+  // State field(s) for ItemDescripton widget.
+  FocusNode? itemDescriptonFocusNode;
+  TextEditingController? itemDescriptonTextController;
+  String? Function(BuildContext, String?)?
+      itemDescriptonTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {}
+  void dispose() {
+    itemNameFocusNode?.dispose();
+    itemNameTextController?.dispose();
+
+    itemDescriptonFocusNode?.dispose();
+    itemDescriptonTextController?.dispose();
+  }
 
   /// Additional helper methods.
   Future waitForRequestCompleted({

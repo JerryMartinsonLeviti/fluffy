@@ -1,9 +1,9 @@
 import '/backend/supabase/supabase.dart';
-import '/components/event_summary_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/neda_user_flow_pages/neda_planner/event_summary_card/event_summary_card_widget.dart';
 import 'manage_events_my_events_copy_widget.dart'
     show ManageEventsMyEventsCopyWidget;
 import 'package:flutter/material.dart';

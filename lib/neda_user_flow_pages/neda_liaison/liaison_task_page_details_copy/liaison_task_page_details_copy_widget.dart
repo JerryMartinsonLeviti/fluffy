@@ -203,7 +203,7 @@ class _LiaisonTaskPageDetailsCopyWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   15.0, 0.0, 0.0, 0.0),
                                           child: Text(
-                                            'Awaiting Response ',
+                                            'Awaiting Response from Venue [Planner] [Liaison]',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -332,7 +332,7 @@ class _LiaisonTaskPageDetailsCopyWidgetState
                                                         ),
                                               ),
                                               Text(
-                                                'Event Created: Created 05/10/24 1:34pm PST',
+                                                'Event Created: 5/10/24 1:34pm PST',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -570,7 +570,7 @@ class _LiaisonTaskPageDetailsCopyWidgetState
                         EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                     child: Container(
                       width: 693.0,
-                      height: 324.0,
+                      height: 444.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         boxShadow: [
@@ -594,6 +594,20 @@ class _LiaisonTaskPageDetailsCopyWidgetState
                           Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 15.0, 0.0, 0.0),
+                                child: Text(
+                                  'RFP 1',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 20.0,
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                              ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 20.0),
@@ -621,6 +635,37 @@ class _LiaisonTaskPageDetailsCopyWidgetState
                                       ],
                                     ),
                                   ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 20.0),
+                                child: FFButtonWidget(
+                                  onPressed: () {
+                                    print('Button pressed ...');
+                                  },
+                                  text: '1 Unread Message',
+                                  options: FFButtonOptions(
+                                    height: 30.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: Colors.white,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
                                 ),
                               ),
                               Padding(
@@ -676,13 +721,6 @@ class _LiaisonTaskPageDetailsCopyWidgetState
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
-                                      ],
-                                    ),
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
                                         Text(
                                           'Total Estimate:  \$10,146',
                                           style: FlutterFlowTheme.of(context)
@@ -706,12 +744,13 @@ class _LiaisonTaskPageDetailsCopyWidgetState
                                       ],
                                     ),
                                     Text(
-                                      'Status: Waiting for Response',
+                                      'Status: Waiting for Venue Response',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Readex Pro',
-                                            color: Color(0xFF5878F9),
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent4,
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                           ),
@@ -721,13 +760,13 @@ class _LiaisonTaskPageDetailsCopyWidgetState
                               ),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Align(
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          40.0, 0.0, 0.0, 20.0),
+                                          30.0, 0.0, 0.0, 20.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
@@ -735,11 +774,12 @@ class _LiaisonTaskPageDetailsCopyWidgetState
                                         children: [
                                           Text(
                                             'Selection(s):',
+                                            textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Readex Pro',
-                                                  fontSize: 15.0,
+                                                  fontSize: 16.0,
                                                   letterSpacing: 0.0,
                                                 ),
                                           ),
@@ -823,40 +863,40 @@ class _LiaisonTaskPageDetailsCopyWidgetState
                                   ),
                                 ],
                               ),
-                              Text(
-                                'Vendor Contact: Terry Sutro',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      fontSize: 18.0,
-                                      letterSpacing: 0.0,
-                                    ),
-                              ),
                               Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
+                                  Text(
+                                    'Vendor Contact: Terry Sutro',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 16.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  Text(
+                                    'Email: terry@unionsqr.com',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 16.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
                                   Text(
                                     'Cell Phone: 212-436-8880',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          fontSize: 18.0,
+                                          fontSize: 16.0,
                                           letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],
-                              ),
-                              Text(
-                                'Email: terry@cisi.com',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      fontSize: 18.0,
-                                      letterSpacing: 0.0,
-                                    ),
                               ),
                             ],
                           ),
@@ -875,7 +915,7 @@ class _LiaisonTaskPageDetailsCopyWidgetState
                         EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                     child: Container(
                       width: 693.0,
-                      height: 269.0,
+                      height: 398.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         boxShadow: [
@@ -896,15 +936,30 @@ class _LiaisonTaskPageDetailsCopyWidgetState
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 20.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Column(
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 15.0, 0.0, 0.0),
+                                child: Text(
+                                  'RFP 2',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 20.0,
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 20.0),
+                                child: Row(
                                   mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Text(
                                       'Gramercy Tavern, New York',
@@ -920,197 +975,236 @@ class _LiaisonTaskPageDetailsCopyWidgetState
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 20.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Column(
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Text(
-                                      'Event Date: June 30, 2024',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 15.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
-                                    Text(
-                                      'Event Time: 7:30PM ET',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 15.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
-                                    Text(
-                                      'Duration: 3 Hrs',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 15.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
-                                    Text(
-                                      '#Guests: 30',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 15.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Total Estimate:  \$14,008',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 15.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
-                                    Text(
-                                      'Deposit Due: \$7,004',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 15.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  'Status: Request to Book Submitted ',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        color: Color(0xFFB73C7E),
-                                        fontSize: 16.0,
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(-1.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      40.0, 0.0, 0.0, 20.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Selection(s):',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              fontSize: 15.0,
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 5.0, 0.0, 0.0),
-                                        child: Text(
-                                          'Main Dining Room',
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Event Date: June 30, 2024',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Readex Pro',
+                                                fontSize: 15.0,
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
-                                      ),
-                                      Text(
-                                        'Premier Dinner Package',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                      Text(
-                                        'Luxury Beverage Package',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
+                                        Text(
+                                          'Event Time: 7:30PM ET',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 15.0,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        Text(
+                                          'Duration: 3 Hrs',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 15.0,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        Text(
+                                          '#Guests: 30',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 15.0,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        Text(
+                                          'Total Estimate:  \$14,008',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 15.0,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        Text(
+                                          'Deposit Due: \$7,004',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 15.0,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      'Status: Request to Book Submitted ',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .customColor3,
+                                            fontSize: 16.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              Align(
-                                alignment: AlignmentDirectional(-1.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      100.0, 0.0, 0.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Customer Notes:',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Readex Pro',
-                                              fontSize: 16.0,
-                                              letterSpacing: 0.0,
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          30.0, 0.0, 0.0, 20.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Selection(s):',
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  fontSize: 16.0,
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 5.0, 0.0, 0.0),
+                                            child: Text(
+                                              'Main Dining Room',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
+                                          ),
+                                          Text(
+                                            'Premier Dinner Package',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                          Text(
+                                            'Superiore Beverage Package',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ],
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 5.0, 0.0, 0.0),
-                                        child: Text(
-                                          'A heads-up that we may have 6 additional guests, \nbut we\'re not sure yet.',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                ),
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          100.0, 0.0, 0.0, 0.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Customer Notes:',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  fontSize: 16.0,
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 5.0, 0.0, 0.0),
+                                            child: Text(
+                                              'A heads-up that we may have 6 additional guests, \nbut we\'re not sure yet.',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    'Vendor Contact: Terry Sutro',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 16.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  Text(
+                                    'Email: terry@unionsqr.com',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 16.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  Text(
+                                    'Cell Phone: 212-436-8880',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 16.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),

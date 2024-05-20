@@ -311,6 +311,8 @@ dynamic deserializeParam<T>(
             return RmuViewRow(data);
           case CartsRow:
             return CartsRow(data);
+          case PackageItemRow:
+            return PackageItemRow(data);
           case VacvRow:
             return VacvRow(data);
           case VendorRoomsViewRow:

@@ -26,7 +26,7 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   late PlannerAppBarComponentModel plannerAppBarComponentModel;
   // Model for Address component.
   late AddressModel addressModel;
-  Completer<List<AddressesRow>>? requestCompleter;
+  Completer<List<AddressesRow>>? requestCompleter1;
   // Model for PricePredictor component.
   late PricePredictorModel pricePredictorModel;
   // Model for ProductDetailPageOptionsLanguage component.
@@ -36,6 +36,7 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   late BottomRibbonFooterModel bottomRibbonFooterModel;
   // Model for EventSpaceComponent component.
   late EventSpaceComponentModel eventSpaceComponentModel;
+  Completer<List<FunctionSpacesRow>>? requestCompleter2;
   // Model for PackagesComponent component.
   late PackagesComponentModel packagesComponentModel;
 
@@ -68,7 +69,7 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   }
 
   /// Additional helper methods.
-  Future waitForRequestCompleted({
+  Future waitForRequestCompleted1({
     double minWait = 0,
     double maxWait = double.infinity,
   }) async {
@@ -76,7 +77,22 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
     while (true) {
       await Future.delayed(Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter?.isCompleted ?? false;
+      final requestComplete = requestCompleter1?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
+  }
+
+  Future waitForRequestCompleted2({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter2?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }

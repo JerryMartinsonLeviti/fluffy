@@ -15,6 +15,14 @@ import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 //import 'package:supaflow/supaflow.dart';
 import 'package:storage_client/src/types.dart';
+import 'package:flutter/services.dart';
+
+// class result {
+//   String? url;
+//   String? error;
+//   bool? success;
+//   result({this.url, this.error});
+// }
 
 Future<String?> loadImageToSupabase(String imageFilePathString) async {
   // Add your function code here!
@@ -23,7 +31,6 @@ Future<String?> loadImageToSupabase(String imageFilePathString) async {
   try {
     String path = imageFilePathString;
     File file;
-
 
     if (Uri.parse(path).isAbsolute) {
       // It's a URL, download the file

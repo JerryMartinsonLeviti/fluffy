@@ -1,38 +1,35 @@
 import '/backend/supabase/supabase.dart';
 import '/components/task_row/task_row_widget.dart';
-import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'liaison_task_list_model.dart';
-export 'liaison_task_list_model.dart';
+import 'liaison_task_list_detail_model.dart';
+export 'liaison_task_list_detail_model.dart';
 
-class LiaisonTaskListWidget extends StatefulWidget {
-  const LiaisonTaskListWidget({super.key});
+class LiaisonTaskListDetailWidget extends StatefulWidget {
+  const LiaisonTaskListDetailWidget({super.key});
 
   @override
-  State<LiaisonTaskListWidget> createState() => _LiaisonTaskListWidgetState();
+  State<LiaisonTaskListDetailWidget> createState() =>
+      _LiaisonTaskListDetailWidgetState();
 }
 
-class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
-  late LiaisonTaskListModel _model;
+class _LiaisonTaskListDetailWidgetState
+    extends State<LiaisonTaskListDetailWidget> {
+  late LiaisonTaskListDetailModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => LiaisonTaskListModel());
-
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    _model = createModel(context, () => LiaisonTaskListDetailModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -75,7 +72,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                'Liaison Task List ',
+                'Liaison Tasks ',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: FlutterFlowTheme.of(context).primaryBackground,
@@ -266,8 +263,52 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                   width: double.infinity,
                                   height: 44.0,
                                   decoration: BoxDecoration(
-                                    color:
-                                        FlutterFlowTheme.of(context).tertiary,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    shape: BoxShape.rectangle,
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8.0, 0.0, 6.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Icon(
+                                          Icons.manage_history_sharp,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 24.0,
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Manage Events',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                child: AnimatedContainer(
+                                  duration: Duration(milliseconds: 200),
+                                  curve: Curves.easeInOut,
+                                  width: double.infinity,
+                                  height: 44.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0x05EDE0D9),
                                     borderRadius: BorderRadius.circular(12.0),
                                     shape: BoxShape.rectangle,
                                   ),
@@ -280,7 +321,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                         Icon(
                                           Icons.checklist_rounded,
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                              .primaryText,
                                           size: 24.0,
                                         ),
                                         Expanded(
@@ -301,34 +342,51 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                             ),
                                           ),
                                         ),
-                                        Container(
-                                          height: 32.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          child: Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(8.0, 4.0, 8.0, 4.0),
-                                              child: Text(
-                                                '12',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .info,
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                              ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                child: AnimatedContainer(
+                                  duration: Duration(milliseconds: 200),
+                                  curve: Curves.easeInOut,
+                                  width: double.infinity,
+                                  height: 44.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFEDE0D9),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    shape: BoxShape.rectangle,
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8.0, 0.0, 6.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Icon(
+                                          Icons.lightbulb_rounded,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          size: 24.0,
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    12.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              'Task Detail',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                             ),
                                           ),
                                         ),
@@ -779,7 +837,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 0.0, 4.0),
                                   child: Text(
-                                    'Liaison Tasks',
+                                    'Task Detail',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineMedium
                                         .override(
@@ -788,208 +846,6 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                         ),
                                   ),
                                 ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  'Below is a summary of tasks.',
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 12.0, 16.0, 16.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 8.0),
-                                      child: FlutterFlowChoiceChips(
-                                        options: [
-                                          ChipData('All'),
-                                          ChipData('Pending'),
-                                          ChipData('In Progress'),
-                                          ChipData('Completed')
-                                        ],
-                                        onChanged: (val) => setState(() =>
-                                            _model.choiceChipsValue =
-                                                val?.firstOrNull),
-                                        selectedChipStyle: ChipStyle(
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                          textStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .info,
-                                                letterSpacing: 0.0,
-                                              ),
-                                          iconColor:
-                                              FlutterFlowTheme.of(context).info,
-                                          iconSize: 18.0,
-                                          elevation: 2.0,
-                                          borderColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .accent1,
-                                          borderWidth: 1.0,
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        unselectedChipStyle: ChipStyle(
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          textStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                letterSpacing: 0.0,
-                                              ),
-                                          iconColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryText,
-                                          iconSize: 18.0,
-                                          elevation: 0.0,
-                                          borderColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .alternate,
-                                          borderWidth: 1.0,
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        chipSpacing: 8.0,
-                                        rowSpacing: 12.0,
-                                        multiselect: false,
-                                        initialized:
-                                            _model.choiceChipsValue != null,
-                                        alignment: WrapAlignment.start,
-                                        controller: _model
-                                                .choiceChipsValueController ??=
-                                            FormFieldController<List<String>>(
-                                          ['All'],
-                                        ),
-                                        wrapped: true,
-                                      ),
-                                    ),
-                                    if (responsiveVisibility(
-                                      context: context,
-                                      phone: false,
-                                    ))
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 0.0, 0.0, 0.0),
-                                        child: Container(
-                                          width: 300.0,
-                                          child: TextFormField(
-                                            controller: _model.textController,
-                                            focusNode:
-                                                _model.textFieldFocusNode,
-                                            autofocus: false,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              labelText: 'Search all tasks...',
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                              hintStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 2.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              contentPadding:
-                                                  EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          20.0, 0.0, 0.0, 0.0),
-                                              suffixIcon: Icon(
-                                                Icons.search_rounded,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                              ),
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Readex Pro',
-                                                  letterSpacing: 0.0,
-                                                ),
-                                            cursorColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                            validator: _model
-                                                .textControllerValidator
-                                                .asValidator(context),
-                                          ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
@@ -1021,6 +877,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                       .override(
                                                         fontFamily:
                                                             'Readex Pro',
+                                                        fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
@@ -1042,6 +899,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
+                                                          fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
@@ -1065,6 +923,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
+                                                          fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
@@ -1085,16 +944,23 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                   alignment:
                                                       AlignmentDirectional(
                                                           1.0, 0.0),
-                                                  child: Text(
-                                                    'Status',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                40.0, 0.0),
+                                                    child: Text(
+                                                      'Status',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            fontSize: 16.0,
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
                                                   ),
                                                 ),
                                               ],
@@ -1183,648 +1049,6 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                       BorderRadius.circular(
                                                           8.0),
                                                   child: Image.network(
-                                                    'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=900&q=60',
-                                                    width: 120.0,
-                                                    height: 120.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            if (responsiveVisibility(
-                                              context: context,
-                                              phone: false,
-                                            ))
-                                              Expanded(
-                                                flex: 3,
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          12.0, 0.0, 0.0, 0.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        'Randy Rodriguez',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    12.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'randy@domainname.com',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ].divide(
-                                                        SizedBox(height: 4.0)),
-                                                  ),
-                                                ),
-                                              ),
-                                            if (responsiveVisibility(
-                                              context: context,
-                                              phone: false,
-                                            ))
-                                              Expanded(
-                                                flex: 2,
-                                                child: Text(
-                                                  'June 5th',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ),
-                                            Expanded(
-                                              flex: 2,
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                children: [
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent2,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      border: Border.all(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondary,
-                                                      ),
-                                                    ),
-                                                    child: Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    4.0,
-                                                                    8.0,
-                                                                    4.0),
-                                                        child: Text(
-                                                          'In Progress',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodySmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 0.0,
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            offset: Offset(
-                                              0.0,
-                                              1.0,
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 12.0, 16.0, 12.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Expanded(
-                                              flex: 4,
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    -1.0, 0.0),
-                                                child: Text(
-                                                  'Product Testing',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              width: 36.0,
-                                              height: 36.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent1,
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                                border: Border.all(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  width: 2.0,
-                                                ),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsets.all(2.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  child: Image.network(
-                                                    'https://images.unsplash.com/photo-1505033575518-a36ea2ef75ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZSUyMHVzZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=900&q=60',
-                                                    width: 120.0,
-                                                    height: 120.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            if (responsiveVisibility(
-                                              context: context,
-                                              phone: false,
-                                            ))
-                                              Expanded(
-                                                flex: 3,
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          12.0, 0.0, 0.0, 0.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        'Emily Rambo',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    12.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'emily@domain.com',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ].divide(
-                                                        SizedBox(height: 4.0)),
-                                                  ),
-                                                ),
-                                              ),
-                                            if (responsiveVisibility(
-                                              context: context,
-                                              phone: false,
-                                            ))
-                                              Expanded(
-                                                flex: 2,
-                                                child: Text(
-                                                  'June 5th',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ),
-                                            Expanded(
-                                              flex: 2,
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                children: [
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent3,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      border: Border.all(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .tertiary,
-                                                      ),
-                                                    ),
-                                                    child: Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    4.0,
-                                                                    8.0,
-                                                                    4.0),
-                                                        child: Text(
-                                                          'Pending',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodySmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 0.0,
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            offset: Offset(
-                                              0.0,
-                                              1.0,
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 12.0, 16.0, 12.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Expanded(
-                                              flex: 4,
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    -1.0, 0.0),
-                                                child: Text(
-                                                  'Product Testing',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              width: 36.0,
-                                              height: 36.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent1,
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                                border: Border.all(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  width: 2.0,
-                                                ),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsets.all(2.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  child: Image.network(
-                                                    'https://images.unsplash.com/photo-1505033575518-a36ea2ef75ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZSUyMHVzZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=900&q=60',
-                                                    width: 120.0,
-                                                    height: 120.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            if (responsiveVisibility(
-                                              context: context,
-                                              phone: false,
-                                            ))
-                                              Expanded(
-                                                flex: 3,
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          12.0, 0.0, 0.0, 0.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        'Emily Rambo',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    12.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'emily@domain.com',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ].divide(
-                                                        SizedBox(height: 4.0)),
-                                                  ),
-                                                ),
-                                              ),
-                                            if (responsiveVisibility(
-                                              context: context,
-                                              phone: false,
-                                            ))
-                                              Expanded(
-                                                flex: 2,
-                                                child: Text(
-                                                  'June 5th',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ),
-                                            Expanded(
-                                              flex: 2,
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                children: [
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent3,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      border: Border.all(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .tertiary,
-                                                      ),
-                                                    ),
-                                                    child: Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    4.0,
-                                                                    8.0,
-                                                                    4.0),
-                                                        child: Text(
-                                                          'Pending',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodySmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 0.0,
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            offset: Offset(
-                                              0.0,
-                                              1.0,
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 12.0, 16.0, 12.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Expanded(
-                                              flex: 4,
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    -1.0, 0.0),
-                                                child: Text(
-                                                  'Product Testing',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              width: 36.0,
-                                              height: 36.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent1,
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                                border: Border.all(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  width: 2.0,
-                                                ),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsets.all(2.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  child: Image.network(
                                                     'https://images.unsplash.com/photo-1505033575518-a36ea2ef75ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZSUyMHVzZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=900&q=60',
                                                     width: 120.0,
                                                     height: 120.0,
@@ -1967,6 +1191,18 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                     ),
                                                   ),
                                                 ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      15.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.arrow_forward_ios_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 20.0,
                                               ),
                                             ),
                                           ],
@@ -1986,7 +1222,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                               taskID[taskIDIndex];
                                           return TaskRowWidget(
                                             key: Key(
-                                                'Keyd60_${taskIDIndex}_of_${taskID.length}'),
+                                                'Keyryz_${taskIDIndex}_of_${taskID.length}'),
                                             taskID: valueOrDefault<int>(
                                               taskIDIndex,
                                               0,

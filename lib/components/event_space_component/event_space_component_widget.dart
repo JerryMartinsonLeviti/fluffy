@@ -13,9 +13,11 @@ class EventSpaceComponentWidget extends StatefulWidget {
   const EventSpaceComponentWidget({
     super.key,
     required this.functionSpaceRows,
+    required this.onSave,
   });
 
   final List<FunctionSpacesRow>? functionSpaceRows;
+  final Future Function()? onSave;
 
   @override
   State<EventSpaceComponentWidget> createState() =>
@@ -98,6 +100,9 @@ class _EventSpaceComponentWidgetState extends State<EventSpaceComponentWidget> {
                     key: Key(
                         'Keydri_${functionSpaceIdxIndex}_of_${functionSpaceIdx.length}'),
                     functionSpaceRow: functionSpaceIdxItem,
+                    onSave: () async {
+                      await widget.onSave?.call();
+                    },
                   ),
                 );
               }),

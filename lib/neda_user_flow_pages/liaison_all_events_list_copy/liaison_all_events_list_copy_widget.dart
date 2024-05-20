@@ -152,14 +152,14 @@ class _LiaisonAllEventsListCopyWidgetState
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              'Main Dashboard',
+                                              'Liaison Dashboard',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily:
                                                             'Readex Pro',
-                                                        fontSize: 18.0,
+                                                        fontSize: 20.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
@@ -264,7 +264,7 @@ class _LiaisonAllEventsListCopyWidgetState
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primary,
+                                                      .customColor14,
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                             ),
@@ -300,7 +300,7 @@ class _LiaisonAllEventsListCopyWidgetState
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      8.0, 0.0, 6.0, 0.0),
+                                      25.0, 0.0, 6.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -713,7 +713,7 @@ class _LiaisonAllEventsListCopyWidgetState
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 16.0, 0.0, 4.0),
                               child: Text(
-                                'All Events',
+                                'Manage Events - All',
                                 style: FlutterFlowTheme.of(context)
                                     .headlineMedium
                                     .override(
@@ -1040,17 +1040,22 @@ class _LiaisonAllEventsListCopyWidgetState
                                             Align(
                                               alignment: AlignmentDirectional(
                                                   1.0, 0.0),
-                                              child: Text(
-                                                'Status',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          fontSize: 14.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 40.0, 0.0),
+                                                child: Text(
+                                                  'Status',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
                                               ),
                                             ),
                                           ],
@@ -1326,6 +1331,21 @@ class _LiaisonAllEventsListCopyWidgetState
                                                       ],
                                                     ),
                                                   ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(15.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Icon(
+                                                      Icons
+                                                          .arrow_forward_ios_rounded,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 20.0,
+                                                    ),
+                                                  ),
                                                 ],
                                               ),
                                             ),
@@ -1559,6 +1579,21 @@ class _LiaisonAllEventsListCopyWidgetState
                                                       ],
                                                     ),
                                                   ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(15.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Icon(
+                                                      Icons
+                                                          .arrow_forward_ios_rounded,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 20.0,
+                                                    ),
+                                                  ),
                                                 ],
                                               ),
                                             ),
@@ -1748,7 +1783,7 @@ class _LiaisonAllEventsListCopyWidgetState
                                                               BoxDecoration(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .accent3,
+                                                                .customColor3,
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
@@ -1772,7 +1807,7 @@ class _LiaisonAllEventsListCopyWidgetState
                                                                           8.0,
                                                                           4.0),
                                                               child: Text(
-                                                                'Pending',
+                                                                'Needs Attention',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodySmall
@@ -1790,6 +1825,21 @@ class _LiaisonAllEventsListCopyWidgetState
                                                           ),
                                                         ),
                                                       ],
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(15.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Icon(
+                                                      Icons
+                                                          .arrow_forward_ios_rounded,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 20.0,
                                                     ),
                                                   ),
                                                 ],
@@ -2023,6 +2073,21 @@ class _LiaisonAllEventsListCopyWidgetState
                                                           ),
                                                         ),
                                                       ],
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(15.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Icon(
+                                                      Icons
+                                                          .arrow_forward_ios_rounded,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 20.0,
                                                     ),
                                                   ),
                                                 ],

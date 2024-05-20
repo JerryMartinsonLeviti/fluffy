@@ -559,7 +559,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                   child: FutureBuilder<
                                                                       List<
                                                                           AddressesRow>>(
-                                                                    future: (_model.requestCompleter ??= Completer<
+                                                                    future: (_model.requestCompleter1 ??= Completer<
                                                                             List<
                                                                                 AddressesRow>>()
                                                                           ..complete(
@@ -626,8 +626,8 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                           onSave:
                                                                               () async {
                                                                             setState(() =>
-                                                                                _model.requestCompleter = null);
-                                                                            await _model.waitForRequestCompleted();
+                                                                                _model.requestCompleter1 = null);
+                                                                            await _model.waitForRequestCompleted1();
                                                                             setState(() {});
                                                                           },
                                                                         ),
@@ -4725,13 +4725,21 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                 ),
                                                 FutureBuilder<
                                                     List<FunctionSpacesRow>>(
-                                                  future: FunctionSpacesTable()
-                                                      .queryRows(
-                                                    queryFn: (q) => q.eq(
-                                                      'FK_Venue',
-                                                      widget.venuePK,
-                                                    ),
-                                                  ),
+                                                  future: (_model
+                                                              .requestCompleter2 ??=
+                                                          Completer<
+                                                              List<
+                                                                  FunctionSpacesRow>>()
+                                                            ..complete(
+                                                                FunctionSpacesTable()
+                                                                    .queryRows(
+                                                              queryFn: (q) =>
+                                                                  q.eq(
+                                                                'FK_Venue',
+                                                                widget.venuePK,
+                                                              ),
+                                                            )))
+                                                      .future,
                                                   builder: (context, snapshot) {
                                                     // Customize what your widget looks like when it's loading.
                                                     if (!snapshot.hasData) {
@@ -4750,7 +4758,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                       );
                                                     }
                                                     List<FunctionSpacesRow>
-                                                        containerFunctionSpacesRowList =
+                                                        fsdbFunctionSpacesRowList =
                                                         snapshot.data!;
                                                     return Container(
                                                       decoration:
@@ -4763,7 +4771,15 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                         child:
                                                             EventSpaceComponentWidget(
                                                           functionSpaceRows:
-                                                              containerFunctionSpacesRowList,
+                                                              fsdbFunctionSpacesRowList,
+                                                          onSave: () async {
+                                                            setState(() => _model
+                                                                    .requestCompleter2 =
+                                                                null);
+                                                            await _model
+                                                                .waitForRequestCompleted2();
+                                                            setState(() {});
+                                                          },
                                                         ),
                                                       ),
                                                     );

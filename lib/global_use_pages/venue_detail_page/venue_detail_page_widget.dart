@@ -714,6 +714,7 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                     child: EventSpaceComponentWidget(
                                       functionSpaceRows:
                                           containerFunctionSpacesRowList,
+                                      onSave: () async {},
                                     ),
                                   ),
                                 );

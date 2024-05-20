@@ -11,25 +11,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'liaison_task_list_model.dart';
-export 'liaison_task_list_model.dart';
+import 'liaison_task_list_copy_model.dart';
+export 'liaison_task_list_copy_model.dart';
 
-class LiaisonTaskListWidget extends StatefulWidget {
-  const LiaisonTaskListWidget({super.key});
+class LiaisonTaskListCopyWidget extends StatefulWidget {
+  const LiaisonTaskListCopyWidget({super.key});
 
   @override
-  State<LiaisonTaskListWidget> createState() => _LiaisonTaskListWidgetState();
+  State<LiaisonTaskListCopyWidget> createState() =>
+      _LiaisonTaskListCopyWidgetState();
 }
 
-class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
-  late LiaisonTaskListModel _model;
+class _LiaisonTaskListCopyWidgetState extends State<LiaisonTaskListCopyWidget> {
+  late LiaisonTaskListCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => LiaisonTaskListModel());
+    _model = createModel(context, () => LiaisonTaskListCopyModel());
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -266,8 +267,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                   width: double.infinity,
                                   height: 44.0,
                                   decoration: BoxDecoration(
-                                    color:
-                                        FlutterFlowTheme.of(context).tertiary,
+                                    color: Color(0xFFEDE0D9),
                                     borderRadius: BorderRadius.circular(12.0),
                                     shape: BoxShape.rectangle,
                                   ),
@@ -280,7 +280,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                         Icon(
                                           Icons.checklist_rounded,
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                              .alternate,
                                           size: 24.0,
                                         ),
                                         Expanded(
@@ -305,7 +305,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                           height: 32.0,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
-                                                .primary,
+                                                .customColor14,
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                           ),
@@ -1021,6 +1021,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                       .override(
                                                         fontFamily:
                                                             'Readex Pro',
+                                                        fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
@@ -1042,6 +1043,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
+                                                          fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
@@ -1065,6 +1067,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
+                                                          fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
@@ -1085,16 +1088,23 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                   alignment:
                                                       AlignmentDirectional(
                                                           1.0, 0.0),
-                                                  child: Text(
-                                                    'Status',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                40.0, 0.0),
+                                                    child: Text(
+                                                      'Status',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            fontSize: 16.0,
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
                                                   ),
                                                 ),
                                               ],
@@ -1327,6 +1337,18 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                 ],
                                               ),
                                             ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      15.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.arrow_forward_ios_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 20.0,
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -1530,6 +1552,9 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -1538,6 +1563,18 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                     ),
                                                   ),
                                                 ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      15.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.arrow_forward_ios_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 20.0,
                                               ),
                                             ),
                                           ],
@@ -1743,6 +1780,9 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -1751,6 +1791,18 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                     ),
                                                   ),
                                                 ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      15.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.arrow_forward_ios_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 20.0,
                                               ),
                                             ),
                                           ],
@@ -1969,6 +2021,18 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                                 ],
                                               ),
                                             ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      15.0, 0.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.arrow_forward_ios_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 20.0,
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -1986,7 +2050,7 @@ class _LiaisonTaskListWidgetState extends State<LiaisonTaskListWidget> {
                                               taskID[taskIDIndex];
                                           return TaskRowWidget(
                                             key: Key(
-                                                'Keyd60_${taskIDIndex}_of_${taskID.length}'),
+                                                'Keykqt_${taskIDIndex}_of_${taskID.length}'),
                                             taskID: valueOrDefault<int>(
                                               taskIDIndex,
                                               0,

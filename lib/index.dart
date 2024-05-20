@@ -129,3 +129,7 @@ export '/neda_user_flow_pages/liaison_dashboard_copy/liaison_dashboard_copy_widg
     show LiaisonDashboardCopyWidget;
 export '/neda_user_flow_pages/liaison_all_events_list_copy/liaison_all_events_list_copy_widget.dart'
     show LiaisonAllEventsListCopyWidget;
+export '/neda_user_flow_pages/liaison_task_list_copy/liaison_task_list_copy_widget.dart'
+    show LiaisonTaskListCopyWidget;
+export '/neda_user_flow_pages/liaison_task_list_detail/liaison_task_list_detail_widget.dart'
+    show LiaisonTaskListDetailWidget;

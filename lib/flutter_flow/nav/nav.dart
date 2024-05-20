@@ -464,6 +464,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'LiaisonAllEventsListCopy',
           path: '/liaisonAllEventsListCopy',
           builder: (context, params) => LiaisonAllEventsListCopyWidget(),
+        ),
+        FFRoute(
+          name: 'LiaisonTaskListCopy',
+          path: '/liaisonTaskListCopy',
+          builder: (context, params) => LiaisonTaskListCopyWidget(),
+        ),
+        FFRoute(
+          name: 'LiaisonTaskList_Detail',
+          path: '/liaisonTaskListDetail',
+          builder: (context, params) => LiaisonTaskListDetailWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

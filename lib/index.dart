@@ -123,8 +123,8 @@ export '/neda_user_flow_pages/neda_vendor/vendor_cart_dashboard_copy/vendor_cart
     show VendorCartDashboardCopyWidget;
 export '/neda_user_flow_pages/neda_vendor/vendor_r_f_p_detail_copy/vendor_r_f_p_detail_copy_widget.dart'
     show VendorRFPDetailCopyWidget;
-export '/neda_user_flow_pages/neda_vendor/vendor_r_f_p_confirmation_sent_copy/vendor_r_f_p_confirmation_sent_copy_widget.dart'
-    show VendorRFPConfirmationSentCopyWidget;
+export '/neda_user_flow_pages/neda_vendor/vendor_r_t_b_confirmation_sent_copy/vendor_r_t_b_confirmation_sent_copy_widget.dart'
+    show VendorRTBConfirmationSentCopyWidget;
 export '/neda_user_flow_pages/neda_liaison/liaison_dashboard_copy/liaison_dashboard_copy_widget.dart'
     show LiaisonDashboardCopyWidget;
 export '/neda_user_flow_pages/neda_liaison/liaison_all_events_list_copy/liaison_all_events_list_copy_widget.dart'

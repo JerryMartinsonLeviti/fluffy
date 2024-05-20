@@ -259,7 +259,7 @@ class _ImageGalleryManagerComponentWidgetState
                                               ),
                                             );
                                             await widget.onDbUpdate?.call();
-                                            setState(() {});
+                                            FFAppState().update(() {});
                                           },
                                           child: Icon(
                                             Icons.visibility_off,
@@ -285,7 +285,7 @@ class _ImageGalleryManagerComponentWidgetState
                                               ),
                                             );
                                             await widget.onDbUpdate?.call();
-                                            setState(() {});
+                                            FFAppState().update(() {});
                                           },
                                           child: Icon(
                                             Icons.visibility_sharp,

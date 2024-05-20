@@ -466,6 +466,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                                   setState(() => _model.requestCompleter1 = null);
                                                                                   await _model.waitForRequestCompleted1();
                                                                                   setState(() {});
+                                                                                  FFAppState().update(() {});
                                                                                 },
                                                                               ),
                                                                             ),

@@ -451,9 +451,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => VendorRFPDetailCopyWidget(),
         ),
         FFRoute(
-          name: 'VendorRFP_ConfirmationSentCopy',
-          path: '/vendorRFPConfirmationSentCopy',
-          builder: (context, params) => VendorRFPConfirmationSentCopyWidget(),
+          name: 'VendorRTB_ConfirmationSentCopy',
+          path: '/vendorRTBConfirmationSentCopy',
+          builder: (context, params) => VendorRTBConfirmationSentCopyWidget(),
         ),
         FFRoute(
           name: 'LiaisonDashboardCopy',

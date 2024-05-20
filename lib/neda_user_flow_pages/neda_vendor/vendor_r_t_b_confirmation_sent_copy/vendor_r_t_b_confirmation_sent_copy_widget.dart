@@ -6,27 +6,27 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'vendor_r_f_p_confirmation_sent_copy_model.dart';
-export 'vendor_r_f_p_confirmation_sent_copy_model.dart';
+import 'vendor_r_t_b_confirmation_sent_copy_model.dart';
+export 'vendor_r_t_b_confirmation_sent_copy_model.dart';
 
-class VendorRFPConfirmationSentCopyWidget extends StatefulWidget {
-  const VendorRFPConfirmationSentCopyWidget({super.key});
+class VendorRTBConfirmationSentCopyWidget extends StatefulWidget {
+  const VendorRTBConfirmationSentCopyWidget({super.key});
 
   @override
-  State<VendorRFPConfirmationSentCopyWidget> createState() =>
-      _VendorRFPConfirmationSentCopyWidgetState();
+  State<VendorRTBConfirmationSentCopyWidget> createState() =>
+      _VendorRTBConfirmationSentCopyWidgetState();
 }
 
-class _VendorRFPConfirmationSentCopyWidgetState
-    extends State<VendorRFPConfirmationSentCopyWidget> {
-  late VendorRFPConfirmationSentCopyModel _model;
+class _VendorRTBConfirmationSentCopyWidgetState
+    extends State<VendorRTBConfirmationSentCopyWidget> {
+  late VendorRTBConfirmationSentCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => VendorRFPConfirmationSentCopyModel());
+    _model = createModel(context, () => VendorRTBConfirmationSentCopyModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -94,8 +94,8 @@ class _VendorRFPConfirmationSentCopyWidgetState
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                     child: Container(
-                      width: 624.0,
-                      height: 259.0,
+                      width: 670.0,
+                      height: 205.0,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
@@ -117,7 +117,7 @@ class _VendorRFPConfirmationSentCopyWidgetState
                           padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 10.0, 10.0, 10.0),
                           child: Text(
-                            'Congrats! \n\nYour booking confirmation & Proposal have been sent to Planner\n\nUse SilverSpike\'s Messaging portal to easily communicate & track any further details regarding booking',
+                            'Congrats! \n\nYour booking confirmation has been sent to the Customer\n\nUse SilverSpike\'s Messaging portal to easily communicate & track any further details regarding booking',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium

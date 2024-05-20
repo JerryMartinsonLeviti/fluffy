@@ -427,12 +427,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           controller: _model.textController,
                           focusNode: _model.textFieldFocusNode,
                           onFieldSubmitted: (_) async {
-                            _model.output = await actions.loadImageToSupabase(
+                            _model.response = await actions.loadImageToSupabase(
                               _model.textController.text,
                             );
                             setState(() {
                               _model.uploadedUrl = valueOrDefault<String>(
-                                _model.output,
+                                _model.response?.error,
                                 'Whoops!',
                               );
                             });

@@ -19,7 +19,7 @@ class ImageGalleryManagerComponentModel
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
   // Stores action output result for [Custom Action - loadImageToSupabase] action in TextField widget.
-  ImageUploadResultStruct? outputURL;
+  ImageUploadResultStruct? outputResponse;
 
   @override
   void initState(BuildContext context) {}

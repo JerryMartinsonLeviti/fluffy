@@ -28,7 +28,7 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
   // Stores action output result for [Custom Action - loadImageToSupabase] action in TextField widget.
-  ImageUploadResultStruct? output;
+  ImageUploadResultStruct? response;
 
   @override
   void initState(BuildContext context) {}

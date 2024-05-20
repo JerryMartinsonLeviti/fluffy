@@ -97,15 +97,17 @@ class _ImageGalleryManagerComponentWidgetState
                           controller: _model.textController,
                           focusNode: _model.textFieldFocusNode,
                           onFieldSubmitted: (_) async {
-                            _model.outputURL =
+                            _model.outputResponse =
                                 await actions.loadImageToSupabase(
                               _model.textController.text,
                             );
-                            await widget.onUpload?.call(
-                              _model.textController.text,
-                              _model.outputURL,
-                            );
-                            await widget.onDbUpdate?.call();
+                            if (_model.outputResponse?.success == true) {
+                              await widget.onUpload?.call(
+                                _model.textController.text,
+                                _model.outputResponse?.url,
+                              );
+                              await widget.onDbUpdate?.call();
+                            }
 
                             setState(() {});
                           },
@@ -170,6 +172,26 @@ class _ImageGalleryManagerComponentWidgetState
                       size: 24.0,
                     ),
                   ],
+                ),
+                Text(
+                  valueOrDefault<String>(
+                    _model.outputResponse?.success?.toString(),
+                    'waiting for submission',
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0.0,
+                      ),
+                ),
+                Text(
+                  valueOrDefault<String>(
+                    _model.outputResponse?.error,
+                    'waiting for error or success',
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0.0,
+                      ),
                 ),
                 Container(
                   decoration: BoxDecoration(

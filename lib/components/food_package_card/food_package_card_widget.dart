@@ -307,6 +307,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                     await ItemsTable().insert({
                                       'public_description': 'no Description',
                                       'display_name': 'no Name',
+                                      'FK_Vendor': widget.packageRow?.fKVendor,
+                                      'unit_of_measure': 'Guest',
                                     });
                                     setState(
                                         () => _model.requestCompleter = null);

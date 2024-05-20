@@ -22,12 +22,13 @@ class FoodPackageCardModel extends FlutterFlowModel<FoodPackageCardWidget> {
   FocusNode? minSelectionFocusNode;
   TextEditingController? minSelectionTextController;
   String? Function(BuildContext, String?)? minSelectionTextControllerValidator;
-  Completer<List<PackageItemRow>>? requestCompleter1;
+  Completer<List<PackageItemRow>>? requestCompleter2;
   // State field(s) for maxSelection widget.
   FocusNode? maxSelectionFocusNode;
   TextEditingController? maxSelectionTextController;
   String? Function(BuildContext, String?)? maxSelectionTextControllerValidator;
-  Completer<List<ItemsRow>>? requestCompleter2;
+  Completer<List<ItemsRow>>? requestCompleter3;
+  Completer<List<ItemsRow>>? requestCompleter1;
 
   @override
   void initState(BuildContext context) {}
@@ -42,21 +43,6 @@ class FoodPackageCardModel extends FlutterFlowModel<FoodPackageCardWidget> {
   }
 
   /// Additional helper methods.
-  Future waitForRequestCompleted1({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter1?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
-  }
-
   Future waitForRequestCompleted2({
     double minWait = 0,
     double maxWait = double.infinity,
@@ -66,6 +52,36 @@ class FoodPackageCardModel extends FlutterFlowModel<FoodPackageCardWidget> {
       await Future.delayed(Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
       final requestComplete = requestCompleter2?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
+  }
+
+  Future waitForRequestCompleted3({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter3?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
+  }
+
+  Future waitForRequestCompleted1({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter1?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }

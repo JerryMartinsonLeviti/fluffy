@@ -157,7 +157,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
           ),
           FutureBuilder<List<PackageItemRow>>(
             future:
-                (_model.requestCompleter1 ??= Completer<List<PackageItemRow>>()
+                (_model.requestCompleter2 ??= Completer<List<PackageItemRow>>()
                       ..complete(PackageItemTable().queryRows(
                         queryFn: (q) => q
                             .eq(
@@ -192,12 +192,15 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                       children: List.generate(pkgitem.length, (pkgitemIndex) {
                         final pkgitemItem = pkgitem[pkgitemIndex];
                         return FutureBuilder<List<ItemsRow>>(
-                          future: ItemsTable().querySingleRow(
-                            queryFn: (q) => q.eq(
-                              'PK_Items',
-                              pkgitemItem.fKItem,
-                            ),
-                          ),
+                          future: (_model.requestCompleter1 ??=
+                                  Completer<List<ItemsRow>>()
+                                    ..complete(ItemsTable().querySingleRow(
+                                      queryFn: (q) => q.eq(
+                                        'PK_Items',
+                                        pkgitemItem.fKItem,
+                                      ),
+                                    )))
+                              .future,
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -306,7 +309,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: FlutterFlowTheme.of(context).primary,
+                  color: FlutterFlowTheme.of(context).alternate,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Readex Pro',
                         color: Colors.white,
@@ -346,7 +349,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: FlutterFlowTheme.of(context).primary,
+                  color: FlutterFlowTheme.of(context).alternate,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Readex Pro',
                         color: Colors.white,
@@ -392,8 +395,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                               ),
                             );
                             await widget.dbRefresh?.call();
-                            setState(() => _model.requestCompleter1 = null);
-                            await _model.waitForRequestCompleted1();
+                            setState(() => _model.requestCompleter2 = null);
+                            await _model.waitForRequestCompleted2();
                           },
                           autofocus: true,
                           obscureText: false,
@@ -528,7 +531,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                 ),
                 FutureBuilder<List<ItemsRow>>(
                   future:
-                      (_model.requestCompleter2 ??= Completer<List<ItemsRow>>()
+                      (_model.requestCompleter3 ??= Completer<List<ItemsRow>>()
                             ..complete(ItemsTable().queryRows(
                               queryFn: (q) => q
                                   .eq(
@@ -599,9 +602,17 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                           packageRow: widget.packageRow!,
                                           onItemDbChange: () async {
                                             setState(() => _model
+                                                .requestCompleter3 = null);
+                                            await _model
+                                                .waitForRequestCompleted3();
+                                            setState(() => _model
                                                 .requestCompleter2 = null);
                                             await _model
                                                 .waitForRequestCompleted2();
+                                            setState(() => _model
+                                                .requestCompleter1 = null);
+                                            await _model
+                                                .waitForRequestCompleted1();
                                             FFAppState().update(() {});
                                             await widget.dbRefresh?.call();
                                           },
@@ -619,8 +630,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                       'unit_of_measure': 'Guest',
                                     });
                                     setState(
-                                        () => _model.requestCompleter2 = null);
-                                    await _model.waitForRequestCompleted2();
+                                        () => _model.requestCompleter3 = null);
+                                    await _model.waitForRequestCompleted3();
                                     _model.updatePage(() {});
                                   },
                                   text: 'AddNewItem',

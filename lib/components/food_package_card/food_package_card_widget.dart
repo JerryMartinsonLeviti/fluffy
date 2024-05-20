@@ -40,6 +40,12 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
     super.initState();
     _model = createModel(context, () => FoodPackageCardModel());
 
+    _model.minSelectionTextController ??= TextEditingController();
+    _model.minSelectionFocusNode ??= FocusNode();
+
+    _model.maxSelectionTextController ??= TextEditingController();
+    _model.maxSelectionFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -144,6 +150,136 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
+          FutureBuilder<List<PackageItemRow>>(
+            future: PackageItemTable().queryRows(
+              queryFn: (q) => q
+                  .eq(
+                    'FK_Package',
+                    widget.packageRow?.pKPackages,
+                  )
+                  .order('created_at'),
+            ),
+            builder: (context, snapshot) {
+              // Customize what your widget looks like when it's loading.
+              if (!snapshot.hasData) {
+                return Center(
+                  child: SizedBox(
+                    width: 50.0,
+                    height: 50.0,
+                    child: SpinKitChasingDots(
+                      color: FlutterFlowTheme.of(context).secondary,
+                      size: 50.0,
+                    ),
+                  ),
+                );
+              }
+              List<PackageItemRow> pkgItemDbPackageItemRowList = snapshot.data!;
+              return Container(
+                decoration: BoxDecoration(),
+                child: Builder(
+                  builder: (context) {
+                    final pkgitem = pkgItemDbPackageItemRowList.toList();
+                    return Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: List.generate(pkgitem.length, (pkgitemIndex) {
+                        final pkgitemItem = pkgitem[pkgitemIndex];
+                        return FutureBuilder<List<ItemsRow>>(
+                          future: ItemsTable().querySingleRow(
+                            queryFn: (q) => q.eq(
+                              'PK_Items',
+                              pkgitemItem.fKItem,
+                            ),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: SpinKitChasingDots(
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    size: 50.0,
+                                  ),
+                                ),
+                              );
+                            }
+                            List<ItemsRow> itemDbItemsRowList = snapshot.data!;
+                            final itemDbItemsRow = itemDbItemsRowList.isNotEmpty
+                                ? itemDbItemsRowList.first
+                                : null;
+                            return Container(
+                              decoration: BoxDecoration(),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Icon(
+                                          Icons.check_box,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 24.0,
+                                        ),
+                                        Icon(
+                                          Icons.check_box_outline_blank,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 24.0,
+                                        ),
+                                      ],
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          valueOrDefault<String>(
+                                            itemDbItemsRow?.displayName,
+                                            'Item Name',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        Text(
+                                          valueOrDefault<String>(
+                                            itemDbItemsRow?.publicDescription,
+                                            'Item Description',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      }),
+                    );
+                  },
+                ),
+              );
+            },
+          ),
           Divider(
             thickness: 1.0,
             color: FlutterFlowTheme.of(context).accent4,
@@ -226,6 +362,135 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
             Column(
               mainAxisSize: MainAxisSize.max,
               children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                        child: TextFormField(
+                          controller: _model.minSelectionTextController,
+                          focusNode: _model.minSelectionFocusNode,
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'minSelection',
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).alternate,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedErrorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          validator: _model.minSelectionTextControllerValidator
+                              .asValidator(context),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                        child: TextFormField(
+                          controller: _model.maxSelectionTextController,
+                          focusNode: _model.maxSelectionFocusNode,
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'maxSelection\n',
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).alternate,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedErrorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          validator: _model.maxSelectionTextControllerValidator
+                              .asValidator(context),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
                 FutureBuilder<List<ItemsRow>>(
                   future:
                       (_model.requestCompleter ??= Completer<List<ItemsRow>>()

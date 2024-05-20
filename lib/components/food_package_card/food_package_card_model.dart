@@ -18,13 +18,27 @@ class FoodPackageCardModel extends FlutterFlowModel<FoodPackageCardWidget> {
 
   ///  State fields for stateful widgets in this component.
 
+  // State field(s) for minSelection widget.
+  FocusNode? minSelectionFocusNode;
+  TextEditingController? minSelectionTextController;
+  String? Function(BuildContext, String?)? minSelectionTextControllerValidator;
+  // State field(s) for maxSelection widget.
+  FocusNode? maxSelectionFocusNode;
+  TextEditingController? maxSelectionTextController;
+  String? Function(BuildContext, String?)? maxSelectionTextControllerValidator;
   Completer<List<ItemsRow>>? requestCompleter;
 
   @override
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {}
+  void dispose() {
+    minSelectionFocusNode?.dispose();
+    minSelectionTextController?.dispose();
+
+    maxSelectionFocusNode?.dispose();
+    maxSelectionTextController?.dispose();
+  }
 
   /// Additional helper methods.
   Future waitForRequestCompleted({

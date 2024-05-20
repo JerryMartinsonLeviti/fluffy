@@ -1,7 +1,7 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/planner_flow/search_bar/wrap_faq_row/wrap_faq_row_widget.dart';
+import '/listing/wrap_faq_row/wrap_faq_row_widget.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -130,74 +130,68 @@ class _ListingFAQsWidgetState extends State<ListingFAQsWidget> {
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Stack(
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(0.0, -1.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    await FaqAssetsTable().insert({
-                                      'FK_Vendor': widget.venkdorPK,
-                                      'question': 'noQYet',
-                                      'answer': '42',
-                                    });
-                                    setState(
-                                        () => _model.requestCompleter = null);
-                                    await _model.waitForRequestCompleted();
-                                    FFAppState().update(() {});
-                                  },
-                                  child: Icon(
-                                    Icons.plus_one,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    size: 24.0,
-                                  ),
-                                ),
+                          Align(
+                            alignment: AlignmentDirectional(0.0, -1.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                await FaqAssetsTable().insert({
+                                  'FK_Vendor': widget.venkdorPK,
+                                  'question': 'noQYet',
+                                  'answer': '42',
+                                });
+                                setState(() => _model.requestCompleter = null);
+                                await _model.waitForRequestCompleted();
+                                FFAppState().update(() {});
+                              },
+                              child: Icon(
+                                Icons.plus_one,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24.0,
                               ),
-                              Builder(
-                                builder: (context) {
-                                  final vendorFaq =
-                                      faqDBFetchVendorFaqAssetsRowList.toList();
-                                  return Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: List.generate(vendorFaq.length,
-                                        (vendorFaqIndex) {
-                                      final vendorFaqItem =
-                                          vendorFaq[vendorFaqIndex];
-                                      return WrapFaqRowWidget(
-                                        key: Key(
-                                            'Keybgx_${vendorFaqIndex}_of_${vendorFaq.length}'),
-                                        question: vendorFaqItem.question,
-                                        answer: vendorFaqItem.answer,
-                                        isVisible: true,
-                                        onUpdate: (question, answer) async {
-                                          await FaqAssetsTable().update(
-                                            data: {
-                                              'question': question,
-                                              'answer': answer,
-                                            },
-                                            matchingRows: (rows) => rows.eq(
-                                              'PK_FaqAssets',
-                                              vendorFaqItem.pKFaqAssets,
-                                            ),
-                                          );
-                                          setState(() =>
-                                              _model.requestCompleter = null);
-                                          await _model
-                                              .waitForRequestCompleted();
+                            ),
+                          ),
+                          Builder(
+                            builder: (context) {
+                              final vendorFaq =
+                                  faqDBFetchVendorFaqAssetsRowList.toList();
+                              return Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: List.generate(vendorFaq.length,
+                                    (vendorFaqIndex) {
+                                  final vendorFaqItem =
+                                      vendorFaq[vendorFaqIndex];
+                                  return WrapFaqRowWidget(
+                                    key: Key(
+                                        'Keybgx_${vendorFaqIndex}_of_${vendorFaq.length}'),
+                                    question: vendorFaqItem.question,
+                                    answer: vendorFaqItem.answer,
+                                    isVisible: true,
+                                    onUpdate: (question, answer) async {
+                                      await FaqAssetsTable().update(
+                                        data: {
+                                          'question': question,
+                                          'answer': answer,
                                         },
-                                        onDelete: () async {},
-                                        onHideToggle: () async {},
+                                        matchingRows: (rows) => rows.eq(
+                                          'PK_FaqAssets',
+                                          vendorFaqItem.pKFaqAssets,
+                                        ),
                                       );
-                                    }),
+                                      setState(
+                                          () => _model.requestCompleter = null);
+                                      await _model.waitForRequestCompleted();
+                                    },
+                                    onDelete: () async {},
+                                    onHideToggle: () async {},
                                   );
-                                },
-                              ),
-                            ],
+                                }),
+                              );
+                            },
                           ),
                         ],
                       ),

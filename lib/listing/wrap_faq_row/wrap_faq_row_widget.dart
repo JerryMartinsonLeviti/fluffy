@@ -100,7 +100,7 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
             clipBehavior: Clip.none,
             children: [
               Column(
-                mainAxisSize: MainAxisSize.max,
+                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Wrap(
@@ -221,10 +221,10 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
           ),
           if (!_model.noEdit)
             Column(
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Row(
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     InkWell(
                       splashColor: Colors.transparent,
@@ -235,7 +235,7 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
                         await widget.onHideToggle?.call();
                       },
                       child: Icon(
-                        Icons.settings_outlined,
+                        Icons.visibility_off,
                         color: FlutterFlowTheme.of(context).secondaryText,
                         size: 24.0,
                       ),
@@ -250,7 +250,7 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
                   ],
                 ),
                 Row(
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     InkWell(
                       splashColor: Colors.transparent,

@@ -1,7 +1,7 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/planner_flow/search_bar/wrap_faq_row/wrap_faq_row_widget.dart';
+import '/listing/wrap_faq_row/wrap_faq_row_widget.dart';
 import 'dart:async';
 import 'listing_f_a_qs_widget.dart' show ListingFAQsWidget;
 import 'package:flutter/material.dart';

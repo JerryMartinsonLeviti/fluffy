@@ -568,6 +568,7 @@ class _AddressWidgetState extends State<AddressWidget> {
                                         widget.addressPK,
                                       ),
                                     );
+                                    await widget.onSave?.call();
                                   },
                                   text: 'Save',
                                   options: FFButtonOptions(

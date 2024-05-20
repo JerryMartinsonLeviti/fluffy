@@ -17,6 +17,15 @@ import 'package:path/path.dart';
 import 'package:storage_client/src/types.dart';
 import 'package:flutter/services.dart';
 
+<<<<<<< HEAD
+=======
+// class result {
+//   String? url;
+//   String? error;
+//   bool? success;
+//   result({this.url, this.error});
+// }
+>>>>>>> refs/remotes/origin/flutterflow
 
 Future<String?> loadImageToSupabase(String imageFilePathString) async {
   // Add your function code here!

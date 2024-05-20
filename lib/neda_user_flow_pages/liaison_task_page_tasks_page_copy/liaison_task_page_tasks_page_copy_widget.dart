@@ -9,27 +9,27 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'liaison_task_page_tasks_page_model.dart';
-export 'liaison_task_page_tasks_page_model.dart';
+import 'liaison_task_page_tasks_page_copy_model.dart';
+export 'liaison_task_page_tasks_page_copy_model.dart';
 
-class LiaisonTaskPageTasksPageWidget extends StatefulWidget {
-  const LiaisonTaskPageTasksPageWidget({super.key});
+class LiaisonTaskPageTasksPageCopyWidget extends StatefulWidget {
+  const LiaisonTaskPageTasksPageCopyWidget({super.key});
 
   @override
-  State<LiaisonTaskPageTasksPageWidget> createState() =>
-      _LiaisonTaskPageTasksPageWidgetState();
+  State<LiaisonTaskPageTasksPageCopyWidget> createState() =>
+      _LiaisonTaskPageTasksPageCopyWidgetState();
 }
 
-class _LiaisonTaskPageTasksPageWidgetState
-    extends State<LiaisonTaskPageTasksPageWidget> {
-  late LiaisonTaskPageTasksPageModel _model;
+class _LiaisonTaskPageTasksPageCopyWidgetState
+    extends State<LiaisonTaskPageTasksPageCopyWidget> {
+  late LiaisonTaskPageTasksPageCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => LiaisonTaskPageTasksPageModel());
+    _model = createModel(context, () => LiaisonTaskPageTasksPageCopyModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }

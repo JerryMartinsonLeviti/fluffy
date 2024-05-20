@@ -26,6 +26,7 @@ String convertCartStateEnumToString(CartStates cartStateEnumValue) {
 }
 
 int stringToCents(String dollarStringWithDecimal) {
+  dollarStringWithDecimal = dollarStringWithDecimal.replaceAll('\$', '');
   // Split the string at the decimal point
   List<String> parts = dollarStringWithDecimal.split('.');
 

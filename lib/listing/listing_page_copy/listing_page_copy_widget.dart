@@ -4733,11 +4733,14 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                             ..complete(
                                                                 FunctionSpacesTable()
                                                                     .queryRows(
-                                                              queryFn: (q) =>
-                                                                  q.eq(
-                                                                'FK_Venue',
-                                                                widget.venuePK,
-                                                              ),
+                                                              queryFn: (q) => q
+                                                                  .eq(
+                                                                    'FK_Venue',
+                                                                    widget
+                                                                        .venuePK,
+                                                                  )
+                                                                  .order(
+                                                                      'created_at'),
                                                             )))
                                                       .future,
                                                   builder: (context, snapshot) {
@@ -4789,10 +4792,12 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                     List<PackagesRow>>(
                                                   future:
                                                       PackagesTable().queryRows(
-                                                    queryFn: (q) => q.eq(
-                                                      'FK_Vendor',
-                                                      widget.vendorPK,
-                                                    ),
+                                                    queryFn: (q) => q
+                                                        .eq(
+                                                          'FK_Vendor',
+                                                          widget.vendorPK,
+                                                        )
+                                                        .order('created_at'),
                                                   ),
                                                   builder: (context, snapshot) {
                                                     // Customize what your widget looks like when it's loading.
@@ -4812,7 +4817,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                       );
                                                     }
                                                     List<PackagesRow>
-                                                        containerPackagesRowList =
+                                                        packagesPackagesRowList =
                                                         snapshot.data!;
                                                     return Container(
                                                       decoration:
@@ -4825,7 +4830,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                         child:
                                                             PackagesComponentWidget(
                                                           packagesRows:
-                                                              containerPackagesRowList,
+                                                              packagesPackagesRowList,
                                                         ),
                                                       ),
                                                     );

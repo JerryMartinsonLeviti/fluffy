@@ -126,7 +126,7 @@ class _EventSpaceCardComponentWidgetState
         List<AssetCollectionsViewRow>
             eventSpaceCardAssetCollectionsViewRowList = snapshot.data!;
         return Container(
-          width: 300.0,
+          width: 370.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
             borderRadius: BorderRadius.circular(18.0),
@@ -149,7 +149,7 @@ class _EventSpaceCardComponentWidgetState
                           fadeOutDuration: Duration(milliseconds: 500),
                           imageUrl:
                               'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/bjcNcUcJFzipGWqoNchx/assets/ygz6lyiuzdyp/Image_5-18-24_at_3.09_PM.jpeg',
-                          width: 300.0,
+                          width: 370.0,
                           height: 200.0,
                           fit: BoxFit.cover,
                         ),
@@ -295,6 +295,16 @@ class _EventSpaceCardComponentWidgetState
                               letterSpacing: 0.0,
                             ),
                       ),
+                    Text(
+                      valueOrDefault<String>(
+                        widget.functionSpaceRow?.foodAndBevApplies?.toString(),
+                        '00',
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
+                          ),
+                    ),
                     if (widget.functionSpaceRow?.foodAndBevApplies ?? true)
                       Text(
                         'Rental Fee: ${valueOrDefault<String>(
@@ -352,6 +362,25 @@ class _EventSpaceCardComponentWidgetState
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 1.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              setState(() {
+                                _model.noEdit = !_model.noEdit;
+                              });
+                            },
+                            child: Icon(
+                              Icons.settings_outlined,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 24.0,
+                            ),
                           ),
                         ),
                         FFButtonWidget(
@@ -1113,25 +1142,6 @@ class _EventSpaceCardComponentWidgetState
                         ],
                       ),
                   ].divide(SizedBox(height: 5.0)),
-                ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(-1.0, 0.0),
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    setState(() {
-                      _model.noEdit = !_model.noEdit;
-                    });
-                  },
-                  child: Icon(
-                    Icons.settings_outlined,
-                    color: FlutterFlowTheme.of(context).secondaryText,
-                    size: 24.0,
-                  ),
                 ),
               ),
             ],

@@ -133,4 +133,9 @@ export '/neda_user_flow_pages/liaison_task_list_copy/liaison_task_list_copy_widg
     show LiaisonTaskListCopyWidget;
 export '/neda_user_flow_pages/liaison_task_list_detail/liaison_task_list_detail_widget.dart'
     show LiaisonTaskListDetailWidget;
-export '/neda_user_flow_pages/tasks/tasks_widget.dart' show TasksWidget;
+export '/neda_user_flow_pages/liaison_task/liaison_task_widget.dart'
+    show LiaisonTaskWidget;
+export '/neda_user_flow_pages/liaison_task_page_details_copy/liaison_task_page_details_copy_widget.dart'
+    show LiaisonTaskPageDetailsCopyWidget;
+export '/neda_user_flow_pages/liaison_task_page_tasks_page_copy/liaison_task_page_tasks_page_copy_widget.dart'
+    show LiaisonTaskPageTasksPageCopyWidget;

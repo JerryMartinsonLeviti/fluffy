@@ -60,6 +60,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       width: double.infinity,
       constraints: BoxConstraints(
@@ -92,7 +94,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
             width: 200.0,
             height: 3.0,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primaryBackground,
+              color: FlutterFlowTheme.of(context).primary,
             ),
           ),
           Row(
@@ -154,6 +156,48 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                   fontFamily: 'Readex Pro',
                   letterSpacing: 0.0,
                 ),
+          ),
+          Wrap(
+            spacing: 0.0,
+            runSpacing: 0.0,
+            alignment: WrapAlignment.start,
+            crossAxisAlignment: WrapCrossAlignment.start,
+            direction: Axis.horizontal,
+            runAlignment: WrapAlignment.start,
+            verticalDirection: VerticalDirection.down,
+            clipBehavior: Clip.none,
+            children: [
+              Text(
+                'Choose  ',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Readex Pro',
+                      letterSpacing: 0.0,
+                    ),
+              ),
+              if (widget.packageRow?.minSelections != null)
+                Text(
+                  'a Minimum. of  ${widget.packageRow?.minSelections?.toString()}',
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0.0,
+                      ),
+                ),
+              if (widget.packageRow?.maxSelections != null)
+                Text(
+                  ' Up to ${widget.packageRow?.maxSelections?.toString()}',
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0.0,
+                      ),
+                ),
+              Text(
+                ' Selections:',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Readex Pro',
+                      letterSpacing: 0.0,
+                    ),
+              ),
+            ],
           ),
           FutureBuilder<List<PackageItemRow>>(
             future:
@@ -331,22 +375,23 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
-              InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  setState(() {
-                    _model.noEdit = !_model.noEdit;
-                  });
-                },
-                child: Icon(
-                  Icons.settings_outlined,
-                  color: FlutterFlowTheme.of(context).secondaryText,
-                  size: 24.0,
+              if (FFAppState().DevModeEnabled)
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    setState(() {
+                      _model.noEdit = !_model.noEdit;
+                    });
+                  },
+                  child: Icon(
+                    Icons.settings_outlined,
+                    color: FlutterFlowTheme.of(context).secondaryText,
+                    size: 24.0,
+                  ),
                 ),
-              ),
               FFButtonWidget(
                 onPressed: () {
                   print('Button pressed ...');

@@ -66,8 +66,11 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
         maxWidth: 300.0,
       ),
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
+        color: FlutterFlowTheme.of(context).primaryBackground,
         borderRadius: BorderRadius.circular(18.0),
+        border: Border.all(
+          color: FlutterFlowTheme.of(context).secondary,
+        ),
       ),
       alignment: AlignmentDirectional(0.0, -1.0),
       child: Column(
@@ -89,7 +92,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
             width: 200.0,
             height: 3.0,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).secondary,
+              color: FlutterFlowTheme.of(context).primaryBackground,
             ),
           ),
           Row(

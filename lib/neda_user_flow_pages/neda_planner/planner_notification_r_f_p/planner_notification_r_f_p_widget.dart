@@ -6,19 +6,20 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'r_t_b_sent_modal_copy2_model.dart';
-export 'r_t_b_sent_modal_copy2_model.dart';
+import 'planner_notification_r_f_p_model.dart';
+export 'planner_notification_r_f_p_model.dart';
 
-class RTBSentModalCopy2Widget extends StatefulWidget {
-  const RTBSentModalCopy2Widget({super.key});
+class PlannerNotificationRFPWidget extends StatefulWidget {
+  const PlannerNotificationRFPWidget({super.key});
 
   @override
-  State<RTBSentModalCopy2Widget> createState() =>
-      _RTBSentModalCopy2WidgetState();
+  State<PlannerNotificationRFPWidget> createState() =>
+      _PlannerNotificationRFPWidgetState();
 }
 
-class _RTBSentModalCopy2WidgetState extends State<RTBSentModalCopy2Widget> {
-  late RTBSentModalCopy2Model _model;
+class _PlannerNotificationRFPWidgetState
+    extends State<PlannerNotificationRFPWidget> {
+  late PlannerNotificationRFPModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -29,7 +30,7 @@ class _RTBSentModalCopy2WidgetState extends State<RTBSentModalCopy2Widget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => RTBSentModalCopy2Model());
+    _model = createModel(context, () => PlannerNotificationRFPModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -65,10 +66,21 @@ class _RTBSentModalCopy2WidgetState extends State<RTBSentModalCopy2Widget> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
+            Align(
+              alignment: AlignmentDirectional(1.0, -1.0),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                child: Icon(
+                  Icons.close_rounded,
+                  color: FlutterFlowTheme.of(context).secondaryText,
+                  size: 24.0,
+                ),
+              ),
+            ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
               child: Text(
-                'You Did It!',
+                'Incoming!',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Readex Pro',
                       color: Color(0xFFE2930A),
@@ -82,7 +94,7 @@ class _RTBSentModalCopy2WidgetState extends State<RTBSentModalCopy2Widget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 18.0, 0.0, 12.0),
                 child: Text(
-                  ' Your Request To Book is on its way!',
+                  'You have a response on your RFP!',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
@@ -101,8 +113,8 @@ class _RTBSentModalCopy2WidgetState extends State<RTBSentModalCopy2Widget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
               child: FaIcon(
-                FontAwesomeIcons.solidPaperPlane,
-                color: FlutterFlowTheme.of(context).customColor10,
+                FontAwesomeIcons.parachuteBox,
+                color: FlutterFlowTheme.of(context).accent2,
                 size: 70.0,
               ),
             ),
@@ -111,27 +123,14 @@ class _RTBSentModalCopy2WidgetState extends State<RTBSentModalCopy2Widget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 25.0, 0.0, 0.0),
                 child: Text(
-                  'A copy of your Request to Book has been sent to your email & can also be found in your Dashboard',
+                  'You have a message about your Request for Proposal to Ci Siamo',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
-                        fontSize: 16.0,
+                        fontSize: 18.0,
                         letterSpacing: 0.0,
                       ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
-              child: Text(
-                'You will receive an email notification within 24 hours of your booking confirmation ',
-                textAlign: TextAlign.center,
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Readex Pro',
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 15.0,
-                      letterSpacing: 0.0,
-                    ),
               ),
             ),
             Align(
@@ -139,11 +138,12 @@ class _RTBSentModalCopy2WidgetState extends State<RTBSentModalCopy2Widget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Text(
-                  'Once your Request to Book is confirmed, your deposit will be automatically processed. You will have 24 hours to request cancellation for a full refund of your deposit. ',
+                  'Please go to your dashboard to review and confirm. Hurry, as the restaurant can only hold your tentative booking for 24 hours!',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
                         color: FlutterFlowTheme.of(context).secondary,
+                        fontSize: 18.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.w600,
                       ),
@@ -155,52 +155,25 @@ class _RTBSentModalCopy2WidgetState extends State<RTBSentModalCopy2Widget> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       context.pushNamed('PlannerDashboard');
                     },
-                    text: 'Go to Dashboard',
+                    text: 'Details',
                     options: FFButtonOptions(
-                      height: 45.0,
+                      width: 183.0,
+                      height: 51.0,
                       padding:
                           EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).secondary,
+                      color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Readex Pro',
                                 color: Colors.white,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 3.0,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(24.0),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed: () async {
-                      context.pushNamed('SplashPage');
-                    },
-                    text: 'Go to HomePage',
-                    options: FFButtonOptions(
-                      height: 45.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).alternate,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.white,
+                                fontSize: 20.0,
                                 letterSpacing: 0.0,
                               ),
                       elevation: 3.0,

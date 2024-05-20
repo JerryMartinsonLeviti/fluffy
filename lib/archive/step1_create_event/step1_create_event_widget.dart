@@ -316,7 +316,7 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                                             'Key4kg_${siteFaqIndexIndex}_of_${siteFaqIndex.length}'),
                                                         question: 'Q',
                                                         answer: 'A',
-                                                        isVisible: true,
+                                                        hide: true,
                                                         onUpdate: (question,
                                                             answer) async {},
                                                         onDelete: () async {},

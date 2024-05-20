@@ -6,18 +6,20 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'r_f_p_sent_modal_copy_model.dart';
-export 'r_f_p_sent_modal_copy_model.dart';
+import 'incoming_notification_r_t_b_model.dart';
+export 'incoming_notification_r_t_b_model.dart';
 
-class RFPSentModalCopyWidget extends StatefulWidget {
-  const RFPSentModalCopyWidget({super.key});
+class IncomingNotificationRTBWidget extends StatefulWidget {
+  const IncomingNotificationRTBWidget({super.key});
 
   @override
-  State<RFPSentModalCopyWidget> createState() => _RFPSentModalCopyWidgetState();
+  State<IncomingNotificationRTBWidget> createState() =>
+      _IncomingNotificationRTBWidgetState();
 }
 
-class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
-  late RFPSentModalCopyModel _model;
+class _IncomingNotificationRTBWidgetState
+    extends State<IncomingNotificationRTBWidget> {
+  late IncomingNotificationRTBModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -28,7 +30,7 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => RFPSentModalCopyModel());
+    _model = createModel(context, () => IncomingNotificationRTBModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -78,10 +80,10 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
               child: Text(
-                'You Did It!',
+                'Congratulations!',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Readex Pro',
-                      color: Color(0xFFE2930A),
+                      color: FlutterFlowTheme.of(context).accent4,
                       fontSize: 24.0,
                       letterSpacing: 0.0,
                     ),
@@ -92,7 +94,7 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 18.0, 0.0, 12.0),
                 child: Text(
-                  ' Request for Proposal Sent',
+                  'Your Booking Has Been Confirmed!',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
@@ -111,8 +113,8 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
               child: FaIcon(
-                FontAwesomeIcons.solidPaperPlane,
-                color: FlutterFlowTheme.of(context).secondary,
+                FontAwesomeIcons.parachuteBox,
+                color: FlutterFlowTheme.of(context).accent2,
                 size: 70.0,
               ),
             ),
@@ -121,27 +123,14 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 25.0, 0.0, 0.0),
                 child: Text(
-                  'A copy of your Request for Proposal has been sent to your email & can also be found in your Dashboard',
+                  'You have a message about your Request for Proposal to Ci Siamo',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
-                        fontSize: 16.0,
+                        fontSize: 18.0,
                         letterSpacing: 0.0,
                       ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
-              child: Text(
-                'You will receive an email notification within 24 hours with news on whether your Request for Proposal has been accepted, declined, or requires modifications',
-                textAlign: TextAlign.center,
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Readex Pro',
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      fontSize: 15.0,
-                      letterSpacing: 0.0,
-                    ),
               ),
             ),
             Align(
@@ -149,11 +138,14 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Text(
-                  'If your Request is accepted, you will receive a Proposal with the acceptance notification',
+                  'Please go to your dashboard to review and confirm. Hurry, as the restaurant can only hold your tentative booking for 24 hours!',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
+                        color: FlutterFlowTheme.of(context).secondary,
+                        fontSize: 18.0,
                         letterSpacing: 0.0,
+                        fontWeight: FontWeight.w600,
                       ),
                 ),
               ),
@@ -163,14 +155,15 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       context.pushNamed('PlannerDashboard');
                     },
-                    text: 'Go to Dashboard',
+                    text: 'Details',
                     options: FFButtonOptions(
-                      height: 45.0,
+                      width: 183.0,
+                      height: 51.0,
                       padding:
                           EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
@@ -180,35 +173,7 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Readex Pro',
                                 color: Colors.white,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 3.0,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(24.0),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed: () async {
-                      context.pushNamed('SplashPage');
-                    },
-                    text: 'Go to HomePage',
-                    options: FFButtonOptions(
-                      height: 45.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.white,
+                                fontSize: 20.0,
                                 letterSpacing: 0.0,
                               ),
                       elevation: 3.0,

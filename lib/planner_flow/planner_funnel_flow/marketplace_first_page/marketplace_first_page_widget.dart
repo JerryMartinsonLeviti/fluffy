@@ -387,7 +387,7 @@ class _MarketplaceFirstPageWidgetState
                                                           faqIndexItem.answer,
                                                           'a',
                                                         ),
-                                                        isVisible: true,
+                                                        hide: true,
                                                         onUpdate: (question,
                                                             answer) async {},
                                                         onDelete: () async {},

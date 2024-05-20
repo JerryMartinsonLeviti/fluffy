@@ -6,18 +6,18 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'r_f_p_sent_modal_copy_model.dart';
-export 'r_f_p_sent_modal_copy_model.dart';
+import 'r_t_b_sent_modal_copy_model.dart';
+export 'r_t_b_sent_modal_copy_model.dart';
 
-class RFPSentModalCopyWidget extends StatefulWidget {
-  const RFPSentModalCopyWidget({super.key});
+class RTBSentModalCopyWidget extends StatefulWidget {
+  const RTBSentModalCopyWidget({super.key});
 
   @override
-  State<RFPSentModalCopyWidget> createState() => _RFPSentModalCopyWidgetState();
+  State<RTBSentModalCopyWidget> createState() => _RTBSentModalCopyWidgetState();
 }
 
-class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
-  late RFPSentModalCopyModel _model;
+class _RTBSentModalCopyWidgetState extends State<RTBSentModalCopyWidget> {
+  late RTBSentModalCopyModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -28,7 +28,7 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => RFPSentModalCopyModel());
+    _model = createModel(context, () => RTBSentModalCopyModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -92,7 +92,7 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 18.0, 0.0, 12.0),
                 child: Text(
-                  ' Request for Proposal Sent',
+                  ' Your Request To Book is on its way!',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
@@ -112,7 +112,7 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
               child: FaIcon(
                 FontAwesomeIcons.solidPaperPlane,
-                color: FlutterFlowTheme.of(context).secondary,
+                color: FlutterFlowTheme.of(context).customColor10,
                 size: 70.0,
               ),
             ),
@@ -121,7 +121,7 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 25.0, 0.0, 0.0),
                 child: Text(
-                  'A copy of your Request for Proposal has been sent to your email & can also be found in your Dashboard',
+                  'A copy of your Request to Book has been sent to your email & can also be found in your Dashboard',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
@@ -134,7 +134,7 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
               child: Text(
-                'You will receive an email notification within 24 hours with news on whether your Request for Proposal has been accepted, declined, or requires modifications',
+                'You will receive an email notification within 24 hours of your booking confirmation ',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Readex Pro',
@@ -149,11 +149,13 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Text(
-                  'If your Request is accepted, you will receive a Proposal with the acceptance notification',
+                  'Once your Request to Book is confirmed, your deposit will be automatically processed. You will have 24 hours to request cancellation for a full refund of your deposit. ',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
+                        color: FlutterFlowTheme.of(context).secondary,
                         letterSpacing: 0.0,
+                        fontWeight: FontWeight.w600,
                       ),
                 ),
               ),
@@ -175,7 +177,7 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
                           EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
+                      color: FlutterFlowTheme.of(context).secondary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Readex Pro',
@@ -204,7 +206,7 @@ class _RFPSentModalCopyWidgetState extends State<RFPSentModalCopyWidget> {
                           EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
+                      color: FlutterFlowTheme.of(context).secondary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Readex Pro',

@@ -42,4 +42,7 @@ class FaqAssetsRow extends SupabaseDataRow {
 
   int? get fKVenue => getField<int>('FK_Venue');
   set fKVenue(int? value) => setField<int>('FK_Venue', value);
+
+  bool get hide => getField<bool>('hide')!;
+  set hide(bool value) => setField<bool>('hide', value);
 }

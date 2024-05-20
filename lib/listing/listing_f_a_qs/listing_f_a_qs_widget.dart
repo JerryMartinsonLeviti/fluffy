@@ -170,7 +170,7 @@ class _ListingFAQsWidgetState extends State<ListingFAQsWidget> {
                                         'Keybgx_${vendorFaqIndex}_of_${vendorFaq.length}'),
                                     question: vendorFaqItem.question,
                                     answer: vendorFaqItem.answer,
-                                    isVisible: true,
+                                    hide: vendorFaqItem.hide,
                                     onUpdate: (question, answer) async {
                                       await FaqAssetsTable().update(
                                         data: {
@@ -186,8 +186,33 @@ class _ListingFAQsWidgetState extends State<ListingFAQsWidget> {
                                           () => _model.requestCompleter = null);
                                       await _model.waitForRequestCompleted();
                                     },
-                                    onDelete: () async {},
-                                    onHideToggle: () async {},
+                                    onDelete: () async {
+                                      await FaqAssetsTable().delete(
+                                        matchingRows: (rows) => rows.eq(
+                                          'PK_FaqAssets',
+                                          vendorFaqItem.pKFaqAssets,
+                                        ),
+                                      );
+                                      setState(
+                                          () => _model.requestCompleter = null);
+                                      await _model.waitForRequestCompleted();
+                                      setState(() {});
+                                    },
+                                    onHideToggle: () async {
+                                      await FaqAssetsTable().update(
+                                        data: {
+                                          'hide': !vendorFaqItem.hide,
+                                        },
+                                        matchingRows: (rows) => rows.eq(
+                                          'PK_FaqAssets',
+                                          vendorFaqItem.pKFaqAssets,
+                                        ),
+                                      );
+                                      setState(
+                                          () => _model.requestCompleter = null);
+                                      await _model.waitForRequestCompleted();
+                                      setState(() {});
+                                    },
                                   );
                                 }),
                               );

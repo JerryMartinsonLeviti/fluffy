@@ -25,4 +25,16 @@ class TermAssetsRow extends SupabaseDataRow {
 
   String get header => getField<String>('header')!;
   set header(String value) => setField<String>('header', value);
+
+  bool get silverSpikeTerm => getField<bool>('SilverSpikeTerm')!;
+  set silverSpikeTerm(bool value) => setField<bool>('SilverSpikeTerm', value);
+
+  int? get fKVendor => getField<int>('FK_Vendor');
+  set fKVendor(int? value) => setField<int>('FK_Vendor', value);
+
+  int? get fKVenue => getField<int>('FK_Venue');
+  set fKVenue(int? value) => setField<int>('FK_Venue', value);
+
+  bool get hide => getField<bool>('hide')!;
+  set hide(bool value) => setField<bool>('hide', value);
 }

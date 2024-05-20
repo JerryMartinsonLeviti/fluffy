@@ -12,15 +12,15 @@ class WrapFaqRowWidget extends StatefulWidget {
     super.key,
     required this.question,
     required this.answer,
-    bool? isVisible,
+    bool? hide,
     required this.onUpdate,
     required this.onDelete,
     required this.onHideToggle,
-  }) : this.isVisible = isVisible ?? true;
+  }) : this.hide = hide ?? true;
 
   final String? question;
   final String? answer;
-  final bool isVisible;
+  final bool hide;
   final Future Function(String question, String answer)? onUpdate;
   final Future Function()? onDelete;
   final Future Function()? onHideToggle;

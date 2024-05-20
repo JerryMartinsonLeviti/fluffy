@@ -223,12 +223,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                             return Container(
                               decoration: BoxDecoration(),
                               child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                  ),
-                                ),
+                                decoration: BoxDecoration(),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -251,12 +246,25 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                     ),
                                     Column(
                                       mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
+                                        Text(
+                                          pkgitemItem.pKPackageItem.toString(),
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
                                         Text(
                                           valueOrDefault<String>(
                                             itemDbItemsRow?.displayName,
                                             'Item Name',
                                           ),
+                                          textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(

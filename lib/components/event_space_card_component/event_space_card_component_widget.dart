@@ -383,7 +383,7 @@ class _EventSpaceCardComponentWidgetState
                         ),
                       ],
                     ),
-                    if (_model.noEdit)
+                    if (!_model.noEdit)
                       Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -1116,7 +1116,7 @@ class _EventSpaceCardComponentWidgetState
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(1.0, 1.0),
+                alignment: AlignmentDirectional(-1.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,

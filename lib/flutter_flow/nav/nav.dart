@@ -474,6 +474,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'LiaisonTaskList_Detail',
           path: '/liaisonTaskListDetail',
           builder: (context, params) => LiaisonTaskListDetailWidget(),
+        ),
+        FFRoute(
+          name: 'Tasks',
+          path: '/tasks',
+          builder: (context, params) => TasksWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

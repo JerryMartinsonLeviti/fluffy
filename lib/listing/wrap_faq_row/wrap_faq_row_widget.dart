@@ -61,6 +61,8 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       decoration: BoxDecoration(),
       child: Wrap(
@@ -73,22 +75,6 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
         verticalDirection: VerticalDirection.down,
         clipBehavior: Clip.none,
         children: [
-          InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              setState(() {
-                _model.noEdit = !_model.noEdit;
-              });
-            },
-            child: Icon(
-              Icons.settings_outlined,
-              color: FlutterFlowTheme.of(context).secondaryText,
-              size: 24.0,
-            ),
-          ),
           Wrap(
             spacing: 0.0,
             runSpacing: 0.0,
@@ -153,6 +139,24 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
                                           letterSpacing: 0.0,
                                         ),
                                   ),
+                                  if (FFAppState().DevModeEnabled)
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        setState(() {
+                                          _model.noEdit = !_model.noEdit;
+                                        });
+                                      },
+                                      child: Icon(
+                                        Icons.settings_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
+                                    ),
                                   if (_model.collapsed)
                                     InkWell(
                                       splashColor: Colors.transparent,

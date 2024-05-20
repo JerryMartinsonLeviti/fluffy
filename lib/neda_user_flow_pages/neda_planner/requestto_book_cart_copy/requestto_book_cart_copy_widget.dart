@@ -220,7 +220,7 @@ class _RequesttoBookCartCopyWidgetState
                                               EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                           child: Text(
-                                            'By checking this box‚ I agree that‚ if my booking request is accepted‚ SilverSpike Inc. may process my deposit payment with the payment method on file and that it can later process payment of any remaining balance upon its due date. I agree to SilverSpike\'s Cancellation Policy and Terms and acknowledge its Privacy Policy.',
+                                            'By checking this box‚ I agree that‚ if my booking request is accepted‚ SilverSpike Inc. may process my deposit payment with payment method on file and that it can later process payment of any remaining balance upon its due date. I agree to SilverSpike\'s Cancellation Policy, Terms, & Privacy Policy',
                                             textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -368,7 +368,7 @@ class _RequesttoBookCartCopyWidgetState
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
-                                                                      20.0,
+                                                                      30.0,
                                                                       0.0,
                                                                       0.0),
                                                           child: Text(
@@ -452,7 +452,7 @@ class _RequesttoBookCartCopyWidgetState
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 40.0, 20.0, 20.0),
+                                                    20.0, 40.0, 20.0, 10.0),
                                             child: wrapWithModel(
                                               model:
                                                   _model.eventBasicDetailsModel,
@@ -476,7 +476,7 @@ class _RequesttoBookCartCopyWidgetState
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 20.0, 0.0, 0.0),
+                                                    0.0, 10.0, 0.0, 0.0),
                                             child: Text(
                                               'All-In Estimate',
                                               style:
@@ -526,7 +526,7 @@ class _RequesttoBookCartCopyWidgetState
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primary,
+                                                      .customColor1,
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
@@ -563,35 +563,20 @@ class _RequesttoBookCartCopyWidgetState
                                                     10.0, 20.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  'SILVERSPIKE PRICE PREDICTOR ',
+                                                  'Proposal Details ',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .displaySmall
+                                                      .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .customColor3,
-                                                        fontSize: 16.0,
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        fontSize: 25.0,
                                                         letterSpacing: 0.0,
                                                       ),
-                                                ),
-                                                Icon(
-                                                  Icons.info_rounded,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 16.0,
-                                                ),
-                                                Icon(
-                                                  Icons.unfold_more_rounded,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 28.0,
                                                 ),
                                               ],
                                             ),
@@ -694,90 +679,12 @@ class _RequesttoBookCartCopyWidgetState
                                               ),
                                             ),
                                           ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        14.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'Emily Merrill Photography',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 14.0, 0.0),
-                                                child: Text(
-                                                  '\$1,875.00',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        14.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'Bloomin Couture Florals',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 14.0, 0.0),
-                                                child: Text(
-                                                  '\$2,250.00',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
                                           Divider(
                                             thickness: 1.0,
                                             indent: 30.0,
                                             endIndent: 30.0,
                                             color: FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .primaryText,
                                           ),
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -981,7 +888,7 @@ class _RequesttoBookCartCopyWidgetState
                                             indent: 30.0,
                                             endIndent: 30.0,
                                             color: FlutterFlowTheme.of(context)
-                                                .accent4,
+                                                .primaryText,
                                           ),
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -1050,6 +957,7 @@ class _RequesttoBookCartCopyWidgetState
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
+                                                                fontSize: 16.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight:
@@ -1082,6 +990,7 @@ class _RequesttoBookCartCopyWidgetState
                                                       .override(
                                                         fontFamily:
                                                             'Readex Pro',
+                                                        fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
@@ -1270,7 +1179,7 @@ class _RequesttoBookCartCopyWidgetState
                                                                           0.0),
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primary,
+                                                                  .customColor23,
                                                               textStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -1278,8 +1187,8 @@ class _RequesttoBookCartCopyWidgetState
                                                                       .override(
                                                                         fontFamily:
                                                                             'Readex Pro',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .info,
+                                                                        color: Color(
+                                                                            0xFFE99C06),
                                                                         fontSize:
                                                                             18.0,
                                                                         letterSpacing:

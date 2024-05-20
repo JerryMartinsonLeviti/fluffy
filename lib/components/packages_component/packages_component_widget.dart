@@ -14,9 +14,11 @@ class PackagesComponentWidget extends StatefulWidget {
   const PackagesComponentWidget({
     super.key,
     required this.packagesRows,
+    required this.dbRefesh,
   });
 
   final List<PackagesRow>? packagesRows;
+  final Future Function()? dbRefesh;
 
   @override
   State<PackagesComponentWidget> createState() =>
@@ -130,6 +132,7 @@ class _PackagesComponentWidgetState extends State<PackagesComponentWidget> {
                       packageRow: packagesIdxItem,
                       dbRefresh: () async {
                         FFAppState().update(() {});
+                        await widget.dbRefesh?.call();
                       },
                     );
                   }),

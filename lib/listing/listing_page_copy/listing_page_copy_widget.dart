@@ -4790,15 +4790,24 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                 ),
                                                 FutureBuilder<
                                                     List<PackagesRow>>(
-                                                  future:
-                                                      PackagesTable().queryRows(
-                                                    queryFn: (q) => q
-                                                        .eq(
-                                                          'FK_Vendor',
-                                                          widget.vendorPK,
-                                                        )
-                                                        .order('created_at'),
-                                                  ),
+                                                  future: (_model
+                                                              .requestCompleter3 ??=
+                                                          Completer<
+                                                              List<
+                                                                  PackagesRow>>()
+                                                            ..complete(
+                                                                PackagesTable()
+                                                                    .queryRows(
+                                                              queryFn: (q) => q
+                                                                  .eq(
+                                                                    'FK_Vendor',
+                                                                    widget
+                                                                        .vendorPK,
+                                                                  )
+                                                                  .order(
+                                                                      'created_at'),
+                                                            )))
+                                                      .future,
                                                   builder: (context, snapshot) {
                                                     // Customize what your widget looks like when it's loading.
                                                     if (!snapshot.hasData) {
@@ -4831,6 +4840,15 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                             PackagesComponentWidget(
                                                           packagesRows:
                                                               packagesPackagesRowList,
+                                                          dbRefesh: () async {
+                                                            setState(() => _model
+                                                                    .requestCompleter3 =
+                                                                null);
+                                                            await _model
+                                                                .waitForRequestCompleted3();
+                                                            FFAppState()
+                                                                .update(() {});
+                                                          },
                                                         ),
                                                       ),
                                                     );

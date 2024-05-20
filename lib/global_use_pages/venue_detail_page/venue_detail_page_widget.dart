@@ -751,6 +751,7 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                     updateCallback: () => setState(() {}),
                                     child: PackagesComponentWidget(
                                       packagesRows: containerPackagesRowList,
+                                      dbRefesh: () async {},
                                     ),
                                   ),
                                 );

@@ -39,6 +39,7 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   Completer<List<FunctionSpacesRow>>? requestCompleter2;
   // Model for PackagesComponent component.
   late PackagesComponentModel packagesComponentModel;
+  Completer<List<PackagesRow>>? requestCompleter3;
 
   @override
   void initState(BuildContext context) {
@@ -93,6 +94,21 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
       await Future.delayed(Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
       final requestComplete = requestCompleter2?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
+  }
+
+  Future waitForRequestCompleted3({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter3?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }

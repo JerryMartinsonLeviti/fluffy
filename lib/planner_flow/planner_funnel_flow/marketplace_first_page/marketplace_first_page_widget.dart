@@ -388,6 +388,8 @@ class _MarketplaceFirstPageWidgetState
                                                           'a',
                                                         ),
                                                         isVisible: true,
+                                                        onUpdate: (question,
+                                                            answer) async {},
                                                       );
                                                     }),
                                                   );

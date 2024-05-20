@@ -13,11 +13,13 @@ class WrapFaqRowWidget extends StatefulWidget {
     required this.question,
     required this.answer,
     bool? isVisible,
+    required this.onUpdate,
   }) : this.isVisible = isVisible ?? true;
 
   final String? question;
   final String? answer;
   final bool isVisible;
+  final Future Function(String question, String answer)? onUpdate;
 
   @override
   State<WrapFaqRowWidget> createState() => _WrapFaqRowWidgetState();
@@ -36,6 +38,12 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => WrapFaqRowModel());
+
+    _model.qTfTextController ??= TextEditingController(text: widget.question);
+    _model.qTfFocusNode ??= FocusNode();
+
+    _model.aTfTextController ??= TextEditingController(text: widget.answer);
+    _model.aTfFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -61,6 +69,22 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
         verticalDirection: VerticalDirection.down,
         clipBehavior: Clip.none,
         children: [
+          InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              setState(() {
+                _model.noEdit = !_model.noEdit;
+              });
+            },
+            child: Icon(
+              Icons.settings_outlined,
+              color: FlutterFlowTheme.of(context).secondaryText,
+              size: 24.0,
+            ),
+          ),
           Wrap(
             spacing: 0.0,
             runSpacing: 0.0,
@@ -191,6 +215,136 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
               ),
             ],
           ),
+          if (!_model.noEdit)
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                  child: TextFormField(
+                    controller: _model.qTfTextController,
+                    focusNode: _model.qTfFocusNode,
+                    onFieldSubmitted: (_) async {
+                      await widget.onUpdate?.call(
+                        _model.qTfTextController.text,
+                        _model.aTfTextController.text,
+                      );
+                    },
+                    autofocus: true,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      labelText: 'Question',
+                      labelStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                fontFamily: 'Readex Pro',
+                                letterSpacing: 0.0,
+                              ),
+                      hintStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                fontFamily: 'Readex Pro',
+                                letterSpacing: 0.0,
+                              ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).primary,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      errorBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      focusedErrorBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
+                    validator:
+                        _model.qTfTextControllerValidator.asValidator(context),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                  child: TextFormField(
+                    controller: _model.aTfTextController,
+                    focusNode: _model.aTfFocusNode,
+                    onFieldSubmitted: (_) async {
+                      await widget.onUpdate?.call(
+                        _model.qTfTextController.text,
+                        _model.aTfTextController.text,
+                      );
+                    },
+                    autofocus: true,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      labelText: 'Answer',
+                      labelStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                fontFamily: 'Readex Pro',
+                                letterSpacing: 0.0,
+                              ),
+                      hintStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                fontFamily: 'Readex Pro',
+                                letterSpacing: 0.0,
+                              ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).primary,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      errorBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      focusedErrorBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 2.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
+                    validator:
+                        _model.aTfTextControllerValidator.asValidator(context),
+                  ),
+                ),
+              ],
+            ),
         ],
       ),
     );

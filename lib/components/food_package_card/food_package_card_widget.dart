@@ -168,7 +168,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
             clipBehavior: Clip.none,
             children: [
               Text(
-                'Choose  ',
+                'Choose ',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Readex Pro',
                       letterSpacing: 0.0,
@@ -176,7 +176,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
               ),
               if (widget.packageRow?.minSelections != null)
                 Text(
-                  'a Minimum. of  ${widget.packageRow?.minSelections?.toString()}',
+                  'a Minimum of  ${widget.packageRow?.minSelections?.toString()}',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
                         letterSpacing: 0.0,
@@ -293,40 +293,62 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          pkgitemItem.pKPackageItem.toString(),
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
+                                        Wrap(
+                                          spacing: 0.0,
+                                          runSpacing: 0.0,
+                                          alignment: WrapAlignment.start,
+                                          crossAxisAlignment:
+                                              WrapCrossAlignment.start,
+                                          direction: Axis.horizontal,
+                                          runAlignment: WrapAlignment.start,
+                                          verticalDirection:
+                                              VerticalDirection.down,
+                                          clipBehavior: Clip.none,
+                                          children: [
+                                            Text(
+                                              valueOrDefault<String>(
+                                                itemDbItemsRow?.displayName,
+                                                'Item Name',
                                               ),
-                                        ),
-                                        Text(
-                                          valueOrDefault<String>(
-                                            itemDbItemsRow?.displayName,
-                                            'Item Name',
-                                          ),
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
+                                              textAlign: TextAlign.start,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                            ),
+                                            Text(
+                                              ' - ',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontStyle: FontStyle.italic,
+                                                  ),
+                                            ),
+                                            Text(
+                                              valueOrDefault<String>(
+                                                itemDbItemsRow
+                                                    ?.publicDescription,
+                                                'Item Description',
                                               ),
-                                        ),
-                                        Text(
-                                          valueOrDefault<String>(
-                                            itemDbItemsRow?.publicDescription,
-                                            'Item Description',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
-                                              ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontStyle: FontStyle.italic,
+                                                  ),
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),

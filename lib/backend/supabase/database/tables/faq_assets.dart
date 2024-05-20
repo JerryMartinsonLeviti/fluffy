@@ -36,4 +36,10 @@ class FaqAssetsRow extends SupabaseDataRow {
 
   bool get siteFaqVendor => getField<bool>('SiteFaqVendor')!;
   set siteFaqVendor(bool value) => setField<bool>('SiteFaqVendor', value);
+
+  int? get fKVendor => getField<int>('FK_Vendor');
+  set fKVendor(int? value) => setField<int>('FK_Vendor', value);
+
+  int? get fKVenue => getField<int>('FK_Venue');
+  set fKVenue(int? value) => setField<int>('FK_Venue', value);
 }

@@ -317,6 +317,8 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                                         question: 'Q',
                                                         answer: 'A',
                                                         isVisible: true,
+                                                        onUpdate: (question,
+                                                            answer) async {},
                                                       );
                                                     }),
                                                   );

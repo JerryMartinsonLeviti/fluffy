@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'incoming_notification_r_t_b_model.dart';
@@ -83,9 +82,10 @@ class _IncomingNotificationRTBWidgetState
                 'Congratulations!',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Readex Pro',
-                      color: FlutterFlowTheme.of(context).accent4,
+                      color: FlutterFlowTheme.of(context).secondary,
                       fontSize: 24.0,
                       letterSpacing: 0.0,
+                      fontWeight: FontWeight.w500,
                     ),
               ),
             ),
@@ -98,6 +98,7 @@ class _IncomingNotificationRTBWidgetState
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
+                        color: FlutterFlowTheme.of(context).secondary,
                         fontSize: 22.0,
                         letterSpacing: 0.0,
                       ),
@@ -108,37 +109,22 @@ class _IncomingNotificationRTBWidgetState
               thickness: 1.0,
               indent: 150.0,
               endIndent: 150.0,
-              color: FlutterFlowTheme.of(context).accent4,
+              color: FlutterFlowTheme.of(context).primary,
             ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
-              child: FaIcon(
-                FontAwesomeIcons.parachuteBox,
-                color: FlutterFlowTheme.of(context).accent2,
-                size: 70.0,
-              ),
-            ),
-            Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 25.0, 0.0, 0.0),
-                child: Text(
-                  'You have a message about your Request for Proposal to Ci Siamo',
-                  textAlign: TextAlign.center,
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Readex Pro',
-                        fontSize: 18.0,
-                        letterSpacing: 0.0,
-                      ),
-                ),
+              child: Icon(
+                Icons.celebration_outlined,
+                color: FlutterFlowTheme.of(context).primary,
+                size: 75.0,
               ),
             ),
             Align(
               alignment: AlignmentDirectional(-1.0, -1.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 10.0),
                 child: Text(
-                  'Please go to your dashboard to review and confirm. Hurry, as the restaurant can only hold your tentative booking for 24 hours!',
+                  'Please go to your dashboard for booking details and to see the event page we\'ve already started for you',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
@@ -160,7 +146,7 @@ class _IncomingNotificationRTBWidgetState
                     onPressed: () async {
                       context.pushNamed('PlannerDashboard');
                     },
-                    text: 'Details',
+                    text: 'Go to Booking',
                     options: FFButtonOptions(
                       width: 183.0,
                       height: 51.0,
@@ -168,7 +154,7 @@ class _IncomingNotificationRTBWidgetState
                           EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
+                      color: FlutterFlowTheme.of(context).alternate,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Readex Pro',

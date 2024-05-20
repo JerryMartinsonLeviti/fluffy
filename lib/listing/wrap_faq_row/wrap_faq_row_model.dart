@@ -11,6 +11,8 @@ class WrapFaqRowModel extends FlutterFlowModel<WrapFaqRowWidget> {
 
   bool noEdit = true;
 
+  bool collapsed = true;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for Q_TF widget.

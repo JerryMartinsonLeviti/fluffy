@@ -74,6 +74,20 @@ class _ImageGalleryManagerComponentWidgetState
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.close,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24.0,
+                      ),
+                    ),
                     Expanded(
                       child: Padding(
                         padding:

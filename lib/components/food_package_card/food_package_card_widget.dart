@@ -16,9 +16,11 @@ class FoodPackageCardWidget extends StatefulWidget {
   const FoodPackageCardWidget({
     super.key,
     required this.packageRow,
+    required this.dbRefresh,
   });
 
   final PackagesRow? packageRow;
+  final Future Function()? dbRefresh;
 
   @override
   State<FoodPackageCardWidget> createState() => _FoodPackageCardWidgetState();
@@ -301,6 +303,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                             await _model
                                                 .waitForRequestCompleted();
                                             FFAppState().update(() {});
+                                            await widget.dbRefresh?.call();
                                           },
                                         );
                                       }),

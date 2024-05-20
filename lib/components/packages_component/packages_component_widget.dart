@@ -128,6 +128,9 @@ class _PackagesComponentWidgetState extends State<PackagesComponentWidget> {
                       key: Key(
                           'Keyw2u_${packagesIdxIndex}_of_${packagesIdx.length}'),
                       packageRow: packagesIdxItem,
+                      dbRefresh: () async {
+                        FFAppState().update(() {});
+                      },
                     );
                   }),
                 );

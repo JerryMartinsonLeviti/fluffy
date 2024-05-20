@@ -249,6 +249,8 @@ dynamic deserializeParam<T>(
             return EventLiaisonRow(data);
           case RestaurantLocationsRow:
             return RestaurantLocationsRow(data);
+          case ImageTypesRow:
+            return ImageTypesRow(data);
           case EventPlannerRow:
             return EventPlannerRow(data);
           case VendorsRow:

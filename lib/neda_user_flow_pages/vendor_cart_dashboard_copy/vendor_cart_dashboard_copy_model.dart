@@ -3,21 +3,20 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'manage_events_my_events_event_command_ctr_widget.dart'
-    show ManageEventsMyEventsEventCommandCtrWidget;
+import '/vendor_flow/vendor_cart/vendor_cart_line_component/vendor_cart_line_component_widget.dart';
+import 'vendor_cart_dashboard_copy_widget.dart'
+    show VendorCartDashboardCopyWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class ManageEventsMyEventsEventCommandCtrModel
-    extends FlutterFlowModel<ManageEventsMyEventsEventCommandCtrWidget> {
+class VendorCartDashboardCopyModel
+    extends FlutterFlowModel<VendorCartDashboardCopyWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - Query Rows] action in Container widget.
-  List<UserInfosRow>? userinforow;
 
   @override
   void initState(BuildContext context) {}

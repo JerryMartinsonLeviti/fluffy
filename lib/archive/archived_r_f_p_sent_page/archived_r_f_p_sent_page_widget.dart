@@ -1,30 +1,31 @@
+import '/archive/archived_r_f_p_sent_modal/archived_r_f_p_sent_modal_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/planner_flow/r_t_b_sent_modal/r_t_b_sent_modal_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'r_t_b_sent_page_model.dart';
-export 'r_t_b_sent_page_model.dart';
+import 'archived_r_f_p_sent_page_model.dart';
+export 'archived_r_f_p_sent_page_model.dart';
 
-class RTBSentPageWidget extends StatefulWidget {
-  const RTBSentPageWidget({super.key});
+class ArchivedRFPSentPageWidget extends StatefulWidget {
+  const ArchivedRFPSentPageWidget({super.key});
 
   @override
-  State<RTBSentPageWidget> createState() => _RTBSentPageWidgetState();
+  State<ArchivedRFPSentPageWidget> createState() =>
+      _ArchivedRFPSentPageWidgetState();
 }
 
-class _RTBSentPageWidgetState extends State<RTBSentPageWidget> {
-  late RTBSentPageModel _model;
+class _ArchivedRFPSentPageWidgetState extends State<ArchivedRFPSentPageWidget> {
+  late ArchivedRFPSentPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => RTBSentPageModel());
+    _model = createModel(context, () => ArchivedRFPSentPageModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -48,9 +49,9 @@ class _RTBSentPageWidgetState extends State<RTBSentPageWidget> {
         body: SafeArea(
           top: true,
           child: wrapWithModel(
-            model: _model.rTBSentModalModel,
+            model: _model.archivedRFPSentModalModel,
             updateCallback: () => setState(() {}),
-            child: RTBSentModalWidget(),
+            child: ArchivedRFPSentModalWidget(),
           ),
         ),
       ),

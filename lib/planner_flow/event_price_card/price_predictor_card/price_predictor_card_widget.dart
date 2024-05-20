@@ -1157,14 +1157,6 @@ class _PricePredictorCardWidgetState extends State<PricePredictorCardWidget> {
                                       ),
                                     ],
                                   ),
-                                  Container(
-                                    width: 256.0,
-                                    height: 100.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                  ),
                                 ],
                               ),
                             ),

@@ -20,6 +20,7 @@ export 'tables/notices.dart';
 export 'tables/function_spaces.dart';
 export 'tables/event_liaison.dart';
 export 'tables/restaurant_locations.dart';
+export 'tables/image_types.dart';
 export 'tables/event_planner.dart';
 export 'tables/vendors.dart';
 export 'tables/final_combined_view.dart';

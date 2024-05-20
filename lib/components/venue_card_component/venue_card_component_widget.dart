@@ -79,15 +79,15 @@ class _VenueCardComponentWidgetState extends State<VenueCardComponentWidget> {
           highlightColor: Colors.transparent,
           onTap: () async {
             context.pushNamed(
-              'VenueDetailPage',
+              'ListingPageCopy',
               queryParameters: {
-                'venueRow': serializeParam(
-                  widget.venueRow,
-                  ParamType.SupabaseRow,
+                'venuePK': serializeParam(
+                  widget.venueRow?.pKVenues,
+                  ParamType.int,
                 ),
-                'vendorRow': serializeParam(
-                  containerVendorsRow,
-                  ParamType.SupabaseRow,
+                'vendorPK': serializeParam(
+                  containerVendorsRow?.pKVendors,
+                  ParamType.int,
                 ),
               }.withoutNulls,
             );

@@ -1,4 +1,3 @@
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +10,25 @@ export 'address_model.dart';
 class AddressWidget extends StatefulWidget {
   const AddressWidget({
     super.key,
-    required this.addressRow,
-  });
+    String? street1,
+    String? street2,
+    String? city,
+    String? state,
+    String? zip,
+    String? country,
+  })  : this.street1 = street1 ?? ' ',
+        this.street2 = street2 ?? ' ',
+        this.city = city ?? ' ',
+        this.state = state ?? ' ',
+        this.zip = zip ?? ' ',
+        this.country = country ?? ' ';
 
-  final AddressesRow? addressRow;
+  final String street1;
+  final String street2;
+  final String city;
+  final String state;
+  final String zip;
+  final String country;
 
   @override
   State<AddressWidget> createState() => _AddressWidgetState();
@@ -67,7 +81,8 @@ class _AddressWidgetState extends State<AddressWidget> {
               ),
               decoration: BoxDecoration(),
               child: Column(
-                mainAxisSize: MainAxisSize.max,
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Address',
@@ -75,74 +90,44 @@ class _AddressWidgetState extends State<AddressWidget> {
                           fontFamily: 'Readex Pro',
                           fontSize: 20.0,
                           letterSpacing: 0.0,
+                          fontWeight: FontWeight.w600,
                         ),
                   ),
-                  Text(
-                    valueOrDefault<String>(
-                      widget.addressRow?.streetName1,
-                      'noStreet1',
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Readex Pro',
-                          letterSpacing: 0.0,
-                        ),
-                  ),
-                  Text(
-                    valueOrDefault<String>(
-                      widget.addressRow?.streetName2,
-                      'noStreet2',
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Readex Pro',
-                          letterSpacing: 0.0,
-                        ),
-                  ),
-                  Text(
-                    valueOrDefault<String>(
-                      '${widget.addressRow?.city} ${valueOrDefault<String>(
-                        widget.addressRow?.regionCode,
-                        'NS',
-                      )} ${valueOrDefault<String>(
-                        widget.addressRow?.postalCode,
-                        '90210',
-                      )} ${valueOrDefault<String>(
-                        widget.addressRow?.countryCode,
-                        'US',
-                      )}',
-                      'Madison, WI 53558 USA',
-                    ),
-                    textAlign: TextAlign.start,
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Readex Pro',
-                          letterSpacing: 0.0,
-                        ),
-                  ),
-                ],
-              ),
-            ),
-            Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                constraints: BoxConstraints(
-                  minWidth: 380.0,
-                  minHeight: 200.0,
-                  maxWidth: 500.0,
-                  maxHeight: 300.0,
-                ),
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryText,
-                ),
-                alignment: AlignmentDirectional(0.0, 0.0),
-                child: Text(
-                  'GOOGLE MAP TBA',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Readex Pro',
-                        fontSize: 25.0,
-                        letterSpacing: 0.0,
+                  if (widget.street1 != null && widget.street1 != '')
+                    Text(
+                      valueOrDefault<String>(
+                        widget.street1,
+                        'Street',
                       ),
-                ),
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                  if (widget.street2 != null && widget.street2 != '')
+                    Text(
+                      valueOrDefault<String>(
+                        widget.street2,
+                        'street2',
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                  if (widget.city != null && widget.city != '')
+                    Text(
+                      valueOrDefault<String>(
+                        '${widget.city} ${widget.state} ${widget.zip} ${widget.country}',
+                        'Madison, WI 53558 USA',
+                      ),
+                      textAlign: TextAlign.start,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                ],
               ),
             ),
           ],

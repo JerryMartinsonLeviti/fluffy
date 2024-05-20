@@ -166,9 +166,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => PaymentModalWidget(),
         ),
         FFRoute(
-          name: 'RFP_SentPage',
-          path: '/rFPSentPage',
-          builder: (context, params) => RFPSentPageWidget(),
+          name: 'Archived-RFP_SentPage',
+          path: '/archivedRFPSentPage',
+          builder: (context, params) => ArchivedRFPSentPageWidget(),
         ),
         FFRoute(
           name: 'VendorSideNavBar',
@@ -181,9 +181,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => InvoiceTemplateWidget(),
         ),
         FFRoute(
-          name: 'VendorRFP_Hub',
-          path: '/vendorRFPHub',
-          builder: (context, params) => VendorRFPHubWidget(),
+          name: 'Archived_VendorRFP_Hub',
+          path: '/archivedVendorRFPHub',
+          builder: (context, params) => ArchivedVendorRFPHubWidget(),
         ),
         FFRoute(
           name: 'VendorRFP_Detail',
@@ -191,9 +191,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => VendorRFPDetailWidget(),
         ),
         FFRoute(
-          name: 'VendorRFP_AcceptanceSent',
-          path: '/vendorRFPAcceptanceSent',
-          builder: (context, params) => VendorRFPAcceptanceSentWidget(),
+          name: 'VendorRFP_ConfirmationSent',
+          path: '/vendorRFPConfirmationSent',
+          builder: (context, params) => VendorRFPConfirmationSentWidget(),
         ),
         FFRoute(
           name: 'LiaisonDashboard',
@@ -353,9 +353,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => SplashPageWidget(),
         ),
         FFRoute(
-          name: 'RTB_SentPage',
-          path: '/rTBSentPage',
-          builder: (context, params) => RTBSentPageWidget(),
+          name: 'RFP_Sent_Modal',
+          path: '/rFPSentModal',
+          builder: (context, params) => RFPSentModalWidget(),
         ),
         FFRoute(
           name: 'DevModeAccess',
@@ -377,10 +377,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'ManageEvents_MyEvents_EventCommandCtr',
-          path: '/manageEventsMyEventsEventCommandCtr',
-          builder: (context, params) =>
-              ManageEventsMyEventsEventCommandCtrWidget(),
+          name: 'MyEvents_EventCommandCtr',
+          path: '/myEventsEventCommandCtr',
+          builder: (context, params) => MyEventsEventCommandCtrWidget(),
         ),
         FFRoute(
           name: 'ListingPage',
@@ -395,7 +394,66 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ListingPageCopy',
           path: '/listingPageCopy',
-          builder: (context, params) => ListingPageCopyWidget(),
+          builder: (context, params) => ListingPageCopyWidget(
+            venuePK: params.getParam(
+              'venuePK',
+              ParamType.int,
+            ),
+            vendorPK: params.getParam(
+              'vendorPK',
+              ParamType.int,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'ListingPageCopy2',
+          path: '/listingPageCopy2',
+          builder: (context, params) => ListingPageCopy2Widget(),
+        ),
+        FFRoute(
+          name: 'ListingPage_Edit_Mode',
+          path: '/listingPageEditMode',
+          builder: (context, params) => ListingPageEditModeWidget(),
+        ),
+        FFRoute(
+          name: 'EventCartReviewPageCopy',
+          path: '/eventCartReviewPageCopy',
+          builder: (context, params) => EventCartReviewPageCopyWidget(
+            eventRow: params.getParam<EventsRow>(
+              'eventRow',
+              ParamType.SupabaseRow,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Planner_MAIN_Dash_Copy',
+          path: '/plannerMAINDashCopy',
+          builder: (context, params) => PlannerMAINDashCopyWidget(),
+        ),
+        FFRoute(
+          name: 'ManageEvents_MyEventsCopy',
+          path: '/manageEventsMyEventsCopy',
+          builder: (context, params) => ManageEventsMyEventsCopyWidget(),
+        ),
+        FFRoute(
+          name: 'MyEvents_EventCommandCtrCopy',
+          path: '/myEventsEventCommandCtrCopy',
+          builder: (context, params) => MyEventsEventCommandCtrCopyWidget(),
+        ),
+        FFRoute(
+          name: 'VendorCartDashboardCopy',
+          path: '/vendorCartDashboardCopy',
+          builder: (context, params) => VendorCartDashboardCopyWidget(),
+        ),
+        FFRoute(
+          name: 'VendorRFP_DetailCopy',
+          path: '/vendorRFPDetailCopy',
+          builder: (context, params) => VendorRFPDetailCopyWidget(),
+        ),
+        FFRoute(
+          name: 'VendorRFP_ConfirmationSentCopy',
+          path: '/vendorRFPConfirmationSentCopy',
+          builder: (context, params) => VendorRFPConfirmationSentCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

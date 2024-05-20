@@ -178,7 +178,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             40.0, 0.0, 0.0, 0.0),
                                         child: Text(
-                                          'Welcome ${valueOrDefault<String>(
+                                          'Vendor Command Center ${valueOrDefault<String>(
                                             FFAppState().PKVendors.toString(),
                                             '0',
                                           )}',
@@ -191,15 +191,36 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                               ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 100.0, 0.0),
-                                        child: Icon(
-                                          Icons.notification_important,
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          size: 30.0,
-                                        ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(
+                                            'NEW',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  fontSize: 28.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 100.0, 0.0),
+                                            child: Icon(
+                                              Icons.notification_important,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              size: 35.0,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
@@ -215,7 +236,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                       0.0, 40.0, 0.0, 0.0),
                                   child: Container(
                                     width: 922.0,
-                                    height: 616.0,
+                                    height: 650.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -242,7 +263,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(20.0,
-                                                                10.0, 0.0, 0.0),
+                                                                20.0, 0.0, 0.0),
                                                     child: Text(
                                                       'All Events',
                                                       style: FlutterFlowTheme
@@ -251,7 +272,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Readex Pro',
-                                                            fontSize: 20.0,
+                                                            fontSize: 25.0,
                                                             letterSpacing: 0.0,
                                                           ),
                                                     ),
@@ -267,7 +288,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                     .fromSTEB(
                                                         20.0, 10.0, 0.0, 0.0),
                                                 child: Text(
-                                                  'Click on an Event to view Request to Book details',
+                                                  'Click on an Event to view details',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -293,6 +314,18 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                     MainAxisAlignment
                                                         .spaceEvenly,
                                                 children: [
+                                                  Text(
+                                                    'Client Company',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
                                                   Container(
                                                     decoration: BoxDecoration(),
                                                     child: Column(
@@ -301,19 +334,6 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                       children: [
                                                         Text(
                                                           'Event Name',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                fontSize: 16.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          'Client Company',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -347,21 +367,20 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                                     0.0,
                                                               ),
                                                         ),
-                                                        Text(
-                                                          'Time',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                fontSize: 16.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
                                                       ],
                                                     ),
+                                                  ),
+                                                  Text(
+                                                    'Time',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                   Container(
                                                     decoration: BoxDecoration(),
@@ -468,8 +487,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                         .spaceEvenly,
                                                 children: [
                                                   Text(
-                                                    'Austin Customer Luncheon ',
-                                                    textAlign: TextAlign.start,
+                                                    'Capital One ',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -484,7 +502,9 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                         MainAxisSize.max,
                                                     children: [
                                                       Text(
-                                                        'Capital One ',
+                                                        'Austin Customer Luncheon ',
+                                                        textAlign:
+                                                            TextAlign.start,
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -614,6 +634,17 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                         .spaceEvenly,
                                                 children: [
                                                   Text(
+                                                    'Netflix',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                  Text(
                                                     'Palo Alto Team Dinner',
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
@@ -624,25 +655,6 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                               'Readex Pro',
                                                           letterSpacing: 0.0,
                                                         ),
-                                                  ),
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        'Netflix',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                      ),
-                                                    ],
                                                   ),
                                                   Column(
                                                     mainAxisSize:
@@ -987,7 +999,7 @@ class _VendorCartDashboardWidgetState extends State<VendorCartDashboardWidget> {
                                                     .fromSTEB(
                                                         0.0, 20.0, 30.0, 16.0),
                                                 child: Text(
-                                                  'Sort by Status',
+                                                  'Sort by Date',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium

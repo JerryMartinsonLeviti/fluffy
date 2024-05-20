@@ -28,4 +28,7 @@ class DescriptionAssetsRow extends SupabaseDataRow {
   String? get descriptionName => getField<String>('description_name');
   set descriptionName(String? value) =>
       setField<String>('description_name', value);
+
+  bool get whatsIncluded => getField<bool>('whats_included')!;
+  set whatsIncluded(bool value) => setField<bool>('whats_included', value);
 }

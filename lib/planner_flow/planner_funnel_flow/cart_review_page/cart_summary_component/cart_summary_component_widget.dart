@@ -86,6 +86,7 @@ class _CartSummaryComponentWidgetState
           )
         ],
         borderRadius: BorderRadius.circular(24.0),
+        shape: BoxShape.rectangle,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -102,8 +103,8 @@ class _CartSummaryComponentWidgetState
                   Align(
                     alignment: AlignmentDirectional(0.0, -1.0),
                     child: Container(
-                      width: 125.0,
-                      height: 125.0,
+                      width: 100.0,
+                      height: 100.0,
                       clipBehavior: Clip.antiAlias,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -203,106 +204,6 @@ class _CartSummaryComponentWidgetState
               ),
             ],
           ),
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(6.0),
-                  child: FFButtonWidget(
-                    onPressed: () async {
-                      context.pushNamed(
-                        'VenueDetailPage',
-                        queryParameters: {
-                          'venueRow': serializeParam(
-                            widget.venueRow,
-                            ParamType.SupabaseRow,
-                          ),
-                          'vendorRow': serializeParam(
-                            widget.vendorRow,
-                            ParamType.SupabaseRow,
-                          ),
-                        }.withoutNulls,
-                      );
-                    },
-                    text: 'Edit',
-                    options: FFButtonOptions(
-                      width: 88.0,
-                      height: 33.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).accent3,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Readex Pro',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 3.0,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(24.0),
-                    ),
-                  ),
-                ),
-                FFButtonWidget(
-                  onPressed: () async {
-                    _model.plannerRows = await PlannersTable().queryRows(
-                      queryFn: (q) => q.eq(
-                        'PK_Planners',
-                        FFAppState().PKVendors,
-                      ),
-                    );
-                    _model.userInfoRows = await UserInfosTable().queryRows(
-                      queryFn: (q) => q.eq(
-                        'FK_Planner',
-                        FFAppState().PKPlanner,
-                      ),
-                    );
-
-                    context.pushNamed(
-                      'MessagesByEvent',
-                      queryParameters: {
-                        'userInfoRow': serializeParam(
-                          _model.userInfoRows?.first,
-                          ParamType.SupabaseRow,
-                        ),
-                      }.withoutNulls,
-                    );
-
-                    setState(() {});
-                  },
-                  text: 'Message',
-                  options: FFButtonOptions(
-                    width: 100.0,
-                    height: 36.0,
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).accent2,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Readex Pro',
-                          color: Colors.white,
-                          letterSpacing: 0.0,
-                        ),
-                    elevation: 3.0,
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1.0,
-                    ),
-                    borderRadius: BorderRadius.circular(24.0),
-                  ),
-                ),
-              ],
-            ),
-          ),
           Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -354,47 +255,12 @@ class _CartSummaryComponentWidgetState
                   } else if (widget.cartRow?.cartState ==
                       functions
                           .convertCartStateEnumToString(CartStates.RfpSent)) {
-                    return Padding(
-                      padding: EdgeInsets.all(6.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          context.pushNamed(
-                            'RequesttoBookCart',
-                            queryParameters: {
-                              'cartRow': serializeParam(
-                                widget.cartRow,
-                                ParamType.SupabaseRow,
-                              ),
-                              'eventRow': serializeParam(
-                                widget.eventRow,
-                                ParamType.SupabaseRow,
-                              ),
-                            }.withoutNulls,
-                          );
-                        },
-                        text: 'Request to Book',
-                        options: FFButtonOptions(
-                          width: 155.0,
-                          height: 41.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).accent1,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
-                                  ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                    return Text(
+                      'Hello World',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
                           ),
-                          borderRadius: BorderRadius.circular(24.0),
-                        ),
-                      ),
                     );
                   } else {
                     return Padding(
@@ -463,10 +329,198 @@ class _CartSummaryComponentWidgetState
               ),
             ],
           ),
+          Padding(
+            padding: EdgeInsets.all(6.0),
+            child: FFButtonWidget(
+              onPressed: () async {
+                context.pushNamed(
+                  'RequesttoBookCart',
+                  queryParameters: {
+                    'cartRow': serializeParam(
+                      widget.cartRow,
+                      ParamType.SupabaseRow,
+                    ),
+                    'eventRow': serializeParam(
+                      widget.eventRow,
+                      ParamType.SupabaseRow,
+                    ),
+                  }.withoutNulls,
+                );
+              },
+              text: 'Request for Proposal',
+              options: FFButtonOptions(
+                width: 170.0,
+                height: 41.0,
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                color: FlutterFlowTheme.of(context).accent1,
+                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                      fontFamily: 'Readex Pro',
+                      color: Colors.white,
+                      fontSize: 14.0,
+                      letterSpacing: 0.0,
+                    ),
+                elevation: 3.0,
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                  width: 1.0,
+                ),
+                borderRadius: BorderRadius.circular(24.0),
+              ),
+            ),
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Padding(
+                padding: EdgeInsets.all(6.0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    context.pushNamed(
+                      'VenueDetailPage',
+                      queryParameters: {
+                        'venueRow': serializeParam(
+                          widget.venueRow,
+                          ParamType.SupabaseRow,
+                        ),
+                        'vendorRow': serializeParam(
+                          widget.vendorRow,
+                          ParamType.SupabaseRow,
+                        ),
+                      }.withoutNulls,
+                    );
+                  },
+                  text: 'Edit',
+                  options: FFButtonOptions(
+                    width: 88.0,
+                    height: 33.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).accent3,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Readex Pro',
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          letterSpacing: 0.0,
+                        ),
+                    elevation: 3.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(24.0),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              FFButtonWidget(
+                onPressed: () async {
+                  _model.plannerRows1 = await PlannersTable().queryRows(
+                    queryFn: (q) => q.eq(
+                      'PK_Planners',
+                      FFAppState().PKVendors,
+                    ),
+                  );
+                  _model.userInfoRows1 = await UserInfosTable().queryRows(
+                    queryFn: (q) => q.eq(
+                      'FK_Planner',
+                      FFAppState().PKPlanner,
+                    ),
+                  );
+
+                  context.pushNamed(
+                    'MessagesByEvent',
+                    queryParameters: {
+                      'userInfoRow': serializeParam(
+                        _model.userInfoRows1?.first,
+                        ParamType.SupabaseRow,
+                      ),
+                    }.withoutNulls,
+                  );
+
+                  setState(() {});
+                },
+                text: 'Message Liaison',
+                options: FFButtonOptions(
+                  width: 100.0,
+                  height: 36.0,
+                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: FlutterFlowTheme.of(context).accent2,
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                        fontFamily: 'Readex Pro',
+                        color: Colors.white,
+                        letterSpacing: 0.0,
+                      ),
+                  elevation: 3.0,
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(24.0),
+                ),
+              ),
+              FFButtonWidget(
+                onPressed: () async {
+                  _model.plannerRows = await PlannersTable().queryRows(
+                    queryFn: (q) => q.eq(
+                      'PK_Planners',
+                      FFAppState().PKVendors,
+                    ),
+                  );
+                  _model.userInfoRows = await UserInfosTable().queryRows(
+                    queryFn: (q) => q.eq(
+                      'FK_Planner',
+                      FFAppState().PKPlanner,
+                    ),
+                  );
+
+                  context.pushNamed(
+                    'MessagesByEvent',
+                    queryParameters: {
+                      'userInfoRow': serializeParam(
+                        _model.userInfoRows?.first,
+                        ParamType.SupabaseRow,
+                      ),
+                    }.withoutNulls,
+                  );
+
+                  setState(() {});
+                },
+                text: 'Message Venue',
+                options: FFButtonOptions(
+                  width: 100.0,
+                  height: 36.0,
+                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: FlutterFlowTheme.of(context).accent2,
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                        fontFamily: 'Readex Pro',
+                        color: Colors.white,
+                        letterSpacing: 0.0,
+                      ),
+                  elevation: 3.0,
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(24.0),
+                ),
+              ),
+            ],
+          ),
           Align(
             alignment: AlignmentDirectional(1.0, 0.0),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 30.0, 0.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,

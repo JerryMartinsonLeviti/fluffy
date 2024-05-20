@@ -207,7 +207,7 @@ class _VendorRFPConfirmationSentCopyWidgetState
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
-                                              fontSize: 18.0,
+                                              fontSize: 20.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -400,7 +400,7 @@ class _VendorRFPConfirmationSentCopyWidgetState
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'SilverSpike Quoted Estimate:  \$10,145.74',
+                                  'Quoted Estimate:  \$10,145.74',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(

@@ -11,6 +11,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/event_price_card/price_predictor/price_predictor_widget.dart';
 import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'dart:async';
 import 'listing_page_copy_widget.dart' show ListingPageCopyWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -25,6 +26,7 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   late PlannerAppBarComponentModel plannerAppBarComponentModel;
   // Model for Address component.
   late AddressModel addressModel;
+  Completer<List<AddressesRow>>? requestCompleter;
   // Model for PricePredictor component.
   late PricePredictorModel pricePredictorModel;
   // Model for ProductDetailPageOptionsLanguage component.
@@ -63,5 +65,21 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
     bottomRibbonFooterModel.dispose();
     eventSpaceComponentModel.dispose();
     packagesComponentModel.dispose();
+  }
+
+  /// Additional helper methods.
+  Future waitForRequestCompleted({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
   }
 }

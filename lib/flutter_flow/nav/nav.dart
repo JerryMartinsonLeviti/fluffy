@@ -454,6 +454,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'VendorRFP_ConfirmationSentCopy',
           path: '/vendorRFPConfirmationSentCopy',
           builder: (context, params) => VendorRFPConfirmationSentCopyWidget(),
+        ),
+        FFRoute(
+          name: 'LiaisonDashboardCopy',
+          path: '/liaisonDashboardCopy',
+          builder: (context, params) => LiaisonDashboardCopyWidget(),
+        ),
+        FFRoute(
+          name: 'LiaisonAllEventsListCopy',
+          path: '/liaisonAllEventsListCopy',
+          builder: (context, params) => LiaisonAllEventsListCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

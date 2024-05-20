@@ -36,10 +36,7 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
       listingRestaurantDetailComponentModel;
   // Model for PricePredictor component.
   late PricePredictorModel pricePredictorModel;
-  // Model for imageGalleryManagerComponent component.
-  late ImageGalleryManagerComponentModel imageGalleryManagerComponentModel1;
-  // Model for imageGalleryManagerComponent component.
-  late ImageGalleryManagerComponentModel imageGalleryManagerComponentModel2;
+  Completer<List<ImageAssetsRow>>? requestCompleter3;
   // Model for ProductDetailPageOptionsLanguage component.
   late ProductDetailPageOptionsLanguageModel
       productDetailPageOptionsLanguageModel;
@@ -65,10 +62,6 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
     listingRestaurantDetailComponentModel =
         createModel(context, () => ListingRestaurantDetailComponentModel());
     pricePredictorModel = createModel(context, () => PricePredictorModel());
-    imageGalleryManagerComponentModel1 =
-        createModel(context, () => ImageGalleryManagerComponentModel());
-    imageGalleryManagerComponentModel2 =
-        createModel(context, () => ImageGalleryManagerComponentModel());
     productDetailPageOptionsLanguageModel =
         createModel(context, () => ProductDetailPageOptionsLanguageModel());
     listingWhatIsIncludedModel =
@@ -89,8 +82,6 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
     plannerAppBarComponentModel.dispose();
     listingRestaurantDetailComponentModel.dispose();
     pricePredictorModel.dispose();
-    imageGalleryManagerComponentModel1.dispose();
-    imageGalleryManagerComponentModel2.dispose();
     productDetailPageOptionsLanguageModel.dispose();
     listingWhatIsIncludedModel.dispose();
     listingFAQsModel.dispose();
@@ -101,6 +92,21 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   }
 
   /// Additional helper methods.
+  Future waitForRequestCompleted3({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter3?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
+  }
+
   Future waitForRequestCompleted1({
     double minWait = 0,
     double maxWait = double.infinity,

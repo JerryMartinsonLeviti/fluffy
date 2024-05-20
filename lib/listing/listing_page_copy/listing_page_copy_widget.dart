@@ -308,15 +308,23 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                           FutureBuilder<
                                                               List<
                                                                   ImageAssetsRow>>(
-                                                            future:
-                                                                ImageAssetsTable()
-                                                                    .queryRows(
-                                                              queryFn: (q) =>
-                                                                  q.eq(
-                                                                'FK_Venue',
-                                                                widget.venuePK,
-                                                              ),
-                                                            ),
+                                                            future: (_model
+                                                                        .requestCompleter3 ??=
+                                                                    Completer<
+                                                                        List<
+                                                                            ImageAssetsRow>>()
+                                                                      ..complete(
+                                                                          ImageAssetsTable()
+                                                                              .queryRows(
+                                                                        queryFn:
+                                                                            (q) =>
+                                                                                q.eq(
+                                                                          'FK_Venue',
+                                                                          widget
+                                                                              .venuePK,
+                                                                        ),
+                                                                      )))
+                                                                .future,
                                                             builder: (context,
                                                                 snapshot) {
                                                               // Customize what your widget looks like when it's loading.
@@ -356,28 +364,56 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        InkWell(
-                                                                          splashColor:
-                                                                              Colors.transparent,
-                                                                          focusColor:
-                                                                              Colors.transparent,
-                                                                          hoverColor:
-                                                                              Colors.transparent,
-                                                                          highlightColor:
-                                                                              Colors.transparent,
-                                                                          onTap:
-                                                                              () async {
-                                                                            setState(() {
-                                                                              _model.galleryEditorDisabled = !_model.galleryEditorDisabled;
-                                                                            });
-                                                                          },
-                                                                          child:
-                                                                              Icon(
-                                                                            Icons.settings_outlined,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).secondaryText,
-                                                                            size:
-                                                                                24.0,
+                                                                        Builder(
+                                                                          builder: (context) =>
+                                                                              InkWell(
+                                                                            splashColor:
+                                                                                Colors.transparent,
+                                                                            focusColor:
+                                                                                Colors.transparent,
+                                                                            hoverColor:
+                                                                                Colors.transparent,
+                                                                            highlightColor:
+                                                                                Colors.transparent,
+                                                                            onTap:
+                                                                                () async {
+                                                                              await showDialog(
+                                                                                context: context,
+                                                                                builder: (dialogContext) {
+                                                                                  return Dialog(
+                                                                                    elevation: 0,
+                                                                                    insetPadding: EdgeInsets.zero,
+                                                                                    backgroundColor: Colors.transparent,
+                                                                                    alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                    child: GestureDetector(
+                                                                                      onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                      child: ImageGalleryManagerComponentWidget(
+                                                                                        immageAssetRows: venueImageEditImageAssetsRowList,
+                                                                                        onUpload: (originalURL, newURL) async {
+                                                                                          await ImageAssetsTable().insert({
+                                                                                            'FK_Venue': widget.venuePK,
+                                                                                            'image_url': newURL,
+                                                                                            'originalURL': originalURL,
+                                                                                          });
+                                                                                          setState(() => _model.requestCompleter3 = null);
+                                                                                          await _model.waitForRequestCompleted3();
+                                                                                        },
+                                                                                        onDbUpdate: () async {
+                                                                                          setState(() => _model.requestCompleter3 = null);
+                                                                                          await _model.waitForRequestCompleted3();
+                                                                                        },
+                                                                                      ),
+                                                                                    ),
+                                                                                  );
+                                                                                },
+                                                                              ).then((value) => setState(() {}));
+                                                                            },
+                                                                            child:
+                                                                                Icon(
+                                                                              Icons.settings_outlined,
+                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                              size: 24.0,
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                         Text(
@@ -391,24 +427,6 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                         ),
                                                                       ],
                                                                     ),
-                                                                    if (!_model
-                                                                        .galleryEditorDisabled)
-                                                                      wrapWithModel(
-                                                                        model: _model
-                                                                            .imageGalleryManagerComponentModel1,
-                                                                        updateCallback:
-                                                                            () =>
-                                                                                setState(() {}),
-                                                                        child:
-                                                                            ImageGalleryManagerComponentWidget(
-                                                                          immageAssetRows:
-                                                                              venueImageEditImageAssetsRowList,
-                                                                          onUpload:
-                                                                              (originalURL, newURL) async {},
-                                                                          onDbUpdate:
-                                                                              () async {},
-                                                                        ),
-                                                                      ),
                                                                   ],
                                                                 ),
                                                               );
@@ -500,24 +518,6 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                         ),
                                                                       ],
                                                                     ),
-                                                                    if (!_model
-                                                                        .galleryEditorDisabled)
-                                                                      wrapWithModel(
-                                                                        model: _model
-                                                                            .imageGalleryManagerComponentModel2,
-                                                                        updateCallback:
-                                                                            () =>
-                                                                                setState(() {}),
-                                                                        child:
-                                                                            ImageGalleryManagerComponentWidget(
-                                                                          immageAssetRows:
-                                                                              vendorImageEditImageAssetsRowList,
-                                                                          onUpload:
-                                                                              (originalURL, newURL) async {},
-                                                                          onDbUpdate:
-                                                                              () async {},
-                                                                        ),
-                                                                      ),
                                                                   ],
                                                                 ),
                                                               );

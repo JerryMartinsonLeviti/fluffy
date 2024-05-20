@@ -307,23 +307,19 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                               ),
                                             ],
                                           ),
-                                          Wrap(
-                                            spacing: 0.0,
-                                            runSpacing: 0.0,
-                                            alignment: WrapAlignment.start,
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
                                             crossAxisAlignment:
-                                                WrapCrossAlignment.start,
-                                            direction: Axis.horizontal,
-                                            runAlignment: WrapAlignment.start,
-                                            verticalDirection:
-                                                VerticalDirection.down,
-                                            clipBehavior: Clip.none,
+                                                CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                itemItem.pKItems.toString(),
-                                                textAlign: TextAlign.start,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    itemItem.pKItems.toString(),
+                                                    textAlign: TextAlign.start,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily:
@@ -332,12 +328,12 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                                           fontWeight:
                                                               FontWeight.w600,
                                                         ),
-                                              ),
-                                              Text(
-                                                itemItem.displayName,
-                                                textAlign: TextAlign.start,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                                  ),
+                                                  Text(
+                                                    itemItem.displayName,
+                                                    textAlign: TextAlign.start,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily:
@@ -346,11 +342,11 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                                           fontWeight:
                                                               FontWeight.w600,
                                                         ),
-                                              ),
-                                              Text(
-                                                ' - ',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                                  ),
+                                                  Text(
+                                                    ' - ',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily:
@@ -360,24 +356,41 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                                           fontStyle:
                                                               FontStyle.italic,
                                                         ),
+                                                  ),
+                                                ],
                                               ),
-                                              AutoSizeText(
-                                                itemItem.publicDescription!
-                                                    .maybeHandleOverflow(
-                                                  maxChars: 200,
-                                                  replacement: '…',
+                                              SingleChildScrollView(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    AutoSizeText(
+                                                      itemItem
+                                                          .publicDescription!
+                                                          .maybeHandleOverflow(
+                                                        maxChars: 200,
+                                                        replacement: '…',
+                                                      ),
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            fontSize: 12.0,
+                                                            letterSpacing: 0.0,
+                                                            fontStyle: FontStyle
+                                                                .italic,
+                                                          ),
+                                                    ),
+                                                  ],
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          fontSize: 12.0,
-                                                          letterSpacing: 0.0,
-                                                          fontStyle:
-                                                              FontStyle.italic,
-                                                        ),
                                               ),
                                             ],
                                           ),

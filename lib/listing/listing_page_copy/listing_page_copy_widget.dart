@@ -1,6 +1,7 @@
 import '/backend/supabase/supabase.dart';
 import '/components/bottom_ribbon_footer_widget.dart';
 import '/components/event_space_component/event_space_component_widget.dart';
+import '/components/image_gallery_manager_component_widget.dart';
 import '/components/packages_component/packages_component_widget.dart';
 import '/components/product_detail_page_options_language/product_detail_page_options_language_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -255,96 +256,318 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                 ),
                                               ],
                                             ),
-                                            Container(
-                                              width: 1028.0,
-                                              height: 207.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
+                                            FutureBuilder<List<ImageAssetsRow>>(
+                                              future:
+                                                  ImageAssetsTable().queryRows(
+                                                queryFn: (q) => q
+                                                    .eq(
+                                                      'FK_Vendor',
+                                                      widget.vendorPK,
+                                                    )
+                                                    .order('order'),
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child: SpinKitChasingDots(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                        size: 50.0,
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                List<ImageAssetsRow>
+                                                    galleryRowImageAssetsRowList =
+                                                    snapshot.data!;
+                                                return Container(
+                                                  width: 1028.0,
+                                                  height: 207.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
                                                         .secondaryBackground,
-                                              ),
-                                              child: SingleChildScrollView(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          child: Image.network(
-                                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/bjcNcUcJFzipGWqoNchx/assets/l173dyfxd91j/Image_5-18-24_at_3.10_PM.jpeg',
-                                                            width: 300.0,
-                                                            height: 200.0,
-                                                            fit: BoxFit.cover,
+                                                  ),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceAround,
+                                                        children: [
+                                                          FutureBuilder<
+                                                              List<
+                                                                  ImageAssetsRow>>(
+                                                            future:
+                                                                ImageAssetsTable()
+                                                                    .queryRows(
+                                                              queryFn: (q) =>
+                                                                  q.eq(
+                                                                'FK_Venue',
+                                                                widget.venuePK,
+                                                              ),
+                                                            ),
+                                                            builder: (context,
+                                                                snapshot) {
+                                                              // Customize what your widget looks like when it's loading.
+                                                              if (!snapshot
+                                                                  .hasData) {
+                                                                return Center(
+                                                                  child:
+                                                                      SizedBox(
+                                                                    width: 50.0,
+                                                                    height:
+                                                                        50.0,
+                                                                    child:
+                                                                        SpinKitChasingDots(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondary,
+                                                                      size:
+                                                                          50.0,
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              }
+                                                              List<ImageAssetsRow>
+                                                                  venueImageEditImageAssetsRowList =
+                                                                  snapshot
+                                                                      .data!;
+                                                              return Container(
+                                                                decoration:
+                                                                    BoxDecoration(),
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            setState(() {
+                                                                              _model.galleryEditorDisabled = !_model.galleryEditorDisabled;
+                                                                            });
+                                                                          },
+                                                                          child:
+                                                                              Icon(
+                                                                            Icons.settings_outlined,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondaryText,
+                                                                            size:
+                                                                                24.0,
+                                                                          ),
+                                                                        ),
+                                                                        Text(
+                                                                          'Venue Images',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                letterSpacing: 0.0,
+                                                                              ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    if (!_model
+                                                                        .galleryEditorDisabled)
+                                                                      wrapWithModel(
+                                                                        model: _model
+                                                                            .imageGalleryManagerComponentModel1,
+                                                                        updateCallback:
+                                                                            () =>
+                                                                                setState(() {}),
+                                                                        child:
+                                                                            ImageGalleryManagerComponentWidget(
+                                                                          immageAssetRows:
+                                                                              venueImageEditImageAssetsRowList,
+                                                                          onUpload:
+                                                                              (originalURL, newURL) async {},
+                                                                          onDbUpdate:
+                                                                              () async {},
+                                                                        ),
+                                                                      ),
+                                                                  ],
+                                                                ),
+                                                              );
+                                                            },
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          child: Image.network(
-                                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/bjcNcUcJFzipGWqoNchx/assets/rg2kddupxuw6/Image_5-18-24_at_3.10_PM_(1).jpeg',
-                                                            width: 300.0,
-                                                            height: 200.0,
-                                                            fit: BoxFit.cover,
+                                                          FutureBuilder<
+                                                              List<
+                                                                  ImageAssetsRow>>(
+                                                            future:
+                                                                ImageAssetsTable()
+                                                                    .queryRows(
+                                                              queryFn: (q) =>
+                                                                  q.eq(
+                                                                'FK_Vendor',
+                                                                widget.vendorPK,
+                                                              ),
+                                                            ),
+                                                            builder: (context,
+                                                                snapshot) {
+                                                              // Customize what your widget looks like when it's loading.
+                                                              if (!snapshot
+                                                                  .hasData) {
+                                                                return Center(
+                                                                  child:
+                                                                      SizedBox(
+                                                                    width: 50.0,
+                                                                    height:
+                                                                        50.0,
+                                                                    child:
+                                                                        SpinKitChasingDots(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondary,
+                                                                      size:
+                                                                          50.0,
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              }
+                                                              List<ImageAssetsRow>
+                                                                  vendorImageEditImageAssetsRowList =
+                                                                  snapshot
+                                                                      .data!;
+                                                              return Container(
+                                                                decoration:
+                                                                    BoxDecoration(),
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            setState(() {
+                                                                              _model.galleryEditorDisabled = !_model.galleryEditorDisabled;
+                                                                            });
+                                                                          },
+                                                                          child:
+                                                                              Icon(
+                                                                            Icons.settings_outlined,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondaryText,
+                                                                            size:
+                                                                                24.0,
+                                                                          ),
+                                                                        ),
+                                                                        Text(
+                                                                          'Vendor Images',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                letterSpacing: 0.0,
+                                                                              ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    if (!_model
+                                                                        .galleryEditorDisabled)
+                                                                      wrapWithModel(
+                                                                        model: _model
+                                                                            .imageGalleryManagerComponentModel2,
+                                                                        updateCallback:
+                                                                            () =>
+                                                                                setState(() {}),
+                                                                        child:
+                                                                            ImageGalleryManagerComponentWidget(
+                                                                          immageAssetRows:
+                                                                              vendorImageEditImageAssetsRowList,
+                                                                          onUpload:
+                                                                              (originalURL, newURL) async {},
+                                                                          onDbUpdate:
+                                                                              () async {},
+                                                                        ),
+                                                                      ),
+                                                                  ],
+                                                                ),
+                                                              );
+                                                            },
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          child: Image.network(
-                                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/bjcNcUcJFzipGWqoNchx/assets/b7ya8q618hsn/Image_5-18-24_at_3.09_PM_(1).jpeg',
-                                                            width: 300.0,
-                                                            height: 200.0,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          child: Image.network(
-                                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/bjcNcUcJFzipGWqoNchx/assets/b3chjuxzeolk/Image_5-18-24_at_3.11_PM_(1).jpeg',
-                                                            width: 300.0,
-                                                            height: 200.0,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
+                                                        ],
+                                                      ),
+                                                      Builder(
+                                                        builder: (context) {
+                                                          final imageAsset =
+                                                              galleryRowImageAssetsRowList
+                                                                  .toList();
+                                                          return ListView
+                                                              .builder(
+                                                            padding:
+                                                                EdgeInsets.zero,
+                                                            shrinkWrap: true,
+                                                            scrollDirection:
+                                                                Axis.vertical,
+                                                            itemCount:
+                                                                imageAsset
+                                                                    .length,
+                                                            itemBuilder: (context,
+                                                                imageAssetIndex) {
+                                                              final imageAssetItem =
+                                                                  imageAsset[
+                                                                      imageAssetIndex];
+                                                              return ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                                child: Image
+                                                                    .network(
+                                                                  imageAssetItem
+                                                                      .imageUrl,
+                                                                  width: 300.0,
+                                                                  height: 200.0,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              );
+                                                            },
+                                                          );
+                                                        },
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
                                             ),
                                           ],
                                         ),
@@ -361,14 +584,6 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Container(
-                          width: 100.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                        ),
                         SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,

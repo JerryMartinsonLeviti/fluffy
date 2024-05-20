@@ -76,7 +76,7 @@ class _RTBSentModalCopyWidgetState extends State<RTBSentModalCopyWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
               child: Text(
                 'You Did It!',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -92,7 +92,7 @@ class _RTBSentModalCopyWidgetState extends State<RTBSentModalCopyWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 18.0, 0.0, 12.0),
                 child: Text(
-                  ' Your Request To Book is on its way!',
+                  'Payment Saved & Request to Book Sent',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',

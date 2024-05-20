@@ -17,6 +17,20 @@ class RFPSubmissionModel extends FlutterFlowModel<RFPSubmissionWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue;
+  // Stores action output result for [Backend Call - Query Rows] action in Button widget.
+  List<PlannersRow>? plannerRows1;
+  // Stores action output result for [Backend Call - Query Rows] action in Button widget.
+  List<UserInfosRow>? userInfoRows1;
+  // Stores action output result for [Backend Call - Query Rows] action in Button widget.
+  List<PlannersRow>? plannerRows;
+  // Stores action output result for [Backend Call - Query Rows] action in Button widget.
+  List<UserInfosRow>? userInfoRows;
   // Model for SecurityWarning component.
   late SecurityWarningModel securityWarningModel;
   // Model for EventBasicDetails component.
@@ -32,6 +46,9 @@ class RFPSubmissionModel extends FlutterFlowModel<RFPSubmissionWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
+    textFieldFocusNode?.dispose();
+    textController?.dispose();
+
     securityWarningModel.dispose();
     eventBasicDetailsModel.dispose();
   }

@@ -28,4 +28,19 @@ class ImageAssetsRow extends SupabaseDataRow {
 
   String? get imageType => getField<String>('image_type');
   set imageType(String? value) => setField<String>('image_type', value);
+
+  bool get hide => getField<bool>('hide')!;
+  set hide(bool value) => setField<bool>('hide', value);
+
+  int? get fKVendor => getField<int>('FK_Vendor');
+  set fKVendor(int? value) => setField<int>('FK_Vendor', value);
+
+  int? get fKVenue => getField<int>('FK_Venue');
+  set fKVenue(int? value) => setField<int>('FK_Venue', value);
+
+  String get originalURL => getField<String>('originalURL')!;
+  set originalURL(String value) => setField<String>('originalURL', value);
+
+  int get order => getField<int>('order')!;
+  set order(int value) => setField<int>('order', value);
 }

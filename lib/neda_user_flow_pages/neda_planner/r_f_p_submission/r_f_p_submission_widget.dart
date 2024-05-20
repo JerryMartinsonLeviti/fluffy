@@ -38,6 +38,9 @@ class _RFPSubmissionWidgetState extends State<RFPSubmissionWidget> {
     super.initState();
     _model = createModel(context, () => RFPSubmissionModel());
 
+    _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -50,6 +53,8 @@ class _RFPSubmissionWidgetState extends State<RFPSubmissionWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -139,8 +144,76 @@ class _RFPSubmissionWidgetState extends State<RFPSubmissionWidget> {
                                   ),
                                 ],
                               ),
-                              Container(
-                                decoration: BoxDecoration(),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    8.0, 0.0, 8.0, 0.0),
+                                child: TextFormField(
+                                  controller: _model.textController,
+                                  focusNode: _model.textFieldFocusNode,
+                                  autofocus: true,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    labelText: 'Note to Venue',
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    hintText:
+                                        'We  may have 4 last-minute guests',
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    errorBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedErrorBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 16.0,
+                                        letterSpacing: 0.0,
+                                      ),
+                                  maxLines: 2,
+                                  validator: _model.textControllerValidator
+                                      .asValidator(context),
+                                ),
                               ),
                               Container(
                                 decoration: BoxDecoration(),
@@ -148,13 +221,37 @@ class _RFPSubmissionWidgetState extends State<RFPSubmissionWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Icon(
-                                        Icons.check_box_outline_blank_rounded,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 24.0,
+                                    Theme(
+                                      data: ThemeData(
+                                        checkboxTheme: CheckboxThemeData(
+                                          visualDensity: VisualDensity.compact,
+                                          materialTapTargetSize:
+                                              MaterialTapTargetSize.shrinkWrap,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4.0),
+                                          ),
+                                        ),
+                                        unselectedWidgetColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                      ),
+                                      child: Checkbox(
+                                        value: _model.checkboxValue ??= true,
+                                        onChanged: (newValue) async {
+                                          setState(() =>
+                                              _model.checkboxValue = newValue!);
+                                        },
+                                        side: BorderSide(
+                                          width: 2,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                        ),
+                                        activeColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                        checkColor:
+                                            FlutterFlowTheme.of(context).info,
                                       ),
                                     ),
                                     Flexible(
@@ -240,6 +337,123 @@ class _RFPSubmissionWidgetState extends State<RFPSubmissionWidget> {
                                     borderRadius: BorderRadius.circular(24.0),
                                   ),
                                 ),
+                              ),
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  _model.plannerRows1 =
+                                      await PlannersTable().queryRows(
+                                    queryFn: (q) => q.eq(
+                                      'PK_Planners',
+                                      FFAppState().PKVendors,
+                                    ),
+                                  );
+                                  _model.userInfoRows1 =
+                                      await UserInfosTable().queryRows(
+                                    queryFn: (q) => q.eq(
+                                      'FK_Planner',
+                                      FFAppState().PKPlanner,
+                                    ),
+                                  );
+
+                                  context.pushNamed(
+                                    'MessagesByEvent',
+                                    queryParameters: {
+                                      'userInfoRow': serializeParam(
+                                        _model.userInfoRows1?.first,
+                                        ParamType.SupabaseRow,
+                                      ),
+                                    }.withoutNulls,
+                                  );
+
+                                  setState(() {});
+                                },
+                                text: 'Message Liaison',
+                                options: FFButtonOptions(
+                                  width: 150.0,
+                                  height: 46.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).accent1,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                        letterSpacing: 0.0,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(24.0),
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  FFButtonWidget(
+                                    onPressed: () async {
+                                      _model.plannerRows =
+                                          await PlannersTable().queryRows(
+                                        queryFn: (q) => q.eq(
+                                          'PK_Planners',
+                                          FFAppState().PKVendors,
+                                        ),
+                                      );
+                                      _model.userInfoRows =
+                                          await UserInfosTable().queryRows(
+                                        queryFn: (q) => q.eq(
+                                          'FK_Planner',
+                                          FFAppState().PKPlanner,
+                                        ),
+                                      );
+
+                                      context.pushNamed(
+                                        'MessagesByEvent',
+                                        queryParameters: {
+                                          'userInfoRow': serializeParam(
+                                            _model.userInfoRows?.first,
+                                            ParamType.SupabaseRow,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+
+                                      setState(() {});
+                                    },
+                                    text: 'Message Venue',
+                                    options: FFButtonOptions(
+                                      width: 150.0,
+                                      height: 46.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: Colors.white,
+                                            fontSize: 18.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(24.0),
+                                    ),
+                                  ),
+                                ],
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(

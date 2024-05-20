@@ -146,7 +146,7 @@ class _RTBConfirmedModalWidgetState extends State<RTBConfirmedModalWidget> {
                     onPressed: () async {
                       context.pushNamed('PlannerDashboard');
                     },
-                    text: 'Go to Booking',
+                    text: 'Go to Dashboard',
                     options: FFButtonOptions(
                       width: 183.0,
                       height: 51.0,

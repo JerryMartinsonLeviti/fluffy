@@ -67,7 +67,7 @@ class _CartSummaryComponentWidgetState
     context.watch<FFAppState>();
 
     return Container(
-      width: 1138.0,
+      width: 1169.0,
       height: 1000.0,
       constraints: BoxConstraints(
         maxWidth: 250.0,
@@ -421,54 +421,6 @@ class _CartSummaryComponentWidgetState
             children: [
               FFButtonWidget(
                 onPressed: () async {
-                  _model.plannerRows1 = await PlannersTable().queryRows(
-                    queryFn: (q) => q.eq(
-                      'PK_Planners',
-                      FFAppState().PKVendors,
-                    ),
-                  );
-                  _model.userInfoRows1 = await UserInfosTable().queryRows(
-                    queryFn: (q) => q.eq(
-                      'FK_Planner',
-                      FFAppState().PKPlanner,
-                    ),
-                  );
-
-                  context.pushNamed(
-                    'MessagesByEvent',
-                    queryParameters: {
-                      'userInfoRow': serializeParam(
-                        _model.userInfoRows1?.first,
-                        ParamType.SupabaseRow,
-                      ),
-                    }.withoutNulls,
-                  );
-
-                  setState(() {});
-                },
-                text: 'Message Liaison',
-                options: FFButtonOptions(
-                  width: 148.0,
-                  height: 36.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                  iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: FlutterFlowTheme.of(context).accent2,
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Readex Pro',
-                        color: Colors.white,
-                        letterSpacing: 0.0,
-                      ),
-                  elevation: 3.0,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
-                  ),
-                  borderRadius: BorderRadius.circular(24.0),
-                ),
-              ),
-              FFButtonWidget(
-                onPressed: () async {
                   _model.plannerRows = await PlannersTable().queryRows(
                     queryFn: (q) => q.eq(
                       'PK_Planners',
@@ -496,7 +448,55 @@ class _CartSummaryComponentWidgetState
                 },
                 text: 'Message Venue',
                 options: FFButtonOptions(
-                  width: 100.0,
+                  width: 150.0,
+                  height: 36.0,
+                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: FlutterFlowTheme.of(context).accent2,
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                        fontFamily: 'Readex Pro',
+                        color: Colors.white,
+                        letterSpacing: 0.0,
+                      ),
+                  elevation: 3.0,
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(24.0),
+                ),
+              ),
+              FFButtonWidget(
+                onPressed: () async {
+                  _model.plannerRows1 = await PlannersTable().queryRows(
+                    queryFn: (q) => q.eq(
+                      'PK_Planners',
+                      FFAppState().PKVendors,
+                    ),
+                  );
+                  _model.userInfoRows1 = await UserInfosTable().queryRows(
+                    queryFn: (q) => q.eq(
+                      'FK_Planner',
+                      FFAppState().PKPlanner,
+                    ),
+                  );
+
+                  context.pushNamed(
+                    'MessagesByEvent',
+                    queryParameters: {
+                      'userInfoRow': serializeParam(
+                        _model.userInfoRows1?.first,
+                        ParamType.SupabaseRow,
+                      ),
+                    }.withoutNulls,
+                  );
+
+                  setState(() {});
+                },
+                text: 'Message Liaison',
+                options: FFButtonOptions(
+                  width: 150.0,
                   height: 36.0,
                   padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:

@@ -16,13 +16,13 @@ class CartSummaryComponentModel
   ///  State fields for stateful widgets in this component.
 
   // Stores action output result for [Backend Call - Query Rows] action in Button widget.
-  List<PlannersRow>? plannerRows1;
-  // Stores action output result for [Backend Call - Query Rows] action in Button widget.
-  List<UserInfosRow>? userInfoRows1;
-  // Stores action output result for [Backend Call - Query Rows] action in Button widget.
   List<PlannersRow>? plannerRows;
   // Stores action output result for [Backend Call - Query Rows] action in Button widget.
   List<UserInfosRow>? userInfoRows;
+  // Stores action output result for [Backend Call - Query Rows] action in Button widget.
+  List<PlannersRow>? plannerRows1;
+  // Stores action output result for [Backend Call - Query Rows] action in Button widget.
+  List<UserInfosRow>? userInfoRows1;
 
   @override
   void initState(BuildContext context) {}

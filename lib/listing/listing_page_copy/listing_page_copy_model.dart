@@ -1,6 +1,7 @@
 import '/backend/supabase/supabase.dart';
 import '/components/bottom_ribbon_footer_widget.dart';
 import '/components/event_space_component/event_space_component_widget.dart';
+import '/components/image_gallery_manager_component_widget.dart';
 import '/components/packages_component/packages_component_widget.dart';
 import '/components/product_detail_page_options_language/product_detail_page_options_language_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -21,6 +22,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
+  ///  Local state fields for this page.
+
+  bool galleryEditorDisabled = true;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -31,6 +36,10 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
       listingRestaurantDetailComponentModel;
   // Model for PricePredictor component.
   late PricePredictorModel pricePredictorModel;
+  // Model for imageGalleryManagerComponent component.
+  late ImageGalleryManagerComponentModel imageGalleryManagerComponentModel1;
+  // Model for imageGalleryManagerComponent component.
+  late ImageGalleryManagerComponentModel imageGalleryManagerComponentModel2;
   // Model for ProductDetailPageOptionsLanguage component.
   late ProductDetailPageOptionsLanguageModel
       productDetailPageOptionsLanguageModel;
@@ -56,6 +65,10 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
     listingRestaurantDetailComponentModel =
         createModel(context, () => ListingRestaurantDetailComponentModel());
     pricePredictorModel = createModel(context, () => PricePredictorModel());
+    imageGalleryManagerComponentModel1 =
+        createModel(context, () => ImageGalleryManagerComponentModel());
+    imageGalleryManagerComponentModel2 =
+        createModel(context, () => ImageGalleryManagerComponentModel());
     productDetailPageOptionsLanguageModel =
         createModel(context, () => ProductDetailPageOptionsLanguageModel());
     listingWhatIsIncludedModel =
@@ -76,6 +89,8 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
     plannerAppBarComponentModel.dispose();
     listingRestaurantDetailComponentModel.dispose();
     pricePredictorModel.dispose();
+    imageGalleryManagerComponentModel1.dispose();
+    imageGalleryManagerComponentModel2.dispose();
     productDetailPageOptionsLanguageModel.dispose();
     listingWhatIsIncludedModel.dispose();
     listingFAQsModel.dispose();

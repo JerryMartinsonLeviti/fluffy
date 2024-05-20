@@ -132,26 +132,30 @@ class _ListingFAQsWidgetState extends State<ListingFAQsWidget> {
                         children: [
                           Stack(
                             children: [
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  await FaqAssetsTable().insert({
-                                    'FK_Vendor': widget.venkdorPK,
-                                    'question': 'noQYet',
-                                    'answer': '42',
-                                  });
-                                  setState(
-                                      () => _model.requestCompleter = null);
-                                  await _model.waitForRequestCompleted();
-                                },
-                                child: Icon(
-                                  Icons.settings_outlined,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 24.0,
+                              Align(
+                                alignment: AlignmentDirectional(0.0, -1.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    await FaqAssetsTable().insert({
+                                      'FK_Vendor': widget.venkdorPK,
+                                      'question': 'noQYet',
+                                      'answer': '42',
+                                    });
+                                    setState(
+                                        () => _model.requestCompleter = null);
+                                    await _model.waitForRequestCompleted();
+                                    FFAppState().update(() {});
+                                  },
+                                  child: Icon(
+                                    Icons.plus_one,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
+                                  ),
                                 ),
                               ),
                               Builder(
@@ -186,6 +190,8 @@ class _ListingFAQsWidgetState extends State<ListingFAQsWidget> {
                                           await _model
                                               .waitForRequestCompleted();
                                         },
+                                        onDelete: () async {},
+                                        onHideToggle: () async {},
                                       );
                                     }),
                                   );

@@ -90,156 +90,171 @@ class _ListingTermsWidgetState extends State<ListingTermsWidget> {
                     decoration: TextDecoration.underline,
                   ),
             ),
+            Container(
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+              ),
+            ),
             Align(
               alignment: AlignmentDirectional(0.0, 0.0),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Accessibility',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 24.0,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Beverage Packages',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 24.0,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Deposits & Cancellations',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 24.0,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Local Info',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 24.0,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Outdoor Terrace',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 24.0,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Pricing  & Other Terms',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 24.0,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Reservation Timing',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                        Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 24.0,
-                        ),
-                      ],
-                    ),
-                  ],
+              child: Container(
+                decoration: BoxDecoration(),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Accessibility',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  fontSize: 16.0,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Beverage Packages',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  fontSize: 16.0,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Deposits & Cancellations',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  fontSize: 16.0,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Local Info',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  fontSize: 16.0,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Outdoor Terrace',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  fontSize: 16.0,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Pricing  & Other Terms',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  fontSize: 16.0,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Reservation Timing',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  fontSize: 16.0,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

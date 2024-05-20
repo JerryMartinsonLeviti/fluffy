@@ -319,6 +319,9 @@ class _Step1CreateEventWidgetState extends State<Step1CreateEventWidget> {
                                                         isVisible: true,
                                                         onUpdate: (question,
                                                             answer) async {},
+                                                        onDelete: () async {},
+                                                        onHideToggle:
+                                                            () async {},
                                                       );
                                                     }),
                                                   );

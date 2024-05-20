@@ -14,12 +14,16 @@ class WrapFaqRowWidget extends StatefulWidget {
     required this.answer,
     bool? isVisible,
     required this.onUpdate,
+    required this.onDelete,
+    required this.onHideToggle,
   }) : this.isVisible = isVisible ?? true;
 
   final String? question;
   final String? answer;
   final bool isVisible;
   final Future Function(String question, String answer)? onUpdate;
+  final Future Function()? onDelete;
+  final Future Function()? onHideToggle;
 
   @override
   State<WrapFaqRowWidget> createState() => _WrapFaqRowWidgetState();
@@ -219,6 +223,65 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
             Column(
               mainAxisSize: MainAxisSize.max,
               children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        await widget.onHideToggle?.call();
+                      },
+                      child: Icon(
+                        Icons.settings_outlined,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24.0,
+                      ),
+                    ),
+                    Text(
+                      'Hide',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        await widget.onDelete?.call();
+                      },
+                      child: Icon(
+                        Icons.delete_forever_sharp,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24.0,
+                      ),
+                    ),
+                    Text(
+                      'Delete',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                  ],
+                ),
+                Text(
+                  'Edit Below',
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0.0,
+                      ),
+                ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                   child: TextFormField(

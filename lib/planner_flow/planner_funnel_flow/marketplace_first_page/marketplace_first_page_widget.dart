@@ -390,6 +390,9 @@ class _MarketplaceFirstPageWidgetState
                                                         isVisible: true,
                                                         onUpdate: (question,
                                                             answer) async {},
+                                                        onDelete: () async {},
+                                                        onHideToggle:
+                                                            () async {},
                                                       );
                                                     }),
                                                   );

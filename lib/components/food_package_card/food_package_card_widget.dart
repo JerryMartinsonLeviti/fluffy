@@ -40,10 +40,12 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
     super.initState();
     _model = createModel(context, () => FoodPackageCardModel());
 
-    _model.minSelectionTextController ??= TextEditingController();
+    _model.minSelectionTextController ??= TextEditingController(
+        text: widget.packageRow?.minSelections?.toString());
     _model.minSelectionFocusNode ??= FocusNode();
 
-    _model.maxSelectionTextController ??= TextEditingController();
+    _model.maxSelectionTextController ??= TextEditingController(
+        text: widget.packageRow?.maxSelections?.toString());
     _model.maxSelectionFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -151,14 +153,17 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                 ),
           ),
           FutureBuilder<List<PackageItemRow>>(
-            future: PackageItemTable().queryRows(
-              queryFn: (q) => q
-                  .eq(
-                    'FK_Package',
-                    widget.packageRow?.pKPackages,
-                  )
-                  .order('created_at'),
-            ),
+            future:
+                (_model.requestCompleter1 ??= Completer<List<PackageItemRow>>()
+                      ..complete(PackageItemTable().queryRows(
+                        queryFn: (q) => q
+                            .eq(
+                              'FK_Package',
+                              widget.packageRow?.pKPackages,
+                            )
+                            .order('created_at'),
+                      )))
+                    .future,
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {
@@ -372,6 +377,21 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                         child: TextFormField(
                           controller: _model.minSelectionTextController,
                           focusNode: _model.minSelectionFocusNode,
+                          onFieldSubmitted: (_) async {
+                            await PackagesTable().update(
+                              data: {
+                                'minSelections': int.tryParse(
+                                    _model.minSelectionTextController.text),
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'PK_Packages',
+                                widget.packageRow?.pKPackages,
+                              ),
+                            );
+                            await widget.dbRefresh?.call();
+                            setState(() => _model.requestCompleter1 = null);
+                            await _model.waitForRequestCompleted1();
+                          },
                           autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
@@ -434,6 +454,18 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                         child: TextFormField(
                           controller: _model.maxSelectionTextController,
                           focusNode: _model.maxSelectionFocusNode,
+                          onFieldSubmitted: (_) async {
+                            await PackagesTable().update(
+                              data: {
+                                'maxSelections': int.tryParse(
+                                    _model.maxSelectionTextController.text),
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'PK_Packages',
+                                widget.packageRow?.pKPackages,
+                              ),
+                            );
+                          },
                           autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
@@ -493,7 +525,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                 ),
                 FutureBuilder<List<ItemsRow>>(
                   future:
-                      (_model.requestCompleter ??= Completer<List<ItemsRow>>()
+                      (_model.requestCompleter2 ??= Completer<List<ItemsRow>>()
                             ..complete(ItemsTable().queryRows(
                               queryFn: (q) => q
                                   .eq(
@@ -563,10 +595,10 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                           itemRow: itemRowItem,
                                           packageRow: widget.packageRow!,
                                           onItemDbChange: () async {
-                                            setState(() =>
-                                                _model.requestCompleter = null);
+                                            setState(() => _model
+                                                .requestCompleter2 = null);
                                             await _model
-                                                .waitForRequestCompleted();
+                                                .waitForRequestCompleted2();
                                             FFAppState().update(() {});
                                             await widget.dbRefresh?.call();
                                           },
@@ -584,8 +616,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                       'unit_of_measure': 'Guest',
                                     });
                                     setState(
-                                        () => _model.requestCompleter = null);
-                                    await _model.waitForRequestCompleted();
+                                        () => _model.requestCompleter2 = null);
+                                    await _model.waitForRequestCompleted2();
                                     _model.updatePage(() {});
                                   },
                                   text: 'AddNewItem',

@@ -56,4 +56,10 @@ class PackagesRow extends SupabaseDataRow {
   String? get unitOfMeasure => getField<String>('unit_of_measure');
   set unitOfMeasure(String? value) =>
       setField<String>('unit_of_measure', value);
+
+  int? get minSelections => getField<int>('minSelections');
+  set minSelections(int? value) => setField<int>('minSelections', value);
+
+  int? get maxSelections => getField<int>('maxSelections');
+  set maxSelections(int? value) => setField<int>('maxSelections', value);
 }

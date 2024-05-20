@@ -324,6 +324,19 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                           clipBehavior: Clip.none,
                                           children: [
                                             Text(
+                                              pkgitemItem.pKPackageItem
+                                                  .toString(),
+                                              textAlign: TextAlign.start,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                            ),
+                                            Text(
                                               valueOrDefault<String>(
                                                 itemDbItemsRow?.displayName,
                                                 'Item Name',
@@ -942,10 +955,6 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                           itemRow: itemRowItem,
                                           packageRow: widget.packageRow!,
                                           onItemDbChange: () async {
-                                            setState(() => _model
-                                                .requestCompleter3 = null);
-                                            await _model
-                                                .waitForRequestCompleted3();
                                             setState(() => _model
                                                 .requestCompleter2 = null);
                                             await _model

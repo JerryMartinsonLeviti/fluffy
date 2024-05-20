@@ -326,7 +326,6 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                               fontFamily: 'Readex Pro',
                               letterSpacing: 0.0,
                             ),
-                        maxLines: 10,
                         validator: _model.itemDescriptonTextControllerValidator
                             .asValidator(context),
                       ),

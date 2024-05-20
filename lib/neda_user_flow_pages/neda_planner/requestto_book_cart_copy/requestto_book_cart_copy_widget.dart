@@ -1,4 +1,3 @@
-import '/backend/schema/enums/enums.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/event_basic_details/event_basic_details_widget.dart';
 import '/components/security_warning/security_warning_widget.dart';
@@ -7,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/planner_flow/planner_funnel_flow/payment_modal_component/payment_modal_component_widget.dart';
-import '/planner_flow/r_f_p_sent_modalx/r_f_p_sent_modalx_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -124,7 +122,7 @@ class _RequesttoBookCartCopyWidgetState
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 0.0, 0.0),
                                       child: Text(
-                                        'Review Your Order',
+                                        'Submit Your Request to Book ',
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -139,7 +137,7 @@ class _RequesttoBookCartCopyWidgetState
                                   Divider(
                                     thickness: 1.0,
                                     endIndent: 0.0,
-                                    color: FlutterFlowTheme.of(context).primary,
+                                    color: FlutterFlowTheme.of(context).accent1,
                                   ),
                                 ],
                               ),
@@ -151,7 +149,7 @@ class _RequesttoBookCartCopyWidgetState
                                     Icon(
                                       Icons.flag_rounded,
                                       color:
-                                          FlutterFlowTheme.of(context).accent1,
+                                          FlutterFlowTheme.of(context).primary,
                                       size: 28.0,
                                     ),
                                     Flexible(
@@ -175,7 +173,7 @@ class _RequesttoBookCartCopyWidgetState
                                                   .fromSTEB(
                                                       10.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Your deposit will not be processed until and unless your selected Vendor(s) accept your Request to Book (typically within 48 hours)',
+                                                'Your deposit will not be processed until and unless your selected Vendor(s) accept your Request to Book (typically within 24 hours)',
                                                 textAlign: TextAlign.start,
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -270,21 +268,23 @@ class _RequesttoBookCartCopyWidgetState
                                       },
                                     ).then((value) => setState(() {}));
                                   },
-                                  text: 'PaymentMethod',
+                                  text: 'Submit Payment Method',
                                   options: FFButtonOptions(
-                                    height: 40.0,
+                                    width: 264.0,
+                                    height: 47.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context)
-                                        .customColor1,
+                                        .customColor3,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent2,
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          fontSize: 18.0,
                                           letterSpacing: 0.0,
                                         ),
                                     elevation: 3.0,
@@ -292,71 +292,7 @@ class _RequesttoBookCartCopyWidgetState
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                ),
-                              ),
-                              Builder(
-                                builder: (context) => FFButtonWidget(
-                                  onPressed: () async {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (dialogContext) {
-                                        return Dialog(
-                                          elevation: 0,
-                                          insetPadding: EdgeInsets.zero,
-                                          backgroundColor: Colors.transparent,
-                                          alignment: AlignmentDirectional(
-                                                  0.0, 0.0)
-                                              .resolve(
-                                                  Directionality.of(context)),
-                                          child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: RFPSentModalxWidget(),
-                                          ),
-                                        );
-                                      },
-                                    ).then((value) => setState(() {}));
-
-                                    await CartsTable().update(
-                                      data: {
-                                        'CartState': CartStates.RtbSent.name,
-                                      },
-                                      matchingRows: (rows) => rows.eq(
-                                        'PK_Carts',
-                                        widget.cartRow?.pKCarts,
-                                      ),
-                                    );
-                                  },
-                                  text: 'Request to Book',
-                                  options: FFButtonOptions(
-                                    height: 40.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context)
-                                        .customColor1,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent2,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
+                                    borderRadius: BorderRadius.circular(24.0),
                                   ),
                                 ),
                               ),
@@ -516,7 +452,7 @@ class _RequesttoBookCartCopyWidgetState
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 40.0, 20.0, 40.0),
+                                                    20.0, 40.0, 20.0, 20.0),
                                             child: wrapWithModel(
                                               model:
                                                   _model.eventBasicDetailsModel,
@@ -1344,6 +1280,8 @@ class _RequesttoBookCartCopyWidgetState
                                                                             'Readex Pro',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .info,
+                                                                        fontSize:
+                                                                            18.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
@@ -1352,7 +1290,7 @@ class _RequesttoBookCartCopyWidgetState
                                                                   BorderSide(
                                                                 color: Color(
                                                                     0xA6474B4E),
-                                                                width: 3.0,
+                                                                width: 1.0,
                                                               ),
                                                               borderRadius:
                                                                   BorderRadius
@@ -1404,10 +1342,10 @@ class _RequesttoBookCartCopyWidgetState
                                                 animation: true,
                                                 animateFromLastPercent: true,
                                                 progressColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
+                                                    Color(0xFFF69F05),
                                                 backgroundColor:
-                                                    Color(0x83A05547),
+                                                    FlutterFlowTheme.of(context)
+                                                        .customColor9,
                                                 center: Text(
                                                   '50%',
                                                   style: FlutterFlowTheme.of(

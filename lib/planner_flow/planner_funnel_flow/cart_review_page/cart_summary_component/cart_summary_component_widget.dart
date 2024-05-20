@@ -67,8 +67,8 @@ class _CartSummaryComponentWidgetState
     context.watch<FFAppState>();
 
     return Container(
-      width: double.infinity,
-      height: double.infinity,
+      width: 1138.0,
+      height: 1000.0,
       constraints: BoxConstraints(
         maxWidth: 250.0,
         maxHeight: 450.0,
@@ -448,7 +448,7 @@ class _CartSummaryComponentWidgetState
                 },
                 text: 'Message Liaison',
                 options: FFButtonOptions(
-                  width: 100.0,
+                  width: 148.0,
                   height: 36.0,
                   padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:

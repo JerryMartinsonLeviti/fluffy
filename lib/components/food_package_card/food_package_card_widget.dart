@@ -245,18 +245,15 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
               return Container(
                 decoration: BoxDecoration(),
                 child: FutureBuilder<List<ItemsRow>>(
-                  future:
-                      (_model.requestCompleter1 ??= Completer<List<ItemsRow>>()
-                            ..complete(ItemsTable().queryRows(
-                              queryFn: (q) => q.in_(
-                                'PK_Items',
-                                pkgItemDbPackageItemRowList
-                                    .map((e) => e.fKItem)
-                                    .withoutNulls
-                                    .toList(),
-                              ),
-                            )))
-                          .future,
+                  future: ItemsTable().queryRows(
+                    queryFn: (q) => q.in_(
+                      'PK_Items',
+                      pkgItemDbPackageItemRowList
+                          .map((e) => e.fKItem)
+                          .withoutNulls
+                          .toList(),
+                    ),
+                  ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -914,12 +911,15 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                     return Container(
                       decoration: BoxDecoration(),
                       child: FutureBuilder<List<PackageItemRow>>(
-                        future: PackageItemTable().queryRows(
-                          queryFn: (q) => q.eq(
-                            'FK_Package',
-                            widget.packageRow?.pKPackages,
-                          ),
-                        ),
+                        future: (_model.requestCompleter1 ??=
+                                Completer<List<PackageItemRow>>()
+                                  ..complete(PackageItemTable().queryRows(
+                                    queryFn: (q) => q.eq(
+                                      'FK_Package',
+                                      widget.packageRow?.pKPackages,
+                                    ),
+                                  )))
+                            .future,
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
@@ -956,7 +956,10 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                           itemRow: itemRowItem,
                                           packageRow: widget.packageRow!,
                                           onItemDbChange: () async {
-                                            await widget.dbRefresh?.call();
+                                            setState(() => _model
+                                                .requestCompleter2 = null);
+                                            await _model
+                                                .waitForRequestCompleted2();
                                             setState(() => _model
                                                 .requestCompleter2 = null);
                                             await _model
@@ -965,6 +968,10 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                                 .requestCompleter1 = null);
                                             await _model
                                                 .waitForRequestCompleted1();
+                                            setState(() => _model
+                                                .requestCompleter3 = null);
+                                            await _model
+                                                .waitForRequestCompleted3();
                                             setState(() {});
                                             await widget.dbRefresh?.call();
                                             FFAppState().update(() {});

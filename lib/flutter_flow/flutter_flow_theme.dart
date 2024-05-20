@@ -50,7 +50,6 @@ abstract class FlutterFlowTheme {
   late Color customColor11;
   late Color customColor4;
   late Color customColor10;
-  late Color customColor15;
   late Color customColor3;
   late Color customColor1;
 
@@ -160,7 +159,6 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color customColor11 = Color(0xFF435331);
   late Color customColor4 = Color(0xFF7F8E7B);
   late Color customColor10 = Color(0xFF626F5F);
-  late Color customColor15 = Color(0xFFE07C5A);
   late Color customColor3 = Color(0xFF63804C);
   late Color customColor1 = Color(0xFF8AAA71);
 }

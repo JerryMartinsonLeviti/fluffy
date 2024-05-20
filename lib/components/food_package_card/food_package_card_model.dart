@@ -40,7 +40,7 @@ class FoodPackageCardModel extends FlutterFlowModel<FoodPackageCardWidget> {
   FocusNode? descTFFocusNode;
   TextEditingController? descTFTextController;
   String? Function(BuildContext, String?)? descTFTextControllerValidator;
-  Completer<List<ItemsRow>>? requestCompleter1;
+  Completer<List<PackageItemRow>>? requestCompleter1;
   Completer<List<ItemsRow>>? requestCompleter3;
 
   @override

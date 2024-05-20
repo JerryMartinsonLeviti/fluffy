@@ -141,17 +141,6 @@ class _RFPSubmissionWidgetState extends State<RFPSubmissionWidget> {
                               ),
                               Container(
                                 decoration: BoxDecoration(),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(
-                                      Icons.flag_rounded,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      size: 28.0,
-                                    ),
-                                  ],
-                                ),
                               ),
                               Container(
                                 decoration: BoxDecoration(),
@@ -225,7 +214,7 @@ class _RFPSubmissionWidgetState extends State<RFPSubmissionWidget> {
                                       },
                                     ).then((value) => setState(() {}));
                                   },
-                                  text: 'Submit Payment Method',
+                                  text: 'Submit Request ',
                                   options: FFButtonOptions(
                                     width: 264.0,
                                     height: 47.0,
@@ -233,8 +222,7 @@ class _RFPSubmissionWidgetState extends State<RFPSubmissionWidget> {
                                         24.0, 0.0, 24.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context)
-                                        .customColor3,
+                                    color: FlutterFlowTheme.of(context).accent2,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -483,7 +471,7 @@ class _RFPSubmissionWidgetState extends State<RFPSubmissionWidget> {
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .customColor1,
+                                                      .accent2,
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
@@ -508,7 +496,7 @@ class _RFPSubmissionWidgetState extends State<RFPSubmissionWidget> {
                                             BorderRadius.circular(10.0),
                                         border: Border.all(
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                              .accent2,
                                         ),
                                       ),
                                       child: Column(
@@ -520,20 +508,35 @@ class _RFPSubmissionWidgetState extends State<RFPSubmissionWidget> {
                                                     10.0, 20.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  'Proposal Details ',
+                                                  'SILVERSPIKE PRICE PREDICTOR ',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium
+                                                      .displaySmall
                                                       .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        fontSize: 25.0,
+                                                        fontFamily: 'Outfit',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .customColor3,
+                                                        fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
+                                                ),
+                                                Icon(
+                                                  Icons.info_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 16.0,
+                                                ),
+                                                Icon(
+                                                  Icons.unfold_more_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 28.0,
                                                 ),
                                               ],
                                             ),
@@ -1054,7 +1057,7 @@ class _RFPSubmissionWidgetState extends State<RFPSubmissionWidget> {
                                             BorderRadius.circular(22.0),
                                         border: Border.all(
                                           color: FlutterFlowTheme.of(context)
-                                              .customColor3,
+                                              .accent2,
                                         ),
                                       ),
                                       child: Padding(

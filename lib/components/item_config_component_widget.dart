@@ -184,7 +184,7 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Container(
-                    width: 200.0,
+                    width: 350.0,
                     decoration: BoxDecoration(),
                     child: Padding(
                       padding:
@@ -258,7 +258,7 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                     ),
                   ),
                   Container(
-                    width: 200.0,
+                    width: 350.0,
                     decoration: BoxDecoration(),
                     child: Padding(
                       padding:
@@ -326,6 +326,7 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                               fontFamily: 'Readex Pro',
                               letterSpacing: 0.0,
                             ),
+                        maxLines: 10,
                         validator: _model.itemDescriptonTextControllerValidator
                             .asValidator(context),
                       ),

@@ -387,7 +387,7 @@ class _RequesttoBookCartCopyWidgetState
                             padding: EdgeInsets.all(28.0),
                             child: Container(
                               width: 436.0,
-                              height: 1208.0,
+                              height: 1180.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .primaryBackground,
@@ -604,7 +604,7 @@ class _RequesttoBookCartCopyWidgetState
                                         0.0, 20.0, 0.0, 0.0),
                                     child: Container(
                                       width: 363.0,
-                                      height: 456.0,
+                                      height: 405.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
@@ -635,7 +635,7 @@ class _RequesttoBookCartCopyWidgetState
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .customColor2,
+                                                                .customColor3,
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
@@ -1113,6 +1113,9 @@ class _RequesttoBookCartCopyWidgetState
                                                                     'Readex Pro',
                                                                 letterSpacing:
                                                                     0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
                                                               ),
                                                         ),
                                                       ),
@@ -1146,44 +1149,50 @@ class _RequesttoBookCartCopyWidgetState
                                               ),
                                             ],
                                           ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        14.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'Remaining Balance',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 20.0, 0.0, 0.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          14.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Remaining Balance',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
                                                 ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 14.0, 0.0),
-                                                child: Text(
-                                                  '\$8,694.45',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 14.0, 0.0),
+                                                  child: Text(
+                                                    '\$8,694.45',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -1193,7 +1202,7 @@ class _RequesttoBookCartCopyWidgetState
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 16.0, 0.0, 0.0),
+                                                        0.0, 12.0, 0.0, 0.0),
                                                 child: Text(
                                                   'Balance due & processed 14 days \nbefore event date',
                                                   textAlign: TextAlign.center,
@@ -1221,13 +1230,27 @@ class _RequesttoBookCartCopyWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 10.0, 0.0, 0.0),
                                     child: Container(
-                                      width: 348.0,
-                                      height: 308.0,
+                                      width: 359.0,
+                                      height: 254.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
+                                            .primaryBackground,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 4.0,
+                                            color: Color(0x33000000),
+                                            offset: Offset(
+                                              0.0,
+                                              2.0,
+                                            ),
+                                          )
+                                        ],
                                         borderRadius:
                                             BorderRadius.circular(22.0),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .customColor3,
+                                        ),
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -1238,17 +1261,17 @@ class _RequesttoBookCartCopyWidgetState
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 24.0, 0.0, 0.0),
+                                                      0.0, 12.0, 0.0, 0.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 18.0,
+                                                            .fromSTEB(0.0, 12.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'BUDGET WHEEL',
+                                                      'MY BUDGET',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
@@ -1267,34 +1290,14 @@ class _RequesttoBookCartCopyWidgetState
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 20.0,
-                                                                0.0, 10.0),
+                                                                0.0, 0.0),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
                                                       children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      12.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            'My Budget',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                          ),
-                                                        ),
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -1344,6 +1347,8 @@ class _RequesttoBookCartCopyWidgetState
                                                               elevation: 3.0,
                                                               borderSide:
                                                                   BorderSide(
+                                                                color: Color(
+                                                                    0x6E474B4E),
                                                                 width: 3.0,
                                                               ),
                                                               borderRadius:
@@ -1353,54 +1358,30 @@ class _RequesttoBookCartCopyWidgetState
                                                             ),
                                                           ),
                                                         ),
-                                                        FFButtonWidget(
-                                                          onPressed: () {
-                                                            print(
-                                                                'Button pressed ...');
-                                                          },
-                                                          text: 'Update',
-                                                          options:
-                                                              FFButtonOptions(
-                                                            width: 106.0,
-                                                            height: 40.0,
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        24.0,
-                                                                        0.0,
-                                                                        24.0,
-                                                                        0.0),
-                                                            iconPadding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            color: FlutterFlowTheme
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      15.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            'Update',
+                                                            style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .accent3,
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Readex Pro',
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
-                                                            elevation: 3.0,
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: Colors
-                                                                  .transparent,
-                                                              width: 1.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20.0),
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  decoration:
+                                                                      TextDecoration
+                                                                          .underline,
+                                                                ),
                                                           ),
                                                         ),
                                                       ],
@@ -1412,10 +1393,10 @@ class _RequesttoBookCartCopyWidgetState
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      0.0, 40.0, 0.0, 0.0),
+                                                      0.0, 20.0, 0.0, 0.0),
                                               child: CircularPercentIndicator(
                                                 percent: 0.5,
-                                                radius: 60.0,
+                                                radius: 50.0,
                                                 lineWidth: 12.0,
                                                 animation: true,
                                                 animateFromLastPercent: true,

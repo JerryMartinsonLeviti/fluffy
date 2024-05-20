@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -246,122 +247,139 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                 child: Builder(
                   builder: (context) {
                     final pkgitem = pkgItemDbPackageItemRowList.toList();
-                    return Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: List.generate(pkgitem.length, (pkgitemIndex) {
-                        final pkgitemItem = pkgitem[pkgitemIndex];
-                        return FutureBuilder<List<ItemsRow>>(
-                          future: (_model.requestCompleter1 ??=
-                                  Completer<List<ItemsRow>>()
-                                    ..complete(ItemsTable().querySingleRow(
-                                      queryFn: (q) => q.eq(
-                                        'PK_Items',
-                                        pkgitemItem.fKItem,
-                                      ),
-                                    )))
-                              .future,
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: SpinKitChasingDots(
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    size: 50.0,
+                    return SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: List.generate(pkgitem.length, (pkgitemIndex) {
+                          final pkgitemItem = pkgitem[pkgitemIndex];
+                          return FutureBuilder<List<ItemsRow>>(
+                            future: (_model.requestCompleter1 ??=
+                                    Completer<List<ItemsRow>>()
+                                      ..complete(ItemsTable().querySingleRow(
+                                        queryFn: (q) => q.eq(
+                                          'PK_Items',
+                                          pkgitemItem.fKItem,
+                                        ),
+                                      )))
+                                .future,
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: SpinKitChasingDots(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondary,
+                                      size: 50.0,
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<ItemsRow> itemDbItemsRowList =
+                                  snapshot.data!;
+                              final itemDbItemsRow =
+                                  itemDbItemsRowList.isNotEmpty
+                                      ? itemDbItemsRowList.first
+                                      : null;
+                              return Container(
+                                decoration: BoxDecoration(),
+                                child: Container(
+                                  decoration: BoxDecoration(),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Icon(
+                                              Icons.check_box,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 24.0,
+                                            ),
+                                            Icon(
+                                              Icons.check_box_outline_blank,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 24.0,
+                                            ),
+                                          ],
+                                        ),
+                                        Wrap(
+                                          spacing: 0.0,
+                                          runSpacing: 0.0,
+                                          alignment: WrapAlignment.start,
+                                          crossAxisAlignment:
+                                              WrapCrossAlignment.start,
+                                          direction: Axis.horizontal,
+                                          runAlignment: WrapAlignment.start,
+                                          verticalDirection:
+                                              VerticalDirection.down,
+                                          clipBehavior: Clip.none,
+                                          children: [
+                                            Text(
+                                              valueOrDefault<String>(
+                                                itemDbItemsRow?.displayName,
+                                                'Item Name',
+                                              ),
+                                              textAlign: TextAlign.start,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                            ),
+                                            Text(
+                                              ' - ',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontStyle: FontStyle.italic,
+                                                  ),
+                                            ),
+                                            AutoSizeText(
+                                              valueOrDefault<String>(
+                                                itemDbItemsRow
+                                                    ?.publicDescription,
+                                                'Item Description',
+                                              ).maybeHandleOverflow(
+                                                maxChars: 200,
+                                                replacement: '…',
+                                              ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontStyle: FontStyle.italic,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               );
-                            }
-                            List<ItemsRow> itemDbItemsRowList = snapshot.data!;
-                            final itemDbItemsRow = itemDbItemsRowList.isNotEmpty
-                                ? itemDbItemsRowList.first
-                                : null;
-                            return Container(
-                              decoration: BoxDecoration(),
-                              child: Container(
-                                decoration: BoxDecoration(),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          Icons.check_box,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 24.0,
-                                        ),
-                                        Icon(
-                                          Icons.check_box_outline_blank,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 24.0,
-                                        ),
-                                      ],
-                                    ),
-                                    Wrap(
-                                      spacing: 0.0,
-                                      runSpacing: 0.0,
-                                      alignment: WrapAlignment.start,
-                                      crossAxisAlignment:
-                                          WrapCrossAlignment.start,
-                                      direction: Axis.horizontal,
-                                      runAlignment: WrapAlignment.start,
-                                      verticalDirection: VerticalDirection.down,
-                                      clipBehavior: Clip.none,
-                                      children: [
-                                        Text(
-                                          valueOrDefault<String>(
-                                            itemDbItemsRow?.displayName,
-                                            'Item Name',
-                                          ),
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                        ),
-                                        Text(
-                                          ' - ',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                fontSize: 12.0,
-                                                letterSpacing: 0.0,
-                                                fontStyle: FontStyle.italic,
-                                              ),
-                                        ),
-                                        Text(
-                                          valueOrDefault<String>(
-                                            itemDbItemsRow?.publicDescription,
-                                            'Item Description',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                fontSize: 12.0,
-                                                letterSpacing: 0.0,
-                                                fontStyle: FontStyle.italic,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        );
-                      }),
+                            },
+                          );
+                        }),
+                      ),
                     );
                   },
                 ),

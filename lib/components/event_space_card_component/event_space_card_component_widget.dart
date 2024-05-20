@@ -295,16 +295,6 @@ class _EventSpaceCardComponentWidgetState
                               letterSpacing: 0.0,
                             ),
                       ),
-                    Text(
-                      valueOrDefault<String>(
-                        widget.functionSpaceRow?.foodAndBevApplies?.toString(),
-                        '00',
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            letterSpacing: 0.0,
-                          ),
-                    ),
                     if (widget.functionSpaceRow?.rentalFeeApplies ?? true)
                       Text(
                         'Rental Fee: ${valueOrDefault<String>(

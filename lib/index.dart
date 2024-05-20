@@ -119,11 +119,11 @@ export '/neda_user_flow_pages/neda_planner/manage_events_my_events_copy/manage_e
     show ManageEventsMyEventsCopyWidget;
 export '/neda_user_flow_pages/neda_planner/my_events_event_command_ctr_copy/my_events_event_command_ctr_copy_widget.dart'
     show MyEventsEventCommandCtrCopyWidget;
-export '/neda_user_flow_pages/vendor_cart_dashboard_copy/vendor_cart_dashboard_copy_widget.dart'
+export '/neda_user_flow_pages/neda_vendor/vendor_cart_dashboard_copy/vendor_cart_dashboard_copy_widget.dart'
     show VendorCartDashboardCopyWidget;
-export '/neda_user_flow_pages/vendor_r_f_p_detail_copy/vendor_r_f_p_detail_copy_widget.dart'
+export '/neda_user_flow_pages/neda_vendor/vendor_r_f_p_detail_copy/vendor_r_f_p_detail_copy_widget.dart'
     show VendorRFPDetailCopyWidget;
-export '/neda_user_flow_pages/vendor_r_f_p_confirmation_sent_copy/vendor_r_f_p_confirmation_sent_copy_widget.dart'
+export '/neda_user_flow_pages/neda_vendor/vendor_r_f_p_confirmation_sent_copy/vendor_r_f_p_confirmation_sent_copy_widget.dart'
     show VendorRFPConfirmationSentCopyWidget;
 export '/neda_user_flow_pages/neda_liaison/liaison_dashboard_copy/liaison_dashboard_copy_widget.dart'
     show LiaisonDashboardCopyWidget;
@@ -139,3 +139,7 @@ export '/neda_user_flow_pages/neda_liaison/liaison_task_page_details_copy/liaiso
     show LiaisonTaskPageDetailsCopyWidget;
 export '/neda_user_flow_pages/neda_liaison/liaison_task_page_tasks_page_copy/liaison_task_page_tasks_page_copy_widget.dart'
     show LiaisonTaskPageTasksPageCopyWidget;
+export '/neda_user_flow_pages/neda_vendor/proposal_banquet_event_order/proposal_banquet_event_order_widget.dart'
+    show ProposalBanquetEventOrderWidget;
+export '/neda_user_flow_pages/neda_planner/requestto_book_cart_copy/requestto_book_cart_copy_widget.dart'
+    show RequesttoBookCartCopyWidget;

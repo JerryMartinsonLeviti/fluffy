@@ -48,6 +48,20 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
         text: widget.packageRow?.maxSelections?.toString());
     _model.maxSelectionFocusNode ??= FocusNode();
 
+    _model.pricePerTextController ??= TextEditingController(
+        text: functions
+            .centsIntToDollarDouble(widget.packageRow!.priceInCents!)
+            .toString());
+    _model.pricePerFocusNode ??= FocusNode();
+
+    _model.nameTFTextController ??=
+        TextEditingController(text: widget.packageRow?.displayName);
+    _model.nameTFFocusNode ??= FocusNode();
+
+    _model.descTFTextController ??=
+        TextEditingController(text: widget.packageRow?.publicDescription);
+    _model.descTFFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -65,7 +79,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
     return Container(
       width: double.infinity,
       constraints: BoxConstraints(
-        maxWidth: 300.0,
+        minWidth: 380.0,
+        maxWidth: 380.0,
       ),
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).primaryBackground,
@@ -272,7 +287,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Column(
-                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(
                                           Icons.check_box,
@@ -288,67 +303,55 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                         ),
                                       ],
                                     ),
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
+                                    Wrap(
+                                      spacing: 0.0,
+                                      runSpacing: 0.0,
+                                      alignment: WrapAlignment.start,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                          WrapCrossAlignment.start,
+                                      direction: Axis.horizontal,
+                                      runAlignment: WrapAlignment.start,
+                                      verticalDirection: VerticalDirection.down,
+                                      clipBehavior: Clip.none,
                                       children: [
-                                        Wrap(
-                                          spacing: 0.0,
-                                          runSpacing: 0.0,
-                                          alignment: WrapAlignment.start,
-                                          crossAxisAlignment:
-                                              WrapCrossAlignment.start,
-                                          direction: Axis.horizontal,
-                                          runAlignment: WrapAlignment.start,
-                                          verticalDirection:
-                                              VerticalDirection.down,
-                                          clipBehavior: Clip.none,
-                                          children: [
-                                            Text(
-                                              valueOrDefault<String>(
-                                                itemDbItemsRow?.displayName,
-                                                'Item Name',
+                                        Text(
+                                          valueOrDefault<String>(
+                                            itemDbItemsRow?.displayName,
+                                            'Item Name',
+                                          ),
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w600,
                                               ),
-                                              textAlign: TextAlign.start,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                            ),
-                                            Text(
-                                              ' - ',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    fontSize: 12.0,
-                                                    letterSpacing: 0.0,
-                                                    fontStyle: FontStyle.italic,
-                                                  ),
-                                            ),
-                                            Text(
-                                              valueOrDefault<String>(
-                                                itemDbItemsRow
-                                                    ?.publicDescription,
-                                                'Item Description',
+                                        ),
+                                        Text(
+                                          ' - ',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 12.0,
+                                                letterSpacing: 0.0,
+                                                fontStyle: FontStyle.italic,
                                               ),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Readex Pro',
-                                                    fontSize: 12.0,
-                                                    letterSpacing: 0.0,
-                                                    fontStyle: FontStyle.italic,
-                                                  ),
-                                            ),
-                                          ],
+                                        ),
+                                        Text(
+                                          valueOrDefault<String>(
+                                            itemDbItemsRow?.publicDescription,
+                                            'Item Description',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                fontSize: 12.0,
+                                                letterSpacing: 0.0,
+                                                fontStyle: FontStyle.italic,
+                                              ),
                                         ),
                                       ],
                                     ),
@@ -598,6 +601,251 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                     letterSpacing: 0.0,
                                   ),
                           validator: _model.maxSelectionTextControllerValidator
+                              .asValidator(context),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                        child: TextFormField(
+                          controller: _model.pricePerTextController,
+                          focusNode: _model.pricePerFocusNode,
+                          onFieldSubmitted: (_) async {
+                            await PackagesTable().update(
+                              data: {
+                                'priceInCents': functions.stringToCents(
+                                    _model.pricePerTextController.text),
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'PK_Packages',
+                                widget.packageRow?.pKPackages,
+                              ),
+                            );
+                            await widget.dbRefresh?.call();
+                            setState(() => _model.requestCompleter2 = null);
+                            await _model.waitForRequestCompleted2();
+                          },
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'pricePerGuest',
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).alternate,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedErrorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          validator: _model.pricePerTextControllerValidator
+                              .asValidator(context),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                        child: TextFormField(
+                          controller: _model.nameTFTextController,
+                          focusNode: _model.nameTFFocusNode,
+                          onFieldSubmitted: (_) async {
+                            await PackagesTable().update(
+                              data: {
+                                'display_name': widget.packageRow?.displayName,
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'PK_Packages',
+                                widget.packageRow?.pKPackages,
+                              ),
+                            );
+                            await widget.dbRefresh?.call();
+                            setState(() => _model.requestCompleter2 = null);
+                            await _model.waitForRequestCompleted2();
+                          },
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'Package Name\n',
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).alternate,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedErrorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          validator: _model.nameTFTextControllerValidator
+                              .asValidator(context),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                        child: TextFormField(
+                          controller: _model.descTFTextController,
+                          focusNode: _model.descTFFocusNode,
+                          onFieldSubmitted: (_) async {
+                            await PackagesTable().update(
+                              data: {
+                                'public_description':
+                                    _model.descTFTextController.text,
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'PK_Packages',
+                                widget.packageRow?.pKPackages,
+                              ),
+                            );
+                            await widget.dbRefresh?.call();
+                            setState(() => _model.requestCompleter2 = null);
+                            await _model.waitForRequestCompleted2();
+                          },
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'Package Description\n',
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0.0,
+                                ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).alternate,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedErrorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          validator: _model.descTFTextControllerValidator
                               .asValidator(context),
                         ),
                       ),

@@ -489,6 +489,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'LiaisonTaskPage-TasksPageCopy',
           path: '/liaisonTaskPageTasksPageCopy',
           builder: (context, params) => LiaisonTaskPageTasksPageCopyWidget(),
+        ),
+        FFRoute(
+          name: 'Proposal_Banquet_Event_Order',
+          path: '/proposalBanquetEventOrder',
+          builder: (context, params) => ProposalBanquetEventOrderWidget(),
+        ),
+        FFRoute(
+          name: 'RequesttoBookCartCopy',
+          path: '/requesttoBookCartCopy',
+          builder: (context, params) => RequesttoBookCartCopyWidget(
+            cartRow: params.getParam<CartsRow>(
+              'cartRow',
+              ParamType.SupabaseRow,
+            ),
+            eventRow: params.getParam<EventsRow>(
+              'eventRow',
+              ParamType.SupabaseRow,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

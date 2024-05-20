@@ -27,6 +27,18 @@ class FoodPackageCardModel extends FlutterFlowModel<FoodPackageCardWidget> {
   FocusNode? maxSelectionFocusNode;
   TextEditingController? maxSelectionTextController;
   String? Function(BuildContext, String?)? maxSelectionTextControllerValidator;
+  // State field(s) for pricePer widget.
+  FocusNode? pricePerFocusNode;
+  TextEditingController? pricePerTextController;
+  String? Function(BuildContext, String?)? pricePerTextControllerValidator;
+  // State field(s) for nameTF widget.
+  FocusNode? nameTFFocusNode;
+  TextEditingController? nameTFTextController;
+  String? Function(BuildContext, String?)? nameTFTextControllerValidator;
+  // State field(s) for descTF widget.
+  FocusNode? descTFFocusNode;
+  TextEditingController? descTFTextController;
+  String? Function(BuildContext, String?)? descTFTextControllerValidator;
   Completer<List<ItemsRow>>? requestCompleter3;
   Completer<List<ItemsRow>>? requestCompleter1;
 
@@ -40,6 +52,15 @@ class FoodPackageCardModel extends FlutterFlowModel<FoodPackageCardWidget> {
 
     maxSelectionFocusNode?.dispose();
     maxSelectionTextController?.dispose();
+
+    pricePerFocusNode?.dispose();
+    pricePerTextController?.dispose();
+
+    nameTFFocusNode?.dispose();
+    nameTFTextController?.dispose();
+
+    descTFFocusNode?.dispose();
+    descTFTextController?.dispose();
   }
 
   /// Additional helper methods.

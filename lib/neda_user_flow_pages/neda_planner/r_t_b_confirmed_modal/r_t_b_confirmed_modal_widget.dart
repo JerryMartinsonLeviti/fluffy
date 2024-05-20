@@ -5,20 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'incoming_notification_r_t_b_model.dart';
-export 'incoming_notification_r_t_b_model.dart';
+import 'r_t_b_confirmed_modal_model.dart';
+export 'r_t_b_confirmed_modal_model.dart';
 
-class IncomingNotificationRTBWidget extends StatefulWidget {
-  const IncomingNotificationRTBWidget({super.key});
+class RTBConfirmedModalWidget extends StatefulWidget {
+  const RTBConfirmedModalWidget({super.key});
 
   @override
-  State<IncomingNotificationRTBWidget> createState() =>
-      _IncomingNotificationRTBWidgetState();
+  State<RTBConfirmedModalWidget> createState() =>
+      _RTBConfirmedModalWidgetState();
 }
 
-class _IncomingNotificationRTBWidgetState
-    extends State<IncomingNotificationRTBWidget> {
-  late IncomingNotificationRTBModel _model;
+class _RTBConfirmedModalWidgetState extends State<RTBConfirmedModalWidget> {
+  late RTBConfirmedModalModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -29,7 +28,7 @@ class _IncomingNotificationRTBWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => IncomingNotificationRTBModel());
+    _model = createModel(context, () => RTBConfirmedModalModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -72,12 +71,12 @@ class _IncomingNotificationRTBWidgetState
                 child: Icon(
                   Icons.close_rounded,
                   color: FlutterFlowTheme.of(context).secondaryText,
-                  size: 24.0,
+                  size: 18.0,
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
               child: Text(
                 'Congratulations!',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -85,7 +84,7 @@ class _IncomingNotificationRTBWidgetState
                       color: FlutterFlowTheme.of(context).secondary,
                       fontSize: 24.0,
                       letterSpacing: 0.0,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
                     ),
               ),
             ),
@@ -98,9 +97,10 @@ class _IncomingNotificationRTBWidgetState
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Readex Pro',
-                        color: FlutterFlowTheme.of(context).secondary,
+                        color: FlutterFlowTheme.of(context).accent2,
                         fontSize: 22.0,
                         letterSpacing: 0.0,
+                        fontWeight: FontWeight.w500,
                       ),
                 ),
               ),

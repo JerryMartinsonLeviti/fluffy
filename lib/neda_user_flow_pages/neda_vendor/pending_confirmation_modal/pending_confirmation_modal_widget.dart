@@ -44,7 +44,7 @@ class _PendingConfirmationModalWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: 806.0,
-      height: 156.0,
+      height: 130.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         boxShadow: [
@@ -71,7 +71,7 @@ class _PendingConfirmationModalWidgetState
                 child: Icon(
                   Icons.close_rounded,
                   color: FlutterFlowTheme.of(context).secondaryText,
-                  size: 24.0,
+                  size: 20.0,
                 ),
               ),
             ),
@@ -110,7 +110,7 @@ class _PendingConfirmationModalWidgetState
             Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                 child: Text(
                   'View ',
                   textAlign: TextAlign.center,

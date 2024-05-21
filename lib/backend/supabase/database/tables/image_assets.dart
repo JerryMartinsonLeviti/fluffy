@@ -43,4 +43,7 @@ class ImageAssetsRow extends SupabaseDataRow {
 
   int get order => getField<int>('order')!;
   set order(int value) => setField<int>('order', value);
+
+  int? get fKFunctionSpace => getField<int>('FK_FunctionSpace');
+  set fKFunctionSpace(int? value) => setField<int>('FK_FunctionSpace', value);
 }

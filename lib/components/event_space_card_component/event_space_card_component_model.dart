@@ -1,8 +1,10 @@
 import '/backend/supabase/supabase.dart';
+import '/components/image_gallery_manager_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'dart:async';
 import 'event_space_card_component_widget.dart'
     show EventSpaceCardComponentWidget;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -15,10 +17,16 @@ class EventSpaceCardComponentModel
     extends FlutterFlowModel<EventSpaceCardComponentWidget> {
   ///  Local state fields for this component.
 
-  bool noEdit = true;
+  bool noEditDetails = true;
+
+  bool noEditGallery = true;
 
   ///  State fields for stateful widgets in this component.
 
+  // Model for imageGalleryManagerComponent component.
+  late ImageGalleryManagerComponentModel imageGalleryManagerComponentModel;
+  Completer<List<ImageAssetsRow>>? requestCompleter2;
+  Completer<List<AssetCollectionsViewRow>>? requestCompleter1;
   // State field(s) for FSName widget.
   FocusNode? fSNameFocusNode;
   TextEditingController? fSNameTextController;
@@ -57,10 +65,14 @@ class EventSpaceCardComponentModel
   String? Function(BuildContext, String?)? fnbTextControllerValidator;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    imageGalleryManagerComponentModel =
+        createModel(context, () => ImageGalleryManagerComponentModel());
+  }
 
   @override
   void dispose() {
+    imageGalleryManagerComponentModel.dispose();
     fSNameFocusNode?.dispose();
     fSNameTextController?.dispose();
 
@@ -84,5 +96,36 @@ class EventSpaceCardComponentModel
 
     fnbFocusNode?.dispose();
     fnbTextController?.dispose();
+  }
+
+  /// Additional helper methods.
+  Future waitForRequestCompleted2({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter2?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
+  }
+
+  Future waitForRequestCompleted1({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter1?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
   }
 }

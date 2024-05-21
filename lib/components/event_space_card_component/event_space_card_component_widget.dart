@@ -1,8 +1,10 @@
 import '/backend/supabase/supabase.dart';
+import '/components/image_gallery_manager_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -98,17 +100,20 @@ class _EventSpaceCardComponentWidgetState
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<AssetCollectionsViewRow>>(
-      future: AssetCollectionsViewTable().queryRows(
-        queryFn: (q) => q
-            .eq(
-              'ref_name',
-              'FunctionSpace',
-            )
-            .eq(
-              'ref_key',
-              widget.functionSpaceRow?.pKFunctionSpaces,
-            ),
-      ),
+      future: (_model.requestCompleter1 ??=
+              Completer<List<AssetCollectionsViewRow>>()
+                ..complete(AssetCollectionsViewTable().queryRows(
+                  queryFn: (q) => q
+                      .eq(
+                        'ref_name',
+                        'FunctionSpace',
+                      )
+                      .eq(
+                        'ref_key',
+                        widget.functionSpaceRow?.pKFunctionSpaces,
+                      ),
+                )))
+          .future,
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -140,6 +145,69 @@ class _EventSpaceCardComponentWidgetState
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    if (!_model.noEditGallery)
+                      FutureBuilder<List<ImageAssetsRow>>(
+                        future: (_model.requestCompleter2 ??=
+                                Completer<List<ImageAssetsRow>>()
+                                  ..complete(ImageAssetsTable().queryRows(
+                                    queryFn: (q) => q.eq(
+                                      'FK_FunctionSpace',
+                                      widget.functionSpaceRow?.pKFunctionSpaces,
+                                    ),
+                                  )))
+                            .future,
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: SpinKitChasingDots(
+                                  color: FlutterFlowTheme.of(context).secondary,
+                                  size: 50.0,
+                                ),
+                              ),
+                            );
+                          }
+                          List<ImageAssetsRow> fSGalleryImageAssetsRowList =
+                              snapshot.data!;
+                          return Container(
+                            decoration: BoxDecoration(),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                wrapWithModel(
+                                  model:
+                                      _model.imageGalleryManagerComponentModel,
+                                  updateCallback: () => setState(() {}),
+                                  child: ImageGalleryManagerComponentWidget(
+                                    immageAssetRows:
+                                        fSGalleryImageAssetsRowList,
+                                    onUpload: (originalURL, newURL) async {
+                                      await ImageAssetsTable().insert({
+                                        'image_url': newURL,
+                                        'originalURL': originalURL,
+                                        'FK_FunctionSpace': widget
+                                            .functionSpaceRow?.pKFunctionSpaces,
+                                      });
+                                    },
+                                    onDbUpdate: () async {
+                                      setState(() =>
+                                          _model.requestCompleter2 = null);
+                                      await _model.waitForRequestCompleted2();
+                                      setState(() =>
+                                          _model.requestCompleter1 = null);
+                                      await _model.waitForRequestCompleted1();
+                                      FFAppState().update(() {});
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
                       child: ClipRRect(
@@ -363,7 +431,26 @@ class _EventSpaceCardComponentWidgetState
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               setState(() {
-                                _model.noEdit = !_model.noEdit;
+                                _model.noEditDetails = !_model.noEditDetails;
+                              });
+                            },
+                            child: Icon(
+                              Icons.settings_outlined,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 24.0,
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 1.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              setState(() {
+                                _model.noEditDetails = !_model.noEditDetails;
                               });
                             },
                             child: Icon(
@@ -402,7 +489,7 @@ class _EventSpaceCardComponentWidgetState
                         ),
                       ],
                     ),
-                    if (!_model.noEdit)
+                    if (!_model.noEditDetails)
                       Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -1100,7 +1187,8 @@ class _EventSpaceCardComponentWidgetState
                               FFButtonWidget(
                                 onPressed: () async {
                                   setState(() {
-                                    _model.noEdit = !_model.noEdit;
+                                    _model.noEditDetails =
+                                        !_model.noEditDetails;
                                   });
                                 },
                                 text: 'Exit',

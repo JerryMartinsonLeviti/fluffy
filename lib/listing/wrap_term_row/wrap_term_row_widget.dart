@@ -217,50 +217,51 @@ class _WrapTermRowWidgetState extends State<WrapTermRowWidget> {
                       verticalDirection: VerticalDirection.down,
                       clipBehavior: Clip.none,
                       children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'Term: ',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                  ),
-                            ),
-                            Container(
-                              constraints: BoxConstraints(
-                                maxWidth: 350.0,
-                              ),
-                              decoration: BoxDecoration(),
-                              child: Wrap(
-                                spacing: 0.0,
-                                runSpacing: 0.0,
-                                alignment: WrapAlignment.start,
-                                crossAxisAlignment: WrapCrossAlignment.start,
-                                direction: Axis.horizontal,
-                                runAlignment: WrapAlignment.start,
-                                verticalDirection: VerticalDirection.down,
-                                clipBehavior: Clip.none,
-                                children: [
-                                  Text(
-                                    valueOrDefault<String>(
-                                      widget.term,
-                                      '42',
+                        if (!_model.collapsed)
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'Term: ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ],
                               ),
-                            ),
-                          ],
-                        ),
+                              Container(
+                                constraints: BoxConstraints(
+                                  maxWidth: 350.0,
+                                ),
+                                decoration: BoxDecoration(),
+                                child: Wrap(
+                                  spacing: 0.0,
+                                  runSpacing: 0.0,
+                                  alignment: WrapAlignment.start,
+                                  crossAxisAlignment: WrapCrossAlignment.start,
+                                  direction: Axis.horizontal,
+                                  runAlignment: WrapAlignment.start,
+                                  verticalDirection: VerticalDirection.down,
+                                  clipBehavior: Clip.none,
+                                  children: [
+                                    Text(
+                                      valueOrDefault<String>(
+                                        widget.term,
+                                        '42',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                       ],
                     ),
                   ],

@@ -273,7 +273,9 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                 'FK_Venue',
                                                                 widget.venuePK,
                                                               )
-                                                              .order('order'),
+                                                              .order('order',
+                                                                  ascending:
+                                                                      true),
                                                         )))
                                                   .future,
                                               builder: (context, snapshot) {
@@ -375,13 +377,17 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                               ..complete(
                                                                   ImageAssetsTable()
                                                                       .queryRows(
-                                                                queryFn: (q) => q
-                                                                    .eq(
-                                                                      'FK_Venue',
-                                                                      widget
-                                                                          .venuePK,
-                                                                    )
-                                                                    .order('order'),
+                                                                queryFn: (q) =>
+                                                                    q
+                                                                        .eq(
+                                                                          'FK_Venue',
+                                                                          widget
+                                                                              .venuePK,
+                                                                        )
+                                                                        .order(
+                                                                            'order',
+                                                                            ascending:
+                                                                                true),
                                                               )))
                                                         .future,
                                                     builder:
@@ -529,13 +535,17 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                               ..complete(
                                                                   ImageAssetsTable()
                                                                       .queryRows(
-                                                                queryFn: (q) => q
-                                                                    .eq(
-                                                                      'FK_Vendor',
-                                                                      widget
-                                                                          .vendorPK,
-                                                                    )
-                                                                    .order('order'),
+                                                                queryFn: (q) =>
+                                                                    q
+                                                                        .eq(
+                                                                          'FK_Vendor',
+                                                                          widget
+                                                                              .vendorPK,
+                                                                        )
+                                                                        .order(
+                                                                            'order',
+                                                                            ascending:
+                                                                                true),
                                                               )))
                                                         .future,
                                                     builder:

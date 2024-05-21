@@ -360,7 +360,15 @@ class _ImageGalleryManagerComponentWidgetState
                             );
                           },
                           onReorder: (int reorderableOldIndex,
-                              int reorderableNewIndex) async {},
+                              int reorderableNewIndex) async {
+                            _model.newList = await actions.onReorderImageAssets(
+                              reorderableOldIndex,
+                              reorderableNewIndex,
+                              widget.immageAssetRows?.toList(),
+                            );
+
+                            setState(() {});
+                          },
                         );
                       },
                     ),

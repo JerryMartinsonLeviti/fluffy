@@ -78,12 +78,15 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     FutureBuilder<List<VenuesRow>>(
-                      future: VenuesTable().querySingleRow(
-                        queryFn: (q) => q.eq(
-                          'PK_Venues',
-                          widget.venuePK,
-                        ),
-                      ),
+                      future: (_model.requestCompleter2 ??=
+                              Completer<List<VenuesRow>>()
+                                ..complete(VenuesTable().querySingleRow(
+                                  queryFn: (q) => q.eq(
+                                    'PK_Venues',
+                                    widget.venuePK,
+                                  ),
+                                )))
+                          .future,
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -257,15 +260,22 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                               ],
                                             ),
                                             FutureBuilder<List<ImageAssetsRow>>(
-                                              future:
-                                                  ImageAssetsTable().queryRows(
-                                                queryFn: (q) => q
-                                                    .eq(
-                                                      'FK_Venue',
-                                                      widget.venuePK,
-                                                    )
-                                                    .order('order'),
-                                              ),
+                                              future: (_model
+                                                          .requestCompleter1 ??=
+                                                      Completer<
+                                                          List<
+                                                              ImageAssetsRow>>()
+                                                        ..complete(
+                                                            ImageAssetsTable()
+                                                                .queryRows(
+                                                          queryFn: (q) => q
+                                                              .eq(
+                                                                'FK_Venue',
+                                                                widget.venuePK,
+                                                              )
+                                                              .order('order'),
+                                                        )))
+                                                  .future,
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
                                                 if (!snapshot.hasData) {
@@ -465,7 +475,31 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                       venueImageEditImageAssetsRowList,
                                                                   onUpload:
                                                                       (originalURL,
-                                                                          newURL) async {},
+                                                                          newURL) async {
+                                                                    await ImageAssetsTable()
+                                                                        .insert({
+                                                                      'FK_Venue':
+                                                                          widget
+                                                                              .venuePK,
+                                                                      'image_url':
+                                                                          newURL,
+                                                                      'originalURL':
+                                                                          originalURL,
+                                                                    });
+                                                                    setState(() =>
+                                                                        _model.requestCompleter1 =
+                                                                            null);
+                                                                    await _model
+                                                                        .waitForRequestCompleted1();
+                                                                    setState(() =>
+                                                                        _model.requestCompleter2 =
+                                                                            null);
+                                                                    await _model
+                                                                        .waitForRequestCompleted2();
+                                                                    FFAppState()
+                                                                        .update(
+                                                                            () {});
+                                                                  },
                                                                   onDbUpdate:
                                                                       () async {
                                                                     setState(() =>

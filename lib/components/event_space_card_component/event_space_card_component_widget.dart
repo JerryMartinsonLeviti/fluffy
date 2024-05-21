@@ -431,7 +431,7 @@ class _EventSpaceCardComponentWidgetState
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               setState(() {
-                                _model.noEditDetails = !_model.noEditDetails;
+                                _model.noEditGallery = !_model.noEditGallery;
                               });
                             },
                             child: Icon(

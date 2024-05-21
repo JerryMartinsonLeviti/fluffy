@@ -24,7 +24,9 @@ import 'package:provider/provider.dart';
 class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   ///  Local state fields for this page.
 
-  bool galleryEditorDisabled = true;
+  bool galleryVenueEditorDisabled = true;
+
+  bool galleryVendorEditorDisabled = true;
 
   ///  State fields for stateful widgets in this page.
 
@@ -37,10 +39,13 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   // Model for PricePredictor component.
   late PricePredictorModel pricePredictorModel;
   // Model for imageGalleryManagerComponent component.
-  late ImageGalleryManagerComponentModel imageGalleryManagerComponentModel;
-  Completer<List<ImageAssetsRow>>? requestCompleter5;
+  late ImageGalleryManagerComponentModel imageGalleryManagerComponentModel1;
+  Completer<List<ImageAssetsRow>>? requestCompleter6;
+  Completer<List<ImageAssetsRow>>? requestCompleter2;
+  Completer<List<VenuesRow>>? requestCompleter3;
+  // Model for imageGalleryManagerComponent component.
+  late ImageGalleryManagerComponentModel imageGalleryManagerComponentModel2;
   Completer<List<ImageAssetsRow>>? requestCompleter1;
-  Completer<List<VenuesRow>>? requestCompleter2;
   // Model for ProductDetailPageOptionsLanguage component.
   late ProductDetailPageOptionsLanguageModel
       productDetailPageOptionsLanguageModel;
@@ -54,10 +59,10 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   late BottomRibbonFooterModel bottomRibbonFooterModel;
   // Model for EventSpaceComponent component.
   late EventSpaceComponentModel eventSpaceComponentModel;
-  Completer<List<FunctionSpacesRow>>? requestCompleter3;
+  Completer<List<FunctionSpacesRow>>? requestCompleter4;
   // Model for PackagesComponent component.
   late PackagesComponentModel packagesComponentModel;
-  Completer<List<PackagesRow>>? requestCompleter4;
+  Completer<List<PackagesRow>>? requestCompleter5;
 
   @override
   void initState(BuildContext context) {
@@ -66,7 +71,9 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
     listingRestaurantDetailComponentModel =
         createModel(context, () => ListingRestaurantDetailComponentModel());
     pricePredictorModel = createModel(context, () => PricePredictorModel());
-    imageGalleryManagerComponentModel =
+    imageGalleryManagerComponentModel1 =
+        createModel(context, () => ImageGalleryManagerComponentModel());
+    imageGalleryManagerComponentModel2 =
         createModel(context, () => ImageGalleryManagerComponentModel());
     productDetailPageOptionsLanguageModel =
         createModel(context, () => ProductDetailPageOptionsLanguageModel());
@@ -88,7 +95,8 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
     plannerAppBarComponentModel.dispose();
     listingRestaurantDetailComponentModel.dispose();
     pricePredictorModel.dispose();
-    imageGalleryManagerComponentModel.dispose();
+    imageGalleryManagerComponentModel1.dispose();
+    imageGalleryManagerComponentModel2.dispose();
     productDetailPageOptionsLanguageModel.dispose();
     listingWhatIsIncludedModel.dispose();
     listingFAQsModel.dispose();
@@ -99,7 +107,7 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   }
 
   /// Additional helper methods.
-  Future waitForRequestCompleted5({
+  Future waitForRequestCompleted6({
     double minWait = 0,
     double maxWait = double.infinity,
   }) async {
@@ -107,22 +115,7 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
     while (true) {
       await Future.delayed(Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter5?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
-  }
-
-  Future waitForRequestCompleted1({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter1?.isCompleted ?? false;
+      final requestComplete = requestCompleter6?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }
@@ -159,6 +152,21 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
     }
   }
 
+  Future waitForRequestCompleted1({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter1?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
+  }
+
   Future waitForRequestCompleted4({
     double minWait = 0,
     double maxWait = double.infinity,
@@ -168,6 +176,21 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
       await Future.delayed(Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
       final requestComplete = requestCompleter4?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
+  }
+
+  Future waitForRequestCompleted5({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter5?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }

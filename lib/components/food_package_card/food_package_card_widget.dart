@@ -51,7 +51,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
 
     _model.pricePerTextController ??= TextEditingController(
         text: functions
-            .centsIntToDollarDouble(widget.packageRow!.priceInCents!)
+            .centsIntToDollarDouble(widget.packageRow!.priceInCents)
             .toString());
     _model.pricePerFocusNode ??= FocusNode();
 
@@ -127,7 +127,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
               Text(
                 formatNumber(
                   functions
-                      .centsIntToDollarDouble(widget.packageRow!.priceInCents!),
+                      .centsIntToDollarDouble(widget.packageRow!.priceInCents),
                   formatType: FormatType.decimal,
                   decimalType: DecimalType.automatic,
                   currency: '',

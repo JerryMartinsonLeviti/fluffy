@@ -150,55 +150,52 @@ class _ListingRestaurantDetailComponentWidgetState
                     ),
                   ),
                 ),
-                Wrap(
-                  spacing: 0.0,
-                  runSpacing: 0.0,
-                  alignment: WrapAlignment.start,
-                  crossAxisAlignment: WrapCrossAlignment.start,
-                  direction: Axis.horizontal,
-                  runAlignment: WrapAlignment.start,
-                  verticalDirection: VerticalDirection.down,
-                  clipBehavior: Clip.none,
-                  children: [
-                    if (widget.vendorRow?.vendorName != null &&
-                        widget.vendorRow?.vendorName != '')
-                      Align(
-                        alignment: AlignmentDirectional(-1.0, -1.0),
-                        child: Text(
-                          valueOrDefault<String>(
-                            widget.vendorRow?.vendorName,
-                            'vend_name',
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      if (widget.vendorRow?.vendorName != null &&
+                          widget.vendorRow?.vendorName != '')
+                        Align(
+                          alignment: AlignmentDirectional(-1.0, -1.0),
+                          child: Text(
+                            valueOrDefault<String>(
+                              widget.vendorRow?.vendorName,
+                              'vend_name',
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  fontSize: 30.0,
+                                  letterSpacing: 0.0,
+                                ),
                           ),
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Readex Pro',
-                                color: FlutterFlowTheme.of(context).alternate,
-                                fontSize: 30.0,
-                                letterSpacing: 0.0,
-                              ),
                         ),
-                      ),
-                    if (widget.venueRow?.restaurantLocationName != null &&
-                        widget.venueRow?.restaurantLocationName != '')
-                      Align(
-                        alignment: AlignmentDirectional(-1.0, -1.0),
-                        child: Text(
-                          valueOrDefault<String>(
-                            widget.venueRow?.restaurantLocationName,
-                            'venueName',
+                      if (widget.venueRow?.restaurantLocationName != null &&
+                          widget.venueRow?.restaurantLocationName != '')
+                        Align(
+                          alignment: AlignmentDirectional(-1.0, -1.0),
+                          child: Text(
+                            valueOrDefault<String>(
+                              widget.venueRow?.restaurantLocationName,
+                              'venueName',
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  fontSize: 30.0,
+                                  letterSpacing: 0.0,
+                                ),
                           ),
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Readex Pro',
-                                color: FlutterFlowTheme.of(context).alternate,
-                                fontSize: 30.0,
-                                letterSpacing: 0.0,
-                              ),
                         ),
-                      ),
-                  ],
+                    ].divide(SizedBox(width: 10.0)),
+                  ),
                 ),
                 Align(
                   alignment: AlignmentDirectional(-1.0, 0.0),

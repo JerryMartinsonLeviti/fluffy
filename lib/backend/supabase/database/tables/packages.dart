@@ -50,8 +50,8 @@ class PackagesRow extends SupabaseDataRow {
   set fKLISTVenues(List<int>? value) =>
       setListField<int>('FK_LIST_Venues', value);
 
-  int? get priceInCents => getField<int>('priceInCents');
-  set priceInCents(int? value) => setField<int>('priceInCents', value);
+  int get priceInCents => getField<int>('priceInCents')!;
+  set priceInCents(int value) => setField<int>('priceInCents', value);
 
   String? get unitOfMeasure => getField<String>('unit_of_measure');
   set unitOfMeasure(String? value) =>

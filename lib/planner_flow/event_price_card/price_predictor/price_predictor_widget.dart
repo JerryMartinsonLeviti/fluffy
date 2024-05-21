@@ -93,7 +93,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
         children: [
           Row(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Align(
                 alignment: AlignmentDirectional(0.0, 0.0),

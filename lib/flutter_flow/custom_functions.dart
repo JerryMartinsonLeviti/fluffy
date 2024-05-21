@@ -97,3 +97,59 @@ List<VacvRow>? filterVacv(
   // Return the list of matching AcvRow objects
   return filteredList;
 }
+
+DateTime? pdtTimeStringToUTCz(String? clockTimeWithAMPM) {
+  if (clockTimeWithAMPM == null) return null;
+
+  // Regular expression to match the input time format
+  final regex = RegExp(r'(\d{1,2}):(\d{2})\s*([AP]M)', caseSensitive: false);
+  final match = regex.firstMatch(clockTimeWithAMPM);
+
+  if (match == null) {
+    // If the input doesn't match the expected format, return null
+    return null;
+  }
+
+  // Extract the hour, minute, and period (AM/PM)
+  final hour = int.parse(match.group(1)!);
+  final minute = int.parse(match.group(2)!);
+  final period = match.group(3)!.toUpperCase();
+
+  // Convert to 24-hour format
+  final parsedHour = (period == 'PM' && hour != 12)
+      ? hour + 12
+      : (period == 'AM' && hour == 12)
+          ? 0
+          : hour;
+
+  // Get the current date
+  final now = DateTime.now();
+
+  // Create a DateTime object with the parsed time and current date
+  final localDateTime =
+      DateTime(now.year, now.month, now.day, parsedHour, minute);
+
+  // PDT offset from UTC
+  final pdtOffset = Duration(hours: -7);
+
+  // Adjust the local DateTime to UTC by subtracting the PDT offset
+  final utcDateTime = localDateTime.subtract(pdtOffset);
+
+  return utcDateTime;
+}
+
+String uTCzToPDTString(DateTime? uTCzIn) {
+  if (uTCzIn == null) return '';
+
+  // PDT offset from UTC is -7 hours
+  final pdtOffset = Duration(hours: -7);
+
+  // Convert the UTC DateTime to PDT by subtracting the PDT offset
+  final pdtDateTime = uTCzIn.add(pdtOffset);
+
+  // Format the PDT DateTime as a string in your desired format
+  final formattedString =
+      DateFormat('yyyy-MM-dd hh:mm:ss a').format(pdtDateTime);
+
+  return formattedString;
+}

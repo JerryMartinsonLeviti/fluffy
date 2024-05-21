@@ -37,4 +37,11 @@ class EventsRow extends SupabaseDataRow {
 
   bool get budgetIsPerEvent => getField<bool>('budgetIsPerEvent')!;
   set budgetIsPerEvent(bool value) => setField<bool>('budgetIsPerEvent', value);
+
+  DateTime? get desiredDate => getField<DateTime>('desiredDate');
+  set desiredDate(DateTime? value) => setField<DateTime>('desiredDate', value);
+
+  DateTime? get desiredTimeOfDay => getField<DateTime>('desiredTimeOfDay');
+  set desiredTimeOfDay(DateTime? value) =>
+      setField<DateTime>('desiredTimeOfDay', value);
 }

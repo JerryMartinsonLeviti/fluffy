@@ -26,7 +26,7 @@ Future<bool> onReorderImageAssets(
   final ImageAssetsRow item = imageAssets.removeAt(oldIndex);
   imageAssets.insert(newIndex, item);
 
-  final supabase = SupafFlow.client;
+  final supabase = SupaFlow.client;
 
   for (int i = 0; i < imageAssets.length; i++) {
     final response = await supabase

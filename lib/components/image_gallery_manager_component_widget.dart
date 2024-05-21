@@ -361,11 +361,13 @@ class _ImageGalleryManagerComponentWidgetState
                           },
                           onReorder: (int reorderableOldIndex,
                               int reorderableNewIndex) async {
-                            _model.newList = await actions.onReorderImageAssets(
+                            _model.success = await actions.onReorderImageAssets(
                               reorderableOldIndex,
                               reorderableNewIndex,
                               widget.immageAssetRows?.toList(),
                             );
+                            await widget.onDbUpdate?.call();
+                            FFAppState().update(() {});
 
                             setState(() {});
                           },

@@ -21,7 +21,7 @@ class ImageGalleryManagerComponentModel
   // Stores action output result for [Custom Action - loadImageToSupabase] action in TextField widget.
   ImageUploadResultStruct? outputResponse;
   // Stores action output result for [Custom Action - onReorderImageAssets] action in ListView widget.
-  bool? newList;
+  bool? success;
 
   @override
   void initState(BuildContext context) {}

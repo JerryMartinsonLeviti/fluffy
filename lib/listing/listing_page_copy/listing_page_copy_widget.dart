@@ -375,12 +375,13 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                               ..complete(
                                                                   ImageAssetsTable()
                                                                       .queryRows(
-                                                                queryFn: (q) =>
-                                                                    q.eq(
-                                                                  'FK_Venue',
-                                                                  widget
-                                                                      .venuePK,
-                                                                ),
+                                                                queryFn: (q) => q
+                                                                    .eq(
+                                                                      'FK_Venue',
+                                                                      widget
+                                                                          .venuePK,
+                                                                    )
+                                                                    .order('order'),
                                                               )))
                                                         .future,
                                                     builder:
@@ -528,12 +529,13 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                               ..complete(
                                                                   ImageAssetsTable()
                                                                       .queryRows(
-                                                                queryFn: (q) =>
-                                                                    q.eq(
-                                                                  'FK_Vendor',
-                                                                  widget
-                                                                      .vendorPK,
-                                                                ),
+                                                                queryFn: (q) => q
+                                                                    .eq(
+                                                                      'FK_Vendor',
+                                                                      widget
+                                                                          .vendorPK,
+                                                                    )
+                                                                    .order('order'),
                                                               )))
                                                         .future,
                                                     builder:

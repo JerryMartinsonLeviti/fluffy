@@ -150,10 +150,13 @@ class _EventSpaceCardComponentWidgetState
                         future: (_model.requestCompleter2 ??=
                                 Completer<List<ImageAssetsRow>>()
                                   ..complete(ImageAssetsTable().queryRows(
-                                    queryFn: (q) => q.eq(
-                                      'FK_FunctionSpace',
-                                      widget.functionSpaceRow?.pKFunctionSpaces,
-                                    ),
+                                    queryFn: (q) => q
+                                        .eq(
+                                          'FK_FunctionSpace',
+                                          widget.functionSpaceRow
+                                              ?.pKFunctionSpaces,
+                                        )
+                                        .order('order'),
                                   )))
                             .future,
                         builder: (context, snapshot) {

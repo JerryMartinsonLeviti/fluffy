@@ -108,16 +108,38 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                 ),
               ),
               if (!_model.expanded)
-                Icon(
-                  Icons.arrow_right,
-                  color: FlutterFlowTheme.of(context).secondaryText,
-                  size: 30.0,
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    setState(() {
+                      _model.expanded = !_model.expanded;
+                    });
+                  },
+                  child: Icon(
+                    Icons.arrow_right,
+                    color: FlutterFlowTheme.of(context).secondaryText,
+                    size: 30.0,
+                  ),
                 ),
               if (_model.expanded)
-                FaIcon(
-                  FontAwesomeIcons.caretDown,
-                  color: FlutterFlowTheme.of(context).secondaryText,
-                  size: 20.0,
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    setState(() {
+                      _model.expanded = !_model.expanded;
+                    });
+                  },
+                  child: FaIcon(
+                    FontAwesomeIcons.caretDown,
+                    color: FlutterFlowTheme.of(context).secondaryText,
+                    size: 20.0,
+                  ),
                 ),
             ],
           ),

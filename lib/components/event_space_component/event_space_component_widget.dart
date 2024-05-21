@@ -2,7 +2,6 @@ import '/backend/supabase/supabase.dart';
 import '/components/event_space_card_component/event_space_card_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -97,81 +96,46 @@ class _EventSpaceComponentWidgetState extends State<EventSpaceComponentWidget> {
                   (functionSpaceIdxIndex) {
                 final functionSpaceIdxItem =
                     functionSpaceIdx[functionSpaceIdxIndex];
-                return FutureBuilder<List<CartFunctionSpaceRow>>(
-                  future: (_model.requestCompleter ??=
-                          Completer<List<CartFunctionSpaceRow>>()
-                            ..complete(CartFunctionSpaceTable().queryRows(
-                              queryFn: (q) => q
-                                  .eq(
-                                    'FK_Cart',
-                                    widget.cart?.pKCarts,
-                                  )
-                                  .eq(
-                                    'FK_FunctionSpace',
-                                    functionSpaceIdxItem.pKFunctionSpaces,
-                                  ),
-                            )))
-                      .future,
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: SpinKitChasingDots(
-                            color: FlutterFlowTheme.of(context).secondary,
-                            size: 50.0,
+                return Container(
+                  decoration: BoxDecoration(),
+                  child: EventSpaceCardComponentWidget(
+                    key: Key(
+                        'Keydri_${functionSpaceIdxIndex}_of_${functionSpaceIdx.length}'),
+                    functionSpaceRow: functionSpaceIdxItem,
+                    cart: widget.cart!,
+                    onSave: () async {
+                      await widget.onSave?.call();
+                    },
+                    onSelectChange: (selected) async {
+                      if (selected!) {
+                        await CartFunctionSpaceTable().delete(
+                          matchingRows: (rows) => rows.eq(
+                            'FK_Cart',
+                            widget.cart?.pKCarts,
                           ),
-                        ),
-                      );
-                    }
-                    List<CartFunctionSpaceRow> cartFSCartFunctionSpaceRowList =
-                        snapshot.data!;
-                    return Container(
-                      decoration: BoxDecoration(),
-                      child: EventSpaceCardComponentWidget(
-                        key: Key(
-                            'Keydri_${functionSpaceIdxIndex}_of_${functionSpaceIdx.length}'),
-                        functionSpaceRow: functionSpaceIdxItem,
-                        isSelected: cartFSCartFunctionSpaceRowList.isNotEmpty,
-                        onSave: () async {
-                          await widget.onSave?.call();
-                        },
-                        onSelectChange: (selected) async {
-                          if (selected!) {
-                            await CartFunctionSpaceTable().delete(
-                              matchingRows: (rows) => rows.eq(
+                        );
+                        await CartFunctionSpaceTable().insert({
+                          'FK_Cart': widget.cart?.pKCarts,
+                          'FK_FunctionSpace':
+                              functionSpaceIdxItem.pKFunctionSpaces,
+                        });
+                      } else {
+                        await CartFunctionSpaceTable().delete(
+                          matchingRows: (rows) => rows
+                              .eq(
                                 'FK_Cart',
                                 widget.cart?.pKCarts,
+                              )
+                              .eq(
+                                'FK_FunctionSpace',
+                                functionSpaceIdxItem.pKFunctionSpaces,
                               ),
-                            );
-                            await CartFunctionSpaceTable().insert({
-                              'FK_Cart': widget.cart?.pKCarts,
-                              'FK_FunctionSpace':
-                                  functionSpaceIdxItem.pKFunctionSpaces,
-                            });
-                          } else {
-                            await CartFunctionSpaceTable().delete(
-                              matchingRows: (rows) => rows
-                                  .eq(
-                                    'FK_Cart',
-                                    widget.cart?.pKCarts,
-                                  )
-                                  .eq(
-                                    'FK_FunctionSpace',
-                                    functionSpaceIdxItem.pKFunctionSpaces,
-                                  ),
-                            );
-                          }
+                        );
+                      }
 
-                          setState(() => _model.requestCompleter = null);
-                          await _model.waitForRequestCompleted();
-                          FFAppState().update(() {});
-                        },
-                      ),
-                    );
-                  },
+                      FFAppState().update(() {});
+                    },
+                  ),
                 );
               }),
             );

@@ -104,10 +104,12 @@ class _ListingTermsWidgetState extends State<ListingTermsWidget> {
               future:
                   (_model.requestCompleter ??= Completer<List<TermAssetsRow>>()
                         ..complete(TermAssetsTable().queryRows(
-                          queryFn: (q) => q.eq(
-                            'FK_Vendor',
-                            widget.vendorPK,
-                          ),
+                          queryFn: (q) => q
+                              .eq(
+                                'FK_Vendor',
+                                widget.vendorPK,
+                              )
+                              .order('created_at'),
                         )))
                       .future,
               builder: (context, snapshot) {
@@ -184,7 +186,7 @@ class _ListingTermsWidgetState extends State<ListingTermsWidget> {
                                     'Key58m_${termAsssetIndex}_of_${termAssset.length}'),
                                 termHeadline: termAsssetItem.header,
                                 term: termAsssetItem.term,
-                                isVisible: termAsssetItem.hide,
+                                hide: termAsssetItem.hide,
                                 onUpdate: (header, term) async {
                                   await TermAssetsTable().update(
                                     data: {

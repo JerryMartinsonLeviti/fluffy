@@ -150,8 +150,15 @@ class _ListingRestaurantDetailComponentWidgetState
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
+                Wrap(
+                  spacing: 0.0,
+                  runSpacing: 0.0,
+                  alignment: WrapAlignment.start,
+                  crossAxisAlignment: WrapCrossAlignment.start,
+                  direction: Axis.horizontal,
+                  runAlignment: WrapAlignment.start,
+                  verticalDirection: VerticalDirection.down,
+                  clipBehavior: Clip.none,
                   children: [
                     if (widget.vendorRow?.vendorName != null &&
                         widget.vendorRow?.vendorName != '')
@@ -191,9 +198,7 @@ class _ListingRestaurantDetailComponentWidgetState
                               ),
                         ),
                       ),
-                  ]
-                      .divide(SizedBox(width: 20.0))
-                      .addToStart(SizedBox(width: 20.0)),
+                  ],
                 ),
                 Align(
                   alignment: AlignmentDirectional(-1.0, 0.0),

@@ -519,26 +519,26 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                         ),
                       ),
                       child: Column(
-                        mainAxisSize: MainAxisSize.max,
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 24.0, 0.0, 0.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  'BUDGET STATUS',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        fontSize: 20.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                ),
-                                Wrap(
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                'BUDGET STATUS',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 20.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Wrap(
                                   spacing: 0.0,
                                   runSpacing: 0.0,
                                   alignment: WrapAlignment.start,
@@ -738,46 +738,39 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                       ),
                                   ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ].divide(SizedBox(height: 20.0)),
                           ),
                           Stack(
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             children: [
                               Align(
                                 alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 16.0, 0.0, 0.0),
-                                  child: Icon(
-                                    Icons.circle_outlined,
-                                    color: FlutterFlowTheme.of(context)
-                                        .customColor20,
-                                    size: 140.0,
-                                  ),
+                                child: Icon(
+                                  Icons.circle_outlined,
+                                  color: FlutterFlowTheme.of(context)
+                                      .customColor20,
+                                  size: 140.0,
                                 ),
                               ),
                               Align(
                                 alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 70.0, 0.0, 0.0),
-                                  child: GradientText(
-                                    '116%',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          fontSize: 22.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    colors: [
-                                      FlutterFlowTheme.of(context).primary,
-                                      FlutterFlowTheme.of(context).secondary
-                                    ],
-                                    gradientDirection: GradientDirection.ttb,
-                                    gradientType: GradientType.linear,
-                                  ),
+                                child: GradientText(
+                                  '116%',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        fontSize: 22.0,
+                                        letterSpacing: 0.0,
+                                      ),
+                                  colors: [
+                                    FlutterFlowTheme.of(context).primary,
+                                    FlutterFlowTheme.of(context).secondary
+                                  ],
+                                  gradientDirection: GradientDirection.ttb,
+                                  gradientType: GradientType.linear,
                                 ),
                               ),
                             ],

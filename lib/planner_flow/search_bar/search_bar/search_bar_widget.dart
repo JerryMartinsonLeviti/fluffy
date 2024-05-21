@@ -716,9 +716,9 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                     ),
                                     Text(
                                       valueOrDefault<String>(
-                                        dateTimeFormat(
-                                            'jm', eventDBEventsRow?.dateTime),
-                                        '0',
+                                        dateTimeFormat('jm',
+                                            eventDBEventsRow?.desiredTimeOfDay),
+                                        '4:20 PM',
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -727,6 +727,87 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                     ),
+                                    if (_model.timeEdit)
+                                      FlutterFlowDropDown<String>(
+                                        controller:
+                                            _model.timeDDValueController ??=
+                                                FormFieldController<String>(
+                                          _model.timeDDValue ??= dateTimeFormat(
+                                              'jm',
+                                              eventDBEventsRow
+                                                  ?.desiredTimeOfDay),
+                                        ),
+                                        options: [
+                                          '9:00 AM',
+                                          '10:00 AM',
+                                          '11:00 AM',
+                                          '12:00 PM',
+                                          '1:00 PM',
+                                          '2:00 PM',
+                                          '3:00 PM',
+                                          '4:00 PM',
+                                          '5:00 PM',
+                                          '6:00 PM',
+                                          '6:30 PM',
+                                          '7:00 PM',
+                                          '7:30 PM',
+                                          '8:00 PM',
+                                          '8:30 PM',
+                                          '9:00 PM'
+                                        ],
+                                        onChanged: (val) async {
+                                          setState(
+                                              () => _model.timeDDValue = val);
+                                          await EventsTable().update(
+                                            data: {
+                                              'desiredTimeOfDay': supaSerialize<
+                                                      DateTime>(
+                                                  functions.pdtTimeStringToUTCz(
+                                                      _model.timeDDValue)),
+                                            },
+                                            matchingRows: (rows) => rows.eq(
+                                              'PK_Events',
+                                              eventDBEventsRow?.pKEvents,
+                                            ),
+                                          );
+                                          setState(() =>
+                                              _model.requestCompleter = null);
+                                          await _model
+                                              .waitForRequestCompleted();
+                                          _model.updatePage(() {
+                                            _model.timeEdit = !_model.timeEdit;
+                                          });
+                                        },
+                                        width: 150.0,
+                                        height: 56.0,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
+                                        hintText: 'Please select...',
+                                        icon: Icon(
+                                          Icons.keyboard_arrow_down_rounded,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 24.0,
+                                        ),
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        elevation: 2.0,
+                                        borderColor:
+                                            FlutterFlowTheme.of(context)
+                                                .alternate,
+                                        borderWidth: 2.0,
+                                        borderRadius: 8.0,
+                                        margin: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 4.0, 16.0, 4.0),
+                                        hidesUnderline: true,
+                                        isOverButton: true,
+                                        isSearchable: false,
+                                        isMultiSelect: false,
+                                      ),
                                   ],
                                 ),
                                 Column(

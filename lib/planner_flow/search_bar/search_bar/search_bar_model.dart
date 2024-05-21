@@ -41,6 +41,9 @@ class SearchBarModel extends FlutterFlowModel<SearchBarWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
+  // State field(s) for TimeDD widget.
+  String? timeDDValue;
+  FormFieldController<String>? timeDDValueController;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode3;
   TextEditingController? textController3;

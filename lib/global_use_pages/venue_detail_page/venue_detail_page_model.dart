@@ -1,6 +1,5 @@
 import '/backend/supabase/supabase.dart';
 import '/components/address/address_widget.dart';
-import '/components/packages_component/packages_component_widget.dart';
 import '/components/product_detail_page_options_language/product_detail_page_options_language_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -30,16 +29,11 @@ class VenueDetailPageModel extends FlutterFlowModel<VenueDetailPageWidget> {
 
   int carouselCurrentIndex = 1;
 
-  // Model for PackagesComponent component.
-  late PackagesComponentModel packagesComponentModel;
-
   @override
   void initState(BuildContext context) {
     productDetailPageOptionsLanguageModel =
         createModel(context, () => ProductDetailPageOptionsLanguageModel());
     addressModel = createModel(context, () => AddressModel());
-    packagesComponentModel =
-        createModel(context, () => PackagesComponentModel());
   }
 
   @override
@@ -47,7 +41,6 @@ class VenueDetailPageModel extends FlutterFlowModel<VenueDetailPageWidget> {
     unfocusNode.dispose();
     productDetailPageOptionsLanguageModel.dispose();
     addressModel.dispose();
-    packagesComponentModel.dispose();
   }
 
   /// Additional helper methods.

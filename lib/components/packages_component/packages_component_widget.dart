@@ -15,10 +15,12 @@ class PackagesComponentWidget extends StatefulWidget {
     super.key,
     required this.packagesRows,
     required this.dbRefesh,
+    required this.cart,
   });
 
   final List<PackagesRow>? packagesRows;
   final Future Function()? dbRefesh;
+  final CartsRow? cart;
 
   @override
   State<PackagesComponentWidget> createState() =>
@@ -130,7 +132,37 @@ class _PackagesComponentWidgetState extends State<PackagesComponentWidget> {
                       key: Key(
                           'Keyw2u_${packagesIdxIndex}_of_${packagesIdx.length}'),
                       packageRow: packagesIdxItem,
+                      cart: widget.cart!,
                       dbRefresh: () async {
+                        FFAppState().update(() {});
+                        await widget.dbRefesh?.call();
+                      },
+                      onSelectChange: (selected) async {
+                        if (selected == true) {
+                          await CartPackageTable().delete(
+                            matchingRows: (rows) => rows.eq(
+                              'FK_Cart',
+                              widget.cart?.pKCarts,
+                            ),
+                          );
+                          await CartPackageTable().insert({
+                            'FK_Cart': widget.cart?.pKCarts,
+                            'FK_Package': packagesIdxItem.pKPackages,
+                          });
+                        } else {
+                          await CartPackageTable().delete(
+                            matchingRows: (rows) => rows
+                                .eq(
+                                  'FK_Cart',
+                                  widget.cart?.pKCarts,
+                                )
+                                .eq(
+                                  'FK_Package',
+                                  packagesIdxItem.pKPackages,
+                                ),
+                          );
+                        }
+
                         FFAppState().update(() {});
                         await widget.dbRefesh?.call();
                       },

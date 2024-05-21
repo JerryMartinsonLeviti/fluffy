@@ -1,6 +1,5 @@
 import '/backend/supabase/supabase.dart';
 import '/components/address/address_widget.dart';
-import '/components/packages_component/packages_component_widget.dart';
 import '/components/product_detail_page_options_language/product_detail_page_options_language_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -736,14 +735,6 @@ class _VenueDetailPageWidgetState extends State<VenueDetailPageWidget> {
                                     snapshot.data!;
                                 return Container(
                                   decoration: BoxDecoration(),
-                                  child: wrapWithModel(
-                                    model: _model.packagesComponentModel,
-                                    updateCallback: () => setState(() {}),
-                                    child: PackagesComponentWidget(
-                                      packagesRows: containerPackagesRowList,
-                                      dbRefesh: () async {},
-                                    ),
-                                  ),
                                 );
                               },
                             ),

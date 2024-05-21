@@ -2902,6 +2902,8 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                             PackagesComponentWidget(
                                                           packagesRows:
                                                               packagesPackagesRowList,
+                                                          cart:
+                                                              _model.pageCart!,
                                                           dbRefesh: () async {
                                                             setState(() => _model
                                                                     .requestCompleter5 =

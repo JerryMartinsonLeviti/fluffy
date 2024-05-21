@@ -2835,6 +2835,8 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                             EventSpaceComponentWidget(
                                                           functionSpaceRows:
                                                               fsdbFunctionSpacesRowList,
+                                                          cart:
+                                                              _model.pageCart!,
                                                           onSave: () async {
                                                             setState(() => _model
                                                                     .requestCompleter4 =

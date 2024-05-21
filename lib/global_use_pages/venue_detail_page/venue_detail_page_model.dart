@@ -1,6 +1,5 @@
 import '/backend/supabase/supabase.dart';
 import '/components/address/address_widget.dart';
-import '/components/event_space_component/event_space_component_widget.dart';
 import '/components/packages_component/packages_component_widget.dart';
 import '/components/product_detail_page_options_language/product_detail_page_options_language_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -31,8 +30,6 @@ class VenueDetailPageModel extends FlutterFlowModel<VenueDetailPageWidget> {
 
   int carouselCurrentIndex = 1;
 
-  // Model for EventSpaceComponent component.
-  late EventSpaceComponentModel eventSpaceComponentModel;
   // Model for PackagesComponent component.
   late PackagesComponentModel packagesComponentModel;
 
@@ -41,8 +38,6 @@ class VenueDetailPageModel extends FlutterFlowModel<VenueDetailPageWidget> {
     productDetailPageOptionsLanguageModel =
         createModel(context, () => ProductDetailPageOptionsLanguageModel());
     addressModel = createModel(context, () => AddressModel());
-    eventSpaceComponentModel =
-        createModel(context, () => EventSpaceComponentModel());
     packagesComponentModel =
         createModel(context, () => PackagesComponentModel());
   }
@@ -52,7 +47,6 @@ class VenueDetailPageModel extends FlutterFlowModel<VenueDetailPageWidget> {
     unfocusNode.dispose();
     productDetailPageOptionsLanguageModel.dispose();
     addressModel.dispose();
-    eventSpaceComponentModel.dispose();
     packagesComponentModel.dispose();
   }
 

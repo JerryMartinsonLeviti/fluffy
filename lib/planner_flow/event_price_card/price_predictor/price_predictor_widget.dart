@@ -633,8 +633,11 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                       ),
                                     ),
                                     FFButtonWidget(
-                                      onPressed: () {
-                                        print('BudgetUpdateBtn pressed ...');
+                                      onPressed: () async {
+                                        setState(() {
+                                          _model.noUpdateBudget =
+                                              !_model.noUpdateBudget;
+                                        });
                                       },
                                       text: 'Update',
                                       options: FFButtonOptions(
@@ -685,7 +688,10 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                             );
                                             await widget.onRefreshEventDB
                                                 ?.call();
-                                            setState(() {});
+                                            setState(() {
+                                              _model.noUpdateBudget =
+                                                  !_model.noUpdateBudget;
+                                            });
                                           },
                                           autofocus: true,
                                           obscureText: false,

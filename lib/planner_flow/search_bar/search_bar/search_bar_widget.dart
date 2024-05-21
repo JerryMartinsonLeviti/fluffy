@@ -142,7 +142,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                           clipBehavior: Clip.none,
                           children: [
                             Wrap(
-                              spacing: 15.0,
+                              spacing: 10.0,
                               runSpacing: 15.0,
                               alignment: WrapAlignment.start,
                               crossAxisAlignment: WrapCrossAlignment.start,
@@ -727,7 +727,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                    if (_model.timeEdit)
+                                    if (!_model.timeEdit)
                                       FlutterFlowDropDown<String>(
                                         controller:
                                             _model.timeDDValueController ??=

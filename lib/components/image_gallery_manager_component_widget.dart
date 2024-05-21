@@ -174,10 +174,21 @@ class _ImageGalleryManagerComponentWidgetState
                             ),
                           ),
                         ),
-                        Icon(
-                          Icons.plus_one,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 24.0,
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            setState(() {
+                              _model.textController?.clear();
+                            });
+                          },
+                          child: Icon(
+                            Icons.cleaning_services,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
                         ),
                       ],
                     ),

@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +22,7 @@ class WrapTermRowWidget extends StatefulWidget {
   final String? termHeadline;
   final String? term;
   final bool isVisible;
-  final Future Function(String question, String answer)? onUpdate;
+  final Future Function(String header, String term)? onUpdate;
   final Future Function()? onDelete;
   final Future Function()? onHideToggle;
 
@@ -43,6 +44,11 @@ class _WrapTermRowWidgetState extends State<WrapTermRowWidget> {
     super.initState();
     _model = createModel(context, () => WrapTermRowModel());
 
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await widget.onHideToggle?.call();
+    });
+
     _model.termHeadlineTFTextController ??=
         TextEditingController(text: widget.termHeadline);
     _model.termHeadlineTFFocusNode ??= FocusNode();
@@ -62,6 +68,8 @@ class _WrapTermRowWidgetState extends State<WrapTermRowWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       decoration: BoxDecoration(),
       child: Wrap(
@@ -74,22 +82,6 @@ class _WrapTermRowWidgetState extends State<WrapTermRowWidget> {
         verticalDirection: VerticalDirection.down,
         clipBehavior: Clip.none,
         children: [
-          InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              setState(() {
-                _model.noEdit = !_model.noEdit;
-              });
-            },
-            child: Icon(
-              Icons.settings_outlined,
-              color: FlutterFlowTheme.of(context).secondaryText,
-              size: 24.0,
-            ),
-          ),
           Wrap(
             spacing: 0.0,
             runSpacing: 0.0,
@@ -153,6 +145,60 @@ class _WrapTermRowWidgetState extends State<WrapTermRowWidget> {
                                         letterSpacing: 0.0,
                                       ),
                                 ),
+                                if (FFAppState().DevModeEnabled)
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      setState(() {
+                                        _model.noEdit = !_model.noEdit;
+                                      });
+                                    },
+                                    child: Icon(
+                                      Icons.settings_outlined,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                  ),
+                                if (_model.collapsed)
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      setState(() {
+                                        _model.noEdit = !_model.noEdit;
+                                      });
+                                    },
+                                    child: Icon(
+                                      Icons.arrow_right,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                  ),
+                                if (!_model.collapsed)
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      setState(() {
+                                        _model.noEdit = !_model.noEdit;
+                                      });
+                                    },
+                                    child: Icon(
+                                      Icons.arrow_drop_down,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                  ),
                               ],
                             ),
                           ),
@@ -237,6 +283,20 @@ class _WrapTermRowWidgetState extends State<WrapTermRowWidget> {
                       },
                       child: Icon(
                         Icons.visibility_off,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24.0,
+                      ),
+                    ),
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        await widget.onHideToggle?.call();
+                      },
+                      child: Icon(
+                        Icons.visibility_sharp,
                         color: FlutterFlowTheme.of(context).secondaryText,
                         size: 24.0,
                       ),

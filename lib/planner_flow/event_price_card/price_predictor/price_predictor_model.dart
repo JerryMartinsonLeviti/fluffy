@@ -20,6 +20,8 @@ class PricePredictorModel extends FlutterFlowModel<PricePredictorWidget> {
 
   bool noUpdateBudget = true;
 
+  bool expanded = true;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for SwitchListTile widget.

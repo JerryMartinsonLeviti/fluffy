@@ -38,6 +38,10 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - Query Rows] action in ListingPageCopy widget.
   List<EventsRow>? event;
+  // Stores action output result for [Backend Call - Query Rows] action in ListingPageCopy widget.
+  List<CartsRow>? queryCart;
+  // Stores action output result for [Backend Call - Insert Row] action in ListingPageCopy widget.
+  CartsRow? insertCart;
   // Model for PlannerAppBarComponent component.
   late PlannerAppBarComponentModel plannerAppBarComponentModel;
   // Model for ListingRestaurantDetailComponent component.

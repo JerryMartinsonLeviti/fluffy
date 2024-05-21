@@ -28,10 +28,12 @@ class ListingPageCopyWidget extends StatefulWidget {
     super.key,
     required this.venuePK,
     required this.vendorPK,
+    this.cartPK,
   });
 
   final int? venuePK;
   final int? vendorPK;
+  final int? cartPK;
 
   @override
   State<ListingPageCopyWidget> createState() => _ListingPageCopyWidgetState();
@@ -58,6 +60,26 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
       setState(() {
         _model.pageEvent = _model.event?.first;
       });
+      if (widget.cartPK != null) {
+        _model.queryCart = await CartsTable().queryRows(
+          queryFn: (q) => q.eq(
+            'PK_Carts',
+            widget.cartPK,
+          ),
+        );
+        setState(() {
+          _model.pageCart = _model.queryCart?.first;
+        });
+      } else {
+        _model.insertCart = await CartsTable().insert({
+          'FK_Event': FFAppState().PKActiveEvent,
+          'FK_Venue': widget.venuePK,
+          'qtyGuests': _model.pageEvent?.guestCount,
+        });
+        setState(() {
+          _model.pageCart = _model.insertCart;
+        });
+      }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));

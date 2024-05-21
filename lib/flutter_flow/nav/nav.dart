@@ -412,6 +412,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'vendorPK',
               ParamType.int,
             ),
+            cartPK: params.getParam(
+              'cartPK',
+              ParamType.int,
+            ),
           ),
         ),
         FFRoute(

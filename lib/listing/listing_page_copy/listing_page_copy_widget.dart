@@ -16,6 +16,7 @@ import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -45,6 +46,19 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ListingPageCopyModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.event = await EventsTable().queryRows(
+        queryFn: (q) => q.eq(
+          'PK_Events',
+          FFAppState().PKActiveEvent,
+        ),
+      );
+      setState(() {
+        _model.pageEvent = _model.event?.first;
+      });
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -249,7 +263,16 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                   () => setState(
                                                                       () {}),
                                                               child:
-                                                                  PricePredictorWidget(),
+                                                                  PricePredictorWidget(
+                                                                eventRow: _model
+                                                                    .pageEvent!,
+                                                                cartRow: _model
+                                                                    .pageCart!,
+                                                                onRefreshEventDB:
+                                                                    () async {},
+                                                                onRefreshCartDB:
+                                                                    () async {},
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
@@ -1084,7 +1107,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
-                                                                    15.0,
+                                                                    12.0,
                                                                     0.0,
                                                                     0.0),
                                                         child: Text(
@@ -1567,7 +1590,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                         child: SingleChildScrollView(
                                           scrollDirection: Axis.horizontal,
                                           child: Row(
-                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisSize: MainAxisSize.min,
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceEvenly,
                                             children: [

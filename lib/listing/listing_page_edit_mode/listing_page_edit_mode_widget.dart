@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/components/bottom_ribbon_footer_widget.dart';
 import '/components/product_detail_page_options_language/product_detail_page_options_language_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -356,7 +357,12 @@ class _ListingPageEditModeWidgetState extends State<ListingPageEditModeWidget> {
                                     child: wrapWithModel(
                                       model: _model.pricePredictorModel,
                                       updateCallback: () => setState(() {}),
-                                      child: PricePredictorWidget(),
+                                      child: PricePredictorWidget(
+                                        eventRow: _model.pageEvent!,
+                                        cartRow: _model.pageCart!,
+                                        onRefreshEventDB: () async {},
+                                        onRefreshCartDB: () async {},
+                                      ),
                                     ),
                                   ),
                                 ),

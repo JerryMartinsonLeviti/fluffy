@@ -46,7 +46,7 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
 
     return Container(
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).alternate,
+        color: Color(0xFF574845),
       ),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
@@ -103,12 +103,13 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                                 24.0, 0.0, 24.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).secondary,
+                            color: Color(0xFF574845),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleLarge
                                 .override(
                                   fontFamily: 'Outfit',
-                                  color: FlutterFlowTheme.of(context).tertiary,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   fontSize: 40.0,
                                   letterSpacing: 0.0,
                                 ),
@@ -135,7 +136,8 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                         'About Us',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
-                              color: FlutterFlowTheme.of(context).customColor2,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                               fontSize: 22.0,
                               letterSpacing: 0.0,
                             ),
@@ -145,7 +147,8 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                       'Our Story',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).customColor2,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                           ),
@@ -154,7 +157,8 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                       'FAQs',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).customColor2,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                           ),
@@ -163,7 +167,8 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                       'Help Center',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).customColor2,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                           ),
@@ -172,7 +177,8 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                       'Terms & Privacy',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).customColor2,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                           ),
@@ -186,7 +192,8 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                       'Partner Portal',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).customColor2,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             fontSize: 22.0,
                             letterSpacing: 0.0,
                           ),
@@ -195,7 +202,8 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                       'Become a Partner',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).customColor2,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                           ),
@@ -204,7 +212,8 @@ class _BottomRibbonFooterWidgetState extends State<BottomRibbonFooterWidget> {
                       'Partner FAQs',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
-                            color: FlutterFlowTheme.of(context).customColor2,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             fontSize: 16.0,
                             letterSpacing: 0.0,
                           ),

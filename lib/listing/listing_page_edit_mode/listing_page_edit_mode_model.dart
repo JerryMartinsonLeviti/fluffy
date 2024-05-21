@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/components/bottom_ribbon_footer_widget.dart';
 import '/components/product_detail_page_options_language/product_detail_page_options_language_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -13,6 +14,12 @@ import 'package:provider/provider.dart';
 
 class ListingPageEditModeModel
     extends FlutterFlowModel<ListingPageEditModeWidget> {
+  ///  Local state fields for this page.
+
+  CartsRow? pageCart;
+
+  EventsRow? pageEvent;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

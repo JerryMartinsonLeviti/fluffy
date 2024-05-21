@@ -573,12 +573,6 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                     ),
                   ),
                 ),
-                Divider(
-                  thickness: 1.5,
-                  indent: 180.0,
-                  endIndent: 0.0,
-                  color: FlutterFlowTheme.of(context).accent2,
-                ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Container(

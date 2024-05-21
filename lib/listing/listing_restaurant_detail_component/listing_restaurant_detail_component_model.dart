@@ -3,6 +3,7 @@ import '/components/address/address_widget.dart';
 import '/components/text_box_update_modal_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import 'listing_restaurant_detail_component_widget.dart'
     show ListingRestaurantDetailComponentWidget;

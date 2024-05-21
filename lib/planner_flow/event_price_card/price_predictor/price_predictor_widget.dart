@@ -1,6 +1,8 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -11,7 +13,18 @@ import 'price_predictor_model.dart';
 export 'price_predictor_model.dart';
 
 class PricePredictorWidget extends StatefulWidget {
-  const PricePredictorWidget({super.key});
+  const PricePredictorWidget({
+    super.key,
+    required this.eventRow,
+    required this.cartRow,
+    required this.onRefreshEventDB,
+    required this.onRefreshCartDB,
+  });
+
+  final EventsRow? eventRow;
+  final CartsRow? cartRow;
+  final Future Function()? onRefreshEventDB;
+  final Future Function()? onRefreshCartDB;
 
   @override
   State<PricePredictorWidget> createState() => _PricePredictorWidgetState();
@@ -30,6 +43,18 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PricePredictorModel());
+
+    _model.textController ??= TextEditingController(
+        text: valueOrDefault<String>(
+      formatNumber(
+        functions.centsIntToDollarDouble(widget.eventRow!.budgetInCents),
+        formatType: FormatType.decimal,
+        decimalType: DecimalType.automatic,
+        currency: '',
+      ),
+      '0',
+    ));
+    _model.textFieldFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -96,9 +121,18 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
             ],
           ),
           SwitchListTile.adaptive(
-            value: _model.switchListTileValue1 ??= true,
+            value: _model.switchListTileValue1 ??= _model.showEstimateDetails,
             onChanged: (newValue) async {
               setState(() => _model.switchListTileValue1 = newValue!);
+              if (newValue!) {
+                setState(() {
+                  _model.showEstimateDetails = true;
+                });
+              } else {
+                setState(() {
+                  _model.showEstimateDetails = false;
+                });
+              }
             },
             title: Text(
               'Estimate',
@@ -121,9 +155,18 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
             controlAffinity: ListTileControlAffinity.trailing,
           ),
           SwitchListTile.adaptive(
-            value: _model.switchListTileValue2 ??= true,
+            value: _model.switchListTileValue2 ??= _model.showTotalEventCost,
             onChanged: (newValue) async {
               setState(() => _model.switchListTileValue2 = newValue!);
+              if (newValue!) {
+                setState(() {
+                  _model.showTotalEventCost = true;
+                });
+              } else {
+                setState(() {
+                  _model.showTotalEventCost = false;
+                });
+              }
             },
             title: Text(
               'Per Person or Total Event',
@@ -466,92 +509,183 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                     fontWeight: FontWeight.normal,
                                   ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 25.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  'My Budget',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        fontSize: 16.0,
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    18.0, 0.0, 18.0, 0.0),
-                                child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
-                                  },
-                                  text: '\$15,000',
-                                  options: FFButtonOptions(
-                                    height: 40.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).accent4,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color:
-                                              FlutterFlowTheme.of(context).info,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: BorderSide(
-                                      color:
-                                          FlutterFlowTheme.of(context).accent1,
-                                      width: 1.0,
+                        Wrap(
+                          spacing: 0.0,
+                          runSpacing: 0.0,
+                          alignment: WrapAlignment.start,
+                          crossAxisAlignment: WrapCrossAlignment.start,
+                          direction: Axis.horizontal,
+                          runAlignment: WrapAlignment.start,
+                          verticalDirection: VerticalDirection.down,
+                          clipBehavior: Clip.none,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                'My Budget',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                ),
                               ),
-                              FFButtonWidget(
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  18.0, 0.0, 18.0, 0.0),
+                              child: FFButtonWidget(
                                 onPressed: () {
                                   print('Button pressed ...');
                                 },
-                                text: 'Update',
+                                text: valueOrDefault<String>(
+                                  formatNumber(
+                                    functions.centsIntToDollarDouble(
+                                        widget.eventRow!.budgetInCents),
+                                    formatType: FormatType.decimal,
+                                    decimalType: DecimalType.automatic,
+                                    currency: '',
+                                  ),
+                                  '0',
+                                ),
                                 options: FFButtonOptions(
-                                  width: 100.0,
                                   height: 40.0,
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context)
-                                      .customColor14,
+                                  color: FlutterFlowTheme.of(context).accent4,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
                                         fontFamily: 'Readex Pro',
-                                        color: Colors.white,
-                                        fontSize: 18.0,
+                                        color:
+                                            FlutterFlowTheme.of(context).info,
                                         letterSpacing: 0.0,
-                                        fontWeight: FontWeight.normal,
                                       ),
                                   elevation: 3.0,
                                   borderSide: BorderSide(
-                                    color: Colors.transparent,
+                                    color: FlutterFlowTheme.of(context).accent1,
                                     width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(20.0),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                            FFButtonWidget(
+                              onPressed: () {
+                                print('BudgetUpdateBtn pressed ...');
+                              },
+                              text: 'Update',
+                              options: FFButtonOptions(
+                                width: 100.0,
+                                height: 40.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color:
+                                    FlutterFlowTheme.of(context).customColor14,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: Colors.white,
+                                      fontSize: 18.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                elevation: 3.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                            ),
+                            if (!_model.noUpdateBudget)
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    8.0, 0.0, 8.0, 0.0),
+                                child: TextFormField(
+                                  controller: _model.textController,
+                                  focusNode: _model.textFieldFocusNode,
+                                  onFieldSubmitted: (_) async {
+                                    await EventsTable().update(
+                                      data: {
+                                        'budgetInCents': int.tryParse(
+                                            _model.textController.text),
+                                      },
+                                      matchingRows: (rows) => rows.eq(
+                                        'PK_Events',
+                                        widget.eventRow?.pKEvents,
+                                      ),
+                                    );
+                                    await widget.onRefreshEventDB?.call();
+                                    setState(() {});
+                                  },
+                                  autofocus: true,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    labelText: 'Event Budget',
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    errorBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedErrorBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  validator: _model.textControllerValidator
+                                      .asValidator(context),
+                                ),
+                              ),
+                          ],
                         ),
                       ],
                     ),

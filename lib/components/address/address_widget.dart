@@ -116,7 +116,7 @@ class _AddressWidgetState extends State<AddressWidget> {
                         'Address',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
-                              fontSize: 20.0,
+                              fontSize: 26.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
                             ),
@@ -130,6 +130,7 @@ class _AddressWidgetState extends State<AddressWidget> {
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
                                   ),
                         ),
@@ -142,6 +143,7 @@ class _AddressWidgetState extends State<AddressWidget> {
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
                                   ),
                         ),
@@ -155,6 +157,7 @@ class _AddressWidgetState extends State<AddressWidget> {
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
                                   ),
                         ),

@@ -1,6 +1,8 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'price_predictor_widget.dart' show PricePredictorWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -10,16 +12,31 @@ import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class PricePredictorModel extends FlutterFlowModel<PricePredictorWidget> {
+  ///  Local state fields for this component.
+
+  bool showEstimateDetails = true;
+
+  bool showTotalEventCost = true;
+
+  bool noUpdateBudget = true;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for SwitchListTile widget.
   bool? switchListTileValue1;
   // State field(s) for SwitchListTile widget.
   bool? switchListTileValue2;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
 
   @override
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {}
+  void dispose() {
+    textFieldFocusNode?.dispose();
+    textController?.dispose();
+  }
 }

@@ -384,7 +384,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ListingPage',
           path: '/listingPage',
-          builder: (context, params) => ListingPageWidget(),
+          builder: (context, params) => ListingPageWidget(
+            vendorPK: params.getParam(
+              'vendorPK',
+              ParamType.int,
+            ),
+            venuePK: params.getParam(
+              'venuePK',
+              ParamType.int,
+            ),
+          ),
         ),
         FFRoute(
           name: 'ListingPage_Grayed_Out',

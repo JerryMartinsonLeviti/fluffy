@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/planner_flow/event_price_card/price_predictor/price_predictor_widget.dart';
 import 'vision_board_widget.dart' show VisionBoardWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -20,8 +19,6 @@ class VisionBoardModel extends FlutterFlowModel<VisionBoardWidget> {
   late VisionBoardProductCardModel visionBoardProductCardModel2;
   // Model for VisionBoardProductCard component.
   late VisionBoardProductCardModel visionBoardProductCardModel3;
-  // Model for PricePredictor component.
-  late PricePredictorModel pricePredictorModel;
 
   @override
   void initState(BuildContext context) {
@@ -31,7 +28,6 @@ class VisionBoardModel extends FlutterFlowModel<VisionBoardWidget> {
         createModel(context, () => VisionBoardProductCardModel());
     visionBoardProductCardModel3 =
         createModel(context, () => VisionBoardProductCardModel());
-    pricePredictorModel = createModel(context, () => PricePredictorModel());
   }
 
   @override
@@ -40,6 +36,5 @@ class VisionBoardModel extends FlutterFlowModel<VisionBoardWidget> {
     visionBoardProductCardModel1.dispose();
     visionBoardProductCardModel2.dispose();
     visionBoardProductCardModel3.dispose();
-    pricePredictorModel.dispose();
   }
 }

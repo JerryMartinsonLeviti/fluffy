@@ -17,6 +17,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'listing_page_copy_widget.dart' show ListingPageCopyWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -28,9 +29,15 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
 
   bool galleryVendorEditorDisabled = true;
 
+  CartsRow? pageCart;
+
+  EventsRow? pageEvent;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - Query Rows] action in ListingPageCopy widget.
+  List<EventsRow>? event;
   // Model for PlannerAppBarComponent component.
   late PlannerAppBarComponentModel plannerAppBarComponentModel;
   // Model for ListingRestaurantDetailComponent component.

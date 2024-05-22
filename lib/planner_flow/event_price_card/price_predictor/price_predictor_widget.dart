@@ -140,6 +140,13 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
+                      Text(
+                        '${widget.cartRow?.pKCarts?.toString()} ${widget.cartRow?.cartName} ${widget.cartRow?.fKEvent?.toString()} ${widget.cartRow?.fKVenue?.toString()} ${widget.cartRow?.cartState}',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
+                      ),
                       Container(
                         decoration: BoxDecoration(),
                         child: Column(

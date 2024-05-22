@@ -153,3 +153,15 @@ String uTCzToPDTString(DateTime? uTCzIn) {
 
   return formattedString;
 }
+
+int? sumIntList(List<int>? intList) {
+  // sum a list of integers and return it
+  if (intList == null || intList.isEmpty) {
+    return null;
+  }
+  int sum = 0;
+  for (int i in intList) {
+    sum += i;
+  }
+  return sum;
+}

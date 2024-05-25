@@ -34,4 +34,10 @@ class VenuesRow extends SupabaseDataRow {
   String? get venueDescription => getField<String>('venue_description');
   set venueDescription(String? value) =>
       setField<String>('venue_description', value);
+
+  double get taxRate => getField<double>('taxRate')!;
+  set taxRate(double value) => setField<double>('taxRate', value);
+
+  double get gratuityRate => getField<double>('gratuityRate')!;
+  set gratuityRate(double value) => setField<double>('gratuityRate', value);
 }

@@ -142,7 +142,7 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   tfs.platformFeeTake = platform_fee_rate;
   tfs.platformFeeAmount = subtotal * platform_fee_rate;
   tfs.processingFee = payment_fee_rate;
-  tfs.processingFeeAmount = subtotal * payment_fee_rate + payment_fee_flat;
+  tfs.processingFeeAmount = subtotal * payment_fee_rate;// + payment_fee_flat;
   
   CartInvoiceStruct cart_invoice = CartInvoiceStruct();
   cart_invoice.packages = ps;
@@ -153,27 +153,6 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   cart_invoice.total = subtotal + tfs.taxAmount + tfs.gratuityAmount + tfs.platformFeeAmount + tfs.paymentFeeAmount;
   cart_invoice.dueToday = cart_invoice.total ~/ 2;
 
-  
-  
-  bool food_and_bev_minimum_waived = total_price > total_food_and_bev_minimum;
-  int subtotal = total_price + total_rental_fee + total_food_and_bev_minimum;
-  double tax_rate = v[0].taxRate;
-  int tax = (subtotal * tax_rate).round();
-  double gratuity_rate = v[0].gratuityRate;
-  int gratuity = (subtotal * gratuity_rate).round();
-  double platform_fee_rate = 0.10;
-  int platform_fee = (subtotal * platform_fee_rate).round();
-  double payment_fee_rate = 0.035;
-  int payment_fee_flat = 30;
 
-  int payment_fee = (subtotal * payment_fee_rate).round() + payment_fee_flat;
-  int total = subtotal + tax + gratuity + platform_fee + payment_fee;
-  int half_payment = total ~/ 2;
-  
-  int price_per_guest = p[0].priceInCents;
-
-  dummyInvoice.packages = package_summary;
-  // fill up the dummy invoice with some dummy data
-
-  return dummyInvoice;
+  return cart_invoice;
 }

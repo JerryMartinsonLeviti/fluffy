@@ -126,13 +126,14 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   // Now do taxes and fees
   TaxesAndFeesSummaryStruct tfs = TaxesAndFeesSummaryStruct();
   tfs.taxRate = tax_rate;
-  tfs.taxAmount = subtotal * tax_rate;
+  tfs.taxAmount = (subtotal * tax_rate).toInt();
   tfs.gratuityRate = gratuity_rate;
-  tfs.gratuityAmount = subtotal * gratuity_rate;
+  tfs.gratuityAmount = (subtotal * gratuity_rate).toInt();
   tfs.platformFeeTake = platform_fee_rate;
-  tfs.platformFeeAmount = subtotal * platform_fee_rate;
+  tfs.platformFeeAmount = (subtotal * platform_fee_rate).toInt();
   tfs.processingFee = payment_fee_rate;
-  tfs.processingFeeAmount = subtotal * payment_fee_rate; // + payment_fee_flat;
+  tfs.processingAmount =
+      (subtotal * payment_fee_rate).toInt(); // + payment_fee_flat;
 
   CartInvoiceStruct cart_invoice = CartInvoiceStruct();
   cart_invoice.packages = ps;
@@ -144,7 +145,7 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
       tfs.taxAmount +
       tfs.gratuityAmount +
       tfs.platformFeeAmount +
-      tfs.paymentFeeAmount;
+      tfs.processingAmount;
   cart_invoice.dueToday = cart_invoice.total ~/ 2;
 
   return cart_invoice;

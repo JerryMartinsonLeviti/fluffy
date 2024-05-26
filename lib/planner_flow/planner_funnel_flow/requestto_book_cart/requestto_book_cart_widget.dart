@@ -277,13 +277,13 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context)
-                                        .customColor1,
+                                        .customColor4,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent2,
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
                                           letterSpacing: 0.0,
                                         ),
                                     elevation: 3.0,
@@ -341,13 +341,13 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context)
-                                        .customColor1,
+                                        .customColor10,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent2,
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
                                           letterSpacing: 0.0,
                                         ),
                                     elevation: 3.0,
@@ -634,7 +634,7 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .customColor2,
+                                                                .customColor4,
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                       ),
@@ -1110,6 +1110,9 @@ class _RequesttoBookCartWidgetState extends State<RequesttoBookCartWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Readex Pro',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .success,
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),

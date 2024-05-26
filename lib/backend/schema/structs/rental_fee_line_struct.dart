@@ -9,27 +9,27 @@ import '/flutter_flow/flutter_flow_util.dart';
 class RentalFeeLineStruct extends BaseStruct {
   RentalFeeLineStruct({
     String? functionSpaceName,
-    int? rentallFee,
+    int? rentalFee,
   })  : _functionSpaceName = functionSpaceName,
-        _rentallFee = rentallFee;
+        _rentalFee = rentalFee;
 
-  // "function_space_name" field.
+  // "functionSpaceName" field.
   String? _functionSpaceName;
   String get functionSpaceName => _functionSpaceName ?? '';
   set functionSpaceName(String? val) => _functionSpaceName = val;
   bool hasFunctionSpaceName() => _functionSpaceName != null;
 
-  // "rentall_fee" field.
-  int? _rentallFee;
-  int get rentallFee => _rentallFee ?? 0;
-  set rentallFee(int? val) => _rentallFee = val;
-  void incrementRentallFee(int amount) => _rentallFee = rentallFee + amount;
-  bool hasRentallFee() => _rentallFee != null;
+  // "rentalFee" field.
+  int? _rentalFee;
+  int get rentalFee => _rentalFee ?? 0;
+  set rentalFee(int? val) => _rentalFee = val;
+  void incrementRentalFee(int amount) => _rentalFee = rentalFee + amount;
+  bool hasRentalFee() => _rentalFee != null;
 
   static RentalFeeLineStruct fromMap(Map<String, dynamic> data) =>
       RentalFeeLineStruct(
-        functionSpaceName: data['function_space_name'] as String?,
-        rentallFee: castToType<int>(data['rentall_fee']),
+        functionSpaceName: data['functionSpaceName'] as String?,
+        rentalFee: castToType<int>(data['rentalFee']),
       );
 
   static RentalFeeLineStruct? maybeFromMap(dynamic data) => data is Map
@@ -37,18 +37,18 @@ class RentalFeeLineStruct extends BaseStruct {
       : null;
 
   Map<String, dynamic> toMap() => {
-        'function_space_name': _functionSpaceName,
-        'rentall_fee': _rentallFee,
+        'functionSpaceName': _functionSpaceName,
+        'rentalFee': _rentalFee,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'function_space_name': serializeParam(
+        'functionSpaceName': serializeParam(
           _functionSpaceName,
           ParamType.String,
         ),
-        'rentall_fee': serializeParam(
-          _rentallFee,
+        'rentalFee': serializeParam(
+          _rentalFee,
           ParamType.int,
         ),
       }.withoutNulls;
@@ -56,12 +56,12 @@ class RentalFeeLineStruct extends BaseStruct {
   static RentalFeeLineStruct fromSerializableMap(Map<String, dynamic> data) =>
       RentalFeeLineStruct(
         functionSpaceName: deserializeParam(
-          data['function_space_name'],
+          data['functionSpaceName'],
           ParamType.String,
           false,
         ),
-        rentallFee: deserializeParam(
-          data['rentall_fee'],
+        rentalFee: deserializeParam(
+          data['rentalFee'],
           ParamType.int,
           false,
         ),
@@ -74,19 +74,18 @@ class RentalFeeLineStruct extends BaseStruct {
   bool operator ==(Object other) {
     return other is RentalFeeLineStruct &&
         functionSpaceName == other.functionSpaceName &&
-        rentallFee == other.rentallFee;
+        rentalFee == other.rentalFee;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([functionSpaceName, rentallFee]);
+  int get hashCode => const ListEquality().hash([functionSpaceName, rentalFee]);
 }
 
 RentalFeeLineStruct createRentalFeeLineStruct({
   String? functionSpaceName,
-  int? rentallFee,
+  int? rentalFee,
 }) =>
     RentalFeeLineStruct(
       functionSpaceName: functionSpaceName,
-      rentallFee: rentallFee,
+      rentalFee: rentalFee,
     );

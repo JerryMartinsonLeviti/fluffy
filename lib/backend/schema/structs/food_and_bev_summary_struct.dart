@@ -11,11 +11,13 @@ class FoodAndBevSummaryStruct extends BaseStruct {
     List<FnbItemLineStruct>? fnbLines,
     int? fnbSum,
     bool? fnbIsMet,
+    int? netFnbAmount,
   })  : _fnbLines = fnbLines,
         _fnbSum = fnbSum,
-        _fnbIsMet = fnbIsMet;
+        _fnbIsMet = fnbIsMet,
+        _netFnbAmount = netFnbAmount;
 
-  // "fnb_lines" field.
+  // "fnbLines" field.
   List<FnbItemLineStruct>? _fnbLines;
   List<FnbItemLineStruct> get fnbLines => _fnbLines ?? const [];
   set fnbLines(List<FnbItemLineStruct>? val) => _fnbLines = val;
@@ -23,27 +25,36 @@ class FoodAndBevSummaryStruct extends BaseStruct {
       updateFn(_fnbLines ??= []);
   bool hasFnbLines() => _fnbLines != null;
 
-  // "fnb_sum" field.
+  // "fnbSum" field.
   int? _fnbSum;
   int get fnbSum => _fnbSum ?? 0;
   set fnbSum(int? val) => _fnbSum = val;
   void incrementFnbSum(int amount) => _fnbSum = fnbSum + amount;
   bool hasFnbSum() => _fnbSum != null;
 
-  // "fnb_is_met" field.
+  // "fnbIsMet" field.
   bool? _fnbIsMet;
   bool get fnbIsMet => _fnbIsMet ?? false;
   set fnbIsMet(bool? val) => _fnbIsMet = val;
   bool hasFnbIsMet() => _fnbIsMet != null;
 
+  // "netFnbAmount" field.
+  int? _netFnbAmount;
+  int get netFnbAmount => _netFnbAmount ?? 0;
+  set netFnbAmount(int? val) => _netFnbAmount = val;
+  void incrementNetFnbAmount(int amount) =>
+      _netFnbAmount = netFnbAmount + amount;
+  bool hasNetFnbAmount() => _netFnbAmount != null;
+
   static FoodAndBevSummaryStruct fromMap(Map<String, dynamic> data) =>
       FoodAndBevSummaryStruct(
         fnbLines: getStructList(
-          data['fnb_lines'],
+          data['fnbLines'],
           FnbItemLineStruct.fromMap,
         ),
-        fnbSum: castToType<int>(data['fnb_sum']),
-        fnbIsMet: data['fnb_is_met'] as bool?,
+        fnbSum: castToType<int>(data['fnbSum']),
+        fnbIsMet: data['fnbIsMet'] as bool?,
+        netFnbAmount: castToType<int>(data['netFnbAmount']),
       );
 
   static FoodAndBevSummaryStruct? maybeFromMap(dynamic data) => data is Map
@@ -51,25 +62,30 @@ class FoodAndBevSummaryStruct extends BaseStruct {
       : null;
 
   Map<String, dynamic> toMap() => {
-        'fnb_lines': _fnbLines?.map((e) => e.toMap()).toList(),
-        'fnb_sum': _fnbSum,
-        'fnb_is_met': _fnbIsMet,
+        'fnbLines': _fnbLines?.map((e) => e.toMap()).toList(),
+        'fnbSum': _fnbSum,
+        'fnbIsMet': _fnbIsMet,
+        'netFnbAmount': _netFnbAmount,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'fnb_lines': serializeParam(
+        'fnbLines': serializeParam(
           _fnbLines,
           ParamType.DataStruct,
           true,
         ),
-        'fnb_sum': serializeParam(
+        'fnbSum': serializeParam(
           _fnbSum,
           ParamType.int,
         ),
-        'fnb_is_met': serializeParam(
+        'fnbIsMet': serializeParam(
           _fnbIsMet,
           ParamType.bool,
+        ),
+        'netFnbAmount': serializeParam(
+          _netFnbAmount,
+          ParamType.int,
         ),
       }.withoutNulls;
 
@@ -77,19 +93,24 @@ class FoodAndBevSummaryStruct extends BaseStruct {
           Map<String, dynamic> data) =>
       FoodAndBevSummaryStruct(
         fnbLines: deserializeStructParam<FnbItemLineStruct>(
-          data['fnb_lines'],
+          data['fnbLines'],
           ParamType.DataStruct,
           true,
           structBuilder: FnbItemLineStruct.fromSerializableMap,
         ),
         fnbSum: deserializeParam(
-          data['fnb_sum'],
+          data['fnbSum'],
           ParamType.int,
           false,
         ),
         fnbIsMet: deserializeParam(
-          data['fnb_is_met'],
+          data['fnbIsMet'],
           ParamType.bool,
+          false,
+        ),
+        netFnbAmount: deserializeParam(
+          data['netFnbAmount'],
+          ParamType.int,
           false,
         ),
       );
@@ -103,18 +124,22 @@ class FoodAndBevSummaryStruct extends BaseStruct {
     return other is FoodAndBevSummaryStruct &&
         listEquality.equals(fnbLines, other.fnbLines) &&
         fnbSum == other.fnbSum &&
-        fnbIsMet == other.fnbIsMet;
+        fnbIsMet == other.fnbIsMet &&
+        netFnbAmount == other.netFnbAmount;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([fnbLines, fnbSum, fnbIsMet]);
+  int get hashCode =>
+      const ListEquality().hash([fnbLines, fnbSum, fnbIsMet, netFnbAmount]);
 }
 
 FoodAndBevSummaryStruct createFoodAndBevSummaryStruct({
   int? fnbSum,
   bool? fnbIsMet,
+  int? netFnbAmount,
 }) =>
     FoodAndBevSummaryStruct(
       fnbSum: fnbSum,
       fnbIsMet: fnbIsMet,
+      netFnbAmount: netFnbAmount,
     );

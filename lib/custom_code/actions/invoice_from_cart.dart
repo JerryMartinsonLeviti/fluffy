@@ -52,18 +52,51 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   List<PackagesRow> p = await PackagesTable().querySingleRow(
     queryFn: (q) => q.eq('PK_Packages', cp[0].fKPackage),
   );
+
+  
   List<int> extended_price = [];
-  for (int i = 0; i < cart_guests; i++) {
-    extended_price.add(p[0].priceInCents);
+  for (int i = 0; i < p.length; i++) {
+    PackageLineStruct pls = PackageLineStruct();
+    pls.packageName = p[i].displayName;
+    pls.pricePer = p[i].priceInCents;
+    pls.qty = e[i].guestCount;
+    pls.extTotal = pls.pricePer * pls.qty;
+    pls.pkgType = "Food and/or Beverage";
+    package_lines.add(pls);
+    extended_price.add(p[i].priceInCents);
   }
+  PackageSummaryStruct ps = PackageSummaryStruct();
+  ps.packageLines = package_lines;
+  ps.pkgSum = extended_price.reduce((a, b) => a + b);
+
+
+
 
   int total_price = extended_price.reduce((a, b) => a + b);
   List<int> rental_fee = [];
   List<int> food_and_bev_minimum = [];
-  for (int i = 0; i < cart_guests; i++) {
-    rental_fee.add(fs[0].rentalFeeInCents!);
-    food_and_bev_minimum.add(fs[0].foodAndBevMinimumInCents);
+
+  List<RentalFeeLineStruct> rfl;
+  List<FnbItemLineStruct> fnbl;  
+
+
+  for (int i = 0; i < fs.length; i++) {
+    RentalFeeLineStruct rfls = RentalFeeLineStruct();
+    rfls.functionSpaceName = fs[i].functionSpaceName;
+    rfls.rentallFee = fs[i].rentalFeeInCents;
+    FnbItemLineStruct fnbls = FnbItemLineStruct();
+    fnbls.fsName = fs[i].functionSpaceName;
+    fnbls.fsPrice = fs[i].foodAndBevMinimumInCents;
+    rfl.add(rfls);
+    fnbl.add(fnbls);  
+
   }
+  RentalFeeSumStruct rfs = RentalFeeSumStruct();
+  rfs.rentalFeeLines = rfl;
+  rfs.rentalFeeSum = rental_fee.reduce((a, b) => a + b);
+  FnbItemSumStruct fns = FnbItemSumStruct();
+  fns.fnBItemLines = fnbl;
+  fns.fnBItemSum = food_and_bev_minimum.reduce((a, b) => a + b);
 
   int total_rental_fee = rental_fee.reduce((a, b) => a + b);
   int total_food_and_bev_minimum = food_and_bev_minimum.reduce((a, b) => a + b);

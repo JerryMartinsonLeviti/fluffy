@@ -25,60 +25,6 @@ class PricePredictorModel extends FlutterFlowModel<PricePredictorWidget> {
 
   bool expanded = true;
 
-  List<int> fsRentalFees = [];
-  void addToFsRentalFees(int item) => fsRentalFees.add(item);
-  void removeFromFsRentalFees(int item) => fsRentalFees.remove(item);
-  void removeAtIndexFromFsRentalFees(int index) => fsRentalFees.removeAt(index);
-  void insertAtIndexInFsRentalFees(int index, int item) =>
-      fsRentalFees.insert(index, item);
-  void updateFsRentalFeesAtIndex(int index, Function(int) updateFn) =>
-      fsRentalFees[index] = updateFn(fsRentalFees[index]);
-
-  List<int> fsFnBMins = [];
-  void addToFsFnBMins(int item) => fsFnBMins.add(item);
-  void removeFromFsFnBMins(int item) => fsFnBMins.remove(item);
-  void removeAtIndexFromFsFnBMins(int index) => fsFnBMins.removeAt(index);
-  void insertAtIndexInFsFnBMins(int index, int item) =>
-      fsFnBMins.insert(index, item);
-  void updateFsFnBMinsAtIndex(int index, Function(int) updateFn) =>
-      fsFnBMins[index] = updateFn(fsFnBMins[index]);
-
-  List<int> foodPkgPricePer = [];
-  void addToFoodPkgPricePer(int item) => foodPkgPricePer.add(item);
-  void removeFromFoodPkgPricePer(int item) => foodPkgPricePer.remove(item);
-  void removeAtIndexFromFoodPkgPricePer(int index) =>
-      foodPkgPricePer.removeAt(index);
-  void insertAtIndexInFoodPkgPricePer(int index, int item) =>
-      foodPkgPricePer.insert(index, item);
-  void updateFoodPkgPricePerAtIndex(int index, Function(int) updateFn) =>
-      foodPkgPricePer[index] = updateFn(foodPkgPricePer[index]);
-
-  List<int> foodPkgExtended = [];
-  void addToFoodPkgExtended(int item) => foodPkgExtended.add(item);
-  void removeFromFoodPkgExtended(int item) => foodPkgExtended.remove(item);
-  void removeAtIndexFromFoodPkgExtended(int index) =>
-      foodPkgExtended.removeAt(index);
-  void insertAtIndexInFoodPkgExtended(int index, int item) =>
-      foodPkgExtended.insert(index, item);
-  void updateFoodPkgExtendedAtIndex(int index, Function(int) updateFn) =>
-      foodPkgExtended[index] = updateFn(foodPkgExtended[index]);
-
-  int? fsTotRental;
-
-  int? fstotFnB;
-
-  int? foodPkgTotal;
-
-  int? platformFee;
-
-  int? tax;
-
-  int? serviceCharge;
-
-  int? totalEstimate;
-
-  int? totalDueToday;
-
   CartInvoiceStruct? cartInvoice;
   void updateCartInvoiceStruct(Function(CartInvoiceStruct) updateFn) =>
       updateFn(cartInvoice ??= CartInvoiceStruct());

@@ -59,9 +59,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
           FFAppState().PKActiveEvent,
         ),
       );
-      setState(() {
-        _model.pageEvent = _model.event?.first;
-      });
+      _model.pageEvent = _model.event?.first;
       if (widget.cartPK != null) {
         _model.queryCart = await CartsTable().queryRows(
           queryFn: (q) => q.eq(
@@ -69,18 +67,14 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
             widget.cartPK,
           ),
         );
-        setState(() {
-          _model.pageCart = _model.queryCart?.first;
-        });
+        _model.pageCart = _model.queryCart?.first;
       } else {
         _model.insertCart = await CartsTable().insert({
           'FK_Event': FFAppState().PKActiveEvent,
           'FK_Venue': widget.venuePK,
           'qtyGuests': _model.pageEvent?.guestCount,
         });
-        setState(() {
-          _model.pageCart = _model.insertCart;
-        });
+        _model.pageCart = _model.insertCart;
       }
 
       _model.cartInvoiceActionOutput = await actions.invoiceFromCart(

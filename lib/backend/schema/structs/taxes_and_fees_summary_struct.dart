@@ -12,19 +12,27 @@ class TaxesAndFeesSummaryStruct extends BaseStruct {
     double? gratuityRate,
     double? platformFeeTake,
     double? processingFee,
+    int? taxAmount,
+    int? gratuityAmount,
+    int? platformFeeAmount,
+    int? processingAmount,
   })  : _taxRate = taxRate,
         _gratuityRate = gratuityRate,
         _platformFeeTake = platformFeeTake,
-        _processingFee = processingFee;
+        _processingFee = processingFee,
+        _taxAmount = taxAmount,
+        _gratuityAmount = gratuityAmount,
+        _platformFeeAmount = platformFeeAmount,
+        _processingAmount = processingAmount;
 
-  // "tax_rate" field.
+  // "taxRate" field.
   double? _taxRate;
   double get taxRate => _taxRate ?? 0.0;
   set taxRate(double? val) => _taxRate = val;
   void incrementTaxRate(double amount) => _taxRate = taxRate + amount;
   bool hasTaxRate() => _taxRate != null;
 
-  // "gratuity_rate" field.
+  // "gratuityRate" field.
   double? _gratuityRate;
   double get gratuityRate => _gratuityRate ?? 0.0;
   set gratuityRate(double? val) => _gratuityRate = val;
@@ -32,7 +40,7 @@ class TaxesAndFeesSummaryStruct extends BaseStruct {
       _gratuityRate = gratuityRate + amount;
   bool hasGratuityRate() => _gratuityRate != null;
 
-  // "platform_fee_take" field.
+  // "platformFeeTake" field.
   double? _platformFeeTake;
   double get platformFeeTake => _platformFeeTake ?? 0.0;
   set platformFeeTake(double? val) => _platformFeeTake = val;
@@ -40,7 +48,7 @@ class TaxesAndFeesSummaryStruct extends BaseStruct {
       _platformFeeTake = platformFeeTake + amount;
   bool hasPlatformFeeTake() => _platformFeeTake != null;
 
-  // "processing_fee" field.
+  // "processingFee" field.
   double? _processingFee;
   double get processingFee => _processingFee ?? 0.0;
   set processingFee(double? val) => _processingFee = val;
@@ -48,12 +56,47 @@ class TaxesAndFeesSummaryStruct extends BaseStruct {
       _processingFee = processingFee + amount;
   bool hasProcessingFee() => _processingFee != null;
 
+  // "taxAmount" field.
+  int? _taxAmount;
+  int get taxAmount => _taxAmount ?? 0;
+  set taxAmount(int? val) => _taxAmount = val;
+  void incrementTaxAmount(int amount) => _taxAmount = taxAmount + amount;
+  bool hasTaxAmount() => _taxAmount != null;
+
+  // "gratuityAmount" field.
+  int? _gratuityAmount;
+  int get gratuityAmount => _gratuityAmount ?? 0;
+  set gratuityAmount(int? val) => _gratuityAmount = val;
+  void incrementGratuityAmount(int amount) =>
+      _gratuityAmount = gratuityAmount + amount;
+  bool hasGratuityAmount() => _gratuityAmount != null;
+
+  // "platformFeeAmount" field.
+  int? _platformFeeAmount;
+  int get platformFeeAmount => _platformFeeAmount ?? 0;
+  set platformFeeAmount(int? val) => _platformFeeAmount = val;
+  void incrementPlatformFeeAmount(int amount) =>
+      _platformFeeAmount = platformFeeAmount + amount;
+  bool hasPlatformFeeAmount() => _platformFeeAmount != null;
+
+  // "processingAmount" field.
+  int? _processingAmount;
+  int get processingAmount => _processingAmount ?? 0;
+  set processingAmount(int? val) => _processingAmount = val;
+  void incrementProcessingAmount(int amount) =>
+      _processingAmount = processingAmount + amount;
+  bool hasProcessingAmount() => _processingAmount != null;
+
   static TaxesAndFeesSummaryStruct fromMap(Map<String, dynamic> data) =>
       TaxesAndFeesSummaryStruct(
-        taxRate: castToType<double>(data['tax_rate']),
-        gratuityRate: castToType<double>(data['gratuity_rate']),
-        platformFeeTake: castToType<double>(data['platform_fee_take']),
-        processingFee: castToType<double>(data['processing_fee']),
+        taxRate: castToType<double>(data['taxRate']),
+        gratuityRate: castToType<double>(data['gratuityRate']),
+        platformFeeTake: castToType<double>(data['platformFeeTake']),
+        processingFee: castToType<double>(data['processingFee']),
+        taxAmount: castToType<int>(data['taxAmount']),
+        gratuityAmount: castToType<int>(data['gratuityAmount']),
+        platformFeeAmount: castToType<int>(data['platformFeeAmount']),
+        processingAmount: castToType<int>(data['processingAmount']),
       );
 
   static TaxesAndFeesSummaryStruct? maybeFromMap(dynamic data) => data is Map
@@ -61,29 +104,49 @@ class TaxesAndFeesSummaryStruct extends BaseStruct {
       : null;
 
   Map<String, dynamic> toMap() => {
-        'tax_rate': _taxRate,
-        'gratuity_rate': _gratuityRate,
-        'platform_fee_take': _platformFeeTake,
-        'processing_fee': _processingFee,
+        'taxRate': _taxRate,
+        'gratuityRate': _gratuityRate,
+        'platformFeeTake': _platformFeeTake,
+        'processingFee': _processingFee,
+        'taxAmount': _taxAmount,
+        'gratuityAmount': _gratuityAmount,
+        'platformFeeAmount': _platformFeeAmount,
+        'processingAmount': _processingAmount,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'tax_rate': serializeParam(
+        'taxRate': serializeParam(
           _taxRate,
           ParamType.double,
         ),
-        'gratuity_rate': serializeParam(
+        'gratuityRate': serializeParam(
           _gratuityRate,
           ParamType.double,
         ),
-        'platform_fee_take': serializeParam(
+        'platformFeeTake': serializeParam(
           _platformFeeTake,
           ParamType.double,
         ),
-        'processing_fee': serializeParam(
+        'processingFee': serializeParam(
           _processingFee,
           ParamType.double,
+        ),
+        'taxAmount': serializeParam(
+          _taxAmount,
+          ParamType.int,
+        ),
+        'gratuityAmount': serializeParam(
+          _gratuityAmount,
+          ParamType.int,
+        ),
+        'platformFeeAmount': serializeParam(
+          _platformFeeAmount,
+          ParamType.int,
+        ),
+        'processingAmount': serializeParam(
+          _processingAmount,
+          ParamType.int,
         ),
       }.withoutNulls;
 
@@ -91,23 +154,43 @@ class TaxesAndFeesSummaryStruct extends BaseStruct {
           Map<String, dynamic> data) =>
       TaxesAndFeesSummaryStruct(
         taxRate: deserializeParam(
-          data['tax_rate'],
+          data['taxRate'],
           ParamType.double,
           false,
         ),
         gratuityRate: deserializeParam(
-          data['gratuity_rate'],
+          data['gratuityRate'],
           ParamType.double,
           false,
         ),
         platformFeeTake: deserializeParam(
-          data['platform_fee_take'],
+          data['platformFeeTake'],
           ParamType.double,
           false,
         ),
         processingFee: deserializeParam(
-          data['processing_fee'],
+          data['processingFee'],
           ParamType.double,
+          false,
+        ),
+        taxAmount: deserializeParam(
+          data['taxAmount'],
+          ParamType.int,
+          false,
+        ),
+        gratuityAmount: deserializeParam(
+          data['gratuityAmount'],
+          ParamType.int,
+          false,
+        ),
+        platformFeeAmount: deserializeParam(
+          data['platformFeeAmount'],
+          ParamType.int,
+          false,
+        ),
+        processingAmount: deserializeParam(
+          data['processingAmount'],
+          ParamType.int,
           false,
         ),
       );
@@ -121,12 +204,24 @@ class TaxesAndFeesSummaryStruct extends BaseStruct {
         taxRate == other.taxRate &&
         gratuityRate == other.gratuityRate &&
         platformFeeTake == other.platformFeeTake &&
-        processingFee == other.processingFee;
+        processingFee == other.processingFee &&
+        taxAmount == other.taxAmount &&
+        gratuityAmount == other.gratuityAmount &&
+        platformFeeAmount == other.platformFeeAmount &&
+        processingAmount == other.processingAmount;
   }
 
   @override
-  int get hashCode => const ListEquality()
-      .hash([taxRate, gratuityRate, platformFeeTake, processingFee]);
+  int get hashCode => const ListEquality().hash([
+        taxRate,
+        gratuityRate,
+        platformFeeTake,
+        processingFee,
+        taxAmount,
+        gratuityAmount,
+        platformFeeAmount,
+        processingAmount
+      ]);
 }
 
 TaxesAndFeesSummaryStruct createTaxesAndFeesSummaryStruct({
@@ -134,10 +229,18 @@ TaxesAndFeesSummaryStruct createTaxesAndFeesSummaryStruct({
   double? gratuityRate,
   double? platformFeeTake,
   double? processingFee,
+  int? taxAmount,
+  int? gratuityAmount,
+  int? platformFeeAmount,
+  int? processingAmount,
 }) =>
     TaxesAndFeesSummaryStruct(
       taxRate: taxRate,
       gratuityRate: gratuityRate,
       platformFeeTake: platformFeeTake,
       processingFee: processingFee,
+      taxAmount: taxAmount,
+      gratuityAmount: gratuityAmount,
+      platformFeeAmount: platformFeeAmount,
+      processingAmount: processingAmount,
     );

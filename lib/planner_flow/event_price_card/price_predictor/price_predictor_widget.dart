@@ -1,9 +1,12 @@
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -43,6 +46,16 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PricePredictorModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.cartInvoiceOut = await actions.invoiceFromCart(
+        widget.cartRow!,
+      );
+      setState(() {
+        _model.cartInvoice = _model.cartInvoiceOut;
+      });
+    });
 
     _model.textController ??= TextEditingController(
         text: valueOrDefault<String>(
@@ -163,166 +176,150 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                             ),
                             Builder(
                               builder: (context) {
-                                final cartFunctionSpace =
-                                    cfsDbCartFunctionSpaceRowList.toList();
+                                final fnbMinsInvoiceLine = _model
+                                        .cartInvoice?.fnbMinimums?.fnbLines
+                                        ?.toList() ??
+                                    [];
                                 return Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children:
-                                      List.generate(cartFunctionSpace.length,
-                                          (cartFunctionSpaceIndex) {
-                                    final cartFunctionSpaceItem =
-                                        cartFunctionSpace[
-                                            cartFunctionSpaceIndex];
-                                    return FutureBuilder<
-                                        List<FunctionSpacesRow>>(
-                                      future:
-                                          FunctionSpacesTable().querySingleRow(
-                                        queryFn: (q) => q.eq(
-                                          'PK_FunctionSpaces',
-                                          cartFunctionSpaceItem.fKFunctionSpace,
-                                        ),
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: SpinKitChasingDots(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
-                                                size: 50.0,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<FunctionSpacesRow>
-                                            fsDbFunctionSpacesRowList =
-                                            snapshot.data!;
-                                        final fsDbFunctionSpacesRow =
-                                            fsDbFunctionSpacesRowList.isNotEmpty
-                                                ? fsDbFunctionSpacesRowList
-                                                    .first
-                                                : null;
-                                        return Container(
-                                          decoration: BoxDecoration(),
-                                          child: Column(
+                                      List.generate(fnbMinsInvoiceLine.length,
+                                          (fnbMinsInvoiceLineIndex) {
+                                    final fnbMinsInvoiceLineItem =
+                                        fnbMinsInvoiceLine[
+                                            fnbMinsInvoiceLineIndex];
+                                    return Container(
+                                      decoration: BoxDecoration(),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Row(
                                             mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Text(
-                                                    valueOrDefault<String>(
-                                                      fsDbFunctionSpacesRow
-                                                          ?.functionSpaceName,
-                                                      'noName',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
+                                              Text(
+                                                fnbMinsInvoiceLineItem.fsName,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
                                                           letterSpacing: 0.0,
                                                         ),
-                                                  ),
-                                                  Text(
-                                                    ' Space Rental Fee : ',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                  Text(
-                                                    formatNumber(
-                                                      functions.centsIntToDollarDouble(
-                                                          fsDbFunctionSpacesRow!
-                                                              .rentalFeeInCents!),
-                                                      formatType:
-                                                          FormatType.decimal,
-                                                      decimalType:
-                                                          DecimalType.automatic,
-                                                      currency: '',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                ],
                                               ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Text(
-                                                    valueOrDefault<String>(
-                                                      fsDbFunctionSpacesRow
-                                                          ?.functionSpaceName,
-                                                      'noName',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
+                                              Text(
+                                                'FNB MIN:',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
                                                           letterSpacing: 0.0,
                                                         ),
-                                                  ),
-                                                  Text(
-                                                    'F&B Minimum',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
+                                              ),
+                                              Text(
+                                                formatNumber(
+                                                  functions
+                                                      .centsIntToDollarDouble(
+                                                          fnbMinsInvoiceLineItem
+                                                              .fsPrice),
+                                                  formatType:
+                                                      FormatType.decimal,
+                                                  decimalType:
+                                                      DecimalType.automatic,
+                                                  currency: '',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
                                                           letterSpacing: 0.0,
                                                         ),
-                                                  ),
-                                                  Text(
-                                                    formatNumber(
-                                                      functions.centsIntToDollarDouble(
-                                                          fsDbFunctionSpacesRow!
-                                                              .rentalFeeInCents!),
-                                                      formatType:
-                                                          FormatType.decimal,
-                                                      decimalType:
-                                                          DecimalType.automatic,
-                                                      currency: '',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                ],
                                               ),
                                             ],
                                           ),
-                                        );
-                                      },
+                                        ],
+                                      ),
+                                    );
+                                  }),
+                                );
+                              },
+                            ),
+                            Builder(
+                              builder: (context) {
+                                final rentalFeeLine = _model
+                                        .cartInvoice?.rentalFees?.rentalFeeLines
+                                        ?.toList() ??
+                                    [];
+                                return Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: List.generate(rentalFeeLine.length,
+                                      (rentalFeeLineIndex) {
+                                    final rentalFeeLineItem =
+                                        rentalFeeLine[rentalFeeLineIndex];
+                                    return Container(
+                                      decoration: BoxDecoration(),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                rentalFeeLineItem
+                                                    .functionSpaceName,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              Text(
+                                                'Rental Fee\n',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              Text(
+                                                formatNumber(
+                                                  functions
+                                                      .centsIntToDollarDouble(
+                                                          rentalFeeLineItem
+                                                              .rentalFee),
+                                                  formatType:
+                                                      FormatType.decimal,
+                                                  decimalType:
+                                                      DecimalType.automatic,
+                                                  currency: '',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     );
                                   }),
                                 );
@@ -347,59 +344,54 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                             ),
                             Builder(
                               builder: (context) {
-                                final cartPackage =
-                                    cpDbCartPackageRowList.toList();
+                                final packageLine = _model
+                                        .cartInvoice?.packages?.packageLines
+                                        ?.toList() ??
+                                    [];
                                 return Column(
                                   mainAxisSize: MainAxisSize.max,
-                                  children: List.generate(cartPackage.length,
-                                      (cartPackageIndex) {
-                                    final cartPackageItem =
-                                        cartPackage[cartPackageIndex];
-                                    return FutureBuilder<List<PackagesRow>>(
-                                      future: PackagesTable().querySingleRow(
-                                        queryFn: (q) => q.eq(
-                                          'PK_Packages',
-                                          cartPackageItem.fKPackage,
-                                        ),
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: SpinKitChasingDots(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
-                                                size: 50.0,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<PackagesRow> pkgDbPackagesRowList =
-                                            snapshot.data!;
-                                        final pkgDbPackagesRow =
-                                            pkgDbPackagesRowList.isNotEmpty
-                                                ? pkgDbPackagesRowList.first
-                                                : null;
-                                        return Container(
-                                          decoration: BoxDecoration(),
-                                          child: Column(
+                                  children: List.generate(packageLine.length,
+                                      (packageLineIndex) {
+                                    final packageLineItem =
+                                        packageLine[packageLineIndex];
+                                    return Container(
+                                      decoration: BoxDecoration(),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Row(
                                             mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
+                                              Text(
+                                                valueOrDefault<String>(
+                                                  packageLineItem.packageName,
+                                                  'foodPkg',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
                                               Row(
                                                 mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
                                                 children: [
                                                   Text(
-                                                    valueOrDefault<String>(
-                                                      pkgDbPackagesRow
-                                                          ?.displayName,
-                                                      'noName',
+                                                    formatNumber(
+                                                      functions
+                                                          .centsIntToDollarDouble(
+                                                              packageLineItem
+                                                                  .pricePer),
+                                                      formatType:
+                                                          FormatType.decimal,
+                                                      decimalType:
+                                                          DecimalType.automatic,
+                                                      currency: '',
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -410,81 +402,19 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        formatNumber(
-                                                          functions.centsIntToDollarDouble(
-                                                              pkgDbPackagesRow!
-                                                                  .priceInCents),
-                                                          formatType: FormatType
-                                                              .decimal,
-                                                          decimalType:
-                                                              DecimalType
-                                                                  .automatic,
-                                                          currency: '',
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                      ),
-                                                      Text(
-                                                        ' per Guest * ',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                      ),
-                                                      Text(
-                                                        valueOrDefault<String>(
-                                                          widget.eventRow
-                                                              ?.guestCount
-                                                              ?.toString(),
-                                                          '0',
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                      ),
-                                                    ].addToEnd(
-                                                        SizedBox(width: 25.0)),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                children: [
                                                   Text(
-                                                    functions
-                                                        .centsIntToDollarDouble(
-                                                            widget.eventRow!
-                                                                    .guestCount *
-                                                                pkgDbPackagesRow!
-                                                                    .priceInCents)
+                                                    ' per Guest * ',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    packageLineItem.qty
                                                         .toString(),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -495,12 +425,41 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
-                                                ],
+                                                ].addToEnd(
+                                                    SizedBox(width: 25.0)),
                                               ),
                                             ],
                                           ),
-                                        );
-                                      },
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Text(
+                                                formatNumber(
+                                                  functions
+                                                      .centsIntToDollarDouble(
+                                                          packageLineItem
+                                                              .extTotal),
+                                                  formatType:
+                                                      FormatType.decimal,
+                                                  decimalType:
+                                                      DecimalType.automatic,
+                                                  currency: '',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     );
                                   }),
                                 );

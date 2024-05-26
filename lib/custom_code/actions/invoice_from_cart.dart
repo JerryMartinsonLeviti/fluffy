@@ -12,9 +12,8 @@ import 'package:flutter/material.dart';
 
 Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   // Add your function code here!
-  CartInvoiceStruct dummyInvoice = CartInvoiceStruct();
 
-  dummyInvoice.packages = PackageSummaryStruct();  
+
   PackageSummaryStruct package_summary = PackageSummaryStruct();
   List<PackageLineStruct> package_lines = [];
   package_lines.add(PackageLineStruct());

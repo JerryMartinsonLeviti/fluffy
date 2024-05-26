@@ -98,7 +98,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                 ),
                 Container(
                   width: 1064.0,
-                  height: 713.0,
+                  height: 745.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primaryText,
                   ),
@@ -199,7 +199,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                                       -1.0,
                                                                       0.0),
                                                               child: Text(
-                                                                'All aboard the train to Reservationville',
+                                                                'All aboard the train to reservationville',
                                                                 textAlign:
                                                                     TextAlign
                                                                         .start,
@@ -255,7 +255,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                                             0.0,
                                                                             0.0),
                                                                 child: Text(
-                                                                  'SilverSpike is your non-stop ticket to fast, easy corporate dining bookings of 8 or more',
+                                                                  'SilverSpike is your non-stop ticket to  easy corporate bookings of 8 or more',
                                                                   textAlign:
                                                                       TextAlign
                                                                           .start,
@@ -265,8 +265,8 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Outfit',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .tertiary,
+                                                                        color: Color(
+                                                                            0xD0FFCFB1),
                                                                         fontSize:
                                                                             30.0,
                                                                         letterSpacing:
@@ -284,8 +284,8 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                                 Container(
                                                   decoration: BoxDecoration(),
                                                   child: Container(
-                                                    width: 340.0,
-                                                    height: 340.0,
+                                                    width: 400.0,
+                                                    height: 400.0,
                                                     clipBehavior:
                                                         Clip.antiAlias,
                                                     decoration: BoxDecoration(
@@ -306,7 +306,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        60.0, 40.0, 0.0, 0.0),
+                                                        60.0, 20.0, 0.0, 0.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,

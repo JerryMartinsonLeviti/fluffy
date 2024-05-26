@@ -13,7 +13,7 @@ class RentalFeeSumStruct extends BaseStruct {
   })  : _rentalFeeLines = rentalFeeLines,
         _rentalFeeTotal = rentalFeeTotal;
 
-  // "rental_fee_lines" field.
+  // "rentalFeeLines" field.
   List<RentalFeeLineStruct>? _rentalFeeLines;
   List<RentalFeeLineStruct> get rentalFeeLines => _rentalFeeLines ?? const [];
   set rentalFeeLines(List<RentalFeeLineStruct>? val) => _rentalFeeLines = val;
@@ -21,7 +21,7 @@ class RentalFeeSumStruct extends BaseStruct {
       updateFn(_rentalFeeLines ??= []);
   bool hasRentalFeeLines() => _rentalFeeLines != null;
 
-  // "rental_fee_total" field.
+  // "rentalFeeTotal" field.
   int? _rentalFeeTotal;
   int get rentalFeeTotal => _rentalFeeTotal ?? 0;
   set rentalFeeTotal(int? val) => _rentalFeeTotal = val;
@@ -32,10 +32,10 @@ class RentalFeeSumStruct extends BaseStruct {
   static RentalFeeSumStruct fromMap(Map<String, dynamic> data) =>
       RentalFeeSumStruct(
         rentalFeeLines: getStructList(
-          data['rental_fee_lines'],
+          data['rentalFeeLines'],
           RentalFeeLineStruct.fromMap,
         ),
-        rentalFeeTotal: castToType<int>(data['rental_fee_total']),
+        rentalFeeTotal: castToType<int>(data['rentalFeeTotal']),
       );
 
   static RentalFeeSumStruct? maybeFromMap(dynamic data) => data is Map
@@ -43,18 +43,18 @@ class RentalFeeSumStruct extends BaseStruct {
       : null;
 
   Map<String, dynamic> toMap() => {
-        'rental_fee_lines': _rentalFeeLines?.map((e) => e.toMap()).toList(),
-        'rental_fee_total': _rentalFeeTotal,
+        'rentalFeeLines': _rentalFeeLines?.map((e) => e.toMap()).toList(),
+        'rentalFeeTotal': _rentalFeeTotal,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'rental_fee_lines': serializeParam(
+        'rentalFeeLines': serializeParam(
           _rentalFeeLines,
           ParamType.DataStruct,
           true,
         ),
-        'rental_fee_total': serializeParam(
+        'rentalFeeTotal': serializeParam(
           _rentalFeeTotal,
           ParamType.int,
         ),
@@ -63,13 +63,13 @@ class RentalFeeSumStruct extends BaseStruct {
   static RentalFeeSumStruct fromSerializableMap(Map<String, dynamic> data) =>
       RentalFeeSumStruct(
         rentalFeeLines: deserializeStructParam<RentalFeeLineStruct>(
-          data['rental_fee_lines'],
+          data['rentalFeeLines'],
           ParamType.DataStruct,
           true,
           structBuilder: RentalFeeLineStruct.fromSerializableMap,
         ),
         rentalFeeTotal: deserializeParam(
-          data['rental_fee_total'],
+          data['rentalFeeTotal'],
           ParamType.int,
           false,
         ),

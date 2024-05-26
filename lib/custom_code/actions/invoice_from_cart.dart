@@ -68,22 +68,53 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   PackageSummaryStruct ps = PackageSummaryStruct();
   ps.packageLines = package_lines;
   ps.pkgSum = extended_price.reduce((a, b) => a + b);
+  List<EventsRow> e = await EventsTable().querySingleRow(
+    queryFn: (q) => q.eq('PK_Events', cart.fKEvent),
+  );
 
+  List<VenuesRow> v = await VenuesTable().querySingleRow(
+    queryFn: (q) => q.eq('PK_Venues', cart.fKVenue),
+  );
 
 
 
   int total_price = extended_price.reduce((a, b) => a + b);
   List<int> rental_fee = [];
   List<int> food_and_bev_minimum = [];
+  for (int i = 0; i < cart_guests; i++) {
+    rental_fee.add(fs[0].rentalFeeInCents!);
+    food_and_bev_minimum.add(fs[0].foodAndBevMinimumInCents);
+  }
 
-  List<RentalFeeLineStruct> rfl;
-  List<FnbItemLineStruct> fnbl;  
+  int total_rental_fee = rental_fee.reduce((a, b) => a + b);
+  int total_food_and_bev_minimum = food_and_bev_minimum.reduce((a, b) => a + b);
+  int food_and_bev_total = total_price;
+  if (total_price > total_food_and_bev_minimum) {
+    total_food_and_bev_minimum = 0;
+  }
+
+  double tax_rate = v[0].taxRate;
+  double gratuity_rate = v[0].gratuityRate;
+  double platform_fee_rate = 0.10;
+  double payment_fee_rate = 0.035;
+ 
+
+  // int payment_fee = (subtotal * payment_fee_rate).round() + payment_fee_flat;
+  // int total = subtotal + tax + gratuity + platform_fee + payment_fee;
+  // int half_payment = total ~/ 2;
+
+  // int price_per_guest = p[0].priceInCents;
+
+
+
+  List<RentalFeeLineStruct> rfl = [];
+  List<FnbItemLineStruct> fnbl = [];  
 
 
   for (int i = 0; i < fs.length; i++) {
     RentalFeeLineStruct rfls = RentalFeeLineStruct();
     rfls.functionSpaceName = fs[i].functionSpaceName;
-    rfls.rentallFee = fs[i].rentalFeeInCents;
+    rfls.rentalFee = fs[i].rentalFeeInCents;
     FnbItemLineStruct fnbls = FnbItemLineStruct();
     fnbls.fsName = fs[i].functionSpaceName;
     fnbls.fsPrice = fs[i].foodAndBevMinimumInCents;
@@ -93,17 +124,36 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   }
   RentalFeeSumStruct rfs = RentalFeeSumStruct();
   rfs.rentalFeeLines = rfl;
-  rfs.rentalFeeSum = rental_fee.reduce((a, b) => a + b);
-  FnbItemSumStruct fns = FnbItemSumStruct();
-  fns.fnBItemLines = fnbl;
-  fns.fnBItemSum = food_and_bev_minimum.reduce((a, b) => a + b);
+  rfs.rentalFeeTotal = rental_fee.reduce((a, b) => a + b);
+  FoodAndBevSummaryStruct fns = FoodAndBevSummaryStruct();
+  fns.fnbLines = fnbl;
+  fns.fnbSum = food_and_bev_minimum.reduce((a, b) => a + b);
+  fns.fnbIsMet = food_and_bev_total > fns.fnbSum;
+  fns.netFnbAmount = fns.fnbIsMet ? 0 : fns.fnbSum - food_and_bev_total;
 
-  int total_rental_fee = rental_fee.reduce((a, b) => a + b);
-  int total_food_and_bev_minimum = food_and_bev_minimum.reduce((a, b) => a + b);
-  int food_and_bev_total = total_price;
-  if (total_price > total_food_and_bev_minimum) {
-    total_food_and_bev_minimum = 0;
-  }
+  int subtotal = fns.netFnbAmount + rfs.rentalFeeTotal + ps.pkgSum;
+
+  // Now do taxes and fees
+  TaxesAndFeesSummaryStruct tfs = TaxesAndFeesSummaryStruct();
+  tfs.taxRate = tax_rate;
+  tfs.taxAmount = subtotal * tax_rate;
+  tfs.gratuityRate = gratuity_rate;
+  tfs.gratuityAmount = subtotal * gratuity_rate;
+  tfs.platformFeeTake = platform_fee_rate;
+  tfs.platformFeeAmount = subtotal * platform_fee_rate;
+  tfs.processingFee = payment_fee_rate;
+  tfs.processingFeeAmount = subtotal * payment_fee_rate + payment_fee_flat;
+  
+  CartInvoiceStruct cart_invoice = CartInvoiceStruct();
+  cart_invoice.packages = ps;
+  cart_invoice.rentalFees = rfs;
+  cart_invoice.fnbMinimums = fns;
+  cart_invoice.subtotal = subtotal;
+  cart_invoice.taxesAndFees = tfs;
+  cart_invoice.total = subtotal + tfs.taxAmount + tfs.gratuityAmount + tfs.platformFeeAmount + tfs.paymentFeeAmount;
+  cart_invoice.dueToday = cart_invoice.total ~/ 2;
+
+  
   
   bool food_and_bev_minimum_waived = total_price > total_food_and_bev_minimum;
   int subtotal = total_price + total_rental_fee + total_food_and_bev_minimum;

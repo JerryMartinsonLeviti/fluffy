@@ -13,13 +13,13 @@ class FnbItemLineStruct extends BaseStruct {
   })  : _fsName = fsName,
         _fsPrice = fsPrice;
 
-  // "fs_name" field.
+  // "fsName" field.
   String? _fsName;
   String get fsName => _fsName ?? '';
   set fsName(String? val) => _fsName = val;
   bool hasFsName() => _fsName != null;
 
-  // "fs_price" field.
+  // "fsPrice" field.
   int? _fsPrice;
   int get fsPrice => _fsPrice ?? 0;
   set fsPrice(int? val) => _fsPrice = val;
@@ -28,8 +28,8 @@ class FnbItemLineStruct extends BaseStruct {
 
   static FnbItemLineStruct fromMap(Map<String, dynamic> data) =>
       FnbItemLineStruct(
-        fsName: data['fs_name'] as String?,
-        fsPrice: castToType<int>(data['fs_price']),
+        fsName: data['fsName'] as String?,
+        fsPrice: castToType<int>(data['fsPrice']),
       );
 
   static FnbItemLineStruct? maybeFromMap(dynamic data) => data is Map
@@ -37,17 +37,17 @@ class FnbItemLineStruct extends BaseStruct {
       : null;
 
   Map<String, dynamic> toMap() => {
-        'fs_name': _fsName,
-        'fs_price': _fsPrice,
+        'fsName': _fsName,
+        'fsPrice': _fsPrice,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'fs_name': serializeParam(
+        'fsName': serializeParam(
           _fsName,
           ParamType.String,
         ),
-        'fs_price': serializeParam(
+        'fsPrice': serializeParam(
           _fsPrice,
           ParamType.int,
         ),
@@ -56,12 +56,12 @@ class FnbItemLineStruct extends BaseStruct {
   static FnbItemLineStruct fromSerializableMap(Map<String, dynamic> data) =>
       FnbItemLineStruct(
         fsName: deserializeParam(
-          data['fs_name'],
+          data['fsName'],
           ParamType.String,
           false,
         ),
         fsPrice: deserializeParam(
-          data['fs_price'],
+          data['fsPrice'],
           ParamType.int,
           false,
         ),

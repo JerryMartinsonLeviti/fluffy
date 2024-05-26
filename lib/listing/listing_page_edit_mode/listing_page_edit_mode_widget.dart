@@ -361,7 +361,7 @@ class _ListingPageEditModeWidgetState extends State<ListingPageEditModeWidget> {
                                       child: PricePredictorWidget(
                                         eventRow: _model.pageEvent!,
                                         cartRow: _model.pageCart!,
-                                        cart: _model.cartInvoice!,
+                                        cartInvoice: _model.cartInvoice,
                                         onRefreshEventDB: () async {},
                                         onRefreshCartDB: () async {},
                                       ),

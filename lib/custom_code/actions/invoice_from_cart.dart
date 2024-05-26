@@ -12,7 +12,6 @@ import 'package:flutter/material.dart';
 
 Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   // Add your function code here!
-
   PackageSummaryStruct package_summary = PackageSummaryStruct();
   List<PackageLineStruct> package_lines = [];
   package_lines.add(PackageLineStruct());
@@ -37,19 +36,29 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
     queryFn: (q) => q.eq('FK_Cart', cart.pKCarts),
   );
 
-  // Now get the FunctionSpacesRow from the FunctionSpaces ID's
-  List<FunctionSpacesRow> fs = await FunctionSpacesTable().querySingleRow(
-    queryFn: (q) => q.eq('PK_FunctionSpaces', cfs[0].fKFunctionSpace),
-  );
+  List<FunctionSpacesRow> fs;
+  if (cfs.isEmpty) {
+    fs = [];
+    print("No function spaces found");
+  } else {
+    fs = await FunctionSpacesTable().querySingleRow(
+      queryFn: (q) => q.eq('PK_FunctionSpaces', cfs[0].fKFunctionSpace),
+    );
+  }
 
   List<CartPackageRow> cp = await CartPackageTable().querySingleRow(
     queryFn: (q) => q.eq('FK_Cart', cart.pKCarts),
   );
 
-// Now get the PackagesRows from the Packages ID's
-  List<PackagesRow> p = await PackagesTable().querySingleRow(
-    queryFn: (q) => q.eq('PK_Packages', cp[0].fKPackage),
-  );
+  List<PackagesRow> p;
+  if (cp.isEmpty) {
+    p = [];
+    print("No packages found");
+  } else {
+    p = await PackagesTable().querySingleRow(
+      queryFn: (q) => q.eq('PK_Packages', cp[0].fKPackage),
+    );
+  }
 
   List<int> extended_price = [];
   for (int i = 0; i < p.length; i++) {
@@ -64,29 +73,14 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   }
   PackageSummaryStruct ps = PackageSummaryStruct();
   ps.packageLines = package_lines;
-  ps.pkgSum = extended_price.reduce((a, b) => a + b);
-  List<EventsRow> e = await EventsTable().querySingleRow(
-    queryFn: (q) => q.eq('PK_Events', cart.fKEvent),
-  );
+  ps.pkgSum = extended_price.fold<int>(0, (int a, int b) => a + b);
 
-  List<VenuesRow> v = await VenuesTable().querySingleRow(
-    queryFn: (q) => q.eq('PK_Venues', cart.fKVenue),
-  );
-
-  int total_price = extended_price.reduce((a, b) => a + b);
-  List<int> rental_fee = [];
-  List<int> food_and_bev_minimum = [];
-  for (int i = 0; i < cart_guests; i++) {
-    rental_fee.add(fs[0].rentalFeeInCents!);
-    food_and_bev_minimum.add(fs[0].foodAndBevMinimumInCents);
-  }
-
-  int total_rental_fee = rental_fee.reduce((a, b) => a + b);
-  int total_food_and_bev_minimum = food_and_bev_minimum.reduce((a, b) => a + b);
-  int food_and_bev_total = total_price;
-  if (total_price > total_food_and_bev_minimum) {
-    total_food_and_bev_minimum = 0;
-  }
+  // List<int> rental_fee = [];
+  // List<int> food_and_bev_minimum = [];
+  // for (int i = 0; i < cart_guests; i++) {
+  //   rental_fee.add(fs[0].rentalFeeInCents!);
+  //   food_and_bev_minimum.add(fs[0].foodAndBevMinimumInCents);
+  // }
 
   double tax_rate = v[0].taxRate;
   double gratuity_rate = v[0].gratuityRate;
@@ -114,12 +108,19 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   }
   RentalFeeSumStruct rfs = RentalFeeSumStruct();
   rfs.rentalFeeLines = rfl;
-  rfs.rentalFeeTotal = rental_fee.reduce((a, b) => a + b);
+  rfs.rentalFeeTotal = rfl.isEmpty
+      ? 0
+      : rfl.map((rfls) => rfls.rentalFee).reduce((a, b) => a + b);
+
+//  rfs.rentalFeeTotal = rfl.rentalFee.reduce((a, b) => a + b);
   FoodAndBevSummaryStruct fns = FoodAndBevSummaryStruct();
   fns.fnbLines = fnbl;
-  fns.fnbSum = food_and_bev_minimum.reduce((a, b) => a + b);
-  fns.fnbIsMet = food_and_bev_total > fns.fnbSum;
-  fns.netFnbAmount = fns.fnbIsMet ? 0 : fns.fnbSum - food_and_bev_total;
+  fns.fnbSum = fnbl.isEmpty
+      ? 0
+      : fnbl.map((fnbls) => fnbls.fsPrice).reduce((a, b) => a + b);
+
+  fns.fnbIsMet = ps.pkgSum > fns.fnbSum;
+  fns.netFnbAmount = fns.fnbIsMet ? 0 : fns.fnbSum - ps.pkgSum;
 
   int subtotal = fns.netFnbAmount + rfs.rentalFeeTotal + ps.pkgSum;
 
@@ -147,6 +148,7 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
       tfs.platformFeeAmount +
       tfs.processingAmount;
   cart_invoice.dueToday = cart_invoice.total ~/ 2;
-
+  print(cart_invoice.toMap());
+  print("Cart Invoice: $cart_invoice");
   return cart_invoice;
 }

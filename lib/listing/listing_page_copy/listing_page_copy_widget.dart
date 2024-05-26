@@ -293,8 +293,8 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                     .pageEvent!,
                                                                 cartRow: _model
                                                                     .pageCart!,
-                                                                cart: _model
-                                                                    .cartInvoice!,
+                                                                cartInvoice: _model
+                                                                    .cartInvoice,
                                                                 onRefreshEventDB:
                                                                     () async {},
                                                                 onRefreshCartDB:
@@ -2872,7 +2872,8 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                               _model.cartInvoice =
                                                                   _model.ao3Ci;
                                                             });
-                                                            setState(() {});
+                                                            FFAppState()
+                                                                .update(() {});
 
                                                             setState(() {});
                                                           },
@@ -2941,6 +2942,19 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                 null);
                                                             await _model
                                                                 .waitForRequestCompleted5();
+                                                            _model.carta =
+                                                                await CartsTable()
+                                                                    .queryRows(
+                                                              queryFn: (q) =>
+                                                                  q.eq(
+                                                                'PK_Carts',
+                                                                _model.pageCart
+                                                                    ?.pKCarts,
+                                                              ),
+                                                            );
+                                                            _model.pageCart =
+                                                                _model.carta
+                                                                    ?.first;
                                                             _model.ao4 =
                                                                 await actions
                                                                     .invoiceFromCart(

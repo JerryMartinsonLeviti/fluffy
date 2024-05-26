@@ -3,10 +3,8 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,16 +46,6 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PricePredictorModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.cartInvoiceOut = await actions.invoiceFromCart(
-        widget.cartRow!,
-      );
-      setState(() {
-        _model.cartInvoice = _model.cartInvoiceOut;
-      });
-    });
 
     _model.textController ??= TextEditingController(
         text: valueOrDefault<String>(
@@ -178,18 +166,15 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                             ),
                             Builder(
                               builder: (context) {
-                                final fnbMinsInvoiceLine = _model
+                                final fnbLine = widget
                                         .cartInvoice?.fnbMinimums?.fnbLines
                                         ?.toList() ??
                                     [];
                                 return Column(
                                   mainAxisSize: MainAxisSize.max,
-                                  children:
-                                      List.generate(fnbMinsInvoiceLine.length,
-                                          (fnbMinsInvoiceLineIndex) {
-                                    final fnbMinsInvoiceLineItem =
-                                        fnbMinsInvoiceLine[
-                                            fnbMinsInvoiceLineIndex];
+                                  children: List.generate(fnbLine.length,
+                                      (fnbLineIndex) {
+                                    final fnbLineItem = fnbLine[fnbLineIndex];
                                     return Container(
                                       decoration: BoxDecoration(),
                                       child: Column(
@@ -201,7 +186,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                fnbMinsInvoiceLineItem.fsName,
+                                                fnbLineItem.fsName,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -226,8 +211,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                                 formatNumber(
                                                   functions
                                                       .centsIntToDollarDouble(
-                                                          fnbMinsInvoiceLineItem
-                                                              .fsPrice),
+                                                          fnbLineItem.fsPrice),
                                                   formatType:
                                                       FormatType.decimal,
                                                   decimalType:
@@ -254,7 +238,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                             ),
                             Builder(
                               builder: (context) {
-                                final rentalFeeLine = _model
+                                final rentalFeeLine = widget
                                         .cartInvoice?.rentalFees?.rentalFeeLines
                                         ?.toList() ??
                                     [];
@@ -346,7 +330,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                             ),
                             Builder(
                               builder: (context) {
-                                final packageLine = _model
+                                final packageLine = widget
                                         .cartInvoice?.packages?.packageLines
                                         ?.toList() ??
                                     [];

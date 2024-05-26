@@ -31,7 +31,7 @@ class CartInvoiceStruct extends BaseStruct {
       updateFn(_packages ??= PackageSummaryStruct());
   bool hasPackages() => _packages != null;
 
-  // "fnb_minimums" field.
+  // "fnbMinimums" field.
   FoodAndBevSummaryStruct? _fnbMinimums;
   FoodAndBevSummaryStruct get fnbMinimums =>
       _fnbMinimums ?? FoodAndBevSummaryStruct();
@@ -40,7 +40,7 @@ class CartInvoiceStruct extends BaseStruct {
       updateFn(_fnbMinimums ??= FoodAndBevSummaryStruct());
   bool hasFnbMinimums() => _fnbMinimums != null;
 
-  // "rental_fees" field.
+  // "rentalFees" field.
   RentalFeeSumStruct? _rentalFees;
   RentalFeeSumStruct get rentalFees => _rentalFees ?? RentalFeeSumStruct();
   set rentalFees(RentalFeeSumStruct? val) => _rentalFees = val;
@@ -48,7 +48,7 @@ class CartInvoiceStruct extends BaseStruct {
       updateFn(_rentalFees ??= RentalFeeSumStruct());
   bool hasRentalFees() => _rentalFees != null;
 
-  // "taxes_and_fees" field.
+  // "taxesAndFees" field.
   TaxesAndFeesSummaryStruct? _taxesAndFees;
   TaxesAndFeesSummaryStruct get taxesAndFees =>
       _taxesAndFees ?? TaxesAndFeesSummaryStruct();
@@ -64,7 +64,7 @@ class CartInvoiceStruct extends BaseStruct {
   void incrementSubtotal(int amount) => _subtotal = subtotal + amount;
   bool hasSubtotal() => _subtotal != null;
 
-  // "due_today" field.
+  // "dueToday" field.
   int? _dueToday;
   int get dueToday => _dueToday ?? 0;
   set dueToday(int? val) => _dueToday = val;
@@ -81,12 +81,12 @@ class CartInvoiceStruct extends BaseStruct {
   static CartInvoiceStruct fromMap(Map<String, dynamic> data) =>
       CartInvoiceStruct(
         packages: PackageSummaryStruct.maybeFromMap(data['packages']),
-        fnbMinimums: FoodAndBevSummaryStruct.maybeFromMap(data['fnb_minimums']),
-        rentalFees: RentalFeeSumStruct.maybeFromMap(data['rental_fees']),
+        fnbMinimums: FoodAndBevSummaryStruct.maybeFromMap(data['fnbMinimums']),
+        rentalFees: RentalFeeSumStruct.maybeFromMap(data['rentalFees']),
         taxesAndFees:
-            TaxesAndFeesSummaryStruct.maybeFromMap(data['taxes_and_fees']),
+            TaxesAndFeesSummaryStruct.maybeFromMap(data['taxesAndFees']),
         subtotal: castToType<int>(data['subtotal']),
-        dueToday: castToType<int>(data['due_today']),
+        dueToday: castToType<int>(data['dueToday']),
         total: castToType<int>(data['total']),
       );
 
@@ -96,11 +96,11 @@ class CartInvoiceStruct extends BaseStruct {
 
   Map<String, dynamic> toMap() => {
         'packages': _packages?.toMap(),
-        'fnb_minimums': _fnbMinimums?.toMap(),
-        'rental_fees': _rentalFees?.toMap(),
-        'taxes_and_fees': _taxesAndFees?.toMap(),
+        'fnbMinimums': _fnbMinimums?.toMap(),
+        'rentalFees': _rentalFees?.toMap(),
+        'taxesAndFees': _taxesAndFees?.toMap(),
         'subtotal': _subtotal,
-        'due_today': _dueToday,
+        'dueToday': _dueToday,
         'total': _total,
       }.withoutNulls;
 
@@ -110,15 +110,15 @@ class CartInvoiceStruct extends BaseStruct {
           _packages,
           ParamType.DataStruct,
         ),
-        'fnb_minimums': serializeParam(
+        'fnbMinimums': serializeParam(
           _fnbMinimums,
           ParamType.DataStruct,
         ),
-        'rental_fees': serializeParam(
+        'rentalFees': serializeParam(
           _rentalFees,
           ParamType.DataStruct,
         ),
-        'taxes_and_fees': serializeParam(
+        'taxesAndFees': serializeParam(
           _taxesAndFees,
           ParamType.DataStruct,
         ),
@@ -126,7 +126,7 @@ class CartInvoiceStruct extends BaseStruct {
           _subtotal,
           ParamType.int,
         ),
-        'due_today': serializeParam(
+        'dueToday': serializeParam(
           _dueToday,
           ParamType.int,
         ),
@@ -145,19 +145,19 @@ class CartInvoiceStruct extends BaseStruct {
           structBuilder: PackageSummaryStruct.fromSerializableMap,
         ),
         fnbMinimums: deserializeStructParam(
-          data['fnb_minimums'],
+          data['fnbMinimums'],
           ParamType.DataStruct,
           false,
           structBuilder: FoodAndBevSummaryStruct.fromSerializableMap,
         ),
         rentalFees: deserializeStructParam(
-          data['rental_fees'],
+          data['rentalFees'],
           ParamType.DataStruct,
           false,
           structBuilder: RentalFeeSumStruct.fromSerializableMap,
         ),
         taxesAndFees: deserializeStructParam(
-          data['taxes_and_fees'],
+          data['taxesAndFees'],
           ParamType.DataStruct,
           false,
           structBuilder: TaxesAndFeesSummaryStruct.fromSerializableMap,
@@ -168,7 +168,7 @@ class CartInvoiceStruct extends BaseStruct {
           false,
         ),
         dueToday: deserializeParam(
-          data['due_today'],
+          data['dueToday'],
           ParamType.int,
           false,
         ),

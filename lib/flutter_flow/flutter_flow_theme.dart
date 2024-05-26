@@ -50,8 +50,10 @@ abstract class FlutterFlowTheme {
   late Color customColor11;
   late Color customColor4;
   late Color customColor10;
-  late Color customColor3;
   late Color customColor1;
+  late Color customColor13;
+  late Color customColor15;
+  late Color customColor3;
 
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
@@ -126,19 +128,19 @@ class LightModeTheme extends FlutterFlowTheme {
 
   late Color primary = const Color(0xFFEFA625);
   late Color secondary = const Color(0xFFA05547);
-  late Color tertiary = const Color(0xFFFFCFB1);
+  late Color tertiary = const Color(0xFDEAC489);
   late Color alternate = const Color(0xFF722C2A);
   late Color primaryText = const Color(0xFF474B4E);
   late Color secondaryText = const Color(0xFF57636C);
-  late Color primaryBackground = const Color(0xFFFDF9F4);
-  late Color secondaryBackground = const Color(0xFFFAEFDE);
+  late Color primaryBackground = const Color(0xFFFDF6EA);
+  late Color secondaryBackground = const Color(0xFFFBF6ED);
   late Color accent1 = const Color(0xFFA05547);
   late Color accent2 = const Color(0xFF354E5C);
-  late Color accent3 = const Color(0xFFA1685B);
-  late Color accent4 = const Color(0xFFE07C5A);
+  late Color accent3 = const Color(0xFFB87333);
+  late Color accent4 = const Color(0xFF724A2F);
   late Color success = const Color(0xFF435331);
   late Color warning = const Color(0xFF7A1010);
-  late Color error = const Color(0xFF0B788C);
+  late Color error = const Color(0xFFEB4008);
   late Color info = const Color(0xFFFDF9F4);
 
   late Color customColor2 = Color(0xFFEABEA7);
@@ -155,12 +157,14 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color customColor6 = Color(0xFFDD9944);
   late Color customColor7 = Color(0xFFEC7E01);
   late Color customColor8 = Color(0xFFF4C292);
-  late Color customColor9 = Color(0xFFEAC489);
+  late Color customColor9 = Color(0xFDEAC489);
   late Color customColor11 = Color(0xFF435331);
   late Color customColor4 = Color(0xFF7F8E7B);
   late Color customColor10 = Color(0xFF626F5F);
-  late Color customColor3 = Color(0xFF63804C);
-  late Color customColor1 = Color(0xFF8AAA71);
+  late Color customColor1 = Color(0xFFB97B58);
+  late Color customColor13 = Color(0xFF724A2F);
+  late Color customColor15 = Color(0xFFA1685B);
+  late Color customColor3 = Color(0xFFB97B58);
 }
 
 abstract class Typography {

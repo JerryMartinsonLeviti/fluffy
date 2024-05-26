@@ -13,7 +13,6 @@ import 'package:flutter/material.dart';
 Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   // Add your function code here!
 
-
   PackageSummaryStruct package_summary = PackageSummaryStruct();
   List<PackageLineStruct> package_lines = [];
   package_lines.add(PackageLineStruct());
@@ -21,8 +20,8 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   package_summary.packageLines = package_lines;
 
   List<EventsRow> e = await EventsTable().querySingleRow(
-  queryFn: (q) => q.eq('PK_Events', cart.fKEvent),
-    );
+    queryFn: (q) => q.eq('PK_Events', cart.fKEvent),
+  );
 
   List<VenuesRow> v = await VenuesTable().querySingleRow(
     queryFn: (q) => q.eq('PK_Venues', cart.fKVenue),
@@ -33,7 +32,8 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   int cart_minutes = cart.qtyMinutes;
   int event_guests = e[0].guestCount;
 
-  List<CartFunctionSpaceRow> cfs = await CartFunctionSpaceTable().querySingleRow(
+  List<CartFunctionSpaceRow> cfs =
+      await CartFunctionSpaceTable().querySingleRow(
     queryFn: (q) => q.eq('FK_Cart', cart.pKCarts),
   );
 
@@ -42,17 +42,15 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
     queryFn: (q) => q.eq('PK_FunctionSpaces', cfs[0].fKFunctionSpace),
   );
 
-
   List<CartPackageRow> cp = await CartPackageTable().querySingleRow(
     queryFn: (q) => q.eq('FK_Cart', cart.pKCarts),
   );
 
-// Now get the PackagesRows from the Packages ID's 
+// Now get the PackagesRows from the Packages ID's
   List<PackagesRow> p = await PackagesTable().querySingleRow(
     queryFn: (q) => q.eq('PK_Packages', cp[0].fKPackage),
   );
 
-  
   List<int> extended_price = [];
   for (int i = 0; i < p.length; i++) {
     PackageLineStruct pls = PackageLineStruct();
@@ -75,8 +73,6 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
     queryFn: (q) => q.eq('PK_Venues', cart.fKVenue),
   );
 
-
-
   int total_price = extended_price.reduce((a, b) => a + b);
   List<int> rental_fee = [];
   List<int> food_and_bev_minimum = [];
@@ -96,7 +92,6 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   double gratuity_rate = v[0].gratuityRate;
   double platform_fee_rate = 0.10;
   double payment_fee_rate = 0.035;
- 
 
   // int payment_fee = (subtotal * payment_fee_rate).round() + payment_fee_flat;
   // int total = subtotal + tax + gratuity + platform_fee + payment_fee;
@@ -104,11 +99,8 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
 
   // int price_per_guest = p[0].priceInCents;
 
-
-
   List<RentalFeeLineStruct> rfl = [];
-  List<FnbItemLineStruct> fnbl = [];  
-
+  List<FnbItemLineStruct> fnbl = [];
 
   for (int i = 0; i < fs.length; i++) {
     RentalFeeLineStruct rfls = RentalFeeLineStruct();
@@ -118,8 +110,7 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
     fnbls.fsName = fs[i].functionSpaceName;
     fnbls.fsPrice = fs[i].foodAndBevMinimumInCents;
     rfl.add(rfls);
-    fnbl.add(fnbls);  
-
+    fnbl.add(fnbls);
   }
   RentalFeeSumStruct rfs = RentalFeeSumStruct();
   rfs.rentalFeeLines = rfl;
@@ -135,23 +126,26 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   // Now do taxes and fees
   TaxesAndFeesSummaryStruct tfs = TaxesAndFeesSummaryStruct();
   tfs.taxRate = tax_rate;
-  tfs.taxAmount = subtotal * tax_rate;
+  tfs.taxAmount = (subtotal * tax_rate).toInt();
   tfs.gratuityRate = gratuity_rate;
-  tfs.gratuityAmount = subtotal * gratuity_rate;
+  tfs.gratuityAmount = (subtotal * gratuity_rate).toInt();
   tfs.platformFeeTake = platform_fee_rate;
-  tfs.platformFeeAmount = subtotal * platform_fee_rate;
+  tfs.platformFeeAmount = (subtotal * platform_fee_rate).toInt();
   tfs.processingFee = payment_fee_rate;
-  tfs.processingFeeAmount = subtotal * payment_fee_rate;// + payment_fee_flat;
-  
+  tfs.processingAmount = (subtotal * payment_fee_rate).toInt(); // + payment_fee_flat;
+
   CartInvoiceStruct cart_invoice = CartInvoiceStruct();
   cart_invoice.packages = ps;
   cart_invoice.rentalFees = rfs;
   cart_invoice.fnbMinimums = fns;
   cart_invoice.subtotal = subtotal;
   cart_invoice.taxesAndFees = tfs;
-  cart_invoice.total = subtotal + tfs.taxAmount + tfs.gratuityAmount + tfs.platformFeeAmount + tfs.paymentFeeAmount;
+  cart_invoice.total = subtotal +
+      tfs.taxAmount +
+      tfs.gratuityAmount +
+      tfs.platformFeeAmount +
+      tfs.processingAmount;
   cart_invoice.dueToday = cart_invoice.total ~/ 2;
-
 
   return cart_invoice;
 }

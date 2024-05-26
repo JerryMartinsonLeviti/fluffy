@@ -158,7 +158,7 @@ class _PlannerDashboardWidgetState extends State<PlannerDashboardWidget>
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 40.0),
                       child: Text(
                         'Main Dashboard',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(

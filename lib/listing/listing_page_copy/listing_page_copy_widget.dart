@@ -1192,6 +1192,21 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                 null);
                                                             await _model
                                                                 .waitForRequestCompleted4();
+                                                            _model.cartrf =
+                                                                await CartsTable()
+                                                                    .queryRows(
+                                                              queryFn: (q) =>
+                                                                  q.eq(
+                                                                'PK_Carts',
+                                                                _model.pageCart
+                                                                    ?.pKCarts,
+                                                              ),
+                                                            );
+                                                            setState(() {
+                                                              _model.pageCart =
+                                                                  _model.cartrf
+                                                                      ?.first;
+                                                            });
                                                             _model.ao3Ci =
                                                                 await actions
                                                                     .invoiceFromCart(

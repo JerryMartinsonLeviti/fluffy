@@ -81,6 +81,8 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   // Model for EventSpaceComponent component.
   late EventSpaceComponentModel eventSpaceComponentModel;
   Completer<List<FunctionSpacesRow>>? requestCompleter4;
+  // Stores action output result for [Backend Call - Query Rows] action in EventSpaceComponent widget.
+  List<CartsRow>? cartrf;
   // Stores action output result for [Custom Action - invoiceFromCart] action in EventSpaceComponent widget.
   CartInvoiceStruct? ao3Ci;
   // Model for PackagesComponent component.

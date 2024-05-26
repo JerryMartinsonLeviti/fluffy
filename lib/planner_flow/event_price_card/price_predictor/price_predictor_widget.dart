@@ -22,12 +22,14 @@ class PricePredictorWidget extends StatefulWidget {
     required this.cartRow,
     required this.onRefreshEventDB,
     required this.onRefreshCartDB,
+    required this.cart,
   });
 
   final EventsRow? eventRow;
   final CartsRow? cartRow;
   final Future Function()? onRefreshEventDB;
   final Future Function()? onRefreshCartDB;
+  final CartInvoiceStruct? cart;
 
   @override
   State<PricePredictorWidget> createState() => _PricePredictorWidgetState();

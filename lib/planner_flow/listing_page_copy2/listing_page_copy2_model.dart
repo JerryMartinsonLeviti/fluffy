@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/bottom_ribbon_footer_widget.dart';
 import '/components/product_detail_page_options_language/product_detail_page_options_language_widget.dart';
@@ -18,6 +19,10 @@ class ListingPageCopy2Model extends FlutterFlowModel<ListingPageCopy2Widget> {
   CartsRow? pageCart;
 
   EventsRow? pageEvent;
+
+  CartInvoiceStruct? cartInvoice;
+  void updateCartInvoiceStruct(Function(CartInvoiceStruct) updateFn) =>
+      updateFn(cartInvoice ??= CartInvoiceStruct());
 
   ///  State fields for stateful widgets in this page.
 

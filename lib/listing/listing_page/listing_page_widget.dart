@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/bottom_ribbon_footer_widget.dart';
 import '/components/product_detail_page_options_language/product_detail_page_options_language_widget.dart';
@@ -306,6 +307,7 @@ class _ListingPageWidgetState extends State<ListingPageWidget> {
                                           child: PricePredictorWidget(
                                             eventRow: _model.pageEvent!,
                                             cartRow: _model.pageCart!,
+                                            cart: _model.cartInvoice!,
                                             onRefreshEventDB: () async {},
                                             onRefreshCartDB: () async {},
                                           ),

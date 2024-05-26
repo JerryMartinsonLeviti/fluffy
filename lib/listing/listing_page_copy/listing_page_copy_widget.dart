@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/bottom_ribbon_footer_widget.dart';
 import '/components/event_space_component/event_space_component_widget.dart';
@@ -13,6 +14,7 @@ import '/listing/listing_terms/listing_terms_widget.dart';
 import '/listing/listing_what_is_included/listing_what_is_included_widget.dart';
 import '/planner_flow/event_price_card/price_predictor/price_predictor_widget.dart';
 import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -80,6 +82,13 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
           _model.pageCart = _model.insertCart;
         });
       }
+
+      _model.cartInvoiceActionOutput = await actions.invoiceFromCart(
+        _model.pageCart!,
+      );
+      setState(() {
+        _model.cartInvoice = _model.cartInvoiceActionOutput;
+      });
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -290,6 +299,8 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                     .pageEvent!,
                                                                 cartRow: _model
                                                                     .pageCart!,
+                                                                cart: _model
+                                                                    .cartInvoice!,
                                                                 onRefreshEventDB:
                                                                     () async {},
                                                                 onRefreshCartDB:
@@ -559,9 +570,24 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                             null);
                                                                     await _model
                                                                         .waitForRequestCompleted6();
+                                                                    _model.cartInvoiceActionOutput2 =
+                                                                        await actions
+                                                                            .invoiceFromCart(
+                                                                      _model
+                                                                          .pageCart!,
+                                                                    );
+                                                                    setState(
+                                                                        () {
+                                                                      _model.cartInvoice =
+                                                                          _model
+                                                                              .cartInvoiceActionOutput2;
+                                                                    });
                                                                     FFAppState()
                                                                         .update(
                                                                             () {});
+
+                                                                    setState(
+                                                                        () {});
                                                                   },
                                                                 ),
                                                               ),
@@ -2843,6 +2869,17 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                 null);
                                                             await _model
                                                                 .waitForRequestCompleted4();
+                                                            _model.ao3Ci =
+                                                                await actions
+                                                                    .invoiceFromCart(
+                                                              _model.pageCart!,
+                                                            );
+                                                            setState(() {
+                                                              _model.cartInvoice =
+                                                                  _model.ao3Ci;
+                                                            });
+                                                            setState(() {});
+
                                                             setState(() {});
                                                           },
                                                         ),
@@ -2910,8 +2947,19 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                 null);
                                                             await _model
                                                                 .waitForRequestCompleted5();
+                                                            _model.ao4 =
+                                                                await actions
+                                                                    .invoiceFromCart(
+                                                              _model.pageCart!,
+                                                            );
+                                                            setState(() {
+                                                              _model.cartInvoice =
+                                                                  _model.ao4;
+                                                            });
                                                             FFAppState()
                                                                 .update(() {});
+
+                                                            setState(() {});
                                                           },
                                                         ),
                                                       ),

@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/bottom_ribbon_footer_widget.dart';
 import '/components/event_space_component/event_space_component_widget.dart';
@@ -13,6 +14,7 @@ import '/listing/listing_terms/listing_terms_widget.dart';
 import '/listing/listing_what_is_included/listing_what_is_included_widget.dart';
 import '/planner_flow/event_price_card/price_predictor/price_predictor_widget.dart';
 import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'listing_page_copy_widget.dart' show ListingPageCopyWidget;
@@ -33,6 +35,10 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
 
   EventsRow? pageEvent;
 
+  CartInvoiceStruct? cartInvoice;
+  void updateCartInvoiceStruct(Function(CartInvoiceStruct) updateFn) =>
+      updateFn(cartInvoice ??= CartInvoiceStruct());
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -42,6 +48,8 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   List<CartsRow>? queryCart;
   // Stores action output result for [Backend Call - Insert Row] action in ListingPageCopy widget.
   CartsRow? insertCart;
+  // Stores action output result for [Custom Action - invoiceFromCart] action in ListingPageCopy widget.
+  CartInvoiceStruct? cartInvoiceActionOutput;
   // Model for PlannerAppBarComponent component.
   late PlannerAppBarComponentModel plannerAppBarComponentModel;
   // Model for ListingRestaurantDetailComponent component.
@@ -52,6 +60,8 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   // Model for imageGalleryManagerComponent component.
   late ImageGalleryManagerComponentModel imageGalleryManagerComponentModel1;
   Completer<List<ImageAssetsRow>>? requestCompleter6;
+  // Stores action output result for [Custom Action - invoiceFromCart] action in imageGalleryManagerComponent widget.
+  CartInvoiceStruct? cartInvoiceActionOutput2;
   Completer<List<ImageAssetsRow>>? requestCompleter2;
   Completer<List<VenuesRow>>? requestCompleter3;
   // Model for imageGalleryManagerComponent component.
@@ -71,9 +81,13 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   // Model for EventSpaceComponent component.
   late EventSpaceComponentModel eventSpaceComponentModel;
   Completer<List<FunctionSpacesRow>>? requestCompleter4;
+  // Stores action output result for [Custom Action - invoiceFromCart] action in EventSpaceComponent widget.
+  CartInvoiceStruct? ao3Ci;
   // Model for PackagesComponent component.
   late PackagesComponentModel packagesComponentModel;
   Completer<List<PackagesRow>>? requestCompleter5;
+  // Stores action output result for [Custom Action - invoiceFromCart] action in PackagesComponent widget.
+  CartInvoiceStruct? ao4;
 
   @override
   void initState(BuildContext context) {

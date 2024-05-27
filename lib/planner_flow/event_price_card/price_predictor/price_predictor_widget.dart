@@ -1356,7 +1356,16 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .accent4,
                                                 center: Text(
-                                                  '50%',
+                                                  valueOrDefault<String>(
+                                                    (int total, int budget) {
+                                                      return '${(budget != 0) ? (total / budget * 100).toStringAsFixed(0) : 0}%';
+                                                    }(
+                                                        widget
+                                                            .cartInvoice!.total,
+                                                        widget.eventRow!
+                                                            .budgetInCents),
+                                                    '??%',
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .headlineSmall

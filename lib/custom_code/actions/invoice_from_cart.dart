@@ -14,9 +14,6 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   // Add your function code here!
   PackageSummaryStruct package_summary = PackageSummaryStruct();
   List<PackageLineStruct> package_lines = [];
-  package_lines.add(PackageLineStruct());
-  package_lines[0].packageName = "Dummy Package Line";
-  package_summary.packageLines = package_lines;
 
   List<EventsRow> e = await EventsTable().querySingleRow(
     queryFn: (q) => q.eq('PK_Events', cart.fKEvent),

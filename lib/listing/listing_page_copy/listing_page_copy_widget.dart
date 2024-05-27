@@ -296,7 +296,28 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                 cartInvoice: _model
                                                                     .cartInvoice,
                                                                 onRefreshEventDB:
-                                                                    () async {},
+                                                                    () async {
+                                                                  _model.eventUpdated =
+                                                                      await EventsTable()
+                                                                          .queryRows(
+                                                                    queryFn:
+                                                                        (q) => q
+                                                                            .eq(
+                                                                      'PK_Events',
+                                                                      _model
+                                                                          .pageEvent
+                                                                          ?.pKEvents,
+                                                                    ),
+                                                                  );
+                                                                  setState(() {
+                                                                    _model.pageEvent = _model
+                                                                        .eventUpdated
+                                                                        ?.first;
+                                                                  });
+
+                                                                  setState(
+                                                                      () {});
+                                                                },
                                                                 onRefreshCartDB:
                                                                     () async {},
                                                               ),

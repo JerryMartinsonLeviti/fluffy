@@ -57,6 +57,8 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
       listingRestaurantDetailComponentModel;
   // Model for PricePredictor component.
   late PricePredictorModel pricePredictorModel;
+  // Stores action output result for [Backend Call - Query Rows] action in PricePredictor widget.
+  List<EventsRow>? eventUpdated;
   // Model for imageGalleryManagerComponent component.
   late ImageGalleryManagerComponentModel imageGalleryManagerComponentModel1;
   Completer<List<ImageAssetsRow>>? requestCompleter6;

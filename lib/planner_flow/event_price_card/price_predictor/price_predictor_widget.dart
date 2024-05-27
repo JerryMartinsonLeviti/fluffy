@@ -1170,10 +1170,11 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                                           await EventsTable()
                                                               .update(
                                                             data: {
-                                                              'budgetInCents': int
-                                                                  .tryParse(_model
-                                                                      .textController
-                                                                      .text),
+                                                              'budgetInCents': functions
+                                                                  .stringToCents(
+                                                                      _model
+                                                                          .textController
+                                                                          .text),
                                                             },
                                                             matchingRows:
                                                                 (rows) =>
@@ -1306,20 +1307,19 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                                 alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 children: [
-                                                  if (false)
-                                                    Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Icon(
-                                                        Icons.circle_outlined,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                        size: 140.0,
-                                                      ),
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Icon(
+                                                      Icons.circle_outlined,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      size: 140.0,
                                                     ),
+                                                  ),
                                                   Text(
                                                     'OVER\nBUDGET',
                                                     style: FlutterFlowTheme.of(

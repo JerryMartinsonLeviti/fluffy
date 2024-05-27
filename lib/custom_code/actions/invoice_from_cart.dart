@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom actions
+
 Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   // Add your function code here!
   PackageSummaryStruct package_summary = PackageSummaryStruct();
@@ -66,29 +68,16 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
     pls.extTotal = pls.pricePer * pls.qty;
     pls.pkgType = "Food and/or Beverage";
     package_lines.add(pls);
-    extended_price.add(p[i].priceInCents);
+    extended_price.add(pls.extTotal);
   }
   PackageSummaryStruct ps = PackageSummaryStruct();
   ps.packageLines = package_lines;
   ps.pkgSum = extended_price.fold<int>(0, (int a, int b) => a + b);
 
-  // List<int> rental_fee = [];
-  // List<int> food_and_bev_minimum = [];
-  // for (int i = 0; i < cart_guests; i++) {
-  //   rental_fee.add(fs[0].rentalFeeInCents!);
-  //   food_and_bev_minimum.add(fs[0].foodAndBevMinimumInCents);
-  // }
-
   double tax_rate = v[0].taxRate;
   double gratuity_rate = v[0].gratuityRate;
   double platform_fee_rate = 0.10;
   double payment_fee_rate = 0.035;
-
-  // int payment_fee = (subtotal * payment_fee_rate).round() + payment_fee_flat;
-  // int total = subtotal + tax + gratuity + platform_fee + payment_fee;
-  // int half_payment = total ~/ 2;
-
-  // int price_per_guest = p[0].priceInCents;
 
   List<RentalFeeLineStruct> rfl = [];
   List<FnbItemLineStruct> fnbl = [];
@@ -109,7 +98,6 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
       ? 0
       : rfl.map((rfls) => rfls.rentalFee).reduce((a, b) => a + b);
 
-//  rfs.rentalFeeTotal = rfl.rentalFee.reduce((a, b) => a + b);
   FoodAndBevSummaryStruct fns = FoodAndBevSummaryStruct();
   fns.fnbLines = fnbl;
   fns.fnbSum = fnbl.isEmpty

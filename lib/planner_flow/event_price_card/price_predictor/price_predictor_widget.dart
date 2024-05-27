@@ -1300,44 +1300,72 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                           alignment:
                                               AlignmentDirectional(0.0, 0.0),
                                           children: [
-                                            if (false)
-                                              Align(
+                                            if (widget.cartInvoice!.total >
+                                                widget.eventRow!.budgetInCents)
+                                              Stack(
                                                 alignment: AlignmentDirectional(
                                                     0.0, 0.0),
-                                                child: Icon(
-                                                  Icons.circle_outlined,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .customColor20,
-                                                  size: 140.0,
-                                                ),
-                                              ),
-                                            CircularPercentIndicator(
-                                              percent:
-                                                  widget.cartInvoice!.total /
-                                                      widget.eventRow!
-                                                          .budgetInCents,
-                                              radius: 60.0,
-                                              lineWidth: 12.0,
-                                              animation: true,
-                                              animateFromLastPercent: true,
-                                              progressColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent4,
-                                              center: Text(
-                                                '50%',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineSmall
+                                                children: [
+                                                  if (false)
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Icon(
+                                                        Icons.circle_outlined,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        size: 140.0,
+                                                      ),
+                                                    ),
+                                                  Text(
+                                                    'OVER\nBUDGET',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Outfit',
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
                                                           letterSpacing: 0.0,
                                                         ),
+                                                  ),
+                                                ],
                                               ),
-                                            ),
+                                            if ((int total, int budget) {
+                                              return total <= budget;
+                                            }(widget.cartInvoice!.total,
+                                                widget.eventRow!.budgetInCents))
+                                              CircularPercentIndicator(
+                                                percent:
+                                                    widget.cartInvoice!.total /
+                                                        widget.eventRow!
+                                                            .budgetInCents,
+                                                radius: 60.0,
+                                                lineWidth: 12.0,
+                                                animation: true,
+                                                animateFromLastPercent: true,
+                                                progressColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent4,
+                                                center: Text(
+                                                  '50%',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .headlineSmall
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
                                           ],
                                         ),
                                       ],

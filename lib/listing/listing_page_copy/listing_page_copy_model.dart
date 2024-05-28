@@ -72,14 +72,6 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   // Model for ProductDetailPageOptionsLanguage component.
   late ProductDetailPageOptionsLanguageModel
       productDetailPageOptionsLanguageModel;
-  // Model for ListingWhatIsIncluded component.
-  late ListingWhatIsIncludedModel listingWhatIsIncludedModel;
-  // Model for ListingFAQs component.
-  late ListingFAQsModel listingFAQsModel;
-  // Model for ListingTerms component.
-  late ListingTermsModel listingTermsModel;
-  // Model for BottomRibbon_Footer component.
-  late BottomRibbonFooterModel bottomRibbonFooterModel;
   // Model for EventSpaceComponent component.
   late EventSpaceComponentModel eventSpaceComponentModel;
   Completer<List<FunctionSpacesRow>>? requestCompleter4;
@@ -94,6 +86,14 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
   List<CartsRow>? carta;
   // Stores action output result for [Custom Action - invoiceFromCart] action in PackagesComponent widget.
   CartInvoiceStruct? ao4;
+  // Model for ListingWhatIsIncluded component.
+  late ListingWhatIsIncludedModel listingWhatIsIncludedModel;
+  // Model for ListingFAQs component.
+  late ListingFAQsModel listingFAQsModel;
+  // Model for ListingTerms component.
+  late ListingTermsModel listingTermsModel;
+  // Model for BottomRibbon_Footer component.
+  late BottomRibbonFooterModel bottomRibbonFooterModel;
 
   @override
   void initState(BuildContext context) {
@@ -108,16 +108,16 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
         createModel(context, () => ImageGalleryManagerComponentModel());
     productDetailPageOptionsLanguageModel =
         createModel(context, () => ProductDetailPageOptionsLanguageModel());
+    eventSpaceComponentModel =
+        createModel(context, () => EventSpaceComponentModel());
+    packagesComponentModel =
+        createModel(context, () => PackagesComponentModel());
     listingWhatIsIncludedModel =
         createModel(context, () => ListingWhatIsIncludedModel());
     listingFAQsModel = createModel(context, () => ListingFAQsModel());
     listingTermsModel = createModel(context, () => ListingTermsModel());
     bottomRibbonFooterModel =
         createModel(context, () => BottomRibbonFooterModel());
-    eventSpaceComponentModel =
-        createModel(context, () => EventSpaceComponentModel());
-    packagesComponentModel =
-        createModel(context, () => PackagesComponentModel());
   }
 
   @override
@@ -129,12 +129,12 @@ class ListingPageCopyModel extends FlutterFlowModel<ListingPageCopyWidget> {
     imageGalleryManagerComponentModel1.dispose();
     imageGalleryManagerComponentModel2.dispose();
     productDetailPageOptionsLanguageModel.dispose();
+    eventSpaceComponentModel.dispose();
+    packagesComponentModel.dispose();
     listingWhatIsIncludedModel.dispose();
     listingFAQsModel.dispose();
     listingTermsModel.dispose();
     bottomRibbonFooterModel.dispose();
-    eventSpaceComponentModel.dispose();
-    packagesComponentModel.dispose();
   }
 
   /// Additional helper methods.

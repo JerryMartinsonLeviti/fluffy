@@ -851,6 +851,96 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
                                             ),
+                                            FutureBuilder<
+                                                List<FunctionSpacesRow>>(
+                                              future: (_model
+                                                          .requestCompleter4 ??=
+                                                      Completer<
+                                                          List<
+                                                              FunctionSpacesRow>>()
+                                                        ..complete(
+                                                            FunctionSpacesTable()
+                                                                .queryRows(
+                                                          queryFn: (q) => q
+                                                              .eq(
+                                                                'FK_Venue',
+                                                                widget.venuePK,
+                                                              )
+                                                              .order(
+                                                                  'created_at'),
+                                                        )))
+                                                  .future,
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child: SpinKitChasingDots(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                        size: 50.0,
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                List<FunctionSpacesRow>
+                                                    fsdbFunctionSpacesRowList =
+                                                    snapshot.data!;
+                                                return Container(
+                                                  decoration: BoxDecoration(),
+                                                  child: wrapWithModel(
+                                                    model: _model
+                                                        .eventSpaceComponentModel,
+                                                    updateCallback: () =>
+                                                        setState(() {}),
+                                                    child:
+                                                        EventSpaceComponentWidget(
+                                                      functionSpaceRows:
+                                                          fsdbFunctionSpacesRowList,
+                                                      cart: _model.pageCart!,
+                                                      onSave: () async {
+                                                        setState(() => _model
+                                                                .requestCompleter4 =
+                                                            null);
+                                                        await _model
+                                                            .waitForRequestCompleted4();
+                                                        _model.cartrf =
+                                                            await CartsTable()
+                                                                .queryRows(
+                                                          queryFn: (q) => q.eq(
+                                                            'PK_Carts',
+                                                            _model.pageCart
+                                                                ?.pKCarts,
+                                                          ),
+                                                        );
+                                                        setState(() {
+                                                          _model.pageCart =
+                                                              _model.cartrf
+                                                                  ?.first;
+                                                        });
+                                                        _model.ao3Ci =
+                                                            await actions
+                                                                .invoiceFromCart(
+                                                          _model.pageCart!,
+                                                        );
+                                                        setState(() {
+                                                          _model.cartInvoice =
+                                                              _model.ao3Ci;
+                                                        });
+                                                        FFAppState()
+                                                            .update(() {});
+
+                                                        setState(() {});
+                                                      },
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -887,34 +977,128 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
                                             ),
+                                            FutureBuilder<List<PackagesRow>>(
+                                              future: (_model
+                                                          .requestCompleter5 ??=
+                                                      Completer<
+                                                          List<PackagesRow>>()
+                                                        ..complete(
+                                                            PackagesTable()
+                                                                .queryRows(
+                                                          queryFn: (q) => q
+                                                              .eq(
+                                                                'FK_Vendor',
+                                                                widget.vendorPK,
+                                                              )
+                                                              .order(
+                                                                  'created_at'),
+                                                        )))
+                                                  .future,
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child: SpinKitChasingDots(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                        size: 50.0,
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                List<PackagesRow>
+                                                    packagesPackagesRowList =
+                                                    snapshot.data!;
+                                                return Container(
+                                                  decoration: BoxDecoration(),
+                                                  child: wrapWithModel(
+                                                    model: _model
+                                                        .packagesComponentModel,
+                                                    updateCallback: () =>
+                                                        setState(() {}),
+                                                    child:
+                                                        PackagesComponentWidget(
+                                                      packagesRows:
+                                                          packagesPackagesRowList,
+                                                      cart: _model.pageCart!,
+                                                      dbRefesh: () async {
+                                                        setState(() => _model
+                                                                .requestCompleter5 =
+                                                            null);
+                                                        await _model
+                                                            .waitForRequestCompleted5();
+                                                        _model.carta =
+                                                            await CartsTable()
+                                                                .queryRows(
+                                                          queryFn: (q) => q.eq(
+                                                            'PK_Carts',
+                                                            _model.pageCart
+                                                                ?.pKCarts,
+                                                          ),
+                                                        );
+                                                        _model.pageCart =
+                                                            _model.carta?.first;
+                                                        _model.ao4 =
+                                                            await actions
+                                                                .invoiceFromCart(
+                                                          _model.pageCart!,
+                                                        );
+                                                        setState(() {
+                                                          _model.cartInvoice =
+                                                              _model.ao4;
+                                                        });
+                                                        FFAppState()
+                                                            .update(() {});
+
+                                                        setState(() {});
+                                                      },
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ),
                                           ],
                                         ),
                                       ),
-                                      wrapWithModel(
-                                        model:
-                                            _model.listingWhatIsIncludedModel,
-                                        updateCallback: () => setState(() {}),
-                                        child: ListingWhatIsIncludedWidget(),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
-                                        child: wrapWithModel(
-                                          model: _model.listingFAQsModel,
-                                          updateCallback: () => setState(() {}),
-                                          child: ListingFAQsWidget(
-                                            venkdorPK: widget.vendorPK!,
-                                            venuePK: widget.venuePK!,
+                                      Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          wrapWithModel(
+                                            model: _model
+                                                .listingWhatIsIncludedModel,
+                                            updateCallback: () =>
+                                                setState(() {}),
+                                            child:
+                                                ListingWhatIsIncludedWidget(),
                                           ),
-                                        ),
-                                      ),
-                                      wrapWithModel(
-                                        model: _model.listingTermsModel,
-                                        updateCallback: () => setState(() {}),
-                                        child: ListingTermsWidget(
-                                          vendorPK: widget.vendorPK!,
-                                          venuePK: widget.venuePK!,
-                                        ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: wrapWithModel(
+                                              model: _model.listingFAQsModel,
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              child: ListingFAQsWidget(
+                                                venkdorPK: widget.vendorPK!,
+                                                venuePK: widget.venuePK!,
+                                              ),
+                                            ),
+                                          ),
+                                          wrapWithModel(
+                                            model: _model.listingTermsModel,
+                                            updateCallback: () =>
+                                                setState(() {}),
+                                            child: ListingTermsWidget(
+                                              vendorPK: widget.vendorPK!,
+                                              venuePK: widget.venuePK!,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -1153,192 +1337,6 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                       ],
                                                     ),
                                                   ),
-                                                FutureBuilder<
-                                                    List<FunctionSpacesRow>>(
-                                                  future: (_model
-                                                              .requestCompleter4 ??=
-                                                          Completer<
-                                                              List<
-                                                                  FunctionSpacesRow>>()
-                                                            ..complete(
-                                                                FunctionSpacesTable()
-                                                                    .queryRows(
-                                                              queryFn: (q) => q
-                                                                  .eq(
-                                                                    'FK_Venue',
-                                                                    widget
-                                                                        .venuePK,
-                                                                  )
-                                                                  .order(
-                                                                      'created_at'),
-                                                            )))
-                                                      .future,
-                                                  builder: (context, snapshot) {
-                                                    // Customize what your widget looks like when it's loading.
-                                                    if (!snapshot.hasData) {
-                                                      return Center(
-                                                        child: SizedBox(
-                                                          width: 50.0,
-                                                          height: 50.0,
-                                                          child:
-                                                              SpinKitChasingDots(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondary,
-                                                            size: 50.0,
-                                                          ),
-                                                        ),
-                                                      );
-                                                    }
-                                                    List<FunctionSpacesRow>
-                                                        fsdbFunctionSpacesRowList =
-                                                        snapshot.data!;
-                                                    return Container(
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: wrapWithModel(
-                                                        model: _model
-                                                            .eventSpaceComponentModel,
-                                                        updateCallback: () =>
-                                                            setState(() {}),
-                                                        child:
-                                                            EventSpaceComponentWidget(
-                                                          functionSpaceRows:
-                                                              fsdbFunctionSpacesRowList,
-                                                          cart:
-                                                              _model.pageCart!,
-                                                          onSave: () async {
-                                                            setState(() => _model
-                                                                    .requestCompleter4 =
-                                                                null);
-                                                            await _model
-                                                                .waitForRequestCompleted4();
-                                                            _model.cartrf =
-                                                                await CartsTable()
-                                                                    .queryRows(
-                                                              queryFn: (q) =>
-                                                                  q.eq(
-                                                                'PK_Carts',
-                                                                _model.pageCart
-                                                                    ?.pKCarts,
-                                                              ),
-                                                            );
-                                                            setState(() {
-                                                              _model.pageCart =
-                                                                  _model.cartrf
-                                                                      ?.first;
-                                                            });
-                                                            _model.ao3Ci =
-                                                                await actions
-                                                                    .invoiceFromCart(
-                                                              _model.pageCart!,
-                                                            );
-                                                            setState(() {
-                                                              _model.cartInvoice =
-                                                                  _model.ao3Ci;
-                                                            });
-                                                            FFAppState()
-                                                                .update(() {});
-
-                                                            setState(() {});
-                                                          },
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                ),
-                                                FutureBuilder<
-                                                    List<PackagesRow>>(
-                                                  future: (_model
-                                                              .requestCompleter5 ??=
-                                                          Completer<
-                                                              List<
-                                                                  PackagesRow>>()
-                                                            ..complete(
-                                                                PackagesTable()
-                                                                    .queryRows(
-                                                              queryFn: (q) => q
-                                                                  .eq(
-                                                                    'FK_Vendor',
-                                                                    widget
-                                                                        .vendorPK,
-                                                                  )
-                                                                  .order(
-                                                                      'created_at'),
-                                                            )))
-                                                      .future,
-                                                  builder: (context, snapshot) {
-                                                    // Customize what your widget looks like when it's loading.
-                                                    if (!snapshot.hasData) {
-                                                      return Center(
-                                                        child: SizedBox(
-                                                          width: 50.0,
-                                                          height: 50.0,
-                                                          child:
-                                                              SpinKitChasingDots(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondary,
-                                                            size: 50.0,
-                                                          ),
-                                                        ),
-                                                      );
-                                                    }
-                                                    List<PackagesRow>
-                                                        packagesPackagesRowList =
-                                                        snapshot.data!;
-                                                    return Container(
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: wrapWithModel(
-                                                        model: _model
-                                                            .packagesComponentModel,
-                                                        updateCallback: () =>
-                                                            setState(() {}),
-                                                        child:
-                                                            PackagesComponentWidget(
-                                                          packagesRows:
-                                                              packagesPackagesRowList,
-                                                          cart:
-                                                              _model.pageCart!,
-                                                          dbRefesh: () async {
-                                                            setState(() => _model
-                                                                    .requestCompleter5 =
-                                                                null);
-                                                            await _model
-                                                                .waitForRequestCompleted5();
-                                                            _model.carta =
-                                                                await CartsTable()
-                                                                    .queryRows(
-                                                              queryFn: (q) =>
-                                                                  q.eq(
-                                                                'PK_Carts',
-                                                                _model.pageCart
-                                                                    ?.pKCarts,
-                                                              ),
-                                                            );
-                                                            _model.pageCart =
-                                                                _model.carta
-                                                                    ?.first;
-                                                            _model.ao4 =
-                                                                await actions
-                                                                    .invoiceFromCart(
-                                                              _model.pageCart!,
-                                                            );
-                                                            setState(() {
-                                                              _model.cartInvoice =
-                                                                  _model.ao4;
-                                                            });
-                                                            FFAppState()
-                                                                .update(() {});
-
-                                                            setState(() {});
-                                                          },
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                ),
                                               ],
                                             ),
                                           ),

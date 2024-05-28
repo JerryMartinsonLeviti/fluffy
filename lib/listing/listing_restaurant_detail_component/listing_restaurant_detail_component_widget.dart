@@ -129,331 +129,345 @@ class _ListingRestaurantDetailComponentWidgetState
           ),
           Align(
             alignment: AlignmentDirectional(0.0, -1.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 0.0, 0.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(24.0),
-                      child: Image.network(
-                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/bjcNcUcJFzipGWqoNchx/assets/uy289fi8wx42/Image_5-18-24_at_3.07_PM.jpeg',
-                        width: 581.0,
-                        height: 331.0,
-                        fit: BoxFit.cover,
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(-1.0, 0.0),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 0.0, 0.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(24.0),
+                        child: Image.network(
+                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/bjcNcUcJFzipGWqoNchx/assets/uy289fi8wx42/Image_5-18-24_at_3.07_PM.jpeg',
+                          width: 581.0,
+                          height: 331.0,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      if (widget.vendorRow?.vendorName != null &&
-                          widget.vendorRow?.vendorName != '')
-                        Align(
-                          alignment: AlignmentDirectional(-1.0, -1.0),
-                          child: Text(
-                            valueOrDefault<String>(
-                              widget.vendorRow?.vendorName,
-                              'vend_name',
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  fontSize: 30.0,
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                        ),
-                      if (widget.venueRow?.restaurantLocationName != null &&
-                          widget.venueRow?.restaurantLocationName != '')
-                        Align(
-                          alignment: AlignmentDirectional(-1.0, -1.0),
-                          child: Text(
-                            valueOrDefault<String>(
-                              widget.venueRow?.restaurantLocationName,
-                              'venueName',
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                  fontSize: 30.0,
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                        ),
-                    ].divide(SizedBox(width: 10.0)),
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
-                  child: Padding(
+                  Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 10.0),
-                    child: Text(
-                      'About ',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            fontSize: 26.0,
-                            letterSpacing: 0.0,
+                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        if (widget.vendorRow?.vendorName != null &&
+                            widget.vendorRow?.vendorName != '')
+                          Align(
+                            alignment: AlignmentDirectional(-1.0, -1.0),
+                            child: Text(
+                              valueOrDefault<String>(
+                                widget.vendorRow?.vendorName,
+                                'vend_name',
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    fontSize: 30.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
                           ),
+                        if (widget.venueRow?.restaurantLocationName != null &&
+                            widget.venueRow?.restaurantLocationName != '')
+                          Align(
+                            alignment: AlignmentDirectional(-1.0, -1.0),
+                            child: Text(
+                              valueOrDefault<String>(
+                                widget.venueRow?.restaurantLocationName,
+                                'venueName',
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    fontSize: 30.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                          ),
+                      ].divide(SizedBox(width: 10.0)),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                  child: Wrap(
-                    spacing: 0.0,
-                    runSpacing: 0.0,
-                    alignment: WrapAlignment.start,
-                    crossAxisAlignment: WrapCrossAlignment.start,
-                    direction: Axis.horizontal,
-                    runAlignment: WrapAlignment.start,
-                    verticalDirection: VerticalDirection.down,
-                    clipBehavior: Clip.none,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(),
-                        child: Align(
-                          alignment: AlignmentDirectional(1.0, -1.0),
-                          child: Stack(
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(1.0, -1.0),
-                                child: Stack(
-                                  children: [
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(1.0, -1.0),
+                  Align(
+                    alignment: AlignmentDirectional(-1.0, 0.0),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 10.0),
+                      child: Text(
+                        'About ',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              fontSize: 26.0,
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                    child: Wrap(
+                      spacing: 0.0,
+                      runSpacing: 0.0,
+                      alignment: WrapAlignment.start,
+                      crossAxisAlignment: WrapCrossAlignment.start,
+                      direction: Axis.horizontal,
+                      runAlignment: WrapAlignment.start,
+                      verticalDirection: VerticalDirection.down,
+                      clipBehavior: Clip.none,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(),
+                          child: Align(
+                            alignment: AlignmentDirectional(1.0, -1.0),
+                            child: Stack(
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(1.0, -1.0),
+                                  child: Stack(
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(1.0, -1.0),
+                                        child: Text(
+                                          'VendorDescription',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ),
+                                      if (FFAppState().DevModeEnabled)
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(1.0, -1.0),
+                                          child: Builder(
+                                            builder: (context) => InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child:
+                                                          TextBoxUpdateModalWidget(
+                                                        existingText: widget
+                                                            .vendorRow
+                                                            ?.vendorDescription,
+                                                        onSave:
+                                                            (newText) async {
+                                                          await VendorsTable()
+                                                              .update(
+                                                            data: {
+                                                              'vendor_description':
+                                                                  newText,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'PK_Vendors',
+                                                              widget.vendorRow
+                                                                  ?.pKVendors,
+                                                            ),
+                                                          );
+                                                          setState(() {});
+                                                        },
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
+                                              },
+                                              child: Icon(
+                                                Icons.edit,
+                                                color: Color(0xFF57636C),
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                                if (widget.vendorRow?.vendorDescription !=
+                                        null &&
+                                    widget.vendorRow?.vendorDescription != '')
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 0.0, 30.0, 0.0),
                                       child: Text(
-                                        'VendorDescription',
+                                        valueOrDefault<String>(
+                                          widget.vendorRow?.vendorDescription,
+                                          'vend desc',
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
-                                    if (FFAppState().DevModeEnabled)
+                                  ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(),
+                          child: Align(
+                            alignment: AlignmentDirectional(1.0, -1.0),
+                            child: Stack(
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(1.0, -1.0),
+                                  child: Stack(
+                                    children: [
                                       Align(
                                         alignment:
                                             AlignmentDirectional(1.0, -1.0),
-                                        child: Builder(
-                                          builder: (context) => InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (dialogContext) {
-                                                  return Dialog(
-                                                    elevation: 0,
-                                                    insetPadding:
-                                                        EdgeInsets.zero,
-                                                    backgroundColor:
-                                                        Colors.transparent,
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
-                                                    child:
-                                                        TextBoxUpdateModalWidget(
-                                                      existingText: widget
-                                                          .vendorRow
-                                                          ?.vendorDescription,
-                                                      onSave: (newText) async {
-                                                        await VendorsTable()
-                                                            .update(
-                                                          data: {
-                                                            'vendor_description':
-                                                                newText,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'PK_Vendors',
-                                                            widget.vendorRow
-                                                                ?.pKVendors,
-                                                          ),
-                                                        );
-                                                        setState(() {});
-                                                      },
-                                                    ),
-                                                  );
-                                                },
-                                              ).then(
-                                                  (value) => setState(() {}));
-                                            },
-                                            child: Icon(
-                                              Icons.edit,
-                                              color: Color(0xFF57636C),
-                                              size: 24.0,
+                                        child: Text(
+                                          'VenueDescription',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ),
+                                      if (FFAppState().DevModeEnabled)
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(1.0, -1.0),
+                                          child: Builder(
+                                            builder: (context) => InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child:
+                                                          TextBoxUpdateModalWidget(
+                                                        existingText: widget
+                                                            .venueRow
+                                                            ?.venueDescription,
+                                                        onSave:
+                                                            (newText) async {
+                                                          await VenuesTable()
+                                                              .update(
+                                                            data: {
+                                                              'venue_description':
+                                                                  newText,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) =>
+                                                                    rows.eq(
+                                                              'PK_Venues',
+                                                              widget.venueRow
+                                                                  ?.pKVenues,
+                                                            ),
+                                                          );
+                                                          setState(() {});
+                                                        },
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
+                                              },
+                                              child: Icon(
+                                                Icons.edit,
+                                                color: Color(0xFF57636C),
+                                                size: 24.0,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                  ],
-                                ),
-                              ),
-                              if (widget.vendorRow?.vendorDescription != null &&
-                                  widget.vendorRow?.vendorDescription != '')
-                                Align(
-                                  alignment: AlignmentDirectional(-1.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 0.0, 30.0, 0.0),
-                                    child: Text(
-                                      valueOrDefault<String>(
-                                        widget.vendorRow?.vendorDescription,
-                                        'vend desc',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 18.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
+                                    ],
                                   ),
                                 ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(),
-                        child: Align(
-                          alignment: AlignmentDirectional(1.0, -1.0),
-                          child: Stack(
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(1.0, -1.0),
-                                child: Stack(
-                                  children: [
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(1.0, -1.0),
+                                if (widget.venueRow?.venueDescription != null &&
+                                    widget.venueRow?.venueDescription != '')
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 0.0, 30.0, 0.0),
                                       child: Text(
-                                        'VenueDescription',
+                                        valueOrDefault<String>(
+                                          widget.venueRow?.venueDescription,
+                                          'venue_desc',
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Readex Pro',
+                                              fontSize: 18.0,
                                               letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
-                                    if (FFAppState().DevModeEnabled)
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(1.0, -1.0),
-                                        child: Builder(
-                                          builder: (context) => InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (dialogContext) {
-                                                  return Dialog(
-                                                    elevation: 0,
-                                                    insetPadding:
-                                                        EdgeInsets.zero,
-                                                    backgroundColor:
-                                                        Colors.transparent,
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
-                                                    child:
-                                                        TextBoxUpdateModalWidget(
-                                                      existingText: widget
-                                                          .venueRow
-                                                          ?.venueDescription,
-                                                      onSave: (newText) async {
-                                                        await VenuesTable()
-                                                            .update(
-                                                          data: {
-                                                            'venue_description':
-                                                                newText,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) => rows.eq(
-                                                            'PK_Venues',
-                                                            widget.venueRow
-                                                                ?.pKVenues,
-                                                          ),
-                                                        );
-                                                        setState(() {});
-                                                      },
-                                                    ),
-                                                  );
-                                                },
-                                              ).then(
-                                                  (value) => setState(() {}));
-                                            },
-                                            child: Icon(
-                                              Icons.edit,
-                                              color: Color(0xFF57636C),
-                                              size: 24.0,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ),
-                              if (widget.venueRow?.venueDescription != null &&
-                                  widget.venueRow?.venueDescription != '')
-                                Align(
-                                  alignment: AlignmentDirectional(-1.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 0.0, 30.0, 0.0),
-                                    child: Text(
-                                      valueOrDefault<String>(
-                                        widget.venueRow?.venueDescription,
-                                        'venue_desc',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            fontSize: 18.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
                                   ),
-                                ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Padding(

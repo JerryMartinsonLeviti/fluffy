@@ -141,7 +141,8 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                     ),
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(15.0, 5.0, 15.0, 5.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -277,7 +278,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                     }
                                   },
                                   title: Text(
-                                    'Per Person or Total Event',
+                                    'Pricing',
                                     style: FlutterFlowTheme.of(context)
                                         .titleLarge
                                         .override(
@@ -285,8 +286,16 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                           letterSpacing: 0.0,
                                         ),
                                   ),
-                                  tileColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                  subtitle: Text(
+                                    'per Person/Total Event',
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  tileColor: Color(0xFD2F2B24),
                                   activeColor:
                                       FlutterFlowTheme.of(context).accent1,
                                   activeTrackColor:
@@ -294,6 +303,9 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                   dense: false,
                                   controlAffinity:
                                       ListTileControlAffinity.trailing,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
                                 ),
                                 Container(
                                   decoration: BoxDecoration(),
@@ -671,7 +683,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'SUBTOTAL',
@@ -865,7 +877,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'TOTAL ESTIMATE',
@@ -897,7 +909,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       'TOTAL DUE TODAY',
@@ -928,10 +940,16 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
+                                  child: Wrap(
+                                    spacing: 0.0,
+                                    runSpacing: 0.0,
+                                    alignment: WrapAlignment.start,
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.start,
+                                    direction: Axis.horizontal,
+                                    runAlignment: WrapAlignment.start,
+                                    verticalDirection: VerticalDirection.down,
+                                    clipBehavior: Clip.none,
                                     children: [
                                       Align(
                                         alignment:
@@ -1295,7 +1313,7 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                                 ],
                                               ),
                                             ),
-                                          ].divide(SizedBox(height: 20.0)),
+                                          ].divide(SizedBox(height: 10.0)),
                                         ),
                                         Stack(
                                           alignment:

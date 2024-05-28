@@ -12,30 +12,29 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   // Add your function code here!
-  PackageSummaryStruct package_summary = PackageSummaryStruct();
-  List<PackageLineStruct> package_lines = [];
 
-  List<EventsRow> e = await EventsTable().querySingleRow(
+  // I'd like to do consts and finals where possible
+
+  final List<PackageLineStruct> packageLines = [];
+
+  final List<EventsRow> e = await EventsTable().querySingleRow(
     queryFn: (q) => q.eq('PK_Events', cart.fKEvent),
   );
 
-  List<VenuesRow> v = await VenuesTable().querySingleRow(
+  final List<VenuesRow> v = await VenuesTable().querySingleRow(
     queryFn: (q) => q.eq('PK_Venues', cart.fKVenue),
   );
 
-  int cart_guests = cart.qtyGuests;
-  int cart_miles = cart.qtyMiles;
-  int cart_minutes = cart.qtyMinutes;
-  int event_guests = e[0].guestCount;
-
-  List<CartFunctionSpaceRow> cfs =
+  final List<CartFunctionSpaceRow> cfs =
       await CartFunctionSpaceTable().querySingleRow(
     queryFn: (q) => q.eq('FK_Cart', cart.pKCarts),
   );
 
-  List<FunctionSpacesRow> fs;
+  final List<FunctionSpacesRow> fs;
   if (cfs.isEmpty) {
     fs = [];
     print("No function spaces found");
@@ -45,11 +44,11 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
     );
   }
 
-  List<CartPackageRow> cp = await CartPackageTable().querySingleRow(
+  final List<CartPackageRow> cp = await CartPackageTable().querySingleRow(
     queryFn: (q) => q.eq('FK_Cart', cart.pKCarts),
   );
 
-  List<PackagesRow> p;
+  final List<PackagesRow> p;
   if (cp.isEmpty) {
     p = [];
     print("No packages found");
@@ -59,7 +58,7 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
     );
   }
 
-  List<int> extended_price = [];
+  final List<int> extendedPrice = [];
   for (int i = 0; i < p.length; i++) {
     PackageLineStruct pls = PackageLineStruct();
     pls.packageName = p[i].displayName;
@@ -67,20 +66,20 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
     pls.qty = e[i].guestCount;
     pls.extTotal = pls.pricePer * pls.qty;
     pls.pkgType = "Food and/or Beverage";
-    package_lines.add(pls);
-    extended_price.add(pls.extTotal);
+    packageLines.add(pls);
+    extendedPrice.add(pls.extTotal);
   }
-  PackageSummaryStruct ps = PackageSummaryStruct();
-  ps.packageLines = package_lines;
-  ps.pkgSum = extended_price.fold<int>(0, (int a, int b) => a + b);
+  final PackageSummaryStruct ps = PackageSummaryStruct();
+  ps.packageLines = packageLines;
+  ps.pkgSum = extendedPrice.fold<int>(0, (int a, int b) => a + b);
 
-  double tax_rate = v[0].taxRate;
-  double gratuity_rate = v[0].gratuityRate;
-  double platform_fee_rate = 0.10;
-  double payment_fee_rate = 0.035;
+  double taxRate = v[0].taxRate;
+  double gratuityRate = v[0].gratuityRate;
+  double platformFeeRate = 0.10;
+  double paymentFeeRate = 0.035;
 
-  List<RentalFeeLineStruct> rfl = [];
-  List<FnbItemLineStruct> fnbl = [];
+  final List<RentalFeeLineStruct> rfl = [];
+  final List<FnbItemLineStruct> fnbl = [];
 
   for (int i = 0; i < fs.length; i++) {
     RentalFeeLineStruct rfls = RentalFeeLineStruct();
@@ -92,13 +91,13 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
     rfl.add(rfls);
     fnbl.add(fnbls);
   }
-  RentalFeeSumStruct rfs = RentalFeeSumStruct();
+  final RentalFeeSumStruct rfs = RentalFeeSumStruct();
   rfs.rentalFeeLines = rfl;
   rfs.rentalFeeTotal = rfl.isEmpty
       ? 0
       : rfl.map((rfls) => rfls.rentalFee).reduce((a, b) => a + b);
 
-  FoodAndBevSummaryStruct fns = FoodAndBevSummaryStruct();
+  final FoodAndBevSummaryStruct fns = FoodAndBevSummaryStruct();
   fns.fnbLines = fnbl;
   fns.fnbSum = fnbl.isEmpty
       ? 0
@@ -107,33 +106,33 @@ Future<CartInvoiceStruct> invoiceFromCart(CartsRow cart) async {
   fns.fnbIsMet = ps.pkgSum > fns.fnbSum;
   fns.netFnbAmount = fns.fnbIsMet ? 0 : fns.fnbSum - ps.pkgSum;
 
-  int subtotal = fns.netFnbAmount + rfs.rentalFeeTotal + ps.pkgSum;
+  final int subtotal = fns.netFnbAmount + rfs.rentalFeeTotal + ps.pkgSum;
 
   // Now do taxes and fees
-  TaxesAndFeesSummaryStruct tfs = TaxesAndFeesSummaryStruct();
-  tfs.taxRate = tax_rate;
-  tfs.taxAmount = (subtotal * tax_rate).toInt();
-  tfs.gratuityRate = gratuity_rate;
-  tfs.gratuityAmount = (subtotal * gratuity_rate).toInt();
-  tfs.platformFeeTake = platform_fee_rate;
-  tfs.platformFeeAmount = (subtotal * platform_fee_rate).toInt();
-  tfs.processingFee = payment_fee_rate;
+  final TaxesAndFeesSummaryStruct tfs = TaxesAndFeesSummaryStruct();
+  tfs.taxRate = taxRate;
+  tfs.taxAmount = (subtotal * taxRate).toInt();
+  tfs.gratuityRate = gratuityRate;
+  tfs.gratuityAmount = (subtotal * gratuityRate).toInt();
+  tfs.platformFeeTake = platformFeeRate;
+  tfs.platformFeeAmount = (subtotal * platformFeeRate).toInt();
+  tfs.processingFee = paymentFeeRate;
   tfs.processingAmount =
-      (subtotal * payment_fee_rate).toInt(); // + payment_fee_flat;
+      (subtotal * paymentFeeRate).toInt(); // + payment_fee_flat;
 
-  CartInvoiceStruct cart_invoice = CartInvoiceStruct();
-  cart_invoice.packages = ps;
-  cart_invoice.rentalFees = rfs;
-  cart_invoice.fnbMinimums = fns;
-  cart_invoice.subtotal = subtotal;
-  cart_invoice.taxesAndFees = tfs;
-  cart_invoice.total = subtotal +
+  CartInvoiceStruct cartInvoice = CartInvoiceStruct();
+  cartInvoice.packages = ps;
+  cartInvoice.rentalFees = rfs;
+  cartInvoice.fnbMinimums = fns;
+  cartInvoice.subtotal = subtotal;
+  cartInvoice.taxesAndFees = tfs;
+  cartInvoice.total = subtotal +
       tfs.taxAmount +
       tfs.gratuityAmount +
       tfs.platformFeeAmount +
       tfs.processingAmount;
-  cart_invoice.dueToday = cart_invoice.total ~/ 2;
-  print(cart_invoice.toMap());
-  print("Cart Invoice: $cart_invoice");
-  return cart_invoice;
+  cartInvoice.dueToday = cartInvoice.total ~/ 2;
+  print(cartInvoice.toMap());
+  print("Cart Invoice: $cartInvoice");
+  return cartInvoice;
 }

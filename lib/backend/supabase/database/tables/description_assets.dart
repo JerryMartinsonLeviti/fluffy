@@ -31,4 +31,13 @@ class DescriptionAssetsRow extends SupabaseDataRow {
 
   bool get whatsIncluded => getField<bool>('whats_included')!;
   set whatsIncluded(bool value) => setField<bool>('whats_included', value);
+
+  int? get fKVendor => getField<int>('FK_Vendor');
+  set fKVendor(int? value) => setField<int>('FK_Vendor', value);
+
+  int? get fKVenue => getField<int>('FK_Venue');
+  set fKVenue(int? value) => setField<int>('FK_Venue', value);
+
+  bool get hide => getField<bool>('hide')!;
+  set hide(bool value) => setField<bool>('hide', value);
 }

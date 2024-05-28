@@ -201,6 +201,7 @@ class _ListingFAQsWidgetState extends State<ListingFAQsWidget> {
                                       setState(
                                           () => _model.requestCompleter = null);
                                       await _model.waitForRequestCompleted();
+                                      FFAppState().update(() {});
                                     },
                                     onDelete: () async {
                                       await FaqAssetsTable().delete(
@@ -238,82 +239,6 @@ class _ListingFAQsWidgetState extends State<ListingFAQsWidget> {
                       ),
                     );
                   },
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Can I add extra hours to my event beyond the listed duration?',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Is there valet parking for guests?',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Can I adjust my headcount once I have booked my event?',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
                 ),
               ),
             ],

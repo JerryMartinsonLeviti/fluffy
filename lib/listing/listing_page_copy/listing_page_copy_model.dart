@@ -2,7 +2,6 @@ import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/bottom_ribbon_footer_widget.dart';
 import '/components/event_space_component/event_space_component_widget.dart';
-import '/components/icon_financials/icon_financials_widget.dart';
 import '/components/image_gallery_manager_component_widget.dart';
 import '/components/packages_component/packages_component_widget.dart';
 import '/components/product_detail_page_options_language/product_detail_page_options_language_widget.dart';

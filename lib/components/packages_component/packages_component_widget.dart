@@ -15,7 +15,7 @@ class PackagesComponentWidget extends StatefulWidget {
     super.key,
     required this.packagesRows,
     required this.dbRefesh,
-    required this.cart,
+    this.cart,
   });
 
   final List<PackagesRow>? packagesRows;

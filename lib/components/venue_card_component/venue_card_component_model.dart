@@ -9,6 +9,13 @@ import 'package:provider/provider.dart';
 
 class VenueCardComponentModel
     extends FlutterFlowModel<VenueCardComponentWidget> {
+  ///  State fields for stateful widgets in this component.
+
+  // Stores action output result for [Backend Call - Query Rows] action in Container widget.
+  List<CartsRow>? cartrows;
+  // Stores action output result for [Backend Call - Insert Row] action in Container widget.
+  CartsRow? newCart;
+
   @override
   void initState(BuildContext context) {}
 

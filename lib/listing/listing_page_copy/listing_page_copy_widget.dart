@@ -30,7 +30,7 @@ class ListingPageCopyWidget extends StatefulWidget {
     super.key,
     required this.venuePK,
     required this.vendorPK,
-    this.cartPK,
+    required this.cartPK,
   });
 
   final int? venuePK;

@@ -47,6 +47,8 @@ class _VenueCardComponentWidgetState extends State<VenueCardComponentWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return FutureBuilder<List<VendorsRow>>(
       future: VendorsTable().querySingleRow(
         queryFn: (q) => q.eq(
@@ -78,19 +80,63 @@ class _VenueCardComponentWidgetState extends State<VenueCardComponentWidget> {
           hoverColor: Colors.transparent,
           highlightColor: Colors.transparent,
           onTap: () async {
-            context.pushNamed(
-              'ListingPageCopy',
-              queryParameters: {
-                'venuePK': serializeParam(
-                  widget.venueRow?.pKVenues,
-                  ParamType.int,
-                ),
-                'vendorPK': serializeParam(
-                  containerVendorsRow?.pKVendors,
-                  ParamType.int,
-                ),
-              }.withoutNulls,
+            _model.cartrows = await CartsTable().queryRows(
+              queryFn: (q) => q
+                  .eq(
+                    'FK_Venue',
+                    widget.venueRow?.pKVenues,
+                  )
+                  .eq(
+                    'FK_Event',
+                    FFAppState().PKActiveEvent,
+                  ),
             );
+            if ((_model.cartrows != null && (_model.cartrows)!.isNotEmpty) ==
+                true) {
+              context.pushNamed(
+                'ListingPageCopy',
+                queryParameters: {
+                  'venuePK': serializeParam(
+                    widget.venueRow?.pKVenues,
+                    ParamType.int,
+                  ),
+                  'vendorPK': serializeParam(
+                    containerVendorsRow?.pKVendors,
+                    ParamType.int,
+                  ),
+                  'cartPK': serializeParam(
+                    _model.cartrows?.first?.pKCarts,
+                    ParamType.int,
+                  ),
+                }.withoutNulls,
+              );
+            } else {
+              _model.newCart = await CartsTable().insert({
+                'FK_Event': FFAppState().PKActiveEvent,
+                'FK_Venue': widget.venueRow?.pKVenues,
+                'cart_name': 'new cart',
+              });
+
+              context.pushNamed(
+                'ListingPageCopy',
+                queryParameters: {
+                  'venuePK': serializeParam(
+                    widget.venueRow?.pKVenues,
+                    ParamType.int,
+                  ),
+                  'vendorPK': serializeParam(
+                    containerVendorsRow?.pKVendors,
+                    ParamType.int,
+                  ),
+                  'cartPK': serializeParam(
+                    _model.newCart?.pKCarts,
+                    ParamType.int,
+                  ),
+                }.withoutNulls,
+              );
+            }
+
+            setState(() {});
           },
           child: Container(
             width: 200.0,

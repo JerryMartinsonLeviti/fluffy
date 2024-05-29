@@ -94,7 +94,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
           'FK_Venue': widget.venuePK,
           'qtyGuests': _model.pageEvent?.guestCount,
         });
-        _model.pageCart = _model.insertCart;
+        _model.pageCart = _model.pageCart;
       }
 
       _model.cartInvoiceActionOutput = await actions.invoiceFromCart(

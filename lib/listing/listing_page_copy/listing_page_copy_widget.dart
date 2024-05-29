@@ -293,19 +293,17 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                             ),
                                                           ),
                                                         ),
-                                                        Expanded(
-                                                          child: Container(
-                                                            width: 380.0,
-                                                            constraints:
-                                                                BoxConstraints(
-                                                              maxWidth: 380.0,
-                                                            ),
-                                                            decoration:
-                                                                BoxDecoration(),
-                                                            child: Visibility(
-                                                              visible: _model
-                                                                      .pageCart !=
-                                                                  null,
+                                                        if (_model.pageCart !=
+                                                            null)
+                                                          Expanded(
+                                                            child: Container(
+                                                              width: 380.0,
+                                                              constraints:
+                                                                  BoxConstraints(
+                                                                maxWidth: 380.0,
+                                                              ),
+                                                              decoration:
+                                                                  BoxDecoration(),
                                                               child:
                                                                   wrapWithModel(
                                                                 model: _model
@@ -352,7 +350,6 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
                                                       ],
                                                     ),
                                                   ),

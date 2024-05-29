@@ -57,11 +57,11 @@ class _ListingWhatIsIncludedWidgetState
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
         child: Row(
-          mainAxisSize: MainAxisSize.max,
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Row(
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
@@ -79,7 +79,7 @@ class _ListingWhatIsIncludedWidgetState
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                   child: Column(
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
                         'What\'s Included',
@@ -90,7 +90,7 @@ class _ListingWhatIsIncludedWidgetState
                             ),
                       ),
                       Column(
-                        mainAxisSize: MainAxisSize.max,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -174,10 +174,10 @@ class _ListingWhatIsIncludedWidgetState
                           return Container(
                             decoration: BoxDecoration(),
                             child: Column(
-                              mainAxisSize: MainAxisSize.max,
+                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 Row(
-                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisSize: MainAxisSize.min,
                                   children: [
                                     InkWell(
                                       splashColor: Colors.transparent,
@@ -215,7 +215,7 @@ class _ListingWhatIsIncludedWidgetState
                                         wEDBVendorDescriptionAssetsRowList
                                             .toList();
                                     return Column(
-                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisSize: MainAxisSize.min,
                                       children: List.generate(
                                           whatsIncludedItem.length,
                                           (whatsIncludedItemIndex) {

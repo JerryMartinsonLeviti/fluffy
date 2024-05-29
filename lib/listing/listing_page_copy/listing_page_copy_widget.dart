@@ -74,6 +74,18 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
           'FK_Venue': widget.venuePK,
           'qtyGuests': _model.pageEvent?.guestCount,
         });
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Adding new cart',
+              style: TextStyle(
+                color: FlutterFlowTheme.of(context).primaryText,
+              ),
+            ),
+            duration: Duration(milliseconds: 4000),
+            backgroundColor: FlutterFlowTheme.of(context).secondary,
+          ),
+        );
         _model.pageCart = _model.insertCart;
       }
 

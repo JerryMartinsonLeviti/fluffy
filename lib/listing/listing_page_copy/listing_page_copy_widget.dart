@@ -941,6 +941,18 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                     Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
+                                        Text(
+                                          valueOrDefault<String>(
+                                            widget.cartPK?.toString(),
+                                            'x',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
                                         Align(
                                           alignment:
                                               AlignmentDirectional(-1.0, 0.0),

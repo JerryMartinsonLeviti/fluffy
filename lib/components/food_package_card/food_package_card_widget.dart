@@ -18,7 +18,7 @@ class FoodPackageCardWidget extends StatefulWidget {
     super.key,
     required this.packageRow,
     required this.dbRefresh,
-    this.cart,
+    required this.cart,
     required this.onSelectChange,
   });
 

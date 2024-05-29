@@ -60,7 +60,6 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
           FFAppState().PKActiveEvent,
         ),
       );
-      _model.pageEvent = _model.event?.first;
       await showDialog(
         context: context,
         builder: (dialogContext) {
@@ -100,6 +99,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
       _model.cartInvoiceActionOutput = await actions.invoiceFromCart(
         _model.pageCart!,
       );
+      _model.pageEvent = _model.event?.first;
       setState(() {
         _model.cartInvoice = _model.cartInvoiceActionOutput;
       });

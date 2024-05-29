@@ -132,7 +132,7 @@ class _PackagesComponentWidgetState extends State<PackagesComponentWidget> {
                       key: Key(
                           'Keyw2u_${packagesIdxIndex}_of_${packagesIdx.length}'),
                       packageRow: packagesIdxItem,
-                      cart: widget.cart!,
+                      cart: widget.cart,
                       dbRefresh: () async {
                         FFAppState().update(() {});
                         await widget.dbRefesh?.call();

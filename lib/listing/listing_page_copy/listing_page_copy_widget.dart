@@ -804,66 +804,211 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                           );
                         },
                       ),
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 30.0, 0.0, 20.0),
-                                    child: wrapWithModel(
-                                      model: _model
-                                          .productDetailPageOptionsLanguageModel,
-                                      updateCallback: () => setState(() {}),
-                                      child:
-                                          ProductDetailPageOptionsLanguageWidget(),
+                      if (_model.pageCart != null)
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  child: Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 30.0, 0.0, 20.0),
+                                      child: wrapWithModel(
+                                        model: _model
+                                            .productDetailPageOptionsLanguageModel,
+                                        updateCallback: () => setState(() {}),
+                                        child:
+                                            ProductDetailPageOptionsLanguageWidget(),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Container(
-                                width: double.infinity,
-                                height: 2876.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 1.0, 0.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 0.0, 0.0, 0.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
+                                Container(
+                                  width: double.infinity,
+                                  height: 2876.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 1.0, 0.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20.0, 0.0, 0.0, 0.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    -1.0, 0.0),
+                                                child: Text(
+                                                  'Function Spaces',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        fontSize: 28.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ),
+                                              Divider(
+                                                thickness: 2.0,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                              ),
+                                              FutureBuilder<
+                                                  List<FunctionSpacesRow>>(
+                                                future: (_model
+                                                            .requestCompleter4 ??=
+                                                        Completer<
+                                                            List<
+                                                                FunctionSpacesRow>>()
+                                                          ..complete(
+                                                              FunctionSpacesTable()
+                                                                  .queryRows(
+                                                            queryFn: (q) => q
+                                                                .eq(
+                                                                  'FK_Venue',
+                                                                  widget
+                                                                      .venuePK,
+                                                                )
+                                                                .order(
+                                                                    'created_at'),
+                                                          )))
+                                                    .future,
+                                                builder: (context, snapshot) {
+                                                  // Customize what your widget looks like when it's loading.
+                                                  if (!snapshot.hasData) {
+                                                    return Center(
+                                                      child: SizedBox(
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        child:
+                                                            SpinKitChasingDots(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondary,
+                                                          size: 50.0,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                  List<FunctionSpacesRow>
+                                                      fsdbFunctionSpacesRowList =
+                                                      snapshot.data!;
+                                                  return Container(
+                                                    decoration: BoxDecoration(),
+                                                    child: Visibility(
+                                                      visible: true,
+                                                      child: wrapWithModel(
+                                                        model: _model
+                                                            .eventSpaceComponentModel,
+                                                        updateCallback: () =>
+                                                            setState(() {}),
+                                                        child:
+                                                            EventSpaceComponentWidget(
+                                                          functionSpaceRows:
+                                                              fsdbFunctionSpacesRowList,
+                                                          cart:
+                                                              _model.pageCart!,
+                                                          onSave: () async {
+                                                            setState(() => _model
+                                                                    .requestCompleter4 =
+                                                                null);
+                                                            await _model
+                                                                .waitForRequestCompleted4();
+                                                            _model.cartrf =
+                                                                await CartsTable()
+                                                                    .queryRows(
+                                                              queryFn: (q) =>
+                                                                  q.eq(
+                                                                'PK_Carts',
+                                                                _model.pageCart
+                                                                    ?.pKCarts,
+                                                              ),
+                                                            );
+                                                            setState(() {
+                                                              _model.pageCart =
+                                                                  _model.cartrf
+                                                                      ?.first;
+                                                            });
+                                                            _model.ao3Ci =
+                                                                await actions
+                                                                    .invoiceFromCart(
+                                                              _model.pageCart!,
+                                                            );
+                                                            setState(() {
+                                                              _model.cartInvoice =
+                                                                  _model.ao3Ci;
+                                                            });
+                                                            FFAppState()
+                                                                .update(() {});
+
+                                                            setState(() {});
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
                                           children: [
+                                            Text(
+                                              valueOrDefault<String>(
+                                                widget.cartPK?.toString(),
+                                                'x',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
                                             Align(
                                               alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
-                                              child: Text(
-                                                'Function Spaces',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          fontSize: 28.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 30.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Packages',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        fontSize: 35.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
                                               ),
                                             ),
                                             Divider(
@@ -872,66 +1017,64 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
                                             ),
-                                            FutureBuilder<
-                                                List<FunctionSpacesRow>>(
-                                              future: (_model
-                                                          .requestCompleter4 ??=
-                                                      Completer<
-                                                          List<
-                                                              FunctionSpacesRow>>()
-                                                        ..complete(
-                                                            FunctionSpacesTable()
-                                                                .queryRows(
-                                                          queryFn: (q) => q
-                                                              .eq(
-                                                                'FK_Venue',
-                                                                widget.venuePK,
-                                                              )
-                                                              .order(
-                                                                  'created_at'),
-                                                        )))
-                                                  .future,
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 50.0,
-                                                      height: 50.0,
-                                                      child: SpinKitChasingDots(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondary,
-                                                        size: 50.0,
+                                            if (true)
+                                              FutureBuilder<List<PackagesRow>>(
+                                                future: (_model
+                                                            .requestCompleter5 ??=
+                                                        Completer<
+                                                            List<PackagesRow>>()
+                                                          ..complete(
+                                                              PackagesTable()
+                                                                  .queryRows(
+                                                            queryFn: (q) => q
+                                                                .eq(
+                                                                  'FK_Vendor',
+                                                                  widget
+                                                                      .vendorPK,
+                                                                )
+                                                                .order(
+                                                                    'created_at'),
+                                                          )))
+                                                    .future,
+                                                builder: (context, snapshot) {
+                                                  // Customize what your widget looks like when it's loading.
+                                                  if (!snapshot.hasData) {
+                                                    return Center(
+                                                      child: SizedBox(
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        child:
+                                                            SpinKitChasingDots(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondary,
+                                                          size: 50.0,
+                                                        ),
                                                       ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<FunctionSpacesRow>
-                                                    fsdbFunctionSpacesRowList =
-                                                    snapshot.data!;
-                                                return Container(
-                                                  decoration: BoxDecoration(),
-                                                  child: Visibility(
-                                                    visible: true,
+                                                    );
+                                                  }
+                                                  List<PackagesRow>
+                                                      packagesPackagesRowList =
+                                                      snapshot.data!;
+                                                  return Container(
+                                                    decoration: BoxDecoration(),
                                                     child: wrapWithModel(
                                                       model: _model
-                                                          .eventSpaceComponentModel,
+                                                          .packagesComponentModel,
                                                       updateCallback: () =>
                                                           setState(() {}),
                                                       child:
-                                                          EventSpaceComponentWidget(
-                                                        functionSpaceRows:
-                                                            fsdbFunctionSpacesRowList,
+                                                          PackagesComponentWidget(
+                                                        packagesRows:
+                                                            packagesPackagesRowList,
                                                         cart: _model.pageCart!,
-                                                        onSave: () async {
+                                                        dbRefesh: () async {
                                                           setState(() => _model
-                                                                  .requestCompleter4 =
+                                                                  .requestCompleter5 =
                                                               null);
                                                           await _model
-                                                              .waitForRequestCompleted4();
-                                                          _model.cartrf =
+                                                              .waitForRequestCompleted5();
+                                                          _model.carta =
                                                               await CartsTable()
                                                                   .queryRows(
                                                             queryFn: (q) =>
@@ -941,19 +1084,17 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                   ?.pKCarts,
                                                             ),
                                                           );
-                                                          setState(() {
-                                                            _model.pageCart =
-                                                                _model.cartrf
-                                                                    ?.first;
-                                                          });
-                                                          _model.ao3Ci =
+                                                          _model.pageCart =
+                                                              _model
+                                                                  .carta?.first;
+                                                          _model.ao4 =
                                                               await actions
                                                                   .invoiceFromCart(
                                                             _model.pageCart!,
                                                           );
                                                           setState(() {
                                                             _model.cartInvoice =
-                                                                _model.ao3Ci;
+                                                                _model.ao4;
                                                           });
                                                           FFAppState()
                                                               .update(() {});
@@ -962,435 +1103,289 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                         },
                                                       ),
                                                     ),
-                                                  ),
-                                                );
-                                              },
-                                            ),
+                                                  );
+                                                },
+                                              ),
                                           ],
                                         ),
-                                      ),
-                                      Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Text(
-                                            valueOrDefault<String>(
-                                              widget.cartPK?.toString(),
-                                              'x',
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Readex Pro',
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 30.0, 0.0, 0.0),
-                                              child: Text(
-                                                'Packages',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          fontSize: 35.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                          Divider(
-                                            thickness: 2.0,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                          ),
-                                          if (true)
-                                            FutureBuilder<List<PackagesRow>>(
-                                              future: (_model
-                                                          .requestCompleter5 ??=
-                                                      Completer<
-                                                          List<PackagesRow>>()
-                                                        ..complete(
-                                                            PackagesTable()
-                                                                .queryRows(
-                                                          queryFn: (q) => q
-                                                              .eq(
-                                                                'FK_Vendor',
-                                                                widget.vendorPK,
-                                                              )
-                                                              .order(
-                                                                  'created_at'),
-                                                        )))
-                                                  .future,
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 50.0,
-                                                      height: 50.0,
-                                                      child: SpinKitChasingDots(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondary,
-                                                        size: 50.0,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<PackagesRow>
-                                                    packagesPackagesRowList =
-                                                    snapshot.data!;
-                                                return Container(
-                                                  decoration: BoxDecoration(),
-                                                  child: wrapWithModel(
-                                                    model: _model
-                                                        .packagesComponentModel,
-                                                    updateCallback: () =>
-                                                        setState(() {}),
-                                                    child:
-                                                        PackagesComponentWidget(
-                                                      packagesRows:
-                                                          packagesPackagesRowList,
-                                                      cart: _model.pageCart!,
-                                                      dbRefesh: () async {
-                                                        setState(() => _model
-                                                                .requestCompleter5 =
-                                                            null);
-                                                        await _model
-                                                            .waitForRequestCompleted5();
-                                                        _model.carta =
-                                                            await CartsTable()
-                                                                .queryRows(
-                                                          queryFn: (q) => q.eq(
-                                                            'PK_Carts',
-                                                            _model.pageCart
-                                                                ?.pKCarts,
-                                                          ),
-                                                        );
-                                                        _model.pageCart =
-                                                            _model.carta?.first;
-                                                        _model.ao4 =
-                                                            await actions
-                                                                .invoiceFromCart(
-                                                          _model.pageCart!,
-                                                        );
-                                                        setState(() {
-                                                          _model.cartInvoice =
-                                                              _model.ao4;
-                                                        });
-                                                        FFAppState()
-                                                            .update(() {});
-
-                                                        setState(() {});
-                                                      },
-                                                    ),
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                        ],
-                                      ),
-                                      Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          wrapWithModel(
-                                            model: _model
-                                                .listingWhatIsIncludedModel,
-                                            updateCallback: () =>
-                                                setState(() {}),
-                                            child:
-                                                ListingWhatIsIncludedWidget(),
-                                          ),
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: wrapWithModel(
-                                              model: _model.listingFAQsModel,
+                                        Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            wrapWithModel(
+                                              model: _model
+                                                  .listingWhatIsIncludedModel,
                                               updateCallback: () =>
                                                   setState(() {}),
-                                              child: ListingFAQsWidget(
-                                                venkdorPK: widget.vendorPK!,
+                                              child:
+                                                  ListingWhatIsIncludedWidget(),
+                                            ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: wrapWithModel(
+                                                model: _model.listingFAQsModel,
+                                                updateCallback: () =>
+                                                    setState(() {}),
+                                                child: ListingFAQsWidget(
+                                                  venkdorPK: widget.vendorPK!,
+                                                  venuePK: widget.venuePK!,
+                                                ),
+                                              ),
+                                            ),
+                                            wrapWithModel(
+                                              model: _model.listingTermsModel,
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              child: ListingTermsWidget(
+                                                vendorPK: widget.vendorPK!,
                                                 venuePK: widget.venuePK!,
                                               ),
                                             ),
-                                          ),
-                                          wrapWithModel(
-                                            model: _model.listingTermsModel,
-                                            updateCallback: () =>
-                                                setState(() {}),
-                                            child: ListingTermsWidget(
-                                              vendorPK: widget.vendorPK!,
-                                              venuePK: widget.venuePK!,
+                                          ],
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 30.0, 0.0, 0.0),
+                                            child: wrapWithModel(
+                                              model: _model
+                                                  .bottomRibbonFooterModel,
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              child: BottomRibbonFooterWidget(),
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 30.0, 0.0, 0.0),
-                                          child: wrapWithModel(
-                                            model:
-                                                _model.bottomRibbonFooterModel,
-                                            updateCallback: () =>
-                                                setState(() {}),
-                                            child: BottomRibbonFooterWidget(),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                FutureBuilder<List<VacvRow>>(
+                                  future: VacvTable().queryRows(
+                                    queryFn: (q) => q.eq(
+                                      'PK_ParentVendor',
+                                      widget.vendorPK,
+                                    ),
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: SpinKitChasingDots(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            size: 50.0,
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              FutureBuilder<List<VacvRow>>(
-                                future: VacvTable().queryRows(
-                                  queryFn: (q) => q.eq(
-                                    'PK_ParentVendor',
-                                    widget.vendorPK,
-                                  ),
-                                ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: SpinKitChasingDots(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          size: 50.0,
+                                      );
+                                    }
+                                    List<VacvRow> containerVacvRowList =
+                                        snapshot.data!;
+                                    return Container(
+                                      decoration: BoxDecoration(),
+                                      child: FutureBuilder<List<EventsRow>>(
+                                        future: EventsTable().querySingleRow(
+                                          queryFn: (q) => q.eq(
+                                            'PK_Events',
+                                            FFAppState().PKActiveEvent,
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  }
-                                  List<VacvRow> containerVacvRowList =
-                                      snapshot.data!;
-                                  return Container(
-                                    decoration: BoxDecoration(),
-                                    child: FutureBuilder<List<EventsRow>>(
-                                      future: EventsTable().querySingleRow(
-                                        queryFn: (q) => q.eq(
-                                          'PK_Events',
-                                          FFAppState().PKActiveEvent,
-                                        ),
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: SpinKitChasingDots(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
-                                                size: 50.0,
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child: SpinKitChasingDots(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondary,
+                                                  size: 50.0,
+                                                ),
                                               ),
+                                            );
+                                          }
+                                          List<EventsRow>
+                                              containerEventsRowList =
+                                              snapshot.data!;
+                                          final containerEventsRow =
+                                              containerEventsRowList.isNotEmpty
+                                                  ? containerEventsRowList.first
+                                                  : null;
+                                          return Container(
+                                            constraints: BoxConstraints(
+                                              minWidth: 380.0,
+                                            ),
+                                            decoration: BoxDecoration(),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                if (false)
+                                                  Container(
+                                                    decoration: BoxDecoration(),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Builder(
+                                                          builder: (context) {
+                                                            final idx =
+                                                                containerVacvRowList
+                                                                    .toList();
+                                                            return Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                              children:
+                                                                  List.generate(
+                                                                      idx.length,
+                                                                      (idxIndex) {
+                                                                final idxItem =
+                                                                    idx[idxIndex];
+                                                                return Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  children: [
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children:
+                                                                          [
+                                                                        Text(
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                            idxItem.pKParentVendor?.toString(),
+                                                                            'no Parent',
+                                                                          ),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                letterSpacing: 0.0,
+                                                                              ),
+                                                                        ),
+                                                                        Text(
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                            idxItem.pKImageAssets?.toString(),
+                                                                            'no Image Key',
+                                                                          ),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                letterSpacing: 0.0,
+                                                                              ),
+                                                                        ),
+                                                                      ].divide(SizedBox(width: 10.0)).around(
+                                                                              SizedBox(width: 10.0)),
+                                                                    ),
+                                                                    Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .min,
+                                                                      children: [],
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              }),
+                                                            );
+                                                          },
+                                                        ),
+                                                        Builder(
+                                                          builder: (context) {
+                                                            final idx2 = functions
+                                                                    .filterVacv(
+                                                                        containerVacvRowList
+                                                                            .toList(),
+                                                                        'PK_ImageAssets')
+                                                                    ?.toList() ??
+                                                                [];
+                                                            return Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                              children:
+                                                                  List.generate(
+                                                                      idx2.length,
+                                                                      (idx2Index) {
+                                                                final idx2Item =
+                                                                    idx2[
+                                                                        idx2Index];
+                                                                return Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  children: [
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children:
+                                                                          [
+                                                                        Text(
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                            idx2Item.pKParentVendor?.toString(),
+                                                                            'no Parent',
+                                                                          ),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                letterSpacing: 0.0,
+                                                                              ),
+                                                                        ),
+                                                                        Text(
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                            idx2Item.pKImageAssets?.toString(),
+                                                                            'no Image Key',
+                                                                          ),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Readex Pro',
+                                                                                letterSpacing: 0.0,
+                                                                              ),
+                                                                        ),
+                                                                      ].divide(SizedBox(width: 10.0)).around(
+                                                                              SizedBox(width: 10.0)),
+                                                                    ),
+                                                                    Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [],
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              }),
+                                                            );
+                                                          },
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                              ],
                                             ),
                                           );
-                                        }
-                                        List<EventsRow> containerEventsRowList =
-                                            snapshot.data!;
-                                        final containerEventsRow =
-                                            containerEventsRowList.isNotEmpty
-                                                ? containerEventsRowList.first
-                                                : null;
-                                        return Container(
-                                          constraints: BoxConstraints(
-                                            minWidth: 380.0,
-                                          ),
-                                          decoration: BoxDecoration(),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              if (false)
-                                                Container(
-                                                  decoration: BoxDecoration(),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Builder(
-                                                        builder: (context) {
-                                                          final idx =
-                                                              containerVacvRowList
-                                                                  .toList();
-                                                          return Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .min,
-                                                            children:
-                                                                List.generate(
-                                                                    idx.length,
-                                                                    (idxIndex) {
-                                                              final idxItem =
-                                                                  idx[idxIndex];
-                                                              return Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .min,
-                                                                children: [
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          idxItem
-                                                                              .pKParentVendor
-                                                                              ?.toString(),
-                                                                          'no Parent',
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Readex Pro',
-                                                                              letterSpacing: 0.0,
-                                                                            ),
-                                                                      ),
-                                                                      Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          idxItem
-                                                                              .pKImageAssets
-                                                                              ?.toString(),
-                                                                          'no Image Key',
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Readex Pro',
-                                                                              letterSpacing: 0.0,
-                                                                            ),
-                                                                      ),
-                                                                    ]
-                                                                        .divide(SizedBox(
-                                                                            width:
-                                                                                10.0))
-                                                                        .around(SizedBox(
-                                                                            width:
-                                                                                10.0)),
-                                                                  ),
-                                                                  Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .min,
-                                                                    children: [],
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            }),
-                                                          );
-                                                        },
-                                                      ),
-                                                      Builder(
-                                                        builder: (context) {
-                                                          final idx2 = functions
-                                                                  .filterVacv(
-                                                                      containerVacvRowList
-                                                                          .toList(),
-                                                                      'PK_ImageAssets')
-                                                                  ?.toList() ??
-                                                              [];
-                                                          return Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .min,
-                                                            children:
-                                                                List.generate(
-                                                                    idx2.length,
-                                                                    (idx2Index) {
-                                                              final idx2Item =
-                                                                  idx2[
-                                                                      idx2Index];
-                                                              return Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .min,
-                                                                children: [
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          idx2Item
-                                                                              .pKParentVendor
-                                                                              ?.toString(),
-                                                                          'no Parent',
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Readex Pro',
-                                                                              letterSpacing: 0.0,
-                                                                            ),
-                                                                      ),
-                                                                      Text(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          idx2Item
-                                                                              .pKImageAssets
-                                                                              ?.toString(),
-                                                                          'no Image Key',
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Readex Pro',
-                                                                              letterSpacing: 0.0,
-                                                                            ),
-                                                                      ),
-                                                                    ]
-                                                                        .divide(SizedBox(
-                                                                            width:
-                                                                                10.0))
-                                                                        .around(SizedBox(
-                                                                            width:
-                                                                                10.0)),
-                                                                  ),
-                                                                  Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [],
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            }),
-                                                          );
-                                                        },
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                                        },
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                     ],
                   ),
                 ),

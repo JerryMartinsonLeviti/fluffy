@@ -888,55 +888,111 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                     snapshot.data!;
                                                 return Container(
                                                   decoration: BoxDecoration(),
-                                                  child: Visibility(
-                                                    visible: true,
-                                                    child: wrapWithModel(
-                                                      model: _model
-                                                          .eventSpaceComponentModel,
-                                                      updateCallback: () =>
-                                                          setState(() {}),
-                                                      child:
-                                                          EventSpaceComponentWidget(
-                                                        functionSpaceRows:
-                                                            fsdbFunctionSpacesRowList,
-                                                        cart: _model.pageCart!,
-                                                        onSave: () async {
-                                                          setState(() => _model
-                                                                  .requestCompleter4 =
-                                                              null);
-                                                          await _model
-                                                              .waitForRequestCompleted4();
-                                                          _model.cartrf =
-                                                              await CartsTable()
-                                                                  .queryRows(
-                                                            queryFn: (q) =>
-                                                                q.eq(
-                                                              'PK_Carts',
-                                                              _model.pageCart
-                                                                  ?.pKCarts,
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            onTap: () async {
+                                                              await FunctionSpacesTable()
+                                                                  .insert({
+                                                                'FK_Vendor':
+                                                                    widget
+                                                                        .vendorPK,
+                                                                'FK_Venue':
+                                                                    widget
+                                                                        .venuePK,
+                                                                'function_space_name':
+                                                                    'noName',
+                                                                'function_space_description':
+                                                                    'NoDescription',
+                                                              });
+                                                              setState(() =>
+                                                                  _model.requestCompleter4 =
+                                                                      null);
+                                                              await _model
+                                                                  .waitForRequestCompleted4();
+                                                              setState(() {});
+                                                            },
+                                                            child: Icon(
+                                                              Icons
+                                                                  .settings_outlined,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              size: 24.0,
                                                             ),
-                                                          );
-                                                          setState(() {
-                                                            _model.pageCart =
-                                                                _model.cartrf
-                                                                    ?.first;
-                                                          });
-                                                          _model.ao3Ci =
-                                                              await actions
-                                                                  .invoiceFromCart(
-                                                            _model.pageCart!,
-                                                          );
-                                                          setState(() {
-                                                            _model.cartInvoice =
-                                                                _model.ao3Ci;
-                                                          });
-                                                          FFAppState()
-                                                              .update(() {});
-
-                                                          setState(() {});
-                                                        },
+                                                          ),
+                                                        ],
                                                       ),
-                                                    ),
+                                                      if (true)
+                                                        wrapWithModel(
+                                                          model: _model
+                                                              .eventSpaceComponentModel,
+                                                          updateCallback: () =>
+                                                              setState(() {}),
+                                                          child:
+                                                              EventSpaceComponentWidget(
+                                                            functionSpaceRows:
+                                                                fsdbFunctionSpacesRowList,
+                                                            cart: _model
+                                                                .pageCart!,
+                                                            onSave: () async {
+                                                              setState(() =>
+                                                                  _model.requestCompleter4 =
+                                                                      null);
+                                                              await _model
+                                                                  .waitForRequestCompleted4();
+                                                              _model.cartrf =
+                                                                  await CartsTable()
+                                                                      .queryRows(
+                                                                queryFn: (q) =>
+                                                                    q.eq(
+                                                                  'PK_Carts',
+                                                                  _model
+                                                                      .pageCart
+                                                                      ?.pKCarts,
+                                                                ),
+                                                              );
+                                                              setState(() {
+                                                                _model.pageCart =
+                                                                    _model
+                                                                        .cartrf
+                                                                        ?.first;
+                                                              });
+                                                              _model.ao3Ci =
+                                                                  await actions
+                                                                      .invoiceFromCart(
+                                                                _model
+                                                                    .pageCart!,
+                                                              );
+                                                              setState(() {
+                                                                _model.cartInvoice =
+                                                                    _model
+                                                                        .ao3Ci;
+                                                              });
+                                                              FFAppState()
+                                                                  .update(
+                                                                      () {});
+
+                                                              setState(() {});
+                                                            },
+                                                          ),
+                                                        ),
+                                                    ],
                                                   ),
                                                 );
                                               },
@@ -1025,48 +1081,82 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                     snapshot.data!;
                                                 return Container(
                                                   decoration: BoxDecoration(),
-                                                  child: wrapWithModel(
-                                                    model: _model
-                                                        .packagesComponentModel,
-                                                    updateCallback: () =>
-                                                        setState(() {}),
-                                                    child:
-                                                        PackagesComponentWidget(
-                                                      packagesRows:
-                                                          packagesPackagesRowList,
-                                                      cart: _model.pageCart!,
-                                                      dbRefesh: () async {
-                                                        setState(() => _model
-                                                                .requestCompleter5 =
-                                                            null);
-                                                        await _model
-                                                            .waitForRequestCompleted5();
-                                                        _model.carta =
-                                                            await CartsTable()
-                                                                .queryRows(
-                                                          queryFn: (q) => q.eq(
-                                                            'PK_Carts',
-                                                            _model.pageCart
-                                                                ?.pKCarts,
-                                                          ),
-                                                        );
-                                                        _model.pageCart =
-                                                            _model.carta?.first;
-                                                        _model.ao4 =
-                                                            await actions
-                                                                .invoiceFromCart(
-                                                          _model.pageCart!,
-                                                        );
-                                                        setState(() {
-                                                          _model.cartInvoice =
-                                                              _model.ao4;
-                                                        });
-                                                        FFAppState()
-                                                            .update(() {});
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          await PackagesTable()
+                                                              .insert({
+                                                            'FK_Vendor':
+                                                                widget.vendorPK,
+                                                          });
+                                                        },
+                                                        child: Icon(
+                                                          Icons
+                                                              .settings_outlined,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          size: 24.0,
+                                                        ),
+                                                      ),
+                                                      wrapWithModel(
+                                                        model: _model
+                                                            .packagesComponentModel,
+                                                        updateCallback: () =>
+                                                            setState(() {}),
+                                                        child:
+                                                            PackagesComponentWidget(
+                                                          packagesRows:
+                                                              packagesPackagesRowList,
+                                                          cart:
+                                                              _model.pageCart!,
+                                                          dbRefesh: () async {
+                                                            setState(() => _model
+                                                                    .requestCompleter5 =
+                                                                null);
+                                                            await _model
+                                                                .waitForRequestCompleted5();
+                                                            _model.carta =
+                                                                await CartsTable()
+                                                                    .queryRows(
+                                                              queryFn: (q) =>
+                                                                  q.eq(
+                                                                'PK_Carts',
+                                                                _model.pageCart
+                                                                    ?.pKCarts,
+                                                              ),
+                                                            );
+                                                            _model.pageCart =
+                                                                _model.carta
+                                                                    ?.first;
+                                                            _model.ao4 =
+                                                                await actions
+                                                                    .invoiceFromCart(
+                                                              _model.pageCart!,
+                                                            );
+                                                            setState(() {
+                                                              _model.cartInvoice =
+                                                                  _model.ao4;
+                                                            });
+                                                            FFAppState()
+                                                                .update(() {});
 
-                                                        setState(() {});
-                                                      },
-                                                    ),
+                                                            setState(() {});
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 );
                                               },

@@ -1100,6 +1100,12 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                             'FK_Vendor':
                                                                 widget.vendorPK,
                                                           });
+                                                          setState(() => _model
+                                                                  .requestCompleter5 =
+                                                              null);
+                                                          await _model
+                                                              .waitForRequestCompleted5();
+                                                          setState(() {});
                                                         },
                                                         child: Icon(
                                                           Icons

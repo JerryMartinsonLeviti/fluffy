@@ -548,6 +548,27 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                           size: 24.0,
                         ),
                       ),
+                    if (FFAppState().DevModeEnabled)
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          await PackagesTable().delete(
+                            matchingRows: (rows) => rows.eq(
+                              'PK_Packages',
+                              widget.packageRow?.pKPackages,
+                            ),
+                          );
+                          await widget.dbRefresh?.call();
+                        },
+                        child: Icon(
+                          Icons.delete_forever_sharp,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 24.0,
+                        ),
+                      ),
                     FFButtonWidget(
                       onPressed: () {
                         print('Button pressed ...');

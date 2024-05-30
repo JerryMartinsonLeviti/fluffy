@@ -542,7 +542,7 @@ class _EventSpaceCardComponentWidgetState
                                     });
                                   },
                                   child: Icon(
-                                    Icons.settings_outlined,
+                                    Icons.image,
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
                                     size: 24.0,
@@ -564,6 +564,31 @@ class _EventSpaceCardComponentWidgetState
                                   },
                                   child: Icon(
                                     Icons.settings_outlined,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 1.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    await FunctionSpacesTable().delete(
+                                      matchingRows: (rows) => rows.eq(
+                                        'PK_FunctionSpaces',
+                                        widget
+                                            .functionSpaceRow?.pKFunctionSpaces,
+                                      ),
+                                    );
+                                    await widget.onSave?.call();
+                                  },
+                                  child: Icon(
+                                    Icons.delete_forever_sharp,
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
                                     size: 24.0,

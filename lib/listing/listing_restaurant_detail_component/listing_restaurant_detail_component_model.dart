@@ -31,12 +31,17 @@ class ListingRestaurantDetailComponentModel
   TextEditingController? vendorNameTFTextController;
   String? Function(BuildContext, String?)? vendorNameTFTextControllerValidator;
   // State field(s) for DropDown widget.
-  int? dropDownValue;
-  FormFieldController<int>? dropDownValueController;
+  int? dropDownValue1;
+  FormFieldController<int>? dropDownValueController1;
+  // Stores action output result for [Backend Call - Insert Row] action in Icon widget.
+  VenuesRow? newVenue;
   // State field(s) for VenueNameTF widget.
   FocusNode? venueNameTFFocusNode;
   TextEditingController? venueNameTFTextController;
   String? Function(BuildContext, String?)? venueNameTFTextControllerValidator;
+  // State field(s) for DropDown widget.
+  int? dropDownValue2;
+  FormFieldController<int>? dropDownValueController2;
   // Model for Address component.
   late AddressModel addressModel;
   Completer<List<AddressesRow>>? requestCompleter;

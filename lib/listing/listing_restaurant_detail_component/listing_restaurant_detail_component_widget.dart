@@ -597,9 +597,10 @@ class _ListingRestaurantDetailComponentWidgetState
                                 ),
                               ],
                             ),
-                            FutureBuilder<List<VendorsRow>>(
-                              future: VendorsTable().queryRows(
-                                queryFn: (q) => q.order('vendor_name'),
+                            FutureBuilder<List<VenuesRow>>(
+                              future: VenuesTable().queryRows(
+                                queryFn: (q) =>
+                                    q.order('RestaurantLocationName'),
                               ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
@@ -616,36 +617,37 @@ class _ListingRestaurantDetailComponentWidgetState
                                     ),
                                   );
                                 }
-                                List<VendorsRow> dropDownVendorsRowList =
+                                List<VenuesRow> dropDownVenuesRowList =
                                     snapshot.data!;
                                 return FlutterFlowDropDown<int>(
                                   controller:
                                       _model.dropDownValueController2 ??=
                                           FormFieldController<int>(
                                     _model.dropDownValue2 ??=
-                                        widget.vendorRow?.pKVendors,
+                                        widget.venueRow?.pKVenues,
                                   ),
-                                  options: List<int>.from(dropDownVendorsRowList
-                                      .map((e) => e.pKVendors)
+                                  options: List<int>.from(dropDownVenuesRowList
+                                      .map((e) => e.pKVenues)
                                       .toList()),
-                                  optionLabels: dropDownVendorsRowList
-                                      .map((e) => e.vendorName)
+                                  optionLabels: dropDownVenuesRowList
+                                      .map((e) => e.restaurantLocationName)
                                       .withoutNulls
                                       .toList(),
                                   onChanged: (val) async {
                                     setState(() => _model.dropDownValue2 = val);
                                     await VenuesTable().update(
                                       data: {
-                                        'FK_Vendor': _model.dropDownValue2,
+                                        'FK_Vendor': FFAppState().PKVendors,
                                       },
                                       matchingRows: (rows) => rows.eq(
                                         'PK_Venues',
-                                        widget.venueRow?.pKVenues,
+                                        _model.dropDownValue2,
                                       ),
                                     );
                                     FFAppState().PKVendors =
                                         _model.dropDownValue2!;
                                     FFAppState().update(() {});
+                                    context.safePop();
                                   },
                                   width: 300.0,
                                   height: 56.0,

@@ -1,9 +1,11 @@
 import '/backend/supabase/supabase.dart';
 import '/components/address/address_widget.dart';
 import '/components/text_box_update_modal_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -207,89 +209,224 @@ class _ListingRestaurantDetailComponentWidgetState
                                   ),
                                 ),
                               ),
-                            Container(
-                              width: 200.0,
-                              decoration: BoxDecoration(),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.vendorNameTFTextController,
-                                  focusNode: _model.vendorNameTFFocusNode,
-                                  onFieldSubmitted: (_) async {
-                                    await VendorsTable().update(
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    _model.newVendor =
+                                        await VendorsTable().insert({
+                                      'vendor_name': _model
+                                          .vendorNameTFTextController.text,
+                                    });
+                                    await VenuesTable().update(
                                       data: {
-                                        'vendor_name': _model
-                                            .vendorNameTFTextController.text,
+                                        'FK_Vendor':
+                                            _model.newVendor?.pKVendors,
                                       },
                                       matchingRows: (rows) => rows.eq(
-                                        'PK_Vendors',
-                                        widget.vendorRow?.pKVendors,
+                                        'PK_Venues',
+                                        widget.venueRow?.pKVenues,
                                       ),
                                     );
-
+                                    FFAppState().PKVendors =
+                                        _model.newVendor!.pKVendors;
                                     FFAppState().update(() {});
+
+                                    setState(() {});
                                   },
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'Vendor Name',
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
+                                  child: Icon(
+                                    Icons.add_box,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
+                                  ),
+                                ),
+                                Container(
+                                  width: 200.0,
+                                  decoration: BoxDecoration(),
+                                  child: Visibility(
+                                    visible: _model.editVendorMode,
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 0.0, 8.0, 0.0),
+                                      child: TextFormField(
+                                        controller:
+                                            _model.vendorNameTFTextController,
+                                        focusNode: _model.vendorNameTFFocusNode,
+                                        onFieldSubmitted: (_) async {
+                                          await VendorsTable().update(
+                                            data: {
+                                              'vendor_name': _model
+                                                  .vendorNameTFTextController
+                                                  .text,
+                                            },
+                                            matchingRows: (rows) => rows.eq(
+                                              'PK_Vendors',
+                                              widget.vendorRow?.pKVendors,
+                                            ),
+                                          );
+
+                                          FFAppState().update(() {});
+                                        },
+                                        autofocus: true,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: 'Vendor Name',
+                                          labelStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          enabledBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          errorBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
                                         ),
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
+                                        validator: _model
+                                            .vendorNameTFTextControllerValidator
+                                            .asValidator(context),
                                       ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
                                   ),
-                                  style: FlutterFlowTheme.of(context)
+                                ),
+                              ],
+                            ),
+                            FutureBuilder<List<VendorsRow>>(
+                              future: VendorsTable().queryRows(
+                                queryFn: (q) => q.order('vendor_name'),
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: SpinKitChasingDots(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        size: 50.0,
+                                      ),
+                                    ),
+                                  );
+                                }
+                                List<VendorsRow> dropDownVendorsRowList =
+                                    snapshot.data!;
+                                return FlutterFlowDropDown<int>(
+                                  controller: _model.dropDownValueController ??=
+                                      FormFieldController<int>(
+                                    _model.dropDownValue ??=
+                                        widget.vendorRow?.pKVendors,
+                                  ),
+                                  options: List<int>.from(dropDownVendorsRowList
+                                      .map((e) => e.pKVendors)
+                                      .toList()),
+                                  optionLabels: dropDownVendorsRowList
+                                      .map((e) => e.vendorName)
+                                      .withoutNulls
+                                      .toList(),
+                                  onChanged: (val) async {
+                                    setState(() => _model.dropDownValue = val);
+                                    await VenuesTable().update(
+                                      data: {
+                                        'FK_Vendor': _model.dropDownValue,
+                                      },
+                                      matchingRows: (rows) => rows.eq(
+                                        'PK_Venues',
+                                        widget.venueRow?.pKVenues,
+                                      ),
+                                    );
+                                    FFAppState().PKVendors =
+                                        _model.dropDownValue!;
+                                    FFAppState().update(() {});
+                                  },
+                                  width: 300.0,
+                                  height: 56.0,
+                                  textStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         letterSpacing: 0.0,
                                       ),
-                                  validator: _model
-                                      .vendorNameTFTextControllerValidator
-                                      .asValidator(context),
-                                ),
-                              ),
+                                  hintText: 'Please select...',
+                                  icon: Icon(
+                                    Icons.keyboard_arrow_down_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
+                                  ),
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  elevation: 2.0,
+                                  borderColor:
+                                      FlutterFlowTheme.of(context).alternate,
+                                  borderWidth: 2.0,
+                                  borderRadius: 8.0,
+                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 4.0, 16.0, 4.0),
+                                  hidesUnderline: true,
+                                  isOverButton: true,
+                                  isSearchable: false,
+                                  isMultiSelect: false,
+                                );
+                              },
                             ),
                           ],
                         ),
@@ -331,82 +468,92 @@ class _ListingRestaurantDetailComponentWidgetState
                             Container(
                               width: 200.0,
                               decoration: BoxDecoration(),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.venueNameTFTextController,
-                                  focusNode: _model.venueNameTFFocusNode,
-                                  onFieldSubmitted: (_) async {
-                                    await VenuesTable().update(
-                                      data: {
-                                        'RestaurantLocationName': _model
-                                            .venueNameTFTextController.text,
-                                      },
-                                      matchingRows: (rows) => rows.eq(
-                                        'PK_Venues',
-                                        widget.vendorRow?.pKVendors,
+                              child: Visibility(
+                                visible: _model.editVenueNameMode,
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 8.0, 0.0),
+                                  child: TextFormField(
+                                    controller:
+                                        _model.venueNameTFTextController,
+                                    focusNode: _model.venueNameTFFocusNode,
+                                    onFieldSubmitted: (_) async {
+                                      await VenuesTable().update(
+                                        data: {
+                                          'RestaurantLocationName': _model
+                                              .venueNameTFTextController.text,
+                                        },
+                                        matchingRows: (rows) => rows.eq(
+                                          'PK_Venues',
+                                          widget.vendorRow?.pKVendors,
+                                        ),
+                                      );
+
+                                      FFAppState().update(() {});
+                                    },
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Venue Name',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                       ),
-                                    );
-                                  },
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'Venue Name',
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           letterSpacing: 0.0,
                                         ),
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
+                                    validator: _model
+                                        .venueNameTFTextControllerValidator
+                                        .asValidator(context),
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                      ),
-                                  validator: _model
-                                      .venueNameTFTextControllerValidator
-                                      .asValidator(context),
                                 ),
                               ),
                             ),

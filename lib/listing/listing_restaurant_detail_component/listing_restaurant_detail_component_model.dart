@@ -1,9 +1,11 @@
 import '/backend/supabase/supabase.dart';
 import '/components/address/address_widget.dart';
 import '/components/text_box_update_modal_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:async';
 import 'listing_restaurant_detail_component_widget.dart'
     show ListingRestaurantDetailComponentWidget;
@@ -22,10 +24,15 @@ class ListingRestaurantDetailComponentModel
 
   ///  State fields for stateful widgets in this component.
 
+  // Stores action output result for [Backend Call - Insert Row] action in Icon widget.
+  VendorsRow? newVendor;
   // State field(s) for VendorNameTF widget.
   FocusNode? vendorNameTFFocusNode;
   TextEditingController? vendorNameTFTextController;
   String? Function(BuildContext, String?)? vendorNameTFTextControllerValidator;
+  // State field(s) for DropDown widget.
+  int? dropDownValue;
+  FormFieldController<int>? dropDownValueController;
   // State field(s) for VenueNameTF widget.
   FocusNode? venueNameTFFocusNode;
   TextEditingController? venueNameTFTextController;

@@ -146,9 +146,8 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        setState(() {
-                                          _model.noEdit = !_model.noEdit;
-                                        });
+                                        _model.noEdit = !_model.noEdit;
+                                        setState(() {});
                                       },
                                       child: Icon(
                                         Icons.settings_outlined,
@@ -164,9 +163,8 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        setState(() {
-                                          _model.collapsed = !_model.collapsed;
-                                        });
+                                        _model.collapsed = !_model.collapsed;
+                                        setState(() {});
                                       },
                                       child: Icon(
                                         Icons.arrow_right,
@@ -182,9 +180,8 @@ class _WrapFaqRowWidgetState extends State<WrapFaqRowWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        setState(() {
-                                          _model.collapsed = !_model.collapsed;
-                                        });
+                                        _model.collapsed = !_model.collapsed;
+                                        setState(() {});
                                       },
                                       child: Icon(
                                         Icons.arrow_drop_down,

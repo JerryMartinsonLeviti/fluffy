@@ -201,6 +201,7 @@ class _EventCartReviewPageWidgetState extends State<EventCartReviewPageWidget> {
                                                   .requestCompleter = null);
                                               await _model
                                                   .waitForRequestCompleted();
+
                                               FFAppState().update(() {});
                                             },
                                             onUpdateCartState: () async {
@@ -208,6 +209,7 @@ class _EventCartReviewPageWidgetState extends State<EventCartReviewPageWidget> {
                                                   .requestCompleter = null);
                                               await _model
                                                   .waitForRequestCompleted();
+
                                               setState(() {});
                                             },
                                           );

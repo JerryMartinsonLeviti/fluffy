@@ -47,13 +47,12 @@ class _SearchBarBudgetComponentWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.budgetInCents = valueOrDefault<int>(
-          widget.eventRowIn?.budgetInCents,
-          0,
-        );
-        _model.eventUoM = widget.eventRowIn!.budgetIsPerEvent;
-      });
+      _model.budgetInCents = valueOrDefault<int>(
+        widget.eventRowIn?.budgetInCents,
+        0,
+      );
+      _model.eventUoM = widget.eventRowIn!.budgetIsPerEvent;
+      setState(() {});
       await widget.onBudgetApplied?.call(
         _model.budgetInCents,
       );
@@ -174,11 +173,10 @@ class _SearchBarBudgetComponentWidgetState
                                       controller: _model.textController,
                                       focusNode: _model.textFieldFocusNode,
                                       onFieldSubmitted: (_) async {
-                                        setState(() {
-                                          _model.budgetInCents =
-                                              functions.stringToCents(
-                                                  _model.textController.text);
-                                        });
+                                        _model.budgetInCents =
+                                            functions.stringToCents(
+                                                _model.textController.text);
+                                        setState(() {});
                                       },
                                       autofocus: true,
                                       obscureText: false,
@@ -304,11 +302,10 @@ class _SearchBarBudgetComponentWidgetState
                               options: ['Per Event', 'Per Person'].toList(),
                               onChanged: (val) async {
                                 setState(() {});
-                                setState(() {
-                                  _model.eventUoM =
-                                      functions.encodeBudgetStringtoBool(
-                                          _model.radioButtonValue!);
-                                });
+                                _model.eventUoM =
+                                    functions.encodeBudgetStringtoBool(
+                                        _model.radioButtonValue!);
+                                setState(() {});
                               },
                               controller: _model.radioButtonValueController ??=
                                   FormFieldController<String>(

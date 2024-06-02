@@ -148,9 +148,8 @@ class _WrapDescRowWidgetState extends State<WrapDescRowWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        setState(() {
-                                          _model.noEdit = !_model.noEdit;
-                                        });
+                                        _model.noEdit = !_model.noEdit;
+                                        setState(() {});
                                       },
                                       child: Icon(
                                         Icons.settings_outlined,

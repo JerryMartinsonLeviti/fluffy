@@ -152,6 +152,7 @@ class _ListingTermsWidgetState extends State<ListingTermsWidget> {
                               });
                               setState(() => _model.requestCompleter = null);
                               await _model.waitForRequestCompleted();
+
                               FFAppState().update(() {});
                             },
                             child: Icon(
@@ -212,6 +213,7 @@ class _ListingTermsWidgetState extends State<ListingTermsWidget> {
                                   setState(
                                       () => _model.requestCompleter = null);
                                   await _model.waitForRequestCompleted();
+
                                   FFAppState().update(() {});
                                 },
                                 onHideToggle: () async {
@@ -227,6 +229,7 @@ class _ListingTermsWidgetState extends State<ListingTermsWidget> {
                                   setState(
                                       () => _model.requestCompleter = null);
                                   await _model.waitForRequestCompleted();
+
                                   FFAppState().update(() {});
                                 },
                               );

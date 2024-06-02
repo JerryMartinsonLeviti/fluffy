@@ -150,6 +150,7 @@ class _ListingFAQsWidgetState extends State<ListingFAQsWidget> {
                                     setState(
                                         () => _model.requestCompleter = null);
                                     await _model.waitForRequestCompleted();
+
                                     FFAppState().update(() {});
                                   },
                                   child: Icon(
@@ -201,6 +202,7 @@ class _ListingFAQsWidgetState extends State<ListingFAQsWidget> {
                                       setState(
                                           () => _model.requestCompleter = null);
                                       await _model.waitForRequestCompleted();
+
                                       FFAppState().update(() {});
                                     },
                                     onDelete: () async {
@@ -213,6 +215,7 @@ class _ListingFAQsWidgetState extends State<ListingFAQsWidget> {
                                       setState(
                                           () => _model.requestCompleter = null);
                                       await _model.waitForRequestCompleted();
+
                                       setState(() {});
                                     },
                                     onHideToggle: () async {
@@ -228,6 +231,7 @@ class _ListingFAQsWidgetState extends State<ListingFAQsWidget> {
                                       setState(
                                           () => _model.requestCompleter = null);
                                       await _model.waitForRequestCompleted();
+
                                       setState(() {});
                                     },
                                   );

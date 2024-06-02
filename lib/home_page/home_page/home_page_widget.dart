@@ -430,12 +430,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             _model.response = await actions.loadImageToSupabase(
                               _model.textController.text,
                             );
-                            setState(() {
-                              _model.uploadedUrl = valueOrDefault<String>(
-                                _model.response?.error,
-                                'Whoops!',
-                              );
-                            });
+                            _model.uploadedUrl = valueOrDefault<String>(
+                              _model.response?.error,
+                              'Whoops!',
+                            );
+                            setState(() {});
 
                             setState(() {});
                           },

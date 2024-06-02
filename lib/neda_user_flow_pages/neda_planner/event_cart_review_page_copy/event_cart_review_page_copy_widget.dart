@@ -206,6 +206,7 @@ class _EventCartReviewPageCopyWidgetState
                                                   .requestCompleter = null);
                                               await _model
                                                   .waitForRequestCompleted();
+
                                               FFAppState().update(() {});
                                             },
                                             onUpdateCartState: () async {
@@ -213,6 +214,7 @@ class _EventCartReviewPageCopyWidgetState
                                                   .requestCompleter = null);
                                               await _model
                                                   .waitForRequestCompleted();
+
                                               setState(() {});
                                             },
                                           );

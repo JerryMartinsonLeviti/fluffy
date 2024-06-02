@@ -147,6 +147,7 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                         );
                         setState(() => _model.requestCompleter = null);
                         await _model.waitForRequestCompleted();
+
                         setState(() {});
                         await widget.onItemDbChange?.call();
                       },
@@ -169,6 +170,7 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                         });
                         setState(() => _model.requestCompleter = null);
                         await _model.waitForRequestCompleted();
+
                         setState(() {});
                         await widget.onItemDbChange?.call();
                       },

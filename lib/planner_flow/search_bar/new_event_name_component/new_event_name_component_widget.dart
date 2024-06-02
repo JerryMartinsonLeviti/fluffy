@@ -198,10 +198,8 @@ class _NewEventNameComponentWidgetState
                 'FK_Event': _model.eventRowFromInsert?.pKEvents,
                 'FK_Liaison': FFAppState().PKLiaison,
               });
-              setState(() {
-                FFAppState().PKActiveEvent =
-                    _model.eventRowFromInsert!.pKEvents;
-              });
+              FFAppState().PKActiveEvent = _model.eventRowFromInsert!.pKEvents;
+              setState(() {});
               Navigator.pop(context, _model.eventRowFromInsert);
 
               setState(() {});

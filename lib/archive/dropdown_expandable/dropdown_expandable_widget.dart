@@ -44,9 +44,8 @@ class _DropdownExpandableWidgetState extends State<DropdownExpandableWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.initialText = widget.initialText;
-      });
+      _model.initialText = widget.initialText;
+      setState(() {});
     });
 
     _model.expandableExpandableController =

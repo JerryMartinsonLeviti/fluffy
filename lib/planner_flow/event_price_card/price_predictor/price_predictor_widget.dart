@@ -180,9 +180,8 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  setState(() {
-                                    _model.expanded = !_model.expanded;
-                                  });
+                                  _model.expanded = !_model.expanded;
+                                  setState(() {});
                                 },
                                 child: Icon(
                                   Icons.arrow_right,
@@ -198,9 +197,8 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  setState(() {
-                                    _model.expanded = !_model.expanded;
-                                  });
+                                  _model.expanded = !_model.expanded;
+                                  setState(() {});
                                 },
                                 child: FaIcon(
                                   FontAwesomeIcons.caretDown,
@@ -224,13 +222,11 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                     setState(() => _model.switchListTileValue1 =
                                         newValue!);
                                     if (newValue!) {
-                                      setState(() {
-                                        _model.showEstimateDetails = true;
-                                      });
+                                      _model.showEstimateDetails = true;
+                                      setState(() {});
                                     } else {
-                                      setState(() {
-                                        _model.showEstimateDetails = false;
-                                      });
+                                      _model.showEstimateDetails = false;
+                                      setState(() {});
                                     }
                                   },
                                   title: Text(
@@ -268,13 +264,11 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                     setState(() => _model.switchListTileValue2 =
                                         newValue!);
                                     if (newValue!) {
-                                      setState(() {
-                                        _model.showTotalEventCost = true;
-                                      });
+                                      _model.showTotalEventCost = true;
+                                      setState(() {});
                                     } else {
-                                      setState(() {
-                                        _model.showTotalEventCost = false;
-                                      });
+                                      _model.showTotalEventCost = false;
+                                      setState(() {});
                                     }
                                   },
                                   title: Text(
@@ -1114,11 +1108,10 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                                   ),
                                                   FFButtonWidget(
                                                     onPressed: () async {
-                                                      setState(() {
-                                                        _model.noUpdateBudget =
-                                                            !_model
-                                                                .noUpdateBudget;
-                                                      });
+                                                      _model.noUpdateBudget =
+                                                          !_model
+                                                              .noUpdateBudget;
+                                                      setState(() {});
                                                     },
                                                     text: 'Update',
                                                     options: FFButtonOptions(
@@ -1205,11 +1198,10 @@ class _PricePredictorWidgetState extends State<PricePredictorWidget> {
                                                           await widget
                                                               .onRefreshEventDB
                                                               ?.call();
-                                                          setState(() {
-                                                            _model.noUpdateBudget =
-                                                                !_model
-                                                                    .noUpdateBudget;
-                                                          });
+                                                          _model.noUpdateBudget =
+                                                              !_model
+                                                                  .noUpdateBudget;
+                                                          setState(() {});
                                                         },
                                                         autofocus: true,
                                                         obscureText: false,

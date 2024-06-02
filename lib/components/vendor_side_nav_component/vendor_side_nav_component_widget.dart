@@ -103,9 +103,8 @@ class _VendorSideNavComponentWidgetState
                       .toList(),
                   onChanged: (val) async {
                     setState(() => _model.dropDownValue = val);
-                    setState(() {
-                      FFAppState().PKVendors = _model.dropDownValue!;
-                    });
+                    FFAppState().PKVendors = _model.dropDownValue!;
+                    setState(() {});
                   },
                   width: 300.0,
                   height: 56.0,

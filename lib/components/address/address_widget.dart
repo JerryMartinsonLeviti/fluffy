@@ -598,9 +598,8 @@ class _AddressWidgetState extends State<AddressWidget> {
                                 ),
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    setState(() {
-                                      _model.dontEdit = !_model.dontEdit;
-                                    });
+                                    _model.dontEdit = !_model.dontEdit;
+                                    setState(() {});
                                   },
                                   text: 'Exit',
                                   options: FFButtonOptions(
@@ -639,9 +638,8 @@ class _AddressWidgetState extends State<AddressWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        setState(() {
-                          _model.dontEdit = !_model.dontEdit;
-                        });
+                        _model.dontEdit = !_model.dontEdit;
+                        setState(() {});
                       },
                       child: Icon(
                         Icons.settings_outlined,

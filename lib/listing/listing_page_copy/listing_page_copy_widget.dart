@@ -80,9 +80,8 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
       _model.cartInvoiceActionOutput = await actions.invoiceFromCart(
         _model.pageCart!,
       );
-      setState(() {
-        _model.cartInvoice = _model.cartInvoiceActionOutput;
-      });
+      _model.cartInvoice = _model.cartInvoiceActionOutput;
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -308,11 +307,12 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                           ?.pKEvents,
                                                                     ),
                                                                   );
-                                                                  setState(() {
-                                                                    _model.pageEvent = _model
-                                                                        .eventUpdated
-                                                                        ?.first;
-                                                                  });
+                                                                  _model.pageEvent =
+                                                                      _model
+                                                                          .eventUpdated
+                                                                          ?.first;
+                                                                  setState(
+                                                                      () {});
 
                                                                   setState(
                                                                       () {});
@@ -504,12 +504,12 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                           .transparent,
                                                                   onTap:
                                                                       () async {
+                                                                    _model.galleryVenueEditorDisabled =
+                                                                        !_model
+                                                                            .galleryVenueEditorDisabled;
                                                                     setState(
-                                                                        () {
-                                                                      _model.galleryVenueEditorDisabled =
-                                                                          !_model
-                                                                              .galleryVenueEditorDisabled;
-                                                                    });
+                                                                        () {});
+
                                                                     setState(
                                                                         () {});
                                                                   },
@@ -571,6 +571,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                             null);
                                                                     await _model
                                                                         .waitForRequestCompleted3();
+
                                                                     FFAppState()
                                                                         .update(
                                                                             () {});
@@ -588,12 +589,12 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                       _model
                                                                           .pageCart!,
                                                                     );
+                                                                    _model.cartInvoice =
+                                                                        _model
+                                                                            .cartInvoiceActionOutput2;
                                                                     setState(
-                                                                        () {
-                                                                      _model.cartInvoice =
-                                                                          _model
-                                                                              .cartInvoiceActionOutput2;
-                                                                    });
+                                                                        () {});
+
                                                                     FFAppState()
                                                                         .update(
                                                                             () {});
@@ -677,12 +678,11 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                           .transparent,
                                                                   onTap:
                                                                       () async {
+                                                                    _model.galleryVendorEditorDisabled =
+                                                                        !_model
+                                                                            .galleryVendorEditorDisabled;
                                                                     setState(
-                                                                        () {
-                                                                      _model.galleryVendorEditorDisabled =
-                                                                          !_model
-                                                                              .galleryVendorEditorDisabled;
-                                                                    });
+                                                                        () {});
                                                                   },
                                                                   child: Icon(
                                                                     Icons
@@ -742,6 +742,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                             null);
                                                                     await _model
                                                                         .waitForRequestCompleted1();
+
                                                                     FFAppState()
                                                                         .update(
                                                                             () {});
@@ -753,6 +754,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                             null);
                                                                     await _model
                                                                         .waitForRequestCompleted1();
+
                                                                     FFAppState()
                                                                         .update(
                                                                             () {});
@@ -896,46 +898,49 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
-                                                          InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              await FunctionSpacesTable()
-                                                                  .insert({
-                                                                'FK_Vendor':
-                                                                    widget
-                                                                        .vendorPK,
-                                                                'FK_Venue':
-                                                                    widget
-                                                                        .venuePK,
-                                                                'function_space_name':
-                                                                    'noName',
-                                                                'function_space_description':
-                                                                    'NoDescription',
-                                                              });
-                                                              setState(() =>
-                                                                  _model.requestCompleter4 =
-                                                                      null);
-                                                              await _model
-                                                                  .waitForRequestCompleted4();
-                                                              setState(() {});
-                                                            },
-                                                            child: Icon(
-                                                              Icons
-                                                                  .settings_outlined,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 24.0,
+                                                          if (FFAppState()
+                                                              .DevModeEnabled)
+                                                            InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                await FunctionSpacesTable()
+                                                                    .insert({
+                                                                  'FK_Vendor':
+                                                                      widget
+                                                                          .vendorPK,
+                                                                  'FK_Venue':
+                                                                      widget
+                                                                          .venuePK,
+                                                                  'function_space_name':
+                                                                      'noName',
+                                                                  'function_space_description':
+                                                                      'NoDescription',
+                                                                });
+                                                                setState(() =>
+                                                                    _model.requestCompleter4 =
+                                                                        null);
+                                                                await _model
+                                                                    .waitForRequestCompleted4();
+
+                                                                setState(() {});
+                                                              },
+                                                              child: Icon(
+                                                                Icons
+                                                                    .add_circle,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 24.0,
+                                                              ),
                                                             ),
-                                                          ),
                                                         ],
                                                       ),
                                                       if (true)
@@ -967,23 +972,20 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                       ?.pKCarts,
                                                                 ),
                                                               );
-                                                              setState(() {
-                                                                _model.pageCart =
-                                                                    _model
-                                                                        .cartrf
-                                                                        ?.first;
-                                                              });
+                                                              _model.pageCart =
+                                                                  _model.cartrf
+                                                                      ?.first;
+                                                              setState(() {});
                                                               _model.ao3Ci =
                                                                   await actions
                                                                       .invoiceFromCart(
                                                                 _model
                                                                     .pageCart!,
                                                               );
-                                                              setState(() {
-                                                                _model.cartInvoice =
-                                                                    _model
-                                                                        .ao3Ci;
-                                                              });
+                                                              _model.cartInvoice =
+                                                                  _model.ao3Ci;
+                                                              setState(() {});
+
                                                               FFAppState()
                                                                   .update(
                                                                       () {});
@@ -1085,37 +1087,40 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: [
-                                                      InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onTap: () async {
-                                                          await PackagesTable()
-                                                              .insert({
-                                                            'FK_Vendor':
-                                                                widget.vendorPK,
-                                                          });
-                                                          setState(() => _model
-                                                                  .requestCompleter5 =
-                                                              null);
-                                                          await _model
-                                                              .waitForRequestCompleted5();
-                                                          setState(() {});
-                                                        },
-                                                        child: Icon(
-                                                          Icons
-                                                              .settings_outlined,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          size: 24.0,
+                                                      if (FFAppState()
+                                                          .DevModeEnabled)
+                                                        InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            await PackagesTable()
+                                                                .insert({
+                                                              'FK_Vendor':
+                                                                  widget
+                                                                      .vendorPK,
+                                                            });
+                                                            setState(() => _model
+                                                                    .requestCompleter5 =
+                                                                null);
+                                                            await _model
+                                                                .waitForRequestCompleted5();
+
+                                                            setState(() {});
+                                                          },
+                                                          child: Icon(
+                                                            Icons.add_box,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryText,
+                                                            size: 24.0,
+                                                          ),
                                                         ),
-                                                      ),
                                                       wrapWithModel(
                                                         model: _model
                                                             .packagesComponentModel,
@@ -1151,10 +1156,10 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                     .invoiceFromCart(
                                                               _model.pageCart!,
                                                             );
-                                                            setState(() {
-                                                              _model.cartInvoice =
-                                                                  _model.ao4;
-                                                            });
+                                                            _model.cartInvoice =
+                                                                _model.ao4;
+                                                            setState(() {});
+
                                                             FFAppState()
                                                                 .update(() {});
 

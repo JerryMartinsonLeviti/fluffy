@@ -71,6 +71,7 @@ class _EventSpaceCardComponentWidgetState
         text: widget.functionSpaceRow?.squareFootage?.toString());
     _model.sqFtFocusNode ??= FocusNode();
 
+    _model.rentalValue = widget.functionSpaceRow!.rentalFeeApplies;
     _model.rentalFeeTextController ??= TextEditingController(
         text: formatNumber(
       functions
@@ -81,6 +82,7 @@ class _EventSpaceCardComponentWidgetState
     ));
     _model.rentalFeeFocusNode ??= FocusNode();
 
+    _model.fnbValue = widget.functionSpaceRow!.rentalFeeApplies;
     _model.fnbTextController ??= TextEditingController(
         text: formatNumber(
       functions.centsIntToDollarDouble(
@@ -243,6 +245,7 @@ class _EventSpaceCardComponentWidgetState
                                                 .requestCompleter1 = null);
                                             await _model
                                                 .waitForRequestCompleted1();
+
                                             FFAppState().update(() {});
                                           },
                                         ),
@@ -536,10 +539,9 @@ class _EventSpaceCardComponentWidgetState
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    setState(() {
-                                      _model.noEditGallery =
-                                          !_model.noEditGallery;
-                                    });
+                                    _model.noEditGallery =
+                                        !_model.noEditGallery;
+                                    setState(() {});
                                   },
                                   child: Icon(
                                     Icons.image,
@@ -557,10 +559,9 @@ class _EventSpaceCardComponentWidgetState
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    setState(() {
-                                      _model.noEditDetails =
-                                          !_model.noEditDetails;
-                                    });
+                                    _model.noEditDetails =
+                                        !_model.noEditDetails;
+                                    setState(() {});
                                   },
                                   child: Icon(
                                     Icons.settings_outlined,
@@ -1120,8 +1121,7 @@ class _EventSpaceCardComponentWidgetState
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Switch.adaptive(
-                                      value: _model.rentalValue ??= widget
-                                          .functionSpaceRow!.rentalFeeApplies,
+                                      value: _model.rentalValue!,
                                       onChanged: (newValue) async {
                                         setState(() =>
                                             _model.rentalValue = newValue!);
@@ -1232,8 +1232,7 @@ class _EventSpaceCardComponentWidgetState
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Switch.adaptive(
-                                      value: _model.fnbValue ??= widget
-                                          .functionSpaceRow!.rentalFeeApplies,
+                                      value: _model.fnbValue!,
                                       onChanged: (newValue) async {
                                         setState(
                                             () => _model.fnbValue = newValue!);
@@ -1409,10 +1408,9 @@ class _EventSpaceCardComponentWidgetState
                                     ),
                                     FFButtonWidget(
                                       onPressed: () async {
-                                        setState(() {
-                                          _model.noEditDetails =
-                                              !_model.noEditDetails;
-                                        });
+                                        _model.noEditDetails =
+                                            !_model.noEditDetails;
+                                        setState(() {});
                                       },
                                       text: 'Exit',
                                       options: FFButtonOptions(

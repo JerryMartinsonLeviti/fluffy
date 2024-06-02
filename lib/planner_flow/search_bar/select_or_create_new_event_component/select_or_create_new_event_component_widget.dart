@@ -44,9 +44,8 @@ class _SelectOrCreateNewEventComponentWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.selectedEventRow = widget.eventRow;
-      });
+      _model.selectedEventRow = widget.eventRow;
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -226,15 +225,12 @@ class _SelectOrCreateNewEventComponentWidgetState
                                                 _model.eventRowFromInsert =
                                                     value));
 
-                                            setState(() {
-                                              FFAppState().PKActiveEvent =
-                                                  _model.eventRowFromInsert!
-                                                      .pKEvents;
-                                            });
-                                            setState(() {
-                                              _model.selectedEventRow =
-                                                  _model.eventRowFromInsert;
-                                            });
+                                            FFAppState().PKActiveEvent = _model
+                                                .eventRowFromInsert!.pKEvents;
+                                            setState(() {});
+                                            _model.selectedEventRow =
+                                                _model.eventRowFromInsert;
+                                            setState(() {});
                                             await widget.onEventChange?.call(
                                               _model.eventRowFromInsert,
                                             );
@@ -317,10 +313,9 @@ class _SelectOrCreateNewEventComponentWidgetState
                                       onChanged: (val) async {
                                         setState(
                                             () => _model.dropDownValue = val);
-                                        FFAppState().update(() {
-                                          FFAppState().PKActiveEvent =
-                                              _model.dropDownValue!;
-                                        });
+                                        FFAppState().PKActiveEvent =
+                                            _model.dropDownValue!;
+                                        FFAppState().update(() {});
                                         _model.selectedEventRows =
                                             await EventsTable().queryRows(
                                           queryFn: (q) => q.eq(
@@ -328,6 +323,7 @@ class _SelectOrCreateNewEventComponentWidgetState
                                             _model.dropDownValue,
                                           ),
                                         );
+
                                         setState(() {});
 
                                         setState(() {});

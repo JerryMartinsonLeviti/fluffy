@@ -44,9 +44,8 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
           widget.userInfoRow?.pKUserInfos,
         ),
       );
-      setState(() {
-        _model.selectedBigTableRoomRow = _model.userRoomsBigTable?.first;
-      });
+      _model.selectedBigTableRoomRow = _model.userRoomsBigTable?.first;
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -190,9 +189,8 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
                               children: [
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    setState(() {
-                                      _model.showByRoom = true;
-                                    });
+                                    _model.showByRoom = true;
+                                    setState(() {});
                                   },
                                   text: 'Sort By Event',
                                   options: FFButtonOptions(
@@ -220,9 +218,8 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
                                 ),
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    setState(() {
-                                      _model.showByRoom = false;
-                                    });
+                                    _model.showByRoom = false;
+                                    setState(() {});
                                   },
                                   text: 'Sort By Date',
                                   options: FFButtonOptions(
@@ -266,21 +263,18 @@ class _MessagesByEventWidgetState extends State<MessagesByEventWidget> {
                           child: EventsMessageSelectorWidget(
                             thisUsersTableRows: _model.userRoomsBigTable!,
                             onRoomSelected: (selectedRoom) async {
-                              setState(() {
-                                _model.selectedBigTableRoomRow = selectedRoom;
-                              });
+                              _model.selectedBigTableRoomRow = selectedRoom;
+                              setState(() {});
                               await PostsTable().insert({
                                 'title': 'updated',
                                 'description': 'asdf',
                                 'author_user_id': 0,
                               });
-                              setState(() {
-                                _model.triggerDbRefresh =
-                                    !_model.triggerDbRefresh;
-                              });
-                              FFAppState().update(() {
-                                FFAppState().DevModeEnabled = true;
-                              });
+                              _model.triggerDbRefresh =
+                                  !_model.triggerDbRefresh;
+                              setState(() {});
+                              FFAppState().DevModeEnabled = true;
+                              FFAppState().update(() {});
                             },
                           ),
                         ),

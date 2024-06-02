@@ -14,8 +14,22 @@ import 'package:provider/provider.dart';
 
 class ListingRestaurantDetailComponentModel
     extends FlutterFlowModel<ListingRestaurantDetailComponentWidget> {
+  ///  Local state fields for this component.
+
+  bool editVendorMode = false;
+
+  bool editVenueNameMode = false;
+
   ///  State fields for stateful widgets in this component.
 
+  // State field(s) for VendorNameTF widget.
+  FocusNode? vendorNameTFFocusNode;
+  TextEditingController? vendorNameTFTextController;
+  String? Function(BuildContext, String?)? vendorNameTFTextControllerValidator;
+  // State field(s) for VenueNameTF widget.
+  FocusNode? venueNameTFFocusNode;
+  TextEditingController? venueNameTFTextController;
+  String? Function(BuildContext, String?)? venueNameTFTextControllerValidator;
   // Model for Address component.
   late AddressModel addressModel;
   Completer<List<AddressesRow>>? requestCompleter;
@@ -27,6 +41,12 @@ class ListingRestaurantDetailComponentModel
 
   @override
   void dispose() {
+    vendorNameTFFocusNode?.dispose();
+    vendorNameTFTextController?.dispose();
+
+    venueNameTFFocusNode?.dispose();
+    venueNameTFTextController?.dispose();
+
     addressModel.dispose();
   }
 

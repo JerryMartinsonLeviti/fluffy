@@ -538,9 +538,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          setState(() {
-                            _model.noEdit = !_model.noEdit;
-                          });
+                          _model.noEdit = !_model.noEdit;
+                          setState(() {});
                         },
                         child: Icon(
                           Icons.settings_outlined,
@@ -1127,9 +1126,11 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                                           null);
                                                   await _model
                                                       .waitForRequestCompleted3();
+
                                                   setState(() {});
                                                   await widget.dbRefresh
                                                       ?.call();
+
                                                   FFAppState().update(() {});
                                                 },
                                               );
@@ -1151,6 +1152,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                               _model.requestCompleter3 = null);
                                           await _model
                                               .waitForRequestCompleted3();
+
                                           _model.updatePage(() {});
                                         },
                                         text: 'AddNewItem',

@@ -249,6 +249,7 @@ class _ListingWhatIsIncludedWidgetState
                                                   .requestCompleter = null);
                                               await _model
                                                   .waitForRequestCompleted();
+
                                               FFAppState().update(() {});
                                             },
                                             onDelete: () async {
@@ -264,6 +265,7 @@ class _ListingWhatIsIncludedWidgetState
                                                   .requestCompleter = null);
                                               await _model
                                                   .waitForRequestCompleted();
+
                                               FFAppState().update(() {});
                                             },
                                             onHideToggle: () async {
@@ -284,6 +286,7 @@ class _ListingWhatIsIncludedWidgetState
                                                   .requestCompleter = null);
                                               await _model
                                                   .waitForRequestCompleted();
+
                                               FFAppState().update(() {});
                                             },
                                           ),

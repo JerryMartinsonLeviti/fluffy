@@ -53,6 +53,7 @@ class _MessageByDateListviewWidgetState
         () async {
           setState(() => _model.requestCompleter = null);
           await _model.waitForRequestCompleted();
+
           FFAppState().update(() {});
         },
       );
@@ -65,6 +66,7 @@ class _MessageByDateListviewWidgetState
         () async {
           setState(() => _model.requestCompleter = null);
           await _model.waitForRequestCompleted();
+
           FFAppState().update(() {});
         },
       );

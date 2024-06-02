@@ -156,10 +156,9 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                   children: [
                                     FFButtonWidget(
                                       onPressed: () async {
-                                        setState(() {
-                                          _model.eventNameEdit =
-                                              !_model.eventNameEdit;
-                                        });
+                                        _model.eventNameEdit =
+                                            !_model.eventNameEdit;
+                                        setState(() {});
                                       },
                                       text: 'Event',
                                       options: FFButtonOptions(
@@ -241,11 +240,11 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                   .requestCompleter = null);
                                               await _model
                                                   .waitForRequestCompleted();
+
                                               _model.updatePage(() {});
-                                              setState(() {
-                                                _model.eventNameEdit =
-                                                    !_model.eventNameEdit;
-                                              });
+                                              _model.eventNameEdit =
+                                                  !_model.eventNameEdit;
+                                              setState(() {});
                                             },
                                             autofocus: true,
                                             obscureText: false,
@@ -330,10 +329,8 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                   children: [
                                     FFButtonWidget(
                                       onPressed: () async {
-                                        setState(() {
-                                          _model.budgetEdit =
-                                              !_model.budgetEdit;
-                                        });
+                                        _model.budgetEdit = !_model.budgetEdit;
+                                        setState(() {});
                                       },
                                       text: 'Budget',
                                       options: FFButtonOptions(
@@ -423,11 +420,11 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                   .requestCompleter = null);
                                               await _model
                                                   .waitForRequestCompleted();
+
                                               _model.updatePage(() {});
-                                              setState(() {
-                                                _model.budgetEdit =
-                                                    !_model.budgetEdit;
-                                              });
+                                              _model.budgetEdit =
+                                                  !_model.budgetEdit;
+                                              setState(() {});
                                             },
                                             autofocus: true,
                                             obscureText: false,
@@ -512,10 +509,9 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                   children: [
                                     FFButtonWidget(
                                       onPressed: () async {
-                                        setState(() {
-                                          _model.locationEdit =
-                                              !_model.locationEdit;
-                                        });
+                                        _model.locationEdit =
+                                            !_model.locationEdit;
+                                        setState(() {});
                                       },
                                       text: 'Location',
                                       options: FFButtonOptions(
@@ -684,9 +680,8 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                   children: [
                                     FFButtonWidget(
                                       onPressed: () async {
-                                        setState(() {
-                                          _model.timeEdit = !_model.timeEdit;
-                                        });
+                                        _model.timeEdit = !_model.timeEdit;
+                                        setState(() {});
                                       },
                                       text: 'Time',
                                       options: FFButtonOptions(
@@ -774,9 +769,8 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                               _model.requestCompleter = null);
                                           await _model
                                               .waitForRequestCompleted();
-                                          _model.updatePage(() {
-                                            _model.timeEdit = !_model.timeEdit;
-                                          });
+                                          _model.timeEdit = !_model.timeEdit;
+                                          _model.updatePage(() {});
                                         },
                                         width: 150.0,
                                         height: 56.0,
@@ -815,9 +809,8 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                   children: [
                                     FFButtonWidget(
                                       onPressed: () async {
-                                        setState(() {
-                                          _model.guestEdit = !_model.guestEdit;
-                                        });
+                                        _model.guestEdit = !_model.guestEdit;
+                                        setState(() {});
                                       },
                                       text: '# Guests',
                                       options: FFButtonOptions(
@@ -892,11 +885,11 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                                                   .requestCompleter = null);
                                               await _model
                                                   .waitForRequestCompleted();
+
                                               _model.updatePage(() {});
-                                              setState(() {
-                                                _model.guestEdit =
-                                                    !_model.guestEdit;
-                                              });
+                                              _model.guestEdit =
+                                                  !_model.guestEdit;
+                                              setState(() {});
                                             },
                                             autofocus: true,
                                             obscureText: false,

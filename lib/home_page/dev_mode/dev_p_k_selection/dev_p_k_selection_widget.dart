@@ -100,12 +100,11 @@ class _DevPKSelectionWidgetState extends State<DevPKSelectionWidget> {
                               onChanged: (val) async {
                                 setState(
                                     () => _model.plannerDropDownValue = val);
-                                setState(() {
-                                  FFAppState().PKPlanner = valueOrDefault<int>(
-                                    _model.plannerDropDownValue,
-                                    0,
-                                  );
-                                });
+                                FFAppState().PKPlanner = valueOrDefault<int>(
+                                  _model.plannerDropDownValue,
+                                  0,
+                                );
+                                setState(() {});
                               },
                               width: 300.0,
                               height: 56.0,
@@ -184,10 +183,9 @@ class _DevPKSelectionWidgetState extends State<DevPKSelectionWidget> {
                               onChanged: (val) async {
                                 setState(
                                     () => _model.vendorDropDownValue = val);
-                                setState(() {
-                                  FFAppState().PKVendors =
-                                      _model.vendorDropDownValue!;
-                                });
+                                FFAppState().PKVendors =
+                                    _model.vendorDropDownValue!;
+                                setState(() {});
                               },
                               width: 300.0,
                               height: 56.0,
@@ -266,10 +264,9 @@ class _DevPKSelectionWidgetState extends State<DevPKSelectionWidget> {
                               onChanged: (val) async {
                                 setState(
                                     () => _model.liaisonDropDownValue = val);
-                                setState(() {
-                                  FFAppState().PKLiaison =
-                                      _model.liaisonDropDownValue!;
-                                });
+                                FFAppState().PKLiaison =
+                                    _model.liaisonDropDownValue!;
+                                setState(() {});
                               },
                               width: 300.0,
                               height: 56.0,

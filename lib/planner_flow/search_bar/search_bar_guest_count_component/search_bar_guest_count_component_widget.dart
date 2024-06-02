@@ -45,9 +45,8 @@ class _SearchBarGuestCountComponentWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.guestCount = widget.eventRowIn?.guestCount;
-      });
+      _model.guestCount = widget.eventRowIn?.guestCount;
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -186,10 +185,9 @@ class _SearchBarGuestCountComponentWidgetState
                                       updateCount: (count) async {
                                         setState(() => _model
                                             .countControllerValue = count);
-                                        setState(() {
-                                          _model.guestCount =
-                                              _model.countControllerValue;
-                                        });
+                                        _model.guestCount =
+                                            _model.countControllerValue;
+                                        setState(() {});
                                       },
                                       stepSize: 1,
                                     ),

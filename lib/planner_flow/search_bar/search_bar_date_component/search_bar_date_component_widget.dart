@@ -191,6 +191,7 @@ class _SearchBarDateComponentWidgetState
                                             widget.eventRow?.pKEvents,
                                           ),
                                         );
+
                                         FFAppState().update(() {});
                                       },
                                       text: 'Apply ',

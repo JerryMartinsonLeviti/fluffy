@@ -93,13 +93,11 @@ class _DevModeAccessWidgetState extends State<DevModeAccessWidget> {
                   onFieldSubmitted: (_) async {
                     if (FFAppState().DevAccessCode ==
                         _model.accessCodeTextFieldTextController.text) {
-                      setState(() {
-                        FFAppState().DevModeEnabled = true;
-                      });
+                      FFAppState().DevModeEnabled = true;
+                      setState(() {});
                     } else {
-                      setState(() {
-                        FFAppState().DevModeEnabled = false;
-                      });
+                      FFAppState().DevModeEnabled = false;
+                      setState(() {});
                     }
 
                     context.safePop();

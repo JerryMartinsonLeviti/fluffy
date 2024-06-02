@@ -226,6 +226,7 @@ class _CartSummaryComponentCopyWidgetState
                             ),
                           );
                           await widget.onPressSendProposal?.call();
+
                           setState(() {});
                         },
                         text: 'Send Proposal',
@@ -533,6 +534,7 @@ class _CartSummaryComponentCopyWidgetState
                       widget.cartRow?.pKCarts,
                     ),
                   );
+
                   FFAppState().update(() {});
                   await widget.onPressRemoved?.call();
                 },

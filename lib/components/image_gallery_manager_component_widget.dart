@@ -281,6 +281,7 @@ class _ImageGalleryManagerComponentWidgetState
                                                   ),
                                                 );
                                                 await widget.onDbUpdate?.call();
+
                                                 FFAppState().update(() {});
                                               },
                                               child: Icon(
@@ -311,6 +312,7 @@ class _ImageGalleryManagerComponentWidgetState
                                                   ),
                                                 );
                                                 await widget.onDbUpdate?.call();
+
                                                 FFAppState().update(() {});
                                               },
                                               child: Icon(
@@ -367,6 +369,7 @@ class _ImageGalleryManagerComponentWidgetState
                               widget.immageAssetRows?.toList(),
                             );
                             await widget.onDbUpdate?.call();
+
                             FFAppState().update(() {});
 
                             setState(() {});

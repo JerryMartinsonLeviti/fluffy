@@ -1451,37 +1451,41 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                               letterSpacing: 0.0,
                                             ),
                                       ),
-                                      Builder(
-                                        builder: (context) {
-                                          final itemGrpRow =
-                                              itemGrpDBItemGroupsRowList
-                                                  .toList();
-                                          return Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children:
-                                                List.generate(itemGrpRow.length,
-                                                    (itemGrpRowIndex) {
-                                              final itemGrpRowItem =
-                                                  itemGrpRow[itemGrpRowIndex];
-                                              return ItemGrpConfigComponentWidget(
-                                                key: Key(
-                                                    'Keya4r_${itemGrpRowIndex}_of_${itemGrpRow.length}'),
-                                                itemGrpRow: itemGrpRowItem,
-                                                packageRow: widget.packageRow!,
-                                                onItemGrpDbChange: () async {
-                                                  setState(() =>
-                                                      _model.requestCompleter3 =
-                                                          null);
-                                                  await _model
-                                                      .waitForRequestCompleted3();
+                                      if ((itemGrpDBItemGroupsRowList
+                                              .isNotEmpty) ==
+                                          false)
+                                        Builder(
+                                          builder: (context) {
+                                            final itemGrpRow =
+                                                itemGrpDBItemGroupsRowList
+                                                    .toList();
+                                            return Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: List.generate(
+                                                  itemGrpRow.length,
+                                                  (itemGrpRowIndex) {
+                                                final itemGrpRowItem =
+                                                    itemGrpRow[itemGrpRowIndex];
+                                                return ItemGrpConfigComponentWidget(
+                                                  key: Key(
+                                                      'Keya4r_${itemGrpRowIndex}_of_${itemGrpRow.length}'),
+                                                  itemGrpRow: itemGrpRowItem,
+                                                  packageRow:
+                                                      widget.packageRow!,
+                                                  onItemGrpDbChange: () async {
+                                                    setState(() => _model
+                                                            .requestCompleter3 =
+                                                        null);
+                                                    await _model
+                                                        .waitForRequestCompleted3();
 
-                                                  FFAppState().update(() {});
-                                                },
-                                              );
-                                            }),
-                                          );
-                                        },
-                                      ),
+                                                    FFAppState().update(() {});
+                                                  },
+                                                );
+                                              }),
+                                            );
+                                          },
+                                        ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:

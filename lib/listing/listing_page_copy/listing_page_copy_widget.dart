@@ -116,7 +116,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     FutureBuilder<List<VenuesRow>>(
-                      future: (_model.requestCompleter3 ??=
+                      future: (_model.requestCompleter4 ??=
                               Completer<List<VenuesRow>>()
                                 ..complete(VenuesTable().querySingleRow(
                                   queryFn: (q) => q.eq(
@@ -151,12 +151,15 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                 .secondaryBackground,
                           ),
                           child: FutureBuilder<List<VendorsRow>>(
-                            future: VendorsTable().querySingleRow(
-                              queryFn: (q) => q.eq(
-                                'PK_Vendors',
-                                widget.vendorPK,
-                              ),
-                            ),
+                            future: (_model.requestCompleter2 ??=
+                                    Completer<List<VendorsRow>>()
+                                      ..complete(VendorsTable().querySingleRow(
+                                        queryFn: (q) => q.eq(
+                                          'PK_Vendors',
+                                          widget.vendorPK,
+                                        ),
+                                      )))
+                                .future,
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -264,6 +267,22 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                 vendorDBContainerVendorsRow!,
                                                             venueRow:
                                                                 venueDBContainerVenuesRow!,
+                                                            updateVendorDB:
+                                                                () async {
+                                                              setState(() =>
+                                                                  _model.requestCompleter2 =
+                                                                      null);
+                                                              await _model
+                                                                  .waitForRequestCompleted2();
+                                                            },
+                                                            updateVenueDB:
+                                                                () async {
+                                                              setState(() =>
+                                                                  _model.requestCompleter4 =
+                                                                      null);
+                                                              await _model
+                                                                  .waitForRequestCompleted4();
+                                                            },
                                                           ),
                                                         ),
                                                       ),
@@ -331,7 +350,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                           ),
                                           FutureBuilder<List<ImageAssetsRow>>(
                                             future: (_model
-                                                        .requestCompleter2 ??=
+                                                        .requestCompleter3 ??=
                                                     Completer<
                                                         List<ImageAssetsRow>>()
                                                       ..complete(
@@ -438,7 +457,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                   FutureBuilder<
                                                       List<ImageAssetsRow>>(
                                                     future: (_model
-                                                                .requestCompleter6 ??=
+                                                                .requestCompleter7 ??=
                                                             Completer<
                                                                 List<
                                                                     ImageAssetsRow>>()
@@ -562,15 +581,15 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                           originalURL,
                                                                     });
                                                                     setState(() =>
-                                                                        _model.requestCompleter2 =
-                                                                            null);
-                                                                    await _model
-                                                                        .waitForRequestCompleted2();
-                                                                    setState(() =>
                                                                         _model.requestCompleter3 =
                                                                             null);
                                                                     await _model
                                                                         .waitForRequestCompleted3();
+                                                                    setState(() =>
+                                                                        _model.requestCompleter4 =
+                                                                            null);
+                                                                    await _model
+                                                                        .waitForRequestCompleted4();
 
                                                                     FFAppState()
                                                                         .update(
@@ -579,10 +598,10 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                   onDbUpdate:
                                                                       () async {
                                                                     setState(() =>
-                                                                        _model.requestCompleter6 =
+                                                                        _model.requestCompleter7 =
                                                                             null);
                                                                     await _model
-                                                                        .waitForRequestCompleted6();
+                                                                        .waitForRequestCompleted7();
                                                                     _model.cartInvoiceActionOutput2 =
                                                                         await actions
                                                                             .invoiceFromCart(
@@ -733,10 +752,10 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                           originalURL,
                                                                     });
                                                                     setState(() =>
-                                                                        _model.requestCompleter2 =
+                                                                        _model.requestCompleter3 =
                                                                             null);
                                                                     await _model
-                                                                        .waitForRequestCompleted2();
+                                                                        .waitForRequestCompleted3();
                                                                     setState(() =>
                                                                         _model.requestCompleter1 =
                                                                             null);
@@ -852,7 +871,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                             FutureBuilder<
                                                 List<FunctionSpacesRow>>(
                                               future: (_model
-                                                          .requestCompleter4 ??=
+                                                          .requestCompleter5 ??=
                                                       Completer<
                                                           List<
                                                               FunctionSpacesRow>>()
@@ -925,10 +944,10 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                       'NoDescription',
                                                                 });
                                                                 setState(() =>
-                                                                    _model.requestCompleter4 =
+                                                                    _model.requestCompleter5 =
                                                                         null);
                                                                 await _model
-                                                                    .waitForRequestCompleted4();
+                                                                    .waitForRequestCompleted5();
 
                                                                 setState(() {});
                                                               },
@@ -957,10 +976,10 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                 .pageCart!,
                                                             onSave: () async {
                                                               setState(() =>
-                                                                  _model.requestCompleter4 =
+                                                                  _model.requestCompleter5 =
                                                                       null);
                                                               await _model
-                                                                  .waitForRequestCompleted4();
+                                                                  .waitForRequestCompleted5();
                                                               _model.cartrf =
                                                                   await CartsTable()
                                                                       .queryRows(
@@ -1046,7 +1065,7 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                           if (true)
                                             FutureBuilder<List<PackagesRow>>(
                                               future: (_model
-                                                          .requestCompleter5 ??=
+                                                          .requestCompleter6 ??=
                                                       Completer<
                                                           List<PackagesRow>>()
                                                         ..complete(
@@ -1106,10 +1125,10 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                                       .vendorPK,
                                                             });
                                                             setState(() => _model
-                                                                    .requestCompleter5 =
+                                                                    .requestCompleter6 =
                                                                 null);
                                                             await _model
-                                                                .waitForRequestCompleted5();
+                                                                .waitForRequestCompleted6();
 
                                                             setState(() {});
                                                           },
@@ -1134,10 +1153,10 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                               _model.pageCart!,
                                                           dbRefesh: () async {
                                                             setState(() => _model
-                                                                    .requestCompleter5 =
+                                                                    .requestCompleter6 =
                                                                 null);
                                                             await _model
-                                                                .waitForRequestCompleted5();
+                                                                .waitForRequestCompleted6();
                                                             _model.carta =
                                                                 await CartsTable()
                                                                     .queryRows(

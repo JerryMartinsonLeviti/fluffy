@@ -19,10 +19,14 @@ class ListingRestaurantDetailComponentWidget extends StatefulWidget {
     super.key,
     required this.vendorRow,
     required this.venueRow,
+    required this.updateVendorDB,
+    required this.updateVenueDB,
   });
 
   final VendorsRow? vendorRow;
   final VenuesRow? venueRow;
+  final Future Function()? updateVendorDB;
+  final Future Function()? updateVenueDB;
 
   @override
   State<ListingRestaurantDetailComponentWidget> createState() =>
@@ -76,13 +80,13 @@ class _ListingRestaurantDetailComponentWidgetState
     return Container(
       constraints: BoxConstraints(
         minWidth: 380.0,
-        maxHeight: 1000.0,
+        maxHeight: 1200.0,
       ),
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).primaryBackground,
       ),
       child: Column(
-        mainAxisSize: MainAxisSize.max,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
@@ -278,6 +282,8 @@ class _ListingRestaurantDetailComponentWidgetState
                                                     widget.vendorRow?.pKVendors,
                                                   ),
                                                 );
+                                                await widget.updateVendorDB
+                                                    ?.call();
 
                                                 FFAppState().update(() {});
                                               },
@@ -554,6 +560,8 @@ class _ListingRestaurantDetailComponentWidgetState
                                                     widget.vendorRow?.pKVendors,
                                                   ),
                                                 );
+                                                await widget.updateVenueDB
+                                                    ?.call();
 
                                                 FFAppState().update(() {});
                                               },

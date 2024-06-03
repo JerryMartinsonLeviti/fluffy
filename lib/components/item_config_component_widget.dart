@@ -554,14 +554,7 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                     itemGroupDBItemGroupsRowList.isNotEmpty,
                                 child: FlutterFlowDropDown<int>(
                                   controller: _model.itmGrpDDValueController ??=
-                                      FormFieldController<int>(
-                                    _model.itmGrpDDValue ??=
-                                        valueOrDefault<int>(
-                                      itemGroupDBItemGroupsRowList
-                                          .first.pKItemGroups,
-                                      0,
-                                    ),
-                                  ),
+                                      FormFieldController<int>(null),
                                   options: List<int>.from(
                                       itemGroupDBItemGroupsRowList
                                           .map((e) => e.pKItemGroups)

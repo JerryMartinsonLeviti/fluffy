@@ -344,6 +344,16 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                         ),
                       ],
                     ),
+                    Text(
+                      valueOrDefault<String>(
+                        widget.packageRow?.pKPackages?.toString(),
+                        'x',
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
+                          ),
+                    ),
                   ],
                 ),
               ),
@@ -544,9 +554,11 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                         return Container(
                           decoration: BoxDecoration(),
                           child: Visibility(
-                            visible:
-                                (itemGroupDBItemGroupsRowList.isNotEmpty) ==
-                                    false,
+                            visible: valueOrDefault<bool>(
+                              (itemGroupDBItemGroupsRowList.isNotEmpty) ==
+                                  false,
+                              false,
+                            ),
                             child: Container(
                               decoration: BoxDecoration(),
                               child: Visibility(

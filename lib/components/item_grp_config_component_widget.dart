@@ -278,7 +278,7 @@ class _ItemGrpConfigComponentWidgetState
                         autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
-                          labelText: 'minSel\n',
+                          labelText: 'minSel',
                           labelStyle:
                               FlutterFlowTheme.of(context).labelMedium.override(
                                     fontFamily: 'Readex Pro',
@@ -348,7 +348,7 @@ class _ItemGrpConfigComponentWidgetState
                         autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
-                          labelText: 'maxSel\n',
+                          labelText: 'maxSel',
                           labelStyle:
                               FlutterFlowTheme.of(context).labelMedium.override(
                                     fontFamily: 'Readex Pro',

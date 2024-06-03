@@ -1535,13 +1535,13 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                           ),
                                           FFButtonWidget(
                                             onPressed: () async {
-                                              await ItemsTable().insert({
-                                                'public_description':
-                                                    'no Description',
-                                                'display_name': 'no Name',
+                                              await ItemGroupsTable().insert({
+                                                'FK_Package': widget
+                                                    .packageRow?.pKPackages,
                                                 'FK_Vendor':
                                                     widget.packageRow?.fKVendor,
-                                                'unit_of_measure': 'Guest',
+                                                'item_group_name': '-',
+                                                'hide': false,
                                               });
                                               setState(() => _model
                                                   .requestCompleter4 = null);

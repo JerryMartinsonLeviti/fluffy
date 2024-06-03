@@ -451,6 +451,57 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                                                           .italic,
                                                                 ),
                                                           ),
+                                                          if (valueOrDefault<
+                                                              bool>(
+                                                            itemItem
+                                                                .isGluttenFree,
+                                                            false,
+                                                          ))
+                                                            AutoSizeText(
+                                                              '(GF)',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .start,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    fontSize:
+                                                                        12.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontStyle:
+                                                                        FontStyle
+                                                                            .italic,
+                                                                  ),
+                                                            ),
+                                                          if (valueOrDefault<
+                                                              bool>(
+                                                            itemItem.isVegan,
+                                                            false,
+                                                          ))
+                                                            AutoSizeText(
+                                                              '(V)',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .start,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    fontSize:
+                                                                        12.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontStyle:
+                                                                        FontStyle
+                                                                            .italic,
+                                                                  ),
+                                                            ),
                                                         ],
                                                       ),
                                                     ),

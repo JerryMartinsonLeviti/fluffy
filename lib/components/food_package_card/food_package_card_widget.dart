@@ -1493,109 +1493,6 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                               );
                                             },
                                           ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            FFButtonWidget(
-                                              onPressed: () async {
-                                                await ItemsTable().insert({
-                                                  'public_description':
-                                                      'no Description',
-                                                  'display_name': 'no Name',
-                                                  'FK_Vendor': widget
-                                                      .packageRow?.fKVendor,
-                                                  'unit_of_measure': 'Guest',
-                                                });
-                                                setState(() => _model
-                                                    .requestCompleter4 = null);
-                                                await _model
-                                                    .waitForRequestCompleted4();
-
-                                                _model.updatePage(() {});
-                                              },
-                                              text: 'AddNewItem',
-                                              options: FFButtonOptions(
-                                                height: 40.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        24.0, 0.0, 24.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color: Colors.white,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                            ),
-                                            FFButtonWidget(
-                                              onPressed: () async {
-                                                await ItemGroupsTable().insert({
-                                                  'FK_Package': widget
-                                                      .packageRow?.pKPackages,
-                                                  'FK_Vendor': widget
-                                                      .packageRow?.fKVendor,
-                                                  'item_group_name': '-',
-                                                  'hide': false,
-                                                });
-                                                setState(() => _model
-                                                    .requestCompleter4 = null);
-                                                await _model
-                                                    .waitForRequestCompleted4();
-
-                                                _model.updatePage(() {});
-                                              },
-                                              text: 'AddNewItemGroup\n',
-                                              options: FFButtonOptions(
-                                                height: 40.0,
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        24.0, 0.0, 24.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color: Colors.white,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: Colors.transparent,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
                                       ],
                                     ),
                                   );
@@ -1604,6 +1501,84 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                             ),
                           );
                         },
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          FFButtonWidget(
+                            onPressed: () async {
+                              await ItemsTable().insert({
+                                'public_description': 'no Description',
+                                'display_name': 'no Name',
+                                'FK_Vendor': widget.packageRow?.fKVendor,
+                                'unit_of_measure': 'Guest',
+                              });
+                              setState(() => _model.requestCompleter4 = null);
+                              await _model.waitForRequestCompleted4();
+
+                              _model.updatePage(() {});
+                            },
+                            text: 'AddNewItem',
+                            options: FFButtonOptions(
+                              height: 40.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 0.0, 24.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
+                                  ),
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                          FFButtonWidget(
+                            onPressed: () async {
+                              await ItemGroupsTable().insert({
+                                'FK_Package': widget.packageRow?.pKPackages,
+                                'FK_Vendor': widget.packageRow?.fKVendor,
+                                'item_group_name': '-',
+                                'hide': false,
+                              });
+                              setState(() => _model.requestCompleter4 = null);
+                              await _model.waitForRequestCompleted4();
+
+                              _model.updatePage(() {});
+                            },
+                            text: 'AddNewItemGroup\n',
+                            options: FFButtonOptions(
+                              height: 40.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 0.0, 24.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
+                                  ),
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                        ],
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.max,

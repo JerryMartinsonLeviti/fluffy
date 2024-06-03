@@ -599,6 +599,12 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                           isOverButton: true,
                           isSearchable: false,
                           isMultiSelect: false,
+                          labelText: 'Select Group or Course',
+                          labelTextStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                         );
                       },
                     ),

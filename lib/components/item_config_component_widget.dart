@@ -64,7 +64,7 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<PackageItemRow>>(
-      future: (_model.requestCompleter1 ??= Completer<List<PackageItemRow>>()
+      future: (_model.requestCompleter2 ??= Completer<List<PackageItemRow>>()
             ..complete(PackageItemTable().querySingleRow(
               queryFn: (q) => q
                   .eq(
@@ -91,10 +91,11 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
             ),
           );
         }
-        List<PackageItemRow> containerPackageItemRowList = snapshot.data!;
-        final containerPackageItemRow = containerPackageItemRowList.isNotEmpty
-            ? containerPackageItemRowList.first
-            : null;
+        List<PackageItemRow> itemConfigDBPackageItemRowList = snapshot.data!;
+        final itemConfigDBPackageItemRow =
+            itemConfigDBPackageItemRowList.isNotEmpty
+                ? itemConfigDBPackageItemRowList.first
+                : null;
         return Container(
           constraints: BoxConstraints(
             maxWidth: 380.0,
@@ -138,7 +139,7 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        if (containerPackageItemRow?.pKPackageItem == null)
+                        if (itemConfigDBPackageItemRow?.pKPackageItem == null)
                           InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -149,8 +150,8 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                 'FK_Package': widget.packageRow?.pKPackages,
                                 'FK_Item': widget.itemRow?.pKItems,
                               });
-                              setState(() => _model.requestCompleter1 = null);
-                              await _model.waitForRequestCompleted1();
+                              setState(() => _model.requestCompleter2 = null);
+                              await _model.waitForRequestCompleted2();
 
                               setState(() {});
                               await widget.onItemDbChange?.call();
@@ -161,7 +162,7 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                               size: 24.0,
                             ),
                           ),
-                        if (containerPackageItemRow?.pKPackageItem != null)
+                        if (itemConfigDBPackageItemRow?.pKPackageItem != null)
                           InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -179,8 +180,8 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                       widget.itemRow?.pKItems,
                                     ),
                               );
-                              setState(() => _model.requestCompleter1 = null);
-                              await _model.waitForRequestCompleted1();
+                              setState(() => _model.requestCompleter2 = null);
+                              await _model.waitForRequestCompleted2();
 
                               setState(() {});
                               await widget.onItemDbChange?.call();
@@ -215,8 +216,8 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                   widget.itemRow?.pKItems,
                                 ),
                               );
-                              setState(() => _model.requestCompleter1 = null);
-                              await _model.waitForRequestCompleted1();
+                              setState(() => _model.requestCompleter2 = null);
+                              await _model.waitForRequestCompleted2();
 
                               setState(() {});
                               await widget.onItemDbChange?.call();
@@ -246,8 +247,8 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                   widget.itemRow?.pKItems,
                                 ),
                               );
-                              setState(() => _model.requestCompleter1 = null);
-                              await _model.waitForRequestCompleted1();
+                              setState(() => _model.requestCompleter2 = null);
+                              await _model.waitForRequestCompleted2();
 
                               setState(() {});
                               await widget.onItemDbChange?.call();
@@ -290,8 +291,8 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                   widget.itemRow?.pKItems,
                                 ),
                               );
-                              setState(() => _model.requestCompleter1 = null);
-                              await _model.waitForRequestCompleted1();
+                              setState(() => _model.requestCompleter2 = null);
+                              await _model.waitForRequestCompleted2();
 
                               setState(() {});
                               await widget.onItemDbChange?.call();
@@ -321,8 +322,8 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                   widget.itemRow?.pKItems,
                                 ),
                               );
-                              setState(() => _model.requestCompleter1 = null);
-                              await _model.waitForRequestCompleted1();
+                              setState(() => _model.requestCompleter2 = null);
+                              await _model.waitForRequestCompleted2();
 
                               setState(() {});
                               await widget.onItemDbChange?.call();
@@ -513,13 +514,15 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                       ),
                     ),
                     FutureBuilder<List<ItemGroupsRow>>(
-                      future: (_model.requestCompleter2 ??=
+                      future: (_model.requestCompleter1 ??=
                               Completer<List<ItemGroupsRow>>()
                                 ..complete(ItemGroupsTable().queryRows(
-                                  queryFn: (q) => q.eq(
-                                    'FK_Package',
-                                    widget.packageRow?.pKPackages,
-                                  ),
+                                  queryFn: (q) => q
+                                      .eq(
+                                        'FK_Package',
+                                        widget.packageRow?.pKPackages,
+                                      )
+                                      .order('created_at'),
                                 )))
                           .future,
                       builder: (context, snapshot) {
@@ -536,75 +539,87 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                             ),
                           );
                         }
-                        List<ItemGroupsRow> itmGrpDDItemGroupsRowList =
+                        List<ItemGroupsRow> itemGroupDBItemGroupsRowList =
                             snapshot.data!;
-                        return FlutterFlowDropDown<int>(
-                          controller: _model.itmGrpDDValueController ??=
-                              FormFieldController<int>(
-                            _model.itmGrpDDValue ??= valueOrDefault<int>(
-                              itmGrpDDItemGroupsRowList.first.pKItemGroups,
-                              0,
+                        return Container(
+                          decoration: BoxDecoration(),
+                          child: Visibility(
+                            visible: itemGroupDBItemGroupsRowList.isNotEmpty,
+                            child: FlutterFlowDropDown<int>(
+                              controller: _model.itmGrpDDValueController ??=
+                                  FormFieldController<int>(
+                                _model.itmGrpDDValue ??= valueOrDefault<int>(
+                                  itemGroupDBItemGroupsRowList
+                                      .first.pKItemGroups,
+                                  0,
+                                ),
+                              ),
+                              options: List<int>.from(
+                                  itemGroupDBItemGroupsRowList
+                                      .map((e) => e.pKItemGroups)
+                                      .toList()),
+                              optionLabels: itemGroupDBItemGroupsRowList
+                                  .map((e) => valueOrDefault<String>(
+                                        e.itemGroupName,
+                                        '-',
+                                      ))
+                                  .toList(),
+                              onChanged: (val) async {
+                                setState(() => _model.itmGrpDDValue = val);
+                                await ItemsTable().update(
+                                  data: {
+                                    'FK_ItemGroup': _model.itmGrpDDValue,
+                                  },
+                                  matchingRows: (rows) => rows.eq(
+                                    'PK_Items',
+                                    widget.itemRow?.pKItems,
+                                  ),
+                                );
+                                setState(() => _model.requestCompleter1 = null);
+                                await _model.waitForRequestCompleted1();
+                                setState(() => _model.requestCompleter2 = null);
+                                await _model.waitForRequestCompleted2();
+                                await widget.onItemDbChange?.call();
+
+                                FFAppState().update(() {});
+                              },
+                              width: 300.0,
+                              height: 56.0,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                              hintText: 'Please select...',
+                              icon: Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24.0,
+                              ),
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              elevation: 2.0,
+                              borderColor:
+                                  FlutterFlowTheme.of(context).alternate,
+                              borderWidth: 2.0,
+                              borderRadius: 8.0,
+                              margin: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 4.0, 16.0, 4.0),
+                              hidesUnderline: true,
+                              isOverButton: true,
+                              isSearchable: false,
+                              isMultiSelect: false,
+                              labelText: 'Select Group or Course',
+                              labelTextStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ),
-                          options: List<int>.from(itmGrpDDItemGroupsRowList
-                              .map((e) => e.pKItemGroups)
-                              .toList()),
-                          optionLabels: itmGrpDDItemGroupsRowList
-                              .map((e) => valueOrDefault<String>(
-                                    e.itemGroupName,
-                                    '-',
-                                  ))
-                              .toList(),
-                          onChanged: (val) async {
-                            setState(() => _model.itmGrpDDValue = val);
-                            await ItemsTable().update(
-                              data: {
-                                'FK_ItemGroup': _model.itmGrpDDValue,
-                              },
-                              matchingRows: (rows) => rows.eq(
-                                'PK_Items',
-                                widget.itemRow?.pKItems,
-                              ),
-                            );
-                            setState(() => _model.requestCompleter2 = null);
-                            await _model.waitForRequestCompleted2();
-                            setState(() => _model.requestCompleter1 = null);
-                            await _model.waitForRequestCompleted1();
-                            await widget.onItemDbChange?.call();
-
-                            FFAppState().update(() {});
-                          },
-                          width: 300.0,
-                          height: 56.0,
-                          textStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                  ),
-                          hintText: 'Please select...',
-                          icon: Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
-                          ),
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          elevation: 2.0,
-                          borderColor: FlutterFlowTheme.of(context).alternate,
-                          borderWidth: 2.0,
-                          borderRadius: 8.0,
-                          margin: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 4.0, 16.0, 4.0),
-                          hidesUnderline: true,
-                          isOverButton: true,
-                          isSearchable: false,
-                          isMultiSelect: false,
-                          labelText: 'Select Group or Course',
-                          labelTextStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                  ),
                         );
                       },
                     ),

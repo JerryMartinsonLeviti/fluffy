@@ -80,7 +80,7 @@ class _ListingRestaurantDetailComponentWidgetState
     return Container(
       constraints: BoxConstraints(
         minWidth: 380.0,
-        maxHeight: 1200.0,
+        maxHeight: 1600.0,
       ),
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).primaryBackground,

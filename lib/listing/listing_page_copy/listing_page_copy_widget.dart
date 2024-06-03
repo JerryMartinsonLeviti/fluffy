@@ -834,7 +834,9 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                               ),
                               Container(
                                 width: double.infinity,
-                                height: 2876.0,
+                                constraints: BoxConstraints(
+                                  maxHeight: 5000.0,
+                                ),
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,

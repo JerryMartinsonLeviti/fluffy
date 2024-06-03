@@ -555,8 +555,7 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                           decoration: BoxDecoration(),
                           child: Visibility(
                             visible: valueOrDefault<bool>(
-                              (itemGroupDBItemGroupsRowList.isNotEmpty) ==
-                                  false,
+                              (itemGroupDBItemGroupsRowList.isNotEmpty) == true,
                               false,
                             ),
                             child: Container(

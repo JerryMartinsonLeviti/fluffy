@@ -1412,7 +1412,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                             child: Visibility(
                               visible:
                                   (itemGrpDBItemGroupsRowList.isNotEmpty) ==
-                                      false,
+                                      true,
                               child: FutureBuilder<List<PackageItemRow>>(
                                 future: (_model.requestCompleter3 ??= Completer<
                                         List<PackageItemRow>>()
@@ -1457,7 +1457,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                         ),
                                         if ((itemGrpDBItemGroupsRowList
                                                 .isNotEmpty) ==
-                                            false)
+                                            true)
                                           Builder(
                                             builder: (context) {
                                               final itemGrpRow =

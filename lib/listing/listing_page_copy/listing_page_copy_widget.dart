@@ -297,47 +297,52 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                             ),
                                                             decoration:
                                                                 BoxDecoration(),
-                                                            child:
-                                                                wrapWithModel(
-                                                              model: _model
-                                                                  .pricePredictorModel,
-                                                              updateCallback:
-                                                                  () => setState(
-                                                                      () {}),
+                                                            child: Visibility(
+                                                              visible: _model
+                                                                      .cartInvoice !=
+                                                                  null,
                                                               child:
-                                                                  PricePredictorWidget(
-                                                                eventRow: _model
-                                                                    .pageEvent!,
-                                                                cartRow: _model
-                                                                    .pageCart!,
-                                                                cartInvoice: _model
-                                                                    .cartInvoice,
-                                                                onRefreshEventDB:
-                                                                    () async {
-                                                                  _model.eventUpdated =
-                                                                      await EventsTable()
-                                                                          .queryRows(
-                                                                    queryFn:
-                                                                        (q) => q
-                                                                            .eq(
-                                                                      'PK_Events',
+                                                                  wrapWithModel(
+                                                                model: _model
+                                                                    .pricePredictorModel,
+                                                                updateCallback:
+                                                                    () => setState(
+                                                                        () {}),
+                                                                child:
+                                                                    PricePredictorWidget(
+                                                                  eventRow: _model
+                                                                      .pageEvent!,
+                                                                  cartRow: _model
+                                                                      .pageCart!,
+                                                                  cartInvoice:
                                                                       _model
-                                                                          .pageEvent
-                                                                          ?.pKEvents,
-                                                                    ),
-                                                                  );
-                                                                  _model.pageEvent =
-                                                                      _model
-                                                                          .eventUpdated
-                                                                          ?.first;
-                                                                  setState(
-                                                                      () {});
+                                                                          .cartInvoice,
+                                                                  onRefreshEventDB:
+                                                                      () async {
+                                                                    _model.eventUpdated =
+                                                                        await EventsTable()
+                                                                            .queryRows(
+                                                                      queryFn:
+                                                                          (q) =>
+                                                                              q.eq(
+                                                                        'PK_Events',
+                                                                        _model
+                                                                            .pageEvent
+                                                                            ?.pKEvents,
+                                                                      ),
+                                                                    );
+                                                                    _model.pageEvent = _model
+                                                                        .eventUpdated
+                                                                        ?.first;
+                                                                    setState(
+                                                                        () {});
 
-                                                                  setState(
-                                                                      () {});
-                                                                },
-                                                                onRefreshCartDB:
-                                                                    () async {},
+                                                                    setState(
+                                                                        () {});
+                                                                  },
+                                                                  onRefreshCartDB:
+                                                                      () async {},
+                                                                ),
                                                               ),
                                                             ),
                                                           ),

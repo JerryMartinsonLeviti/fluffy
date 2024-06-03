@@ -109,7 +109,7 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
             children: [
               Container(
                 constraints: BoxConstraints(
-                  minWidth: 80.0,
+                  minWidth: 76.0,
                 ),
                 decoration: BoxDecoration(),
                 child: Column(
@@ -512,37 +512,75 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                         ),
                       ),
                     ),
-                    FlutterFlowDropDown<String>(
-                      controller: _model.dropDownValueController ??=
-                          FormFieldController<String>(null),
-                      options: ['Option 1'],
-                      onChanged: (val) =>
-                          setState(() => _model.dropDownValue = val),
-                      width: 300.0,
-                      height: 56.0,
-                      textStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.override(
-                                fontFamily: 'Readex Pro',
-                                letterSpacing: 0.0,
-                              ),
-                      hintText: 'Please select...',
-                      icon: Icon(
-                        Icons.keyboard_arrow_down_rounded,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 24.0,
+                    FutureBuilder<List<ItemGroupsRow>>(
+                      future: ItemGroupsTable().queryRows(
+                        queryFn: (q) => q.eq(
+                          'FK_Package',
+                          widget.packageRow?.pKPackages,
+                        ),
                       ),
-                      fillColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      elevation: 2.0,
-                      borderColor: FlutterFlowTheme.of(context).alternate,
-                      borderWidth: 2.0,
-                      borderRadius: 8.0,
-                      margin:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
-                      hidesUnderline: true,
-                      isOverButton: true,
-                      isSearchable: false,
-                      isMultiSelect: false,
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: SpinKitChasingDots(
+                                color: FlutterFlowTheme.of(context).secondary,
+                                size: 50.0,
+                              ),
+                            ),
+                          );
+                        }
+                        List<ItemGroupsRow> itmGrpDDItemGroupsRowList =
+                            snapshot.data!;
+                        return FlutterFlowDropDown<int>(
+                          controller: _model.itmGrpDDValueController ??=
+                              FormFieldController<int>(
+                            _model.itmGrpDDValue ??= valueOrDefault<int>(
+                              itmGrpDDItemGroupsRowList.first.pKItemGroups,
+                              0,
+                            ),
+                          ),
+                          options: List<int>.from(itmGrpDDItemGroupsRowList
+                              .map((e) => e.pKItemGroups)
+                              .toList()),
+                          optionLabels: itmGrpDDItemGroupsRowList
+                              .map((e) => valueOrDefault<String>(
+                                    e.itemGroupName,
+                                    '-',
+                                  ))
+                              .toList(),
+                          onChanged: (val) =>
+                              setState(() => _model.itmGrpDDValue = val),
+                          width: 300.0,
+                          height: 56.0,
+                          textStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                          hintText: 'Please select...',
+                          icon: Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          elevation: 2.0,
+                          borderColor: FlutterFlowTheme.of(context).alternate,
+                          borderWidth: 2.0,
+                          borderRadius: 8.0,
+                          margin: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 4.0, 16.0, 4.0),
+                          hidesUnderline: true,
+                          isOverButton: true,
+                          isSearchable: false,
+                          isMultiSelect: false,
+                        );
+                      },
                     ),
                   ],
                 ),

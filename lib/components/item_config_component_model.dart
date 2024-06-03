@@ -25,9 +25,9 @@ class ItemConfigComponentModel
   TextEditingController? itemDescriptonTextController;
   String? Function(BuildContext, String?)?
       itemDescriptonTextControllerValidator;
-  // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
+  // State field(s) for ItmGrpDD widget.
+  int? itmGrpDDValue;
+  FormFieldController<int>? itmGrpDDValueController;
 
   @override
   void initState(BuildContext context) {}

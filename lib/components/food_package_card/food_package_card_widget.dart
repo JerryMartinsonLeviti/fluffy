@@ -53,6 +53,14 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
         text: widget.packageRow?.maxSelections?.toString());
     _model.maxSelectionFocusNode ??= FocusNode();
 
+    _model.minGuestsTextController ??=
+        TextEditingController(text: widget.packageRow?.minGuests?.toString());
+    _model.minGuestsFocusNode ??= FocusNode();
+
+    _model.maxGuestsTextController ??=
+        TextEditingController(text: widget.packageRow?.maxGuests?.toString());
+    _model.maxGuestsFocusNode ??= FocusNode();
+
     _model.pricePerTextController ??= TextEditingController(
         text: functions
             .centsIntToDollarDouble(widget.packageRow!.priceInCents)
@@ -707,6 +715,10 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                       widget.packageRow?.pKPackages,
                                     ),
                                   );
+                                  await widget.dbRefresh?.call();
+                                  setState(
+                                      () => _model.requestCompleter2 = null);
+                                  await _model.waitForRequestCompleted2();
                                 },
                                 autofocus: true,
                                 obscureText: false,
@@ -763,6 +775,175 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                     ),
                                 validator: _model
                                     .maxSelectionTextControllerValidator
+                                    .asValidator(context),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 0.0, 8.0, 0.0),
+                              child: TextFormField(
+                                controller: _model.minGuestsTextController,
+                                focusNode: _model.minGuestsFocusNode,
+                                onFieldSubmitted: (_) async {
+                                  await PackagesTable().update(
+                                    data: {
+                                      'minGuests': int.tryParse(
+                                          _model.minGuestsTextController.text),
+                                    },
+                                    matchingRows: (rows) => rows.eq(
+                                      'PK_Packages',
+                                      widget.packageRow?.pKPackages,
+                                    ),
+                                  );
+                                  await widget.dbRefresh?.call();
+                                  setState(
+                                      () => _model.requestCompleter2 = null);
+                                  await _model.waitForRequestCompleted2();
+                                },
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'minGuests\n',
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  errorBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedErrorBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
+                                validator: _model
+                                    .minGuestsTextControllerValidator
+                                    .asValidator(context),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 0.0, 8.0, 0.0),
+                              child: TextFormField(
+                                controller: _model.maxGuestsTextController,
+                                focusNode: _model.maxGuestsFocusNode,
+                                onFieldSubmitted: (_) async {
+                                  await PackagesTable().update(
+                                    data: {
+                                      'maxGuests': int.tryParse(
+                                          _model.maxGuestsTextController.text),
+                                    },
+                                    matchingRows: (rows) => rows.eq(
+                                      'PK_Packages',
+                                      widget.packageRow?.pKPackages,
+                                    ),
+                                  );
+                                  await widget.dbRefresh?.call();
+                                  setState(
+                                      () => _model.requestCompleter2 = null);
+                                  await _model.waitForRequestCompleted2();
+                                },
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'maxGuests\n',
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  errorBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedErrorBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
+                                validator: _model
+                                    .maxGuestsTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),

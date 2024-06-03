@@ -15,7 +15,7 @@ class ItemConfigComponentModel
     extends FlutterFlowModel<ItemConfigComponentWidget> {
   ///  State fields for stateful widgets in this component.
 
-  Completer<List<PackageItemRow>>? requestCompleter;
+  Completer<List<PackageItemRow>>? requestCompleter1;
   // State field(s) for ItemName widget.
   FocusNode? itemNameFocusNode;
   TextEditingController? itemNameTextController;
@@ -28,6 +28,7 @@ class ItemConfigComponentModel
   // State field(s) for ItmGrpDD widget.
   int? itmGrpDDValue;
   FormFieldController<int>? itmGrpDDValueController;
+  Completer<List<ItemGroupsRow>>? requestCompleter2;
 
   @override
   void initState(BuildContext context) {}
@@ -42,7 +43,7 @@ class ItemConfigComponentModel
   }
 
   /// Additional helper methods.
-  Future waitForRequestCompleted({
+  Future waitForRequestCompleted1({
     double minWait = 0,
     double maxWait = double.infinity,
   }) async {
@@ -50,7 +51,22 @@ class ItemConfigComponentModel
     while (true) {
       await Future.delayed(Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter?.isCompleted ?? false;
+      final requestComplete = requestCompleter1?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
+  }
+
+  Future waitForRequestCompleted2({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter2?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }

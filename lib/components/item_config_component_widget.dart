@@ -64,7 +64,7 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<PackageItemRow>>(
-      future: (_model.requestCompleter ??= Completer<List<PackageItemRow>>()
+      future: (_model.requestCompleter1 ??= Completer<List<PackageItemRow>>()
             ..complete(PackageItemTable().querySingleRow(
               queryFn: (q) => q
                   .eq(
@@ -149,8 +149,8 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                 'FK_Package': widget.packageRow?.pKPackages,
                                 'FK_Item': widget.itemRow?.pKItems,
                               });
-                              setState(() => _model.requestCompleter = null);
-                              await _model.waitForRequestCompleted();
+                              setState(() => _model.requestCompleter1 = null);
+                              await _model.waitForRequestCompleted1();
 
                               setState(() {});
                               await widget.onItemDbChange?.call();
@@ -179,8 +179,8 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                       widget.itemRow?.pKItems,
                                     ),
                               );
-                              setState(() => _model.requestCompleter = null);
-                              await _model.waitForRequestCompleted();
+                              setState(() => _model.requestCompleter1 = null);
+                              await _model.waitForRequestCompleted1();
 
                               setState(() {});
                               await widget.onItemDbChange?.call();
@@ -215,8 +215,8 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                   widget.itemRow?.pKItems,
                                 ),
                               );
-                              setState(() => _model.requestCompleter = null);
-                              await _model.waitForRequestCompleted();
+                              setState(() => _model.requestCompleter1 = null);
+                              await _model.waitForRequestCompleted1();
 
                               setState(() {});
                               await widget.onItemDbChange?.call();
@@ -246,8 +246,8 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                   widget.itemRow?.pKItems,
                                 ),
                               );
-                              setState(() => _model.requestCompleter = null);
-                              await _model.waitForRequestCompleted();
+                              setState(() => _model.requestCompleter1 = null);
+                              await _model.waitForRequestCompleted1();
 
                               setState(() {});
                               await widget.onItemDbChange?.call();
@@ -290,8 +290,8 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                   widget.itemRow?.pKItems,
                                 ),
                               );
-                              setState(() => _model.requestCompleter = null);
-                              await _model.waitForRequestCompleted();
+                              setState(() => _model.requestCompleter1 = null);
+                              await _model.waitForRequestCompleted1();
 
                               setState(() {});
                               await widget.onItemDbChange?.call();
@@ -321,8 +321,8 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                   widget.itemRow?.pKItems,
                                 ),
                               );
-                              setState(() => _model.requestCompleter = null);
-                              await _model.waitForRequestCompleted();
+                              setState(() => _model.requestCompleter1 = null);
+                              await _model.waitForRequestCompleted1();
 
                               setState(() {});
                               await widget.onItemDbChange?.call();
@@ -513,12 +513,15 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                       ),
                     ),
                     FutureBuilder<List<ItemGroupsRow>>(
-                      future: ItemGroupsTable().queryRows(
-                        queryFn: (q) => q.eq(
-                          'FK_Package',
-                          widget.packageRow?.pKPackages,
-                        ),
-                      ),
+                      future: (_model.requestCompleter2 ??=
+                              Completer<List<ItemGroupsRow>>()
+                                ..complete(ItemGroupsTable().queryRows(
+                                  queryFn: (q) => q.eq(
+                                    'FK_Package',
+                                    widget.packageRow?.pKPackages,
+                                  ),
+                                )))
+                          .future,
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -552,8 +555,25 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                     '-',
                                   ))
                               .toList(),
-                          onChanged: (val) =>
-                              setState(() => _model.itmGrpDDValue = val),
+                          onChanged: (val) async {
+                            setState(() => _model.itmGrpDDValue = val);
+                            await ItemsTable().update(
+                              data: {
+                                'FK_ItemGroup': _model.itmGrpDDValue,
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'PK_Items',
+                                widget.itemRow?.pKItems,
+                              ),
+                            );
+                            setState(() => _model.requestCompleter2 = null);
+                            await _model.waitForRequestCompleted2();
+                            setState(() => _model.requestCompleter1 = null);
+                            await _model.waitForRequestCompleted1();
+                            await widget.onItemDbChange?.call();
+
+                            FFAppState().update(() {});
+                          },
                           width: 300.0,
                           height: 56.0,
                           textStyle:

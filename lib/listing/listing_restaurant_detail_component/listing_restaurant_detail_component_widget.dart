@@ -843,7 +843,8 @@ class _ListingRestaurantDetailComponentWidgetState
                                                             ),
                                                           );
 
-                                                          setState(() {});
+                                                          FFAppState()
+                                                              .update(() {});
                                                         },
                                                       ),
                                                     );
@@ -961,7 +962,8 @@ class _ListingRestaurantDetailComponentWidgetState
                                                             ),
                                                           );
 
-                                                          setState(() {});
+                                                          FFAppState()
+                                                              .update(() {});
                                                         },
                                                       ),
                                                     );

@@ -59,4 +59,10 @@ class ItemsRow extends SupabaseDataRow {
 
   int? get fKItemGroup => getField<int>('FK_ItemGroup');
   set fKItemGroup(int? value) => setField<int>('FK_ItemGroup', value);
+
+  bool? get isVegan => getField<bool>('isVegan');
+  set isVegan(bool? value) => setField<bool>('isVegan', value);
+
+  bool? get isGluttenFree => getField<bool>('isGluttenFree');
+  set isGluttenFree(bool? value) => setField<bool>('isGluttenFree', value);
 }

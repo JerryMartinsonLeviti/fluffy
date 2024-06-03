@@ -127,59 +127,212 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                       size: 24.0,
                     ),
                   ),
-                  if (containerPackageItemRow?.pKPackageItem != null)
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        await PackageItemTable().delete(
-                          matchingRows: (rows) => rows
-                              .eq(
-                                'FK_Package',
-                                widget.packageRow?.pKPackages,
-                              )
-                              .eq(
-                                'FK_Item',
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      if (containerPackageItemRow?.pKPackageItem == null)
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            await PackageItemTable().insert({
+                              'FK_Package': widget.packageRow?.pKPackages,
+                              'FK_Item': widget.itemRow?.pKItems,
+                            });
+                            setState(() => _model.requestCompleter = null);
+                            await _model.waitForRequestCompleted();
+
+                            setState(() {});
+                            await widget.onItemDbChange?.call();
+                          },
+                          child: Icon(
+                            Icons.check_box_outline_blank,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                        ),
+                      if (containerPackageItemRow?.pKPackageItem != null)
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            await PackageItemTable().delete(
+                              matchingRows: (rows) => rows
+                                  .eq(
+                                    'FK_Package',
+                                    widget.packageRow?.pKPackages,
+                                  )
+                                  .eq(
+                                    'FK_Item',
+                                    widget.itemRow?.pKItems,
+                                  ),
+                            );
+                            setState(() => _model.requestCompleter = null);
+                            await _model.waitForRequestCompleted();
+
+                            setState(() {});
+                            await widget.onItemDbChange?.call();
+                          },
+                          child: Icon(
+                            Icons.check_box,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                        ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      if (!valueOrDefault<bool>(
+                        widget.itemRow?.isVegan,
+                        false,
+                      ))
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            await ItemsTable().update(
+                              data: {
+                                'isVegan': true,
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'PK_Items',
                                 widget.itemRow?.pKItems,
                               ),
-                        );
-                        setState(() => _model.requestCompleter = null);
-                        await _model.waitForRequestCompleted();
+                            );
+                            setState(() => _model.requestCompleter = null);
+                            await _model.waitForRequestCompleted();
 
-                        setState(() {});
-                        await widget.onItemDbChange?.call();
-                      },
-                      child: Icon(
-                        Icons.check_box,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 24.0,
-                      ),
-                    ),
-                  if (containerPackageItemRow?.pKPackageItem == null)
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        await PackageItemTable().insert({
-                          'FK_Package': widget.packageRow?.pKPackages,
-                          'FK_Item': widget.itemRow?.pKItems,
-                        });
-                        setState(() => _model.requestCompleter = null);
-                        await _model.waitForRequestCompleted();
+                            setState(() {});
+                            await widget.onItemDbChange?.call();
+                          },
+                          child: Icon(
+                            Icons.check_box_outline_blank,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                        ),
+                      if (valueOrDefault<bool>(
+                        widget.itemRow?.isVegan,
+                        false,
+                      ))
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            await ItemsTable().update(
+                              data: {
+                                'isVegan': false,
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'PK_Items',
+                                widget.itemRow?.pKItems,
+                              ),
+                            );
+                            setState(() => _model.requestCompleter = null);
+                            await _model.waitForRequestCompleted();
 
-                        setState(() {});
-                        await widget.onItemDbChange?.call();
-                      },
-                      child: Icon(
-                        Icons.check_box_outline_blank,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 24.0,
+                            setState(() {});
+                            await widget.onItemDbChange?.call();
+                          },
+                          child: Icon(
+                            Icons.check_box,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                        ),
+                      Text(
+                        '(V)',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
                       ),
-                    ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      if (!valueOrDefault<bool>(
+                        widget.itemRow?.isGluttenFree,
+                        false,
+                      ))
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            await ItemsTable().update(
+                              data: {
+                                'isGluttenFree': true,
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'PK_Items',
+                                widget.itemRow?.pKItems,
+                              ),
+                            );
+                            setState(() => _model.requestCompleter = null);
+                            await _model.waitForRequestCompleted();
+
+                            setState(() {});
+                            await widget.onItemDbChange?.call();
+                          },
+                          child: Icon(
+                            Icons.check_box_outline_blank,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                        ),
+                      if (valueOrDefault<bool>(
+                        widget.itemRow?.isGluttenFree,
+                        false,
+                      ))
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            await ItemsTable().update(
+                              data: {
+                                'isGluttenFree': false,
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'PK_Items',
+                                widget.itemRow?.pKItems,
+                              ),
+                            );
+                            setState(() => _model.requestCompleter = null);
+                            await _model.waitForRequestCompleted();
+
+                            setState(() {});
+                            await widget.onItemDbChange?.call();
+                          },
+                          child: Icon(
+                            Icons.check_box,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                        ),
+                      Text(
+                        '(GF)',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
               Column(

@@ -35,4 +35,12 @@ class ItemGroupsRow extends SupabaseDataRow {
 
   int? get maxSelections => getField<int>('maxSelections');
   set maxSelections(int? value) => setField<int>('maxSelections', value);
+
+  String? get itemGroupDescription =>
+      getField<String>('item_group_description');
+  set itemGroupDescription(String? value) =>
+      setField<String>('item_group_description', value);
+
+  bool get hide => getField<bool>('hide')!;
+  set hide(bool value) => setField<bool>('hide', value);
 }

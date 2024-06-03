@@ -1108,6 +1108,9 @@ class _ListingPageCopyWidgetState extends State<ListingPageCopyWidget> {
                                                     packagesPackagesRowList =
                                                     snapshot.data!;
                                                 return Container(
+                                                  constraints: BoxConstraints(
+                                                    maxHeight: 6000.0,
+                                                  ),
                                                   decoration: BoxDecoration(),
                                                   child: Column(
                                                     mainAxisSize:

@@ -544,80 +544,92 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                         return Container(
                           decoration: BoxDecoration(),
                           child: Visibility(
-                            visible: itemGroupDBItemGroupsRowList.isNotEmpty,
-                            child: FlutterFlowDropDown<int>(
-                              controller: _model.itmGrpDDValueController ??=
-                                  FormFieldController<int>(
-                                _model.itmGrpDDValue ??= valueOrDefault<int>(
-                                  itemGroupDBItemGroupsRowList
-                                      .first.pKItemGroups,
-                                  0,
+                            visible:
+                                (itemGroupDBItemGroupsRowList.isNotEmpty) ==
+                                    false,
+                            child: Container(
+                              decoration: BoxDecoration(),
+                              child: Visibility(
+                                visible:
+                                    itemGroupDBItemGroupsRowList.isNotEmpty,
+                                child: FlutterFlowDropDown<int>(
+                                  controller: _model.itmGrpDDValueController ??=
+                                      FormFieldController<int>(
+                                    _model.itmGrpDDValue ??=
+                                        valueOrDefault<int>(
+                                      itemGroupDBItemGroupsRowList
+                                          .first.pKItemGroups,
+                                      0,
+                                    ),
+                                  ),
+                                  options: List<int>.from(
+                                      itemGroupDBItemGroupsRowList
+                                          .map((e) => e.pKItemGroups)
+                                          .toList()),
+                                  optionLabels: itemGroupDBItemGroupsRowList
+                                      .map((e) => valueOrDefault<String>(
+                                            e.itemGroupName,
+                                            '-',
+                                          ))
+                                      .toList(),
+                                  onChanged: (val) async {
+                                    setState(() => _model.itmGrpDDValue = val);
+                                    await ItemsTable().update(
+                                      data: {
+                                        'FK_ItemGroup': _model.itmGrpDDValue,
+                                      },
+                                      matchingRows: (rows) => rows.eq(
+                                        'PK_Items',
+                                        widget.itemRow?.pKItems,
+                                      ),
+                                    );
+                                    setState(
+                                        () => _model.requestCompleter1 = null);
+                                    await _model.waitForRequestCompleted1();
+                                    setState(
+                                        () => _model.requestCompleter2 = null);
+                                    await _model.waitForRequestCompleted2();
+                                    await widget.onItemDbChange?.call();
+
+                                    FFAppState().update(() {});
+                                  },
+                                  width: 300.0,
+                                  height: 56.0,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  hintText: 'Please select...',
+                                  icon: Icon(
+                                    Icons.keyboard_arrow_down_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
+                                  ),
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  elevation: 2.0,
+                                  borderColor:
+                                      FlutterFlowTheme.of(context).alternate,
+                                  borderWidth: 2.0,
+                                  borderRadius: 8.0,
+                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 4.0, 16.0, 4.0),
+                                  hidesUnderline: true,
+                                  isOverButton: true,
+                                  isSearchable: false,
+                                  isMultiSelect: false,
+                                  labelText: 'Select Group or Course',
+                                  labelTextStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ),
-                              options: List<int>.from(
-                                  itemGroupDBItemGroupsRowList
-                                      .map((e) => e.pKItemGroups)
-                                      .toList()),
-                              optionLabels: itemGroupDBItemGroupsRowList
-                                  .map((e) => valueOrDefault<String>(
-                                        e.itemGroupName,
-                                        '-',
-                                      ))
-                                  .toList(),
-                              onChanged: (val) async {
-                                setState(() => _model.itmGrpDDValue = val);
-                                await ItemsTable().update(
-                                  data: {
-                                    'FK_ItemGroup': _model.itmGrpDDValue,
-                                  },
-                                  matchingRows: (rows) => rows.eq(
-                                    'PK_Items',
-                                    widget.itemRow?.pKItems,
-                                  ),
-                                );
-                                setState(() => _model.requestCompleter1 = null);
-                                await _model.waitForRequestCompleted1();
-                                setState(() => _model.requestCompleter2 = null);
-                                await _model.waitForRequestCompleted2();
-                                await widget.onItemDbChange?.call();
-
-                                FFAppState().update(() {});
-                              },
-                              width: 300.0,
-                              height: 56.0,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                  ),
-                              hintText: 'Please select...',
-                              icon: Icon(
-                                Icons.keyboard_arrow_down_rounded,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
-                              ),
-                              fillColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              elevation: 2.0,
-                              borderColor:
-                                  FlutterFlowTheme.of(context).alternate,
-                              borderWidth: 2.0,
-                              borderRadius: 8.0,
-                              margin: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 4.0, 16.0, 4.0),
-                              hidesUnderline: true,
-                              isOverButton: true,
-                              isSearchable: false,
-                              isMultiSelect: false,
-                              labelText: 'Select Group or Course',
-                              labelTextStyle: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                  ),
                             ),
                           ),
                         );

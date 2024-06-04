@@ -215,60 +215,13 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                         letterSpacing: 0.0,
                       ),
                 ),
-                Wrap(
-                  spacing: 0.0,
-                  runSpacing: 0.0,
-                  alignment: WrapAlignment.start,
-                  crossAxisAlignment: WrapCrossAlignment.start,
-                  direction: Axis.horizontal,
-                  runAlignment: WrapAlignment.start,
-                  verticalDirection: VerticalDirection.down,
-                  clipBehavior: Clip.none,
-                  children: [
-                    Text(
-                      'Choose ',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            letterSpacing: 0.0,
-                          ),
+                FutureBuilder<List<ItemGroupsRow>>(
+                  future: ItemGroupsTable().queryRows(
+                    queryFn: (q) => q.eq(
+                      'FK_Package',
+                      widget.packageRow?.pKPackages,
                     ),
-                    if (widget.packageRow?.minSelections != null)
-                      Text(
-                        'a Minimum of  ${widget.packageRow?.minSelections?.toString()}',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
-                              letterSpacing: 0.0,
-                            ),
-                      ),
-                    if (widget.packageRow?.maxSelections != null)
-                      Text(
-                        ' Up to ${widget.packageRow?.maxSelections?.toString()}',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Readex Pro',
-                              letterSpacing: 0.0,
-                            ),
-                      ),
-                    Text(
-                      ' Selections:',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Readex Pro',
-                            letterSpacing: 0.0,
-                          ),
-                    ),
-                  ],
-                ),
-                FutureBuilder<List<PackageItemRow>>(
-                  future: (_model.requestCompleter2 ??=
-                          Completer<List<PackageItemRow>>()
-                            ..complete(PackageItemTable().queryRows(
-                              queryFn: (q) => q
-                                  .eq(
-                                    'FK_Package',
-                                    widget.packageRow?.pKPackages,
-                                  )
-                                  .order('created_at'),
-                            )))
-                      .future,
+                  ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -283,243 +236,293 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                         ),
                       );
                     }
-                    List<PackageItemRow> pkgItemDbPackageItemRowList =
+                    List<ItemGroupsRow> itmGrpDBItemGroupsRowList =
                         snapshot.data!;
                     return Container(
                       decoration: BoxDecoration(),
-                      child: FutureBuilder<List<ItemsRow>>(
-                        future: ItemsTable().queryRows(
-                          queryFn: (q) => q.in_(
-                            'PK_Items',
-                            pkgItemDbPackageItemRowList
-                                .map((e) => e.fKItem)
-                                .withoutNulls
-                                .toList(),
-                          ),
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: SpinKitChasingDots(
-                                  color: FlutterFlowTheme.of(context).secondary,
-                                  size: 50.0,
-                                ),
-                              ),
-                            );
-                          }
-                          List<ItemsRow> fltItemDbItemsRowList = snapshot.data!;
-                          return Container(
-                            decoration: BoxDecoration(),
-                            child: Builder(
-                              builder: (context) {
-                                final item = fltItemDbItemsRowList.toList();
-                                return SingleChildScrollView(
-                                  child: Column(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Builder(
+                            builder: (context) {
+                              final itemGrpIdx =
+                                  itmGrpDBItemGroupsRowList.toList();
+                              return Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: List.generate(itemGrpIdx.length,
+                                    (itemGrpIdxIndex) {
+                                  final itemGrpIdxItem =
+                                      itemGrpIdx[itemGrpIdxIndex];
+                                  return Column(
                                     mainAxisSize: MainAxisSize.max,
-                                    children:
-                                        List.generate(item.length, (itemIndex) {
-                                      final itemItem = item[itemIndex];
-                                      return Container(
-                                        decoration: BoxDecoration(),
+                                    children: [
+                                      Text(
+                                        valueOrDefault<String>(
+                                          itemGrpIdxItem.itemGroupName,
+                                          'Course',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.0, 0.0),
                                         child: Container(
                                           decoration: BoxDecoration(),
-                                          child: SingleChildScrollView(
-                                            scrollDirection: Axis.horizontal,
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    Icon(
-                                                      Icons.check_box,
+                                          child: FutureBuilder<
+                                              List<PackageItemRow>>(
+                                            future: (_model
+                                                        .requestCompleter2 ??=
+                                                    Completer<
+                                                        List<PackageItemRow>>()
+                                                      ..complete(
+                                                          PackageItemTable()
+                                                              .queryRows(
+                                                        queryFn: (q) => q
+                                                            .eq(
+                                                              'FK_Package',
+                                                              widget.packageRow
+                                                                  ?.pKPackages,
+                                                            )
+                                                            .order(
+                                                                'created_at'),
+                                                      )))
+                                                .future,
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 50.0,
+                                                    height: 50.0,
+                                                    child: SpinKitChasingDots(
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .secondaryText,
-                                                      size: 24.0,
+                                                              .secondary,
+                                                      size: 50.0,
                                                     ),
-                                                    Icon(
-                                                      Icons
-                                                          .check_box_outline_blank,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      size: 24.0,
-                                                    ),
-                                                  ],
-                                                ),
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Text(
-                                                          itemItem.pKItems
-                                                              .toString(),
-                                                          textAlign:
-                                                              TextAlign.start,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
+                                                  ),
+                                                );
+                                              }
+                                              List<PackageItemRow>
+                                                  pkgItemDbPackageItemRowList =
+                                                  snapshot.data!;
+                                              return Container(
+                                                decoration: BoxDecoration(),
+                                                child: FutureBuilder<
+                                                    List<ItemsRow>>(
+                                                  future:
+                                                      ItemsTable().queryRows(
+                                                    queryFn: (q) => q
+                                                        .in_(
+                                                          'PK_Items',
+                                                          pkgItemDbPackageItemRowList
+                                                              .map((e) =>
+                                                                  e.fKItem)
+                                                              .withoutNulls
+                                                              .toList(),
+                                                        )
+                                                        .eq(
+                                                          'FK_ItemGroup',
+                                                          itemGrpIdxItem
+                                                              .pKItemGroups,
                                                         ),
-                                                        Text(
-                                                          itemItem.displayName,
-                                                          textAlign:
-                                                              TextAlign.start,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          ' - ',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                fontSize: 12.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontStyle:
-                                                                    FontStyle
-                                                                        .italic,
-                                                              ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    SingleChildScrollView(
-                                                      scrollDirection:
-                                                          Axis.horizontal,
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          AutoSizeText(
-                                                            itemItem
-                                                                .publicDescription!
-                                                                .maybeHandleOverflow(
-                                                              maxChars: 200,
-                                                              replacement: '…',
-                                                            ),
-                                                            textAlign:
-                                                                TextAlign.start,
-                                                            style: FlutterFlowTheme
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 50.0,
+                                                          height: 50.0,
+                                                          child:
+                                                              SpinKitChasingDots(
+                                                            color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  fontSize:
-                                                                      12.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontStyle:
-                                                                      FontStyle
-                                                                          .italic,
-                                                                ),
+                                                                .secondary,
+                                                            size: 50.0,
                                                           ),
-                                                          if (valueOrDefault<
-                                                              bool>(
-                                                            itemItem
-                                                                .isGluttenFree,
-                                                            false,
-                                                          ))
-                                                            AutoSizeText(
-                                                              '(GF)',
-                                                              textAlign:
-                                                                  TextAlign
+                                                        ),
+                                                      );
+                                                    }
+                                                    List<ItemsRow>
+                                                        fltItemDbItemsRowList =
+                                                        snapshot.data!;
+                                                    return Container(
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Builder(
+                                                        builder: (context) {
+                                                          final item =
+                                                              fltItemDbItemsRowList
+                                                                  .toList();
+                                                          return SingleChildScrollView(
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
                                                                       .start,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    fontSize:
-                                                                        12.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontStyle:
-                                                                        FontStyle
-                                                                            .italic,
+                                                              children:
+                                                                  List.generate(
+                                                                      item.length,
+                                                                      (itemIndex) {
+                                                                final itemItem =
+                                                                    item[
+                                                                        itemIndex];
+                                                                return Container(
+                                                                  decoration:
+                                                                      BoxDecoration(),
+                                                                  child:
+                                                                      Container(
+                                                                    decoration:
+                                                                        BoxDecoration(),
+                                                                    child:
+                                                                        SingleChildScrollView(
+                                                                      scrollDirection:
+                                                                          Axis.horizontal,
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Column(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.min,
+                                                                            children: [
+                                                                              Icon(
+                                                                                Icons.check_box,
+                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                size: 24.0,
+                                                                              ),
+                                                                              Icon(
+                                                                                Icons.check_box_outline_blank,
+                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                size: 24.0,
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                          Column(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            crossAxisAlignment:
+                                                                                CrossAxisAlignment.start,
+                                                                            children: [
+                                                                              Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                children: [
+                                                                                  Text(
+                                                                                    itemItem.pKItems.toString(),
+                                                                                    textAlign: TextAlign.start,
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          fontFamily: 'Readex Pro',
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontWeight: FontWeight.w600,
+                                                                                        ),
+                                                                                  ),
+                                                                                  Text(
+                                                                                    itemItem.displayName,
+                                                                                    textAlign: TextAlign.start,
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          fontFamily: 'Readex Pro',
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontWeight: FontWeight.w600,
+                                                                                        ),
+                                                                                  ),
+                                                                                  Text(
+                                                                                    ' - ',
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          fontFamily: 'Readex Pro',
+                                                                                          fontSize: 12.0,
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontStyle: FontStyle.italic,
+                                                                                        ),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                              SingleChildScrollView(
+                                                                                scrollDirection: Axis.horizontal,
+                                                                                child: Row(
+                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                  children: [
+                                                                                    AutoSizeText(
+                                                                                      itemItem.publicDescription!.maybeHandleOverflow(
+                                                                                        maxChars: 200,
+                                                                                        replacement: '…',
+                                                                                      ),
+                                                                                      textAlign: TextAlign.start,
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: 'Readex Pro',
+                                                                                            fontSize: 12.0,
+                                                                                            letterSpacing: 0.0,
+                                                                                            fontStyle: FontStyle.italic,
+                                                                                          ),
+                                                                                    ),
+                                                                                    if (valueOrDefault<bool>(
+                                                                                      itemItem.isGluttenFree,
+                                                                                      false,
+                                                                                    ))
+                                                                                      AutoSizeText(
+                                                                                        '(GF)',
+                                                                                        textAlign: TextAlign.start,
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              fontFamily: 'Readex Pro',
+                                                                                              fontSize: 12.0,
+                                                                                              letterSpacing: 0.0,
+                                                                                              fontStyle: FontStyle.italic,
+                                                                                            ),
+                                                                                      ),
+                                                                                    if (valueOrDefault<bool>(
+                                                                                      itemItem.isVegan,
+                                                                                      false,
+                                                                                    ))
+                                                                                      AutoSizeText(
+                                                                                        '(V)',
+                                                                                        textAlign: TextAlign.start,
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              fontFamily: 'Readex Pro',
+                                                                                              fontSize: 12.0,
+                                                                                              letterSpacing: 0.0,
+                                                                                              fontStyle: FontStyle.italic,
+                                                                                            ),
+                                                                                      ),
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
                                                                   ),
+                                                                );
+                                                              }),
                                                             ),
-                                                          if (valueOrDefault<
-                                                              bool>(
-                                                            itemItem.isVegan,
-                                                            false,
-                                                          ))
-                                                            AutoSizeText(
-                                                              '(V)',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .start,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Readex Pro',
-                                                                    fontSize:
-                                                                        12.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontStyle:
-                                                                        FontStyle
-                                                                            .italic,
-                                                                  ),
-                                                            ),
-                                                        ],
+                                                          );
+                                                        },
                                                       ),
-                                                    ),
-                                                  ],
+                                                    );
+                                                  },
                                                 ),
-                                              ],
-                                            ),
+                                              );
+                                            },
                                           ),
                                         ),
-                                      );
-                                    }),
-                                  ),
-                                );
-                              },
-                            ),
-                          );
-                        },
+                                      ),
+                                    ],
+                                  );
+                                }),
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     );
                   },

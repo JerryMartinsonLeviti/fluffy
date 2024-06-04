@@ -123,6 +123,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
             width: double.infinity,
             constraints: BoxConstraints(
               minWidth: 380.0,
+              minHeight: 300.0,
               maxWidth: 380.0,
               maxHeight: 1500.0,
             ),

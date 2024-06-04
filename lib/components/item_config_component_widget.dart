@@ -115,6 +115,7 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                 decoration: BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
                       splashColor: Colors.transparent,
@@ -565,7 +566,11 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                     itemGroupDBItemGroupsRowList.isNotEmpty,
                                 child: FlutterFlowDropDown<int>(
                                   controller: _model.itmGrpDDValueController ??=
-                                      FormFieldController<int>(null),
+                                      FormFieldController<int>(
+                                    _model.itmGrpDDValue ??=
+                                        itemGroupDBItemGroupsRowList
+                                            .first.pKItemGroups,
+                                  ),
                                   options: List<int>.from(
                                       itemGroupDBItemGroupsRowList
                                           .map((e) => e.pKItemGroups)

@@ -87,13 +87,14 @@ class _SplashPageWidgetState extends State<SplashPageWidget>
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: wrapWithModel(
-                        model: _model.plannerAppBarComponentModel,
-                        updateCallback: () => setState(() {}),
-                        child: PlannerAppBarComponentWidget(),
+                    if (FFAppState().DevModeEnabled)
+                      Expanded(
+                        child: wrapWithModel(
+                          model: _model.plannerAppBarComponentModel,
+                          updateCallback: () => setState(() {}),
+                          child: PlannerAppBarComponentWidget(),
+                        ),
                       ),
-                    ),
                   ],
                 ),
                 Container(

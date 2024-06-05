@@ -109,34 +109,34 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                                             decoration: BoxDecoration(),
                                             alignment:
                                                 AlignmentDirectional(0.0, 0.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          -1.0, 0.0),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: Image.network(
-                                                      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/bjcNcUcJFzipGWqoNchx/assets/2q6jlg3pl6nr/SilverSpike_Logo_Version_1.png',
-                                                      width: 343.0,
-                                                      height: 164.0,
-                                                      fit: BoxFit.contain,
-                                                      alignment:
-                                                          Alignment(0.0, 0.0),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      60.0, 0.0, 0.0, 0.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -1.0, 0.0),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      child: Image.network(
+                                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/teams/bjcNcUcJFzipGWqoNchx/assets/2q6jlg3pl6nr/SilverSpike_Logo_Version_1.png',
+                                                        width: 343.0,
+                                                        height: 164.0,
+                                                        fit: BoxFit.contain,
+                                                        alignment:
+                                                            Alignment(0.0, 0.0),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          20.0, 0.0, 0.0, 0.0),
-                                                  child: Column(
+                                                  Column(
                                                     mainAxisSize:
                                                         MainAxisSize.min,
                                                     mainAxisAlignment:
@@ -242,51 +242,58 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                                                                       ),
                                                                     ],
                                                                   ),
-                                                                  Wrap(
-                                                                    spacing:
-                                                                        0.0,
-                                                                    runSpacing:
-                                                                        0.0,
-                                                                    alignment:
-                                                                        WrapAlignment
-                                                                            .start,
-                                                                    crossAxisAlignment:
-                                                                        WrapCrossAlignment
-                                                                            .start,
-                                                                    direction: Axis
-                                                                        .horizontal,
-                                                                    runAlignment:
-                                                                        WrapAlignment
-                                                                            .start,
-                                                                    verticalDirection:
-                                                                        VerticalDirection
-                                                                            .down,
-                                                                    clipBehavior:
-                                                                        Clip.none,
-                                                                    children: [
-                                                                      Opacity(
-                                                                        opacity:
-                                                                            0.9,
-                                                                        child:
-                                                                            Align(
-                                                                          alignment: AlignmentDirectional(
-                                                                              -1.0,
-                                                                              0.0),
+                                                                  Container(
+                                                                    constraints:
+                                                                        BoxConstraints(
+                                                                      maxWidth:
+                                                                          380.0,
+                                                                    ),
+                                                                    decoration:
+                                                                        BoxDecoration(),
+                                                                    child: Wrap(
+                                                                      spacing:
+                                                                          0.0,
+                                                                      runSpacing:
+                                                                          0.0,
+                                                                      alignment:
+                                                                          WrapAlignment
+                                                                              .start,
+                                                                      crossAxisAlignment:
+                                                                          WrapCrossAlignment
+                                                                              .start,
+                                                                      direction:
+                                                                          Axis.horizontal,
+                                                                      runAlignment:
+                                                                          WrapAlignment
+                                                                              .start,
+                                                                      verticalDirection:
+                                                                          VerticalDirection
+                                                                              .down,
+                                                                      clipBehavior:
+                                                                          Clip.none,
+                                                                      children: [
+                                                                        Opacity(
+                                                                          opacity:
+                                                                              0.9,
                                                                           child:
-                                                                              Text(
-                                                                            'SilverSpike is your non-stop ticket to  easy corporate bookings of 8 or more',
-                                                                            textAlign:
-                                                                                TextAlign.start,
-                                                                            style: FlutterFlowTheme.of(context).displayMedium.override(
-                                                                                  fontFamily: 'Outfit',
-                                                                                  color: Color(0xD0FFCFB1),
-                                                                                  fontSize: 30.0,
-                                                                                  letterSpacing: 0.0,
-                                                                                ),
+                                                                              Align(
+                                                                            alignment:
+                                                                                AlignmentDirectional(-1.0, 0.0),
+                                                                            child:
+                                                                                Text(
+                                                                              'SilverSpike is your non-stop ticket to easy corporate bookings of 8 or more',
+                                                                              textAlign: TextAlign.start,
+                                                                              style: FlutterFlowTheme.of(context).displayMedium.override(
+                                                                                    fontFamily: 'Outfit',
+                                                                                    color: Color(0xD0FFCFB1),
+                                                                                    fontSize: 30.0,
+                                                                                    letterSpacing: 0.0,
+                                                                                  ),
+                                                                            ),
                                                                           ),
                                                                         ),
-                                                                      ),
-                                                                    ],
+                                                                      ],
+                                                                    ),
                                                                   ),
                                                                 ],
                                                               ),
@@ -300,12 +307,12 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                                                       ),
                                                     ],
                                                   ),
-                                                ),
-                                              ]
-                                                  .divide(
-                                                      SizedBox(height: 60.0))
-                                                  .around(
-                                                      SizedBox(height: 60.0)),
+                                                ]
+                                                    .divide(
+                                                        SizedBox(height: 60.0))
+                                                    .around(
+                                                        SizedBox(height: 60.0)),
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -336,7 +343,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                                                             'PlannerDashboard');
                                                       }
                                                     },
-                                                    text: 'PLANNERS',
+                                                    text: 'Planners',
                                                     options: FFButtonOptions(
                                                       width: 219.0,
                                                       height: 62.0,
@@ -396,7 +403,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                                                           'PlannerSideNavBar');
                                                     }
                                                   },
-                                                  text: 'RESTAURANTS',
+                                                  text: 'Restaurants',
                                                   options: FFButtonOptions(
                                                     width: 219.0,
                                                     height: 62.0,
@@ -613,7 +620,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                                                                               0.0),
                                                                       child:
                                                                           Text(
-                                                                        'SilverSpike is your non-stop ticket to  easy corporate bookings of 8 or more',
+                                                                        'SilverSpike is your non-stop ticket to easy corporate bookings of 8 or more',
                                                                         textAlign:
                                                                             TextAlign.center,
                                                                         style: FlutterFlowTheme.of(context)
@@ -679,7 +686,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                                                     'PlannerDashboard');
                                               }
                                             },
-                                            text: 'PLANNERS',
+                                            text: 'Planners',
                                             options: FFButtonOptions(
                                               width: 219.0,
                                               height: 62.0,
@@ -723,7 +730,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                                                     'PlannerSideNavBar');
                                               }
                                             },
-                                            text: 'RESTAURANTS',
+                                            text: 'Restaurants',
                                             options: FFButtonOptions(
                                               width: 219.0,
                                               height: 62.0,

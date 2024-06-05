@@ -347,6 +347,8 @@ class _MarketplaceFirstPageWidgetState
                                                             ?.pKAddresses,
                                                         'taxRate': .08,
                                                         'gratuityRate': .08,
+                                                        'RestaurantLocationName':
+                                                            'noVenueName',
                                                       });
                                                       setState(() => _model
                                                               .requestCompleter =

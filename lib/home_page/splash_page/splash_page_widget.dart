@@ -322,7 +322,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                                             children: [
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    -1.0, -1.0),
+                                                    0.0, 0.0),
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
@@ -398,7 +398,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                                                   },
                                                   text: 'RESTAURANTS',
                                                   options: FFButtonOptions(
-                                                    width: 207.0,
+                                                    width: 219.0,
                                                     height: 62.0,
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -725,7 +725,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                                             },
                                             text: 'RESTAURANTS',
                                             options: FFButtonOptions(
-                                              width: 207.0,
+                                              width: 219.0,
                                               height: 62.0,
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(

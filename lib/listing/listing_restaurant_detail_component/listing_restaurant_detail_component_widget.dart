@@ -423,6 +423,7 @@ class _ListingRestaurantDetailComponentWidgetState
                                               widget.venueRow?.pKVenues,
                                             ),
                                           );
+                                          await widget.updateVenueDB?.call();
                                           FFAppState().PKVendors =
                                               _model.dropDownValue1!;
                                           FFAppState().update(() {});
@@ -703,6 +704,7 @@ class _ListingRestaurantDetailComponentWidgetState
                                               _model.dropDownValue2,
                                             ),
                                           );
+                                          await widget.updateVendorDB?.call();
                                           FFAppState().PKVendors =
                                               _model.dropDownValue2!;
                                           FFAppState().update(() {});

@@ -125,7 +125,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
               minWidth: 380.0,
               minHeight: 300.0,
               maxWidth: 380.0,
-              maxHeight: 2500.0,
+              maxHeight: 1500.0,
             ),
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).primaryBackground,
@@ -666,781 +666,693 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                     thickness: 1.0,
                     color: FlutterFlowTheme.of(context).accent4,
                   ),
-                  if (!_model.noEdit)
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.minSelectionTextController,
-                                  focusNode: _model.minSelectionFocusNode,
-                                  onFieldSubmitted: (_) async {
-                                    await PackagesTable().update(
-                                      data: {
-                                        'minSelections': int.tryParse(_model
-                                            .minSelectionTextController.text),
-                                      },
-                                      matchingRows: (rows) => rows.eq(
-                                        'PK_Packages',
-                                        widget.packageRow?.pKPackages,
-                                      ),
-                                    );
-                                    await widget.dbRefresh?.call();
-                                    setState(
-                                        () => _model.requestCompleter2 = null);
-                                    await _model.waitForRequestCompleted2();
-                                  },
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'minSelection',
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                      ),
-                                  validator: _model
-                                      .minSelectionTextControllerValidator
-                                      .asValidator(context),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.maxSelectionTextController,
-                                  focusNode: _model.maxSelectionFocusNode,
-                                  onFieldSubmitted: (_) async {
-                                    await PackagesTable().update(
-                                      data: {
-                                        'maxSelections': int.tryParse(_model
-                                            .maxSelectionTextController.text),
-                                      },
-                                      matchingRows: (rows) => rows.eq(
-                                        'PK_Packages',
-                                        widget.packageRow?.pKPackages,
-                                      ),
-                                    );
-                                    await widget.dbRefresh?.call();
-                                    setState(
-                                        () => _model.requestCompleter2 = null);
-                                    await _model.waitForRequestCompleted2();
-                                  },
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'maxSelection\n',
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                      ),
-                                  validator: _model
-                                      .maxSelectionTextControllerValidator
-                                      .asValidator(context),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.minGuestsTextController,
-                                  focusNode: _model.minGuestsFocusNode,
-                                  onFieldSubmitted: (_) async {
-                                    await PackagesTable().update(
-                                      data: {
-                                        'minGuests': int.tryParse(_model
-                                            .minGuestsTextController.text),
-                                      },
-                                      matchingRows: (rows) => rows.eq(
-                                        'PK_Packages',
-                                        widget.packageRow?.pKPackages,
-                                      ),
-                                    );
-                                    await widget.dbRefresh?.call();
-                                    setState(
-                                        () => _model.requestCompleter2 = null);
-                                    await _model.waitForRequestCompleted2();
-                                  },
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'minGuests\n',
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                      ),
-                                  validator: _model
-                                      .minGuestsTextControllerValidator
-                                      .asValidator(context),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.maxGuestsTextController,
-                                  focusNode: _model.maxGuestsFocusNode,
-                                  onFieldSubmitted: (_) async {
-                                    await PackagesTable().update(
-                                      data: {
-                                        'maxGuests': int.tryParse(_model
-                                            .maxGuestsTextController.text),
-                                      },
-                                      matchingRows: (rows) => rows.eq(
-                                        'PK_Packages',
-                                        widget.packageRow?.pKPackages,
-                                      ),
-                                    );
-                                    await widget.dbRefresh?.call();
-                                    setState(
-                                        () => _model.requestCompleter2 = null);
-                                    await _model.waitForRequestCompleted2();
-                                  },
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'maxGuests\n',
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                      ),
-                                  validator: _model
-                                      .maxGuestsTextControllerValidator
-                                      .asValidator(context),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.pricePerTextController,
-                                  focusNode: _model.pricePerFocusNode,
-                                  onFieldSubmitted: (_) async {
-                                    await PackagesTable().update(
-                                      data: {
-                                        'priceInCents': functions.stringToCents(
-                                            _model.pricePerTextController.text),
-                                      },
-                                      matchingRows: (rows) => rows.eq(
-                                        'PK_Packages',
-                                        widget.packageRow?.pKPackages,
-                                      ),
-                                    );
-                                    await widget.dbRefresh?.call();
-                                    setState(
-                                        () => _model.requestCompleter2 = null);
-                                    await _model.waitForRequestCompleted2();
-                                  },
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'pricePerGuest',
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                      ),
-                                  validator: _model
-                                      .pricePerTextControllerValidator
-                                      .asValidator(context),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.nameTFTextController,
-                                  focusNode: _model.nameTFFocusNode,
-                                  onFieldSubmitted: (_) async {
-                                    await PackagesTable().update(
-                                      data: {
-                                        'display_name':
-                                            widget.packageRow?.displayName,
-                                      },
-                                      matchingRows: (rows) => rows.eq(
-                                        'PK_Packages',
-                                        widget.packageRow?.pKPackages,
-                                      ),
-                                    );
-                                    await widget.dbRefresh?.call();
-                                    setState(
-                                        () => _model.requestCompleter2 = null);
-                                    await _model.waitForRequestCompleted2();
-                                  },
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'Package Name\n',
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                      ),
-                                  validator: _model
-                                      .nameTFTextControllerValidator
-                                      .asValidator(context),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 0.0, 8.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.descTFTextController,
-                                  focusNode: _model.descTFFocusNode,
-                                  onFieldSubmitted: (_) async {
-                                    await PackagesTable().update(
-                                      data: {
-                                        'public_description':
-                                            _model.descTFTextController.text,
-                                      },
-                                      matchingRows: (rows) => rows.eq(
-                                        'PK_Packages',
-                                        widget.packageRow?.pKPackages,
-                                      ),
-                                    );
-                                    await widget.dbRefresh?.call();
-                                    setState(
-                                        () => _model.requestCompleter2 = null);
-                                    await _model.waitForRequestCompleted2();
-                                  },
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'Package Description\n',
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Readex Pro',
-                                        letterSpacing: 0.0,
-                                      ),
-                                  validator: _model
-                                      .descTFTextControllerValidator
-                                      .asValidator(context),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        FutureBuilder<List<ItemsRow>>(
-                          future: (_model.requestCompleter5 ??=
-                                  Completer<List<ItemsRow>>()
-                                    ..complete(ItemsTable().queryRows(
-                                      queryFn: (q) => q
-                                          .eq(
-                                            'FK_Vendor',
-                                            widget.packageRow?.fKVendor,
-                                          )
-                                          .order('created_at'),
-                                    )))
-                              .future,
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: SpinKitChasingDots(
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    size: 50.0,
-                                  ),
-                                ),
-                              );
-                            }
-                            List<ItemsRow> itemDBItemsRowList = snapshot.data!;
-                            return Container(
-                              decoration: BoxDecoration(),
-                              child: FutureBuilder<List<PackageItemRow>>(
-                                future: (_model.requestCompleter1 ??= Completer<
-                                        List<PackageItemRow>>()
-                                      ..complete(PackageItemTable().queryRows(
-                                        queryFn: (q) => q.eq(
-                                          'FK_Package',
+                  Container(
+                    decoration: BoxDecoration(),
+                    child: Visibility(
+                      visible: !_model.noEdit,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 8.0, 0.0),
+                                  child: TextFormField(
+                                    controller:
+                                        _model.minSelectionTextController,
+                                    focusNode: _model.minSelectionFocusNode,
+                                    onFieldSubmitted: (_) async {
+                                      await PackagesTable().update(
+                                        data: {
+                                          'minSelections': int.tryParse(_model
+                                              .minSelectionTextController.text),
+                                        },
+                                        matchingRows: (rows) => rows.eq(
+                                          'PK_Packages',
                                           widget.packageRow?.pKPackages,
                                         ),
-                                      )))
-                                    .future,
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: SpinKitChasingDots(
+                                      );
+                                      await widget.dbRefresh?.call();
+                                      setState(() =>
+                                          _model.requestCompleter2 = null);
+                                      await _model.waitForRequestCompleted2();
+                                    },
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'minSelection',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
                                           color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          size: 50.0,
+                                              .alternate,
+                                          width: 2.0,
                                         ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                       ),
-                                    );
-                                  }
-                                  List<PackageItemRow>
-                                      pkgItemDBPackageItemRowList =
-                                      snapshot.data!;
-                                  return Container(
-                                    decoration: BoxDecoration(),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Builder(
-                                          builder: (context) {
-                                            final itemRow =
-                                                itemDBItemsRowList.toList();
-                                            return Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children:
-                                                  List.generate(itemRow.length,
-                                                      (itemRowIndex) {
-                                                final itemRowItem =
-                                                    itemRow[itemRowIndex];
-                                                return ItemConfigComponentWidget(
-                                                  key: Key(
-                                                      'Keyvhg_${itemRowIndex}_of_${itemRow.length}'),
-                                                  itemRow: itemRowItem,
-                                                  packageRow:
-                                                      widget.packageRow!,
-                                                  onItemDbChange: () async {
-                                                    setState(() => _model
-                                                            .requestCompleter2 =
-                                                        null);
-                                                    await _model
-                                                        .waitForRequestCompleted2();
-                                                    setState(() => _model
-                                                            .requestCompleter2 =
-                                                        null);
-                                                    await _model
-                                                        .waitForRequestCompleted2();
-                                                    setState(() => _model
-                                                            .requestCompleter1 =
-                                                        null);
-                                                    await _model
-                                                        .waitForRequestCompleted1();
-                                                    setState(() => _model
-                                                            .requestCompleter5 =
-                                                        null);
-                                                    await _model
-                                                        .waitForRequestCompleted5();
-
-                                                    setState(() {});
-                                                    await widget.dbRefresh
-                                                        ?.call();
-
-                                                    FFAppState().update(() {});
-                                                  },
-                                                );
-                                              }),
-                                            );
-                                          },
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
                                         ),
-                                      ],
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
                                     ),
-                                  );
-                                },
-                              ),
-                            );
-                          },
-                        ),
-                        FutureBuilder<List<ItemGroupsRow>>(
-                          future: (_model.requestCompleter4 ??=
-                                  Completer<List<ItemGroupsRow>>()
-                                    ..complete(ItemGroupsTable().queryRows(
-                                      queryFn: (q) => q
-                                          .eq(
-                                            'FK_Package',
-                                            widget.packageRow?.pKPackages,
-                                          )
-                                          .order('created_at'),
-                                    )))
-                              .future,
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: SpinKitChasingDots(
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    size: 50.0,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    validator: _model
+                                        .minSelectionTextControllerValidator
+                                        .asValidator(context),
                                   ),
                                 ),
-                              );
-                            }
-                            List<ItemGroupsRow> itemGrpDBItemGroupsRowList =
-                                snapshot.data!;
-                            return Container(
-                              decoration: BoxDecoration(),
-                              child: Visibility(
-                                visible:
-                                    (itemGrpDBItemGroupsRowList.isNotEmpty) ==
-                                        true,
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 8.0, 0.0),
+                                  child: TextFormField(
+                                    controller:
+                                        _model.maxSelectionTextController,
+                                    focusNode: _model.maxSelectionFocusNode,
+                                    onFieldSubmitted: (_) async {
+                                      await PackagesTable().update(
+                                        data: {
+                                          'maxSelections': int.tryParse(_model
+                                              .maxSelectionTextController.text),
+                                        },
+                                        matchingRows: (rows) => rows.eq(
+                                          'PK_Packages',
+                                          widget.packageRow?.pKPackages,
+                                        ),
+                                      );
+                                      await widget.dbRefresh?.call();
+                                      setState(() =>
+                                          _model.requestCompleter2 = null);
+                                      await _model.waitForRequestCompleted2();
+                                    },
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'maxSelection\n',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    validator: _model
+                                        .maxSelectionTextControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 8.0, 0.0),
+                                  child: TextFormField(
+                                    controller: _model.minGuestsTextController,
+                                    focusNode: _model.minGuestsFocusNode,
+                                    onFieldSubmitted: (_) async {
+                                      await PackagesTable().update(
+                                        data: {
+                                          'minGuests': int.tryParse(_model
+                                              .minGuestsTextController.text),
+                                        },
+                                        matchingRows: (rows) => rows.eq(
+                                          'PK_Packages',
+                                          widget.packageRow?.pKPackages,
+                                        ),
+                                      );
+                                      await widget.dbRefresh?.call();
+                                      setState(() =>
+                                          _model.requestCompleter2 = null);
+                                      await _model.waitForRequestCompleted2();
+                                    },
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'minGuests\n',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    validator: _model
+                                        .minGuestsTextControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 8.0, 0.0),
+                                  child: TextFormField(
+                                    controller: _model.maxGuestsTextController,
+                                    focusNode: _model.maxGuestsFocusNode,
+                                    onFieldSubmitted: (_) async {
+                                      await PackagesTable().update(
+                                        data: {
+                                          'maxGuests': int.tryParse(_model
+                                              .maxGuestsTextController.text),
+                                        },
+                                        matchingRows: (rows) => rows.eq(
+                                          'PK_Packages',
+                                          widget.packageRow?.pKPackages,
+                                        ),
+                                      );
+                                      await widget.dbRefresh?.call();
+                                      setState(() =>
+                                          _model.requestCompleter2 = null);
+                                      await _model.waitForRequestCompleted2();
+                                    },
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'maxGuests\n',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    validator: _model
+                                        .maxGuestsTextControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 8.0, 0.0),
+                                  child: TextFormField(
+                                    controller: _model.pricePerTextController,
+                                    focusNode: _model.pricePerFocusNode,
+                                    onFieldSubmitted: (_) async {
+                                      await PackagesTable().update(
+                                        data: {
+                                          'priceInCents':
+                                              functions.stringToCents(_model
+                                                  .pricePerTextController.text),
+                                        },
+                                        matchingRows: (rows) => rows.eq(
+                                          'PK_Packages',
+                                          widget.packageRow?.pKPackages,
+                                        ),
+                                      );
+                                      await widget.dbRefresh?.call();
+                                      setState(() =>
+                                          _model.requestCompleter2 = null);
+                                      await _model.waitForRequestCompleted2();
+                                    },
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'pricePerGuest',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    validator: _model
+                                        .pricePerTextControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 8.0, 0.0),
+                                  child: TextFormField(
+                                    controller: _model.nameTFTextController,
+                                    focusNode: _model.nameTFFocusNode,
+                                    onFieldSubmitted: (_) async {
+                                      await PackagesTable().update(
+                                        data: {
+                                          'display_name':
+                                              widget.packageRow?.displayName,
+                                        },
+                                        matchingRows: (rows) => rows.eq(
+                                          'PK_Packages',
+                                          widget.packageRow?.pKPackages,
+                                        ),
+                                      );
+                                      await widget.dbRefresh?.call();
+                                      setState(() =>
+                                          _model.requestCompleter2 = null);
+                                      await _model.waitForRequestCompleted2();
+                                    },
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Package Name\n',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    validator: _model
+                                        .nameTFTextControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 8.0, 0.0),
+                                  child: TextFormField(
+                                    controller: _model.descTFTextController,
+                                    focusNode: _model.descTFFocusNode,
+                                    onFieldSubmitted: (_) async {
+                                      await PackagesTable().update(
+                                        data: {
+                                          'public_description':
+                                              _model.descTFTextController.text,
+                                        },
+                                        matchingRows: (rows) => rows.eq(
+                                          'PK_Packages',
+                                          widget.packageRow?.pKPackages,
+                                        ),
+                                      );
+                                      await widget.dbRefresh?.call();
+                                      setState(() =>
+                                          _model.requestCompleter2 = null);
+                                      await _model.waitForRequestCompleted2();
+                                    },
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Package Description\n',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    validator: _model
+                                        .descTFTextControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          FutureBuilder<List<ItemsRow>>(
+                            future: (_model.requestCompleter5 ??=
+                                    Completer<List<ItemsRow>>()
+                                      ..complete(ItemsTable().queryRows(
+                                        queryFn: (q) => q
+                                            .eq(
+                                              'FK_Vendor',
+                                              widget.packageRow?.fKVendor,
+                                            )
+                                            .order('created_at'),
+                                      )))
+                                .future,
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: SpinKitChasingDots(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondary,
+                                      size: 50.0,
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<ItemsRow> itemDBItemsRowList =
+                                  snapshot.data!;
+                              return Container(
+                                constraints: BoxConstraints(
+                                  maxHeight: 350.0,
+                                ),
+                                decoration: BoxDecoration(),
                                 child: FutureBuilder<List<PackageItemRow>>(
-                                  future: (_model.requestCompleter3 ??=
+                                  future: (_model.requestCompleter1 ??=
                                           Completer<List<PackageItemRow>>()
                                             ..complete(
                                                 PackageItemTable().queryRows(
@@ -1466,53 +1378,57 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                       );
                                     }
                                     List<PackageItemRow>
-                                        pkgItemGrpDBPackageItemRowList =
+                                        pkgItemDBPackageItemRowList =
                                         snapshot.data!;
                                     return Container(
                                       decoration: BoxDecoration(),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            'Item Group Config',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Readex Pro',
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                          if ((itemGrpDBItemGroupsRowList
-                                                  .isNotEmpty) ==
-                                              true)
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
                                             Builder(
                                               builder: (context) {
-                                                final itemGrpRow =
-                                                    itemGrpDBItemGroupsRowList
-                                                        .toList();
+                                                final itemRow =
+                                                    itemDBItemsRowList.toList();
                                                 return Column(
                                                   mainAxisSize:
-                                                      MainAxisSize.max,
+                                                      MainAxisSize.min,
                                                   children: List.generate(
-                                                      itemGrpRow.length,
-                                                      (itemGrpRowIndex) {
-                                                    final itemGrpRowItem =
-                                                        itemGrpRow[
-                                                            itemGrpRowIndex];
-                                                    return ItemGrpConfigComponentWidget(
+                                                      itemRow.length,
+                                                      (itemRowIndex) {
+                                                    final itemRowItem =
+                                                        itemRow[itemRowIndex];
+                                                    return ItemConfigComponentWidget(
                                                       key: Key(
-                                                          'Keya4r_${itemGrpRowIndex}_of_${itemGrpRow.length}'),
-                                                      itemGrpRow:
-                                                          itemGrpRowItem,
+                                                          'Keyvhg_${itemRowIndex}_of_${itemRow.length}'),
+                                                      itemRow: itemRowItem,
                                                       packageRow:
                                                           widget.packageRow!,
-                                                      onItemGrpDbChange:
-                                                          () async {
+                                                      onItemDbChange: () async {
                                                         setState(() => _model
-                                                                .requestCompleter3 =
+                                                                .requestCompleter2 =
                                                             null);
                                                         await _model
-                                                            .waitForRequestCompleted3();
+                                                            .waitForRequestCompleted2();
+                                                        setState(() => _model
+                                                                .requestCompleter2 =
+                                                            null);
+                                                        await _model
+                                                            .waitForRequestCompleted2();
+                                                        setState(() => _model
+                                                                .requestCompleter1 =
+                                                            null);
+                                                        await _model
+                                                            .waitForRequestCompleted1();
+                                                        setState(() => _model
+                                                                .requestCompleter5 =
+                                                            null);
+                                                        await _model
+                                                            .waitForRequestCompleted5();
+
+                                                        setState(() {});
+                                                        await widget.dbRefresh
+                                                            ?.call();
 
                                                         FFAppState()
                                                             .update(() {});
@@ -1522,155 +1438,294 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                                 );
                                               },
                                             ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     );
                                   },
                                 ),
-                              ),
-                            );
-                          },
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            FFButtonWidget(
-                              onPressed: () async {
-                                await ItemsTable().insert({
-                                  'public_description': 'no Description',
-                                  'display_name': 'no Name',
-                                  'FK_Vendor': widget.packageRow?.fKVendor,
-                                  'unit_of_measure': 'Guest',
-                                });
-                                setState(() => _model.requestCompleter5 = null);
-                                await _model.waitForRequestCompleted5();
+                              );
+                            },
+                          ),
+                          FutureBuilder<List<ItemGroupsRow>>(
+                            future: (_model.requestCompleter4 ??=
+                                    Completer<List<ItemGroupsRow>>()
+                                      ..complete(ItemGroupsTable().queryRows(
+                                        queryFn: (q) => q
+                                            .eq(
+                                              'FK_Package',
+                                              widget.packageRow?.pKPackages,
+                                            )
+                                            .order('created_at'),
+                                      )))
+                                .future,
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: SpinKitChasingDots(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondary,
+                                      size: 50.0,
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<ItemGroupsRow> itemGrpDBItemGroupsRowList =
+                                  snapshot.data!;
+                              return Container(
+                                constraints: BoxConstraints(
+                                  maxHeight: 350.0,
+                                ),
+                                decoration: BoxDecoration(),
+                                child: Visibility(
+                                  visible:
+                                      (itemGrpDBItemGroupsRowList.isNotEmpty) ==
+                                          true,
+                                  child: FutureBuilder<List<PackageItemRow>>(
+                                    future: (_model.requestCompleter3 ??=
+                                            Completer<List<PackageItemRow>>()
+                                              ..complete(
+                                                  PackageItemTable().queryRows(
+                                                queryFn: (q) => q.eq(
+                                                  'FK_Package',
+                                                  widget.packageRow?.pKPackages,
+                                                ),
+                                              )))
+                                        .future,
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: SpinKitChasingDots(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                              size: 50.0,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<PackageItemRow>
+                                          pkgItemGrpDBPackageItemRowList =
+                                          snapshot.data!;
+                                      return Container(
+                                        decoration: BoxDecoration(),
+                                        child: SingleChildScrollView(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Text(
+                                                'Item Group Config',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              if ((itemGrpDBItemGroupsRowList
+                                                      .isNotEmpty) ==
+                                                  true)
+                                                Builder(
+                                                  builder: (context) {
+                                                    final itemGrpRow =
+                                                        itemGrpDBItemGroupsRowList
+                                                            .toList();
+                                                    return Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      children: List.generate(
+                                                          itemGrpRow.length,
+                                                          (itemGrpRowIndex) {
+                                                        final itemGrpRowItem =
+                                                            itemGrpRow[
+                                                                itemGrpRowIndex];
+                                                        return ItemGrpConfigComponentWidget(
+                                                          key: Key(
+                                                              'Keya4r_${itemGrpRowIndex}_of_${itemGrpRow.length}'),
+                                                          itemGrpRow:
+                                                              itemGrpRowItem,
+                                                          packageRow: widget
+                                                              .packageRow!,
+                                                          onItemGrpDbChange:
+                                                              () async {
+                                                            setState(() => _model
+                                                                    .requestCompleter3 =
+                                                                null);
+                                                            await _model
+                                                                .waitForRequestCompleted3();
 
-                                _model.updatePage(() {});
-                              },
-                              text: 'AddNewItem',
-                              options: FFButtonOptions(
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 24.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: Colors.white,
-                                      letterSpacing: 0.0,
-                                    ),
-                                elevation: 3.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
+                                                            FFAppState()
+                                                                .update(() {});
+                                                          },
+                                                        );
+                                                      }),
+                                                    );
+                                                  },
+                                                ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
                                 ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                            ),
-                            FFButtonWidget(
-                              onPressed: () async {
-                                await ItemGroupsTable().insert({
-                                  'FK_Package': widget.packageRow?.pKPackages,
-                                  'FK_Vendor': widget.packageRow?.fKVendor,
-                                  'item_group_name': '-',
-                                  'hide': false,
-                                });
-                                setState(() => _model.requestCompleter4 = null);
-                                await _model.waitForRequestCompleted4();
+                              );
+                            },
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  await ItemsTable().insert({
+                                    'public_description': 'no Description',
+                                    'display_name': 'no Name',
+                                    'FK_Vendor': widget.packageRow?.fKVendor,
+                                    'unit_of_measure': 'Guest',
+                                  });
+                                  setState(
+                                      () => _model.requestCompleter5 = null);
+                                  await _model.waitForRequestCompleted5();
 
-                                _model.updatePage(() {});
-                              },
-                              text: 'AddNewItemGroup\n',
-                              options: FFButtonOptions(
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 24.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: Colors.white,
-                                      letterSpacing: 0.0,
-                                    ),
-                                elevation: 3.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
+                                  _model.updatePage(() {});
+                                },
+                                text: 'AddNewItem',
+                                options: FFButtonOptions(
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: Colors.white,
+                                        letterSpacing: 0.0,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                borderRadius: BorderRadius.circular(8.0),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            FFButtonWidget(
-                              onPressed: () {
-                                print('Save pressed ...');
-                              },
-                              text: 'Save',
-                              options: FFButtonOptions(
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 24.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: Colors.white,
-                                      letterSpacing: 0.0,
-                                    ),
-                                elevation: 3.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  await ItemGroupsTable().insert({
+                                    'FK_Package': widget.packageRow?.pKPackages,
+                                    'FK_Vendor': widget.packageRow?.fKVendor,
+                                    'item_group_name': '-',
+                                    'hide': false,
+                                  });
+                                  setState(
+                                      () => _model.requestCompleter4 = null);
+                                  await _model.waitForRequestCompleted4();
+
+                                  _model.updatePage(() {});
+                                },
+                                text: 'AddNewItemGroup\n',
+                                options: FFButtonOptions(
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: Colors.white,
+                                        letterSpacing: 0.0,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                borderRadius: BorderRadius.circular(20.0),
                               ),
-                            ),
-                            FFButtonWidget(
-                              onPressed: () {
-                                print('Exit pressed ...');
-                              },
-                              text: 'Exit',
-                              options: FFButtonOptions(
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 24.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: Colors.white,
-                                      letterSpacing: 0.0,
-                                    ),
-                                elevation: 3.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              FFButtonWidget(
+                                onPressed: () {
+                                  print('Save pressed ...');
+                                },
+                                text: 'Save',
+                                options: FFButtonOptions(
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: Colors.white,
+                                        letterSpacing: 0.0,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(20.0),
                                 ),
-                                borderRadius: BorderRadius.circular(20.0),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                              FFButtonWidget(
+                                onPressed: () {
+                                  print('Exit pressed ...');
+                                },
+                                text: 'Exit',
+                                options: FFButtonOptions(
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: Colors.white,
+                                        letterSpacing: 0.0,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
+                  ),
                 ],
               ),
             ),

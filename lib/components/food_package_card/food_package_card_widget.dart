@@ -671,10 +671,10 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                     child: Visibility(
                       visible: !_model.noEdit,
                       child: Column(
-                        mainAxisSize: MainAxisSize.max,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           Row(
-                            mainAxisSize: MainAxisSize.max,
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               Expanded(
                                 child: Padding(
@@ -857,7 +857,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                             ],
                           ),
                           Row(
-                            mainAxisSize: MainAxisSize.max,
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               Expanded(
                                 child: Padding(
@@ -1038,7 +1038,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                             ],
                           ),
                           Row(
-                            mainAxisSize: MainAxisSize.max,
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               Expanded(
                                 child: Padding(
@@ -1132,7 +1132,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                             ],
                           ),
                           Row(
-                            mainAxisSize: MainAxisSize.max,
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               Expanded(
                                 child: Padding(
@@ -1348,6 +1348,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                   snapshot.data!;
                               return Container(
                                 constraints: BoxConstraints(
+                                  minHeight: 0.0,
                                   maxHeight: 350.0,
                                 ),
                                 decoration: BoxDecoration(),
@@ -1478,6 +1479,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                   snapshot.data!;
                               return Container(
                                 constraints: BoxConstraints(
+                                  minHeight: 0.0,
                                   maxHeight: 350.0,
                                 ),
                                 decoration: BoxDecoration(),

@@ -881,6 +881,9 @@ class _ListingRestaurantDetailComponentWidgetState
                                         valueOrDefault<String>(
                                           widget.vendorRow?.vendorDescription,
                                           'vend desc',
+                                        ).maybeHandleOverflow(
+                                          maxChars: 150,
+                                          replacement: '…',
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -999,6 +1002,9 @@ class _ListingRestaurantDetailComponentWidgetState
                                         valueOrDefault<String>(
                                           widget.venueRow?.venueDescription,
                                           'venue_desc',
+                                        ).maybeHandleOverflow(
+                                          maxChars: 150,
+                                          replacement: '…',
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium

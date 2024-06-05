@@ -287,6 +287,12 @@ class _MarketplaceFirstPageWidgetState
                                                               .insert({
                                                         'vendor_name':
                                                             'noVendorName',
+                                                        'FK_Organization':
+                                                            valueOrDefault<int>(
+                                                          FFAppState()
+                                                              .PKOrganization,
+                                                          1,
+                                                        ),
                                                       });
                                                       FFAppState().PKVendors =
                                                           _model.newVendor!

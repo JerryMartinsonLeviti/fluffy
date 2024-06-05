@@ -78,6 +78,9 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _ChoosableTimes;
     });
+    _safeInit(() {
+      _PKOrganization = prefs.getInt('ff_PKOrganization') ?? _PKOrganization;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -282,6 +285,13 @@ class FFAppState extends ChangeNotifier {
         'ff_ChoosableTimes',
         _ChoosableTimes.map((x) => x.millisecondsSinceEpoch.toString())
             .toList());
+  }
+
+  int _PKOrganization = 1;
+  int get PKOrganization => _PKOrganization;
+  set PKOrganization(int _value) {
+    _PKOrganization = _value;
+    prefs.setInt('ff_PKOrganization', _value);
   }
 }
 

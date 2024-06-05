@@ -262,20 +262,22 @@ class _VenueCardComponentWidgetState extends State<VenueCardComponentWidget> {
                   alignment: AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                     child: Text(
                       valueOrDefault<String>(
                         widget.venueRow?.venueDescription,
                         '...',
                       ).maybeHandleOverflow(
-                        maxChars: 150,
+                        maxChars: 100,
                         replacement: '…',
                       ),
                       textAlign: TextAlign.center,
                       maxLines: 3,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Readex Pro',
+                            fontSize: 12.0,
                             letterSpacing: 0.0,
+                            fontStyle: FontStyle.italic,
                           ),
                     ),
                   ),

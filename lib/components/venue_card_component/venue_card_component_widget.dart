@@ -161,42 +161,33 @@ class _VenueCardComponentWidgetState extends State<VenueCardComponentWidget> {
                     ),
                     Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
-                      child: FutureBuilder<List<AssetCollectionsViewRow>>(
-                        future: AssetCollectionsViewTable().querySingleRow(
-                          queryFn: (q) => q
-                              .eq(
-                                'type_name',
-                                'Image',
-                              )
-                              .eq(
-                                'ref_name',
-                                'Venue',
-                              ),
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: SpinKitChasingDots(
-                                  color: FlutterFlowTheme.of(context).secondary,
-                                  size: 50.0,
+                      child: Container(
+                        decoration: BoxDecoration(),
+                        child: FutureBuilder<List<ImageAssetsRow>>(
+                          future: ImageAssetsTable().queryRows(
+                            queryFn: (q) => q.eq(
+                              'FK_Venue',
+                              widget.venueRow?.pKVenues,
+                            ),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: SpinKitChasingDots(
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
+                                    size: 50.0,
+                                  ),
                                 ),
-                              ),
-                            );
-                          }
-                          List<AssetCollectionsViewRow>
-                              containerAssetCollectionsViewRowList =
-                              snapshot.data!;
-                          final containerAssetCollectionsViewRow =
-                              containerAssetCollectionsViewRowList.isNotEmpty
-                                  ? containerAssetCollectionsViewRowList.first
-                                  : null;
-                          return Container(
-                            decoration: BoxDecoration(),
-                            child: Container(
+                              );
+                            }
+                            List<ImageAssetsRow> circleImageImageAssetsRowList =
+                                snapshot.data!;
+                            return Container(
                               width: 160.0,
                               height: 160.0,
                               clipBehavior: Clip.antiAlias,
@@ -204,12 +195,15 @@ class _VenueCardComponentWidgetState extends State<VenueCardComponentWidget> {
                                 shape: BoxShape.circle,
                               ),
                               child: Image.network(
-                                'https://picsum.photos/seed/159/600',
+                                valueOrDefault<String>(
+                                  circleImageImageAssetsRowList.first.imageUrl,
+                                  'https://picsum.photos/seed/159/600',
+                                ),
                                 fit: BoxFit.cover,
                               ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ],

@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/listing/wrap_faq_row/wrap_faq_row_widget.dart';
 import '/planner_flow/planner_app_bar_component/planner_app_bar_component_widget.dart';
 import '/planner_flow/search_bar/search_bar/search_bar_widget.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -235,9 +236,12 @@ class _MarketplaceFirstPageWidgetState
                                   ),
                                 ),
                                 FutureBuilder<List<VenuesRow>>(
-                                  future: VenuesTable().queryRows(
-                                    queryFn: (q) => q,
-                                  ),
+                                  future: (_model.requestCompleter ??=
+                                          Completer<List<VenuesRow>>()
+                                            ..complete(VenuesTable().queryRows(
+                                              queryFn: (q) => q,
+                                            )))
+                                      .future,
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
                                     if (!snapshot.hasData) {
@@ -253,38 +257,163 @@ class _MarketplaceFirstPageWidgetState
                                         ),
                                       );
                                     }
-                                    List<VenuesRow> containerVenuesRowList =
+                                    List<VenuesRow> venueVenuesRowList =
                                         snapshot.data!;
                                     return Container(
                                       decoration: BoxDecoration(),
-                                      child: Builder(
-                                        builder: (context) {
-                                          final venueIndex =
-                                              containerVenuesRowList.toList();
-                                          return Wrap(
-                                            spacing: 0.0,
-                                            runSpacing: 0.0,
-                                            alignment: WrapAlignment.start,
-                                            crossAxisAlignment:
-                                                WrapCrossAlignment.start,
-                                            direction: Axis.horizontal,
-                                            runAlignment: WrapAlignment.start,
-                                            verticalDirection:
-                                                VerticalDirection.down,
-                                            clipBehavior: Clip.none,
-                                            children:
-                                                List.generate(venueIndex.length,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      _model.newVendor =
+                                                          await VendorsTable()
+                                                              .insert({
+                                                        'vendor_name':
+                                                            'noVendorName',
+                                                      });
+                                                      FFAppState().PKVendors =
+                                                          _model.newVendor!
+                                                              .pKVendors;
+                                                      FFAppState()
+                                                          .update(() {});
+
+                                                      setState(() {});
+                                                    },
+                                                    child: Icon(
+                                                      Icons.add_box,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 24.0,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'add Vendor',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      _model.newAddress =
+                                                          await AddressesTable()
+                                                              .insert({
+                                                        'countryCode': 'US',
+                                                      });
+                                                      await VenuesTable()
+                                                          .insert({
+                                                        'FK_Vendor':
+                                                            FFAppState()
+                                                                .PKVendors,
+                                                        'FK_Address': _model
+                                                            .newAddress
+                                                            ?.pKAddresses,
+                                                        'taxRate': .08,
+                                                        'gratuityRate': .08,
+                                                      });
+                                                      setState(() => _model
+                                                              .requestCompleter =
+                                                          null);
+                                                      await _model
+                                                          .waitForRequestCompleted();
+
+                                                      FFAppState()
+                                                          .update(() {});
+
+                                                      setState(() {});
+                                                    },
+                                                    child: Icon(
+                                                      Icons.add_box,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 24.0,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'add Venue',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          Builder(
+                                            builder: (context) {
+                                              final venueIndex =
+                                                  venueVenuesRowList.toList();
+                                              return Wrap(
+                                                spacing: 0.0,
+                                                runSpacing: 0.0,
+                                                alignment: WrapAlignment.start,
+                                                crossAxisAlignment:
+                                                    WrapCrossAlignment.start,
+                                                direction: Axis.horizontal,
+                                                runAlignment:
+                                                    WrapAlignment.start,
+                                                verticalDirection:
+                                                    VerticalDirection.down,
+                                                clipBehavior: Clip.none,
+                                                children: List.generate(
+                                                    venueIndex.length,
                                                     (venueIndexIndex) {
-                                              final venueIndexItem =
-                                                  venueIndex[venueIndexIndex];
-                                              return VenueCardComponentWidget(
-                                                key: Key(
-                                                    'Keyhhw_${venueIndexIndex}_of_${venueIndex.length}'),
-                                                venueRow: venueIndexItem,
+                                                  final venueIndexItem =
+                                                      venueIndex[
+                                                          venueIndexIndex];
+                                                  return VenueCardComponentWidget(
+                                                    key: Key(
+                                                        'Keyhhw_${venueIndexIndex}_of_${venueIndex.length}'),
+                                                    venueRow: venueIndexItem,
+                                                  );
+                                                }),
                                               );
-                                            }),
-                                          );
-                                        },
+                                            },
+                                          ),
+                                        ],
                                       ),
                                     );
                                   },

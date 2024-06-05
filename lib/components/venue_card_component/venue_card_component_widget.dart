@@ -161,49 +161,69 @@ class _VenueCardComponentWidgetState extends State<VenueCardComponentWidget> {
                     ),
                     Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Container(
-                        decoration: BoxDecoration(),
-                        child: FutureBuilder<List<ImageAssetsRow>>(
-                          future: ImageAssetsTable().queryRows(
-                            queryFn: (q) => q.eq(
-                              'FK_Venue',
-                              widget.venueRow?.pKVenues,
-                            ),
+                      child: FutureBuilder<List<ImageAssetsRow>>(
+                        future: ImageAssetsTable().queryRows(
+                          queryFn: (q) => q.eq(
+                            'FK_Venue',
+                            widget.venueRow?.pKVenues,
                           ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: SpinKitChasingDots(
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    size: 50.0,
-                                  ),
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: SpinKitChasingDots(
+                                  color: FlutterFlowTheme.of(context).secondary,
+                                  size: 50.0,
                                 ),
-                              );
-                            }
-                            List<ImageAssetsRow> circleImageImageAssetsRowList =
-                                snapshot.data!;
-                            return Container(
-                              width: 160.0,
-                              height: 160.0,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                              ),
-                              child: Image.network(
-                                valueOrDefault<String>(
-                                  circleImageImageAssetsRowList.first.imageUrl,
-                                  'https://picsum.photos/seed/159/600',
-                                ),
-                                fit: BoxFit.cover,
                               ),
                             );
-                          },
-                        ),
+                          }
+                          List<ImageAssetsRow>
+                              imageContainerImageAssetsRowList = snapshot.data!;
+                          return Container(
+                            decoration: BoxDecoration(),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                if ((imageContainerImageAssetsRowList
+                                        .isNotEmpty) ==
+                                    true)
+                                  Container(
+                                    width: 160.0,
+                                    height: 160.0,
+                                    clipBehavior: Clip.antiAlias,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Image.network(
+                                      imageContainerImageAssetsRowList
+                                          .first.imageUrl,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                if ((imageContainerImageAssetsRowList
+                                        .isNotEmpty) ==
+                                    false)
+                                  Container(
+                                    width: 160.0,
+                                    height: 160.0,
+                                    clipBehavior: Clip.antiAlias,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Image.network(
+                                      'https://picsum.photos/seed/159/600',
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],

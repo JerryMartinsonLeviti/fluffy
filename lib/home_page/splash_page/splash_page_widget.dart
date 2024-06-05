@@ -247,6 +247,8 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                                                                         BoxConstraints(
                                                                       maxWidth:
                                                                           380.0,
+                                                                      maxHeight:
+                                                                          150.0,
                                                                     ),
                                                                     decoration:
                                                                         BoxDecoration(),
@@ -911,8 +913,8 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                   Container(
                     constraints: BoxConstraints(
                       minWidth: 380.0,
-                      minHeight: 200.0,
-                      maxHeight: 150.0,
+                      minHeight: 150.0,
+                      maxHeight: 200.0,
                     ),
                     decoration: BoxDecoration(),
                     child: Column(

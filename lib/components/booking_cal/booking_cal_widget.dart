@@ -72,12 +72,15 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
               child: Stack(
                 children: [
                   FutureBuilder<List<BookingCalendarsRow>>(
-                    future: BookingCalendarsTable().queryRows(
-                      queryFn: (q) => q.eq(
-                        'venue_id',
-                        widget.venueRow?.pKVenues,
-                      ),
-                    ),
+                    future: (_model.requestCompleter ??=
+                            Completer<List<BookingCalendarsRow>>()
+                              ..complete(BookingCalendarsTable().queryRows(
+                                queryFn: (q) => q.eq(
+                                  'venue_id',
+                                  widget.venueRow?.pKVenues,
+                                ),
+                              )))
+                        .future,
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -157,17 +160,13 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                       .isNotEmpty) ==
                                   true)
                                 FutureBuilder<List<BookingRulesRow>>(
-                                  future: (_model.requestCompleter ??=
-                                          Completer<List<BookingRulesRow>>()
-                                            ..complete(
-                                                BookingRulesTable().queryRows(
-                                              queryFn: (q) => q.eq(
-                                                'booking_calendar_id',
-                                                bookingCalendarDBBookingCalendarsRowList
-                                                    .first.id,
-                                              ),
-                                            )))
-                                      .future,
+                                  future: BookingRulesTable().queryRows(
+                                    queryFn: (q) => q.eq(
+                                      'booking_calendar_id',
+                                      bookingCalendarDBBookingCalendarsRowList
+                                          .first.id,
+                                    ),
+                                  ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
                                     if (!snapshot.hasData) {

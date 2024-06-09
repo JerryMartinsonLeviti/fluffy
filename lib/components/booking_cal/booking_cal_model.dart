@@ -16,7 +16,7 @@ class BookingCalModel extends FlutterFlowModel<BookingCalWidget> {
 
   ///  State fields for stateful widgets in this component.
 
-  Completer<List<BookingRulesRow>>? requestCompleter;
+  Completer<List<BookingCalendarsRow>>? requestCompleter;
 
   @override
   void initState(BuildContext context) {}

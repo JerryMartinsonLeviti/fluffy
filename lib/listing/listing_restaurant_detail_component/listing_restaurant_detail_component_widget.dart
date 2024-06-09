@@ -1,5 +1,6 @@
 import '/backend/supabase/supabase.dart';
 import '/components/address/address_widget.dart';
+import '/components/booking_cal/booking_cal_widget.dart';
 import '/components/text_box_update_modal_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -1077,6 +1078,14 @@ class _ListingRestaurantDetailComponentWidgetState
                   ),
                 );
               },
+            ),
+          ),
+          wrapWithModel(
+            model: _model.bookingCalModel,
+            updateCallback: () => setState(() {}),
+            child: BookingCalWidget(
+              venueRow: widget.venueRow!,
+              onSave: () async {},
             ),
           ),
         ],

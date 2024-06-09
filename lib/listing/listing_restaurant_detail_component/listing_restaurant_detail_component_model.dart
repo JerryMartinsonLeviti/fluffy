@@ -1,5 +1,6 @@
 import '/backend/supabase/supabase.dart';
 import '/components/address/address_widget.dart';
+import '/components/booking_cal/booking_cal_widget.dart';
 import '/components/text_box_update_modal_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -45,10 +46,13 @@ class ListingRestaurantDetailComponentModel
   // Model for Address component.
   late AddressModel addressModel;
   Completer<List<AddressesRow>>? requestCompleter;
+  // Model for BookingCal component.
+  late BookingCalModel bookingCalModel;
 
   @override
   void initState(BuildContext context) {
     addressModel = createModel(context, () => AddressModel());
+    bookingCalModel = createModel(context, () => BookingCalModel());
   }
 
   @override
@@ -60,6 +64,7 @@ class ListingRestaurantDetailComponentModel
     venueNameTFTextController?.dispose();
 
     addressModel.dispose();
+    bookingCalModel.dispose();
   }
 
   /// Additional helper methods.

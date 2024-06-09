@@ -219,12 +219,16 @@ dynamic deserializeParam<T>(
       case ParamType.SupabaseRow:
         final data = json.decode(param) as Map<String, dynamic>;
         switch (T) {
+          case BookingStatesRow:
+            return BookingStatesRow(data);
           case UrlAssetsRow:
             return UrlAssetsRow(data);
           case BigTableRow:
             return BigTableRow(data);
           case ProjectsRow:
             return ProjectsRow(data);
+          case DaysOfWeekRow:
+            return DaysOfWeekRow(data);
           case PackagesRow:
             return PackagesRow(data);
           case CartItemsRow:
@@ -237,6 +241,10 @@ dynamic deserializeParam<T>(
             return VendorsViewRow(data);
           case PlannersRow:
             return PlannersRow(data);
+          case BookingEntriesRow:
+            return BookingEntriesRow(data);
+          case BookingRulesRow:
+            return BookingRulesRow(data);
           case TypesRow:
             return TypesRow(data);
           case AssetCollectionsViewRow:
@@ -263,6 +271,8 @@ dynamic deserializeParam<T>(
             return ProductsRow(data);
           case MessagesRow:
             return MessagesRow(data);
+          case BookingRangesRow:
+            return BookingRangesRow(data);
           case AddressesRow:
             return AddressesRow(data);
           case VdrXrefRow:
@@ -275,6 +285,8 @@ dynamic deserializeParam<T>(
             return ModifierGroupsRow(data);
           case PostsRow:
             return PostsRow(data);
+          case EventTimesRow:
+            return EventTimesRow(data);
           case UserInfosRow:
             return UserInfosRow(data);
           case ModifiersRow:
@@ -303,6 +315,8 @@ dynamic deserializeParam<T>(
             return CartPackageRow(data);
           case OrganizationsRow:
             return OrganizationsRow(data);
+          case BookingBehaviorRow:
+            return BookingBehaviorRow(data);
           case ImageAssetsRow:
             return ImageAssetsRow(data);
           case AcvRow:
@@ -325,6 +339,8 @@ dynamic deserializeParam<T>(
             return LiaisonsViewRow(data);
           case ItemsRow:
             return ItemsRow(data);
+          case BookingCalendarsRow:
+            return BookingCalendarsRow(data);
           case ItemGroupsRow:
             return ItemGroupsRow(data);
           case ItemGroupChoicesRow:

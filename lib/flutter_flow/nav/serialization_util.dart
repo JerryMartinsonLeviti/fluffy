@@ -283,6 +283,8 @@ dynamic deserializeParam<T>(
             return AvailableStatesRow(data);
           case PricingElementsRow:
             return PricingElementsRow(data);
+          case PackageItemGroupRow:
+            return PackageItemGroupRow(data);
           case PricingVectorsRow:
             return PricingVectorsRow(data);
           case TermAssetsRow:
@@ -311,10 +313,10 @@ dynamic deserializeParam<T>(
             return RmuViewRow(data);
           case CartsRow:
             return CartsRow(data);
-          case PackageItemRow:
-            return PackageItemRow(data);
           case VacvRow:
             return VacvRow(data);
+          case CartPackageItemRow:
+            return CartPackageItemRow(data);
           case VendorRoomsViewRow:
             return VendorRoomsViewRow(data);
           case TasksRow:
@@ -325,6 +327,8 @@ dynamic deserializeParam<T>(
             return ItemsRow(data);
           case ItemGroupsRow:
             return ItemGroupsRow(data);
+          case ItemGroupChoicesRow:
+            return ItemGroupChoicesRow(data);
           case IndexViewRow:
             return IndexViewRow(data);
           case EventsRow:

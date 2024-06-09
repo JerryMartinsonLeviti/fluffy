@@ -1,6 +1,6 @@
 import '/backend/supabase/supabase.dart';
 import '/components/item_config_component_widget.dart';
-import '/components/item_grp_config_component_widget.dart';
+import '/components/pkg_item_grp_config_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -24,7 +24,7 @@ class FoodPackageCardModel extends FlutterFlowModel<FoodPackageCardWidget> {
   FocusNode? minSelectionFocusNode;
   TextEditingController? minSelectionTextController;
   String? Function(BuildContext, String?)? minSelectionTextControllerValidator;
-  Completer<List<PackageItemRow>>? requestCompleter2;
+  Completer<List<PackageItemGroupRow>>? requestCompleter1;
   // State field(s) for maxSelection widget.
   FocusNode? maxSelectionFocusNode;
   TextEditingController? maxSelectionTextController;
@@ -49,10 +49,8 @@ class FoodPackageCardModel extends FlutterFlowModel<FoodPackageCardWidget> {
   FocusNode? descTFFocusNode;
   TextEditingController? descTFTextController;
   String? Function(BuildContext, String?)? descTFTextControllerValidator;
-  Completer<List<PackageItemRow>>? requestCompleter1;
-  Completer<List<ItemsRow>>? requestCompleter5;
-  Completer<List<PackageItemRow>>? requestCompleter3;
-  Completer<List<ItemGroupsRow>>? requestCompleter4;
+  Completer<List<ItemsRow>>? requestCompleter3;
+  Completer<List<PackageItemGroupRow>>? requestCompleter2;
 
   @override
   void initState(BuildContext context) {}
@@ -82,21 +80,6 @@ class FoodPackageCardModel extends FlutterFlowModel<FoodPackageCardWidget> {
   }
 
   /// Additional helper methods.
-  Future waitForRequestCompleted2({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter2?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
-  }
-
   Future waitForRequestCompleted1({
     double minWait = 0,
     double maxWait = double.infinity,
@@ -106,21 +89,6 @@ class FoodPackageCardModel extends FlutterFlowModel<FoodPackageCardWidget> {
       await Future.delayed(Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
       final requestComplete = requestCompleter1?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
-  }
-
-  Future waitForRequestCompleted5({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter5?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }
@@ -142,7 +110,7 @@ class FoodPackageCardModel extends FlutterFlowModel<FoodPackageCardWidget> {
     }
   }
 
-  Future waitForRequestCompleted4({
+  Future waitForRequestCompleted2({
     double minWait = 0,
     double maxWait = double.infinity,
   }) async {
@@ -150,7 +118,7 @@ class FoodPackageCardModel extends FlutterFlowModel<FoodPackageCardWidget> {
     while (true) {
       await Future.delayed(Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter4?.isCompleted ?? false;
+      final requestComplete = requestCompleter2?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }

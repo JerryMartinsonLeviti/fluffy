@@ -24,12 +24,6 @@ class ItemGroupsRow extends SupabaseDataRow {
   set itemGroupName(String? value) =>
       setField<String>('item_group_name', value);
 
-  int? get fKPackage => getField<int>('FK_Package');
-  set fKPackage(int? value) => setField<int>('FK_Package', value);
-
-  int? get fKVendor => getField<int>('FK_Vendor');
-  set fKVendor(int? value) => setField<int>('FK_Vendor', value);
-
   int? get minSelections => getField<int>('minSelections');
   set minSelections(int? value) => setField<int>('minSelections', value);
 
@@ -43,4 +37,7 @@ class ItemGroupsRow extends SupabaseDataRow {
 
   bool get hide => getField<bool>('hide')!;
   set hide(bool value) => setField<bool>('hide', value);
+
+  int? get fKPackage => getField<int>('FK_Package');
+  set fKPackage(int? value) => setField<int>('FK_Package', value);
 }

@@ -63,20 +63,21 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<PackageItemRow>>(
-      future: (_model.requestCompleter2 ??= Completer<List<PackageItemRow>>()
-            ..complete(PackageItemTable().querySingleRow(
-              queryFn: (q) => q
-                  .eq(
-                    'FK_Package',
-                    widget.packageRow?.pKPackages,
-                  )
-                  .eq(
-                    'FK_Item',
-                    widget.itemRow?.pKItems,
-                  ),
-            )))
-          .future,
+    return FutureBuilder<List<PackageItemGroupRow>>(
+      future:
+          (_model.requestCompleter2 ??= Completer<List<PackageItemGroupRow>>()
+                ..complete(PackageItemGroupTable().querySingleRow(
+                  queryFn: (q) => q
+                      .eq(
+                        'FK_Package',
+                        widget.packageRow?.pKPackages,
+                      )
+                      .eq(
+                        'FK_Item',
+                        widget.itemRow?.pKItems,
+                      ),
+                )))
+              .future,
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -91,10 +92,11 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
             ),
           );
         }
-        List<PackageItemRow> itemConfigDBPackageItemRowList = snapshot.data!;
-        final itemConfigDBPackageItemRow =
-            itemConfigDBPackageItemRowList.isNotEmpty
-                ? itemConfigDBPackageItemRowList.first
+        List<PackageItemGroupRow> pIGConfigDBPackageItemGroupRowList =
+            snapshot.data!;
+        final pIGConfigDBPackageItemGroupRow =
+            pIGConfigDBPackageItemGroupRowList.isNotEmpty
+                ? pIGConfigDBPackageItemGroupRowList.first
                 : null;
         return Container(
           constraints: BoxConstraints(
@@ -140,16 +142,29 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        if (itemConfigDBPackageItemRow?.pKPackageItem == null)
+                        if (pIGConfigDBPackageItemGroupRow != null)
                           InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              await PackageItemTable().insert({
+                              await PackageItemGroupTable().delete(
+                                matchingRows: (rows) => rows
+                                    .eq(
+                                      'FK_Item',
+                                      widget.itemRow?.pKItems,
+                                    )
+                                    .eq(
+                                      'FK_Package',
+                                      widget.packageRow?.pKPackages,
+                                    ),
+                              );
+                              await PackageItemGroupTable().insert({
+                                'FK_ItemGroup': _model.itmGrpDDValue,
                                 'FK_Package': widget.packageRow?.pKPackages,
                                 'FK_Item': widget.itemRow?.pKItems,
+                                'hide': false,
                               });
                               setState(() => _model.requestCompleter2 = null);
                               await _model.waitForRequestCompleted2();
@@ -163,14 +178,14 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                               size: 24.0,
                             ),
                           ),
-                        if (itemConfigDBPackageItemRow?.pKPackageItem != null)
+                        if (pIGConfigDBPackageItemGroupRow == null)
                           InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              await PackageItemTable().delete(
+                              await PackageItemGroupTable().delete(
                                 matchingRows: (rows) => rows
                                     .eq(
                                       'FK_Package',
@@ -579,15 +594,24 @@ class _ItemConfigComponentWidgetState extends State<ItemConfigComponentWidget> {
                                       .toList(),
                                   onChanged: (val) async {
                                     setState(() => _model.itmGrpDDValue = val);
-                                    await ItemsTable().update(
-                                      data: {
-                                        'FK_ItemGroup': _model.itmGrpDDValue,
-                                      },
-                                      matchingRows: (rows) => rows.eq(
-                                        'PK_Items',
-                                        widget.itemRow?.pKItems,
-                                      ),
+                                    await PackageItemGroupTable().delete(
+                                      matchingRows: (rows) => rows
+                                          .eq(
+                                            'FK_Item',
+                                            widget.itemRow?.pKItems,
+                                          )
+                                          .eq(
+                                            'FK_Package',
+                                            widget.packageRow?.pKPackages,
+                                          ),
                                     );
+                                    await PackageItemGroupTable().insert({
+                                      'FK_ItemGroup': _model.itmGrpDDValue,
+                                      'FK_Item': widget.itemRow?.pKItems,
+                                      'FK_Package':
+                                          widget.packageRow?.pKPackages,
+                                      'hide': false,
+                                    });
                                     setState(
                                         () => _model.requestCompleter1 = null);
                                     await _model.waitForRequestCompleted1();

@@ -15,7 +15,7 @@ class ItemConfigComponentModel
     extends FlutterFlowModel<ItemConfigComponentWidget> {
   ///  State fields for stateful widgets in this component.
 
-  Completer<List<PackageItemRow>>? requestCompleter2;
+  Completer<List<PackageItemGroupRow>>? requestCompleter2;
   // State field(s) for ItemName widget.
   FocusNode? itemNameFocusNode;
   TextEditingController? itemNameTextController;

@@ -5,29 +5,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'item_grp_config_component_model.dart';
-export 'item_grp_config_component_model.dart';
+import 'pkg_item_grp_config_component_model.dart';
+export 'pkg_item_grp_config_component_model.dart';
 
-class ItemGrpConfigComponentWidget extends StatefulWidget {
-  const ItemGrpConfigComponentWidget({
+class PkgItemGrpConfigComponentWidget extends StatefulWidget {
+  const PkgItemGrpConfigComponentWidget({
     super.key,
-    required this.onItemGrpDbChange,
-    required this.itemGrpRow,
+    required this.onPkgItemGrpDbChange,
+    required this.pkgiIemGrpRow,
     required this.packageRow,
   });
 
-  final Future Function()? onItemGrpDbChange;
-  final ItemGroupsRow? itemGrpRow;
+  final Future Function()? onPkgItemGrpDbChange;
+  final PackageItemGroupRow? pkgiIemGrpRow;
   final PackagesRow? packageRow;
 
   @override
-  State<ItemGrpConfigComponentWidget> createState() =>
-      _ItemGrpConfigComponentWidgetState();
+  State<PkgItemGrpConfigComponentWidget> createState() =>
+      _PkgItemGrpConfigComponentWidgetState();
 }
 
-class _ItemGrpConfigComponentWidgetState
-    extends State<ItemGrpConfigComponentWidget> {
-  late ItemGrpConfigComponentModel _model;
+class _PkgItemGrpConfigComponentWidgetState
+    extends State<PkgItemGrpConfigComponentWidget> {
+  late PkgItemGrpConfigComponentModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -38,28 +38,28 @@ class _ItemGrpConfigComponentWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ItemGrpConfigComponentModel());
+    _model = createModel(context, () => PkgItemGrpConfigComponentModel());
 
-    _model.itemGrpNameTextController ??=
-        TextEditingController(text: widget.itemGrpRow?.itemGroupName);
+    _model.itemGrpNameTextController ??= TextEditingController(
+        text: valueOrDefault<String>(
+      widget.pkgiIemGrpRow?.pigName,
+      '-',
+    ));
     _model.itemGrpNameFocusNode ??= FocusNode();
 
     _model.minSelTextController ??= TextEditingController(
-        text: valueOrDefault<String>(
-      widget.itemGrpRow?.minSelections?.toString(),
-      '-',
-    ));
+        text: widget.pkgiIemGrpRow?.pigMinSelect?.toString());
     _model.minSelFocusNode ??= FocusNode();
 
     _model.maxSelTextController ??= TextEditingController(
-        text: valueOrDefault<String>(
-      widget.itemGrpRow?.maxSelections?.toString(),
-      '-',
-    ));
+        text: widget.pkgiIemGrpRow?.pigMinSelect?.toString());
     _model.maxSelFocusNode ??= FocusNode();
 
-    _model.itemGrpDescriptonTextController ??=
-        TextEditingController(text: widget.itemGrpRow?.itemGroupDescription);
+    _model.itemGrpDescriptonTextController ??= TextEditingController(
+        text: valueOrDefault<String>(
+      widget.pkgiIemGrpRow?.pigDesc,
+      '-',
+    ));
     _model.itemGrpDescriptonFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -95,13 +95,13 @@ class _ItemGrpConfigComponentWidgetState
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  await ItemGroupsTable().delete(
+                  await PackageItemGroupTable().delete(
                     matchingRows: (rows) => rows.eq(
-                      'PK_ItemGroups',
-                      widget.itemGrpRow?.pKItemGroups,
+                      'PK_PackageItemGroups',
+                      widget.pkgiIemGrpRow?.pKPackageItemGroups,
                     ),
                   );
-                  await widget.onItemGrpDbChange?.call();
+                  await widget.onPkgItemGrpDbChange?.call();
                 },
                 child: Icon(
                   Icons.delete_forever_sharp,
@@ -113,7 +113,7 @@ class _ItemGrpConfigComponentWidgetState
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   if (!valueOrDefault<bool>(
-                    widget.itemGrpRow?.hide,
+                    widget.pkgiIemGrpRow?.hide,
                     false,
                   ))
                     InkWell(
@@ -122,18 +122,18 @@ class _ItemGrpConfigComponentWidgetState
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        await ItemGroupsTable().update(
+                        await PackageItemGroupTable().update(
                           data: {
                             'hide': true,
                           },
                           matchingRows: (rows) => rows.eq(
-                            'PK_ItemGroups',
-                            widget.itemGrpRow?.pKItemGroups,
+                            'PK_PackageItemGroups',
+                            widget.pkgiIemGrpRow?.pKPackageItemGroups,
                           ),
                         );
 
                         setState(() {});
-                        await widget.onItemGrpDbChange?.call();
+                        await widget.onPkgItemGrpDbChange?.call();
                       },
                       child: Icon(
                         Icons.check_box_outline_blank,
@@ -142,7 +142,7 @@ class _ItemGrpConfigComponentWidgetState
                       ),
                     ),
                   if (valueOrDefault<bool>(
-                    widget.itemGrpRow?.hide,
+                    widget.pkgiIemGrpRow?.hide,
                     false,
                   ))
                     InkWell(
@@ -151,18 +151,18 @@ class _ItemGrpConfigComponentWidgetState
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        await ItemGroupsTable().update(
+                        await PackageItemGroupTable().update(
                           data: {
                             'hide': false,
                           },
                           matchingRows: (rows) => rows.eq(
-                            'PK_ItemGroups',
-                            widget.itemGrpRow?.pKItemGroups,
+                            'PK_PackageItemGroups',
+                            widget.pkgiIemGrpRow?.pKPackageItemGroups,
                           ),
                         );
 
                         setState(() {});
-                        await widget.onItemGrpDbChange?.call();
+                        await widget.onPkgItemGrpDbChange?.call();
                       },
                       child: Icon(
                         Icons.check_box,
@@ -186,22 +186,21 @@ class _ItemGrpConfigComponentWidgetState
                     controller: _model.itemGrpNameTextController,
                     focusNode: _model.itemGrpNameFocusNode,
                     onFieldSubmitted: (_) async {
-                      await ItemGroupsTable().update(
+                      await PackageItemGroupTable().update(
                         data: {
-                          'item_group_name':
-                              _model.itemGrpNameTextController.text,
+                          'pig_name': _model.itemGrpNameTextController.text,
                         },
                         matchingRows: (rows) => rows.eq(
-                          'PK_ItemGroups',
-                          widget.itemGrpRow?.pKItemGroups,
+                          'PK_PackageItemGroups',
+                          widget.pkgiIemGrpRow?.pKPackageItemGroups,
                         ),
                       );
-                      await widget.onItemGrpDbChange?.call();
+                      await widget.onPkgItemGrpDbChange?.call();
                     },
                     autofocus: true,
                     obscureText: false,
                     decoration: InputDecoration(
-                      labelText: 'ItemGrpName',
+                      labelText: 'PkgItemGrpName (Course for this Package)',
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
                                 fontFamily: 'Readex Pro',
@@ -263,17 +262,17 @@ class _ItemGrpConfigComponentWidgetState
                         controller: _model.minSelTextController,
                         focusNode: _model.minSelFocusNode,
                         onFieldSubmitted: (_) async {
-                          await ItemGroupsTable().update(
+                          await PackageItemGroupTable().update(
                             data: {
-                              'minSelections': int.tryParse(
+                              'pig_min_select': int.tryParse(
                                   _model.minSelTextController.text),
                             },
                             matchingRows: (rows) => rows.eq(
-                              'PK_ItemGroups',
-                              widget.itemGrpRow?.pKItemGroups,
+                              'PK_PackageItemGroups',
+                              widget.pkgiIemGrpRow?.pKPackageItemGroups,
                             ),
                           );
-                          await widget.onItemGrpDbChange?.call();
+                          await widget.onPkgItemGrpDbChange?.call();
                         },
                         autofocus: true,
                         obscureText: false,
@@ -333,17 +332,17 @@ class _ItemGrpConfigComponentWidgetState
                         controller: _model.maxSelTextController,
                         focusNode: _model.maxSelFocusNode,
                         onFieldSubmitted: (_) async {
-                          await ItemGroupsTable().update(
+                          await PackageItemGroupTable().update(
                             data: {
-                              'maxSelections': int.tryParse(
+                              'pig_max_select': int.tryParse(
                                   _model.maxSelTextController.text),
                             },
                             matchingRows: (rows) => rows.eq(
-                              'PK_ItemGroups',
-                              widget.itemGrpRow?.pKItemGroups,
+                              'PK_PackageItemGroups',
+                              widget.pkgiIemGrpRow?.pKPackageItemGroups,
                             ),
                           );
-                          await widget.onItemGrpDbChange?.call();
+                          await widget.onPkgItemGrpDbChange?.call();
                         },
                         autofocus: true,
                         obscureText: false,
@@ -403,22 +402,22 @@ class _ItemGrpConfigComponentWidgetState
                         controller: _model.itemGrpDescriptonTextController,
                         focusNode: _model.itemGrpDescriptonFocusNode,
                         onFieldSubmitted: (_) async {
-                          await ItemGroupsTable().update(
+                          await PackageItemGroupTable().update(
                             data: {
-                              'item_group_description':
+                              'pig_desc':
                                   _model.itemGrpDescriptonTextController.text,
                             },
                             matchingRows: (rows) => rows.eq(
-                              'PK_ItemGroups',
-                              widget.itemGrpRow?.pKItemGroups,
+                              'PK_PackageItemGroups',
+                              widget.pkgiIemGrpRow?.pKPackageItemGroups,
                             ),
                           );
-                          await widget.onItemGrpDbChange?.call();
+                          await widget.onPkgItemGrpDbChange?.call();
                         },
                         autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
-                          labelText: 'Item Group Description',
+                          labelText: 'Package ItemGroup/Course Description',
                           labelStyle:
                               FlutterFlowTheme.of(context).labelMedium.override(
                                     fontFamily: 'Readex Pro',

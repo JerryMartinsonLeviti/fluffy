@@ -57,9 +57,6 @@ class ItemsRow extends SupabaseDataRow {
   set unitOfMeasure(String? value) =>
       setField<String>('unit_of_measure', value);
 
-  int? get fKItemGroup => getField<int>('FK_ItemGroup');
-  set fKItemGroup(int? value) => setField<int>('FK_ItemGroup', value);
-
   bool? get isVegan => getField<bool>('isVegan');
   set isVegan(bool? value) => setField<bool>('isVegan', value);
 

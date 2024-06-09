@@ -1,6 +1,6 @@
 import '/backend/supabase/supabase.dart';
 import '/components/item_config_component_widget.dart';
-import '/components/item_grp_config_component_widget.dart';
+import '/components/pkg_item_grp_config_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -216,8 +216,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                           letterSpacing: 0.0,
                         ),
                   ),
-                  FutureBuilder<List<ItemGroupsRow>>(
-                    future: ItemGroupsTable().queryRows(
+                  FutureBuilder<List<PackageItemGroupRow>>(
+                    future: PackageItemGroupTable().queryRows(
                       queryFn: (q) => q.eq(
                         'FK_Package',
                         widget.packageRow?.pKPackages,
@@ -237,8 +237,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                           ),
                         );
                       }
-                      List<ItemGroupsRow> itmGrpDBItemGroupsRowList =
-                          snapshot.data!;
+                      List<PackageItemGroupRow>
+                          pIGCoursesDBPackageItemGroupRowList = snapshot.data!;
                       return Container(
                         decoration: BoxDecoration(),
                         child: Column(
@@ -246,20 +246,21 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                           children: [
                             Builder(
                               builder: (context) {
-                                final itemGrpIdx =
-                                    itmGrpDBItemGroupsRowList.toList();
+                                final pIGCoursesIdx =
+                                    pIGCoursesDBPackageItemGroupRowList
+                                        .toList();
                                 return Column(
                                   mainAxisSize: MainAxisSize.max,
-                                  children: List.generate(itemGrpIdx.length,
-                                      (itemGrpIdxIndex) {
-                                    final itemGrpIdxItem =
-                                        itemGrpIdx[itemGrpIdxIndex];
+                                  children: List.generate(pIGCoursesIdx.length,
+                                      (pIGCoursesIdxIndex) {
+                                    final pIGCoursesIdxItem =
+                                        pIGCoursesIdx[pIGCoursesIdxIndex];
                                     return Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Text(
                                           valueOrDefault<String>(
-                                            itemGrpIdxItem.itemGroupName,
+                                            pIGCoursesIdxItem.pigName,
                                             'Course',
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -275,14 +276,14 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                           child: Container(
                                             decoration: BoxDecoration(),
                                             child: FutureBuilder<
-                                                List<PackageItemRow>>(
+                                                List<PackageItemGroupRow>>(
                                               future: (_model
-                                                          .requestCompleter2 ??=
+                                                          .requestCompleter1 ??=
                                                       Completer<
                                                           List<
-                                                              PackageItemRow>>()
+                                                              PackageItemGroupRow>>()
                                                         ..complete(
-                                                            PackageItemTable()
+                                                            PackageItemGroupTable()
                                                                 .queryRows(
                                                           queryFn: (q) => q
                                                               .eq(
@@ -290,6 +291,11 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                                                 widget
                                                                     .packageRow
                                                                     ?.pKPackages,
+                                                              )
+                                                              .eq(
+                                                                'FK_ItemGroup',
+                                                                pIGCoursesIdxItem
+                                                                    .fKItemGroup,
                                                               )
                                                               .order(
                                                                   'created_at'),
@@ -312,8 +318,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                                     ),
                                                   );
                                                 }
-                                                List<PackageItemRow>
-                                                    pkgItemDbPackageItemRowList =
+                                                List<PackageItemGroupRow>
+                                                    pkgItemGrpDbPackageItemGroupRowList =
                                                     snapshot.data!;
                                                 return Container(
                                                   decoration: BoxDecoration(),
@@ -321,20 +327,14 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                                       List<ItemsRow>>(
                                                     future:
                                                         ItemsTable().queryRows(
-                                                      queryFn: (q) => q
-                                                          .in_(
-                                                            'PK_Items',
-                                                            pkgItemDbPackageItemRowList
-                                                                .map((e) =>
-                                                                    e.fKItem)
-                                                                .withoutNulls
-                                                                .toList(),
-                                                          )
-                                                          .eq(
-                                                            'FK_ItemGroup',
-                                                            itemGrpIdxItem
-                                                                .pKItemGroups,
-                                                          ),
+                                                      queryFn: (q) => q.in_(
+                                                        'PK_Items',
+                                                        pkgItemGrpDbPackageItemGroupRowList
+                                                            .map(
+                                                                (e) => e.fKItem)
+                                                            .withoutNulls
+                                                            .toList(),
+                                                      ),
                                                     ),
                                                     builder:
                                                         (context, snapshot) {
@@ -695,8 +695,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                       );
                                       await widget.dbRefresh?.call();
                                       setState(() =>
-                                          _model.requestCompleter2 = null);
-                                      await _model.waitForRequestCompleted2();
+                                          _model.requestCompleter1 = null);
+                                      await _model.waitForRequestCompleted1();
                                     },
                                     autofocus: true,
                                     obscureText: false,
@@ -784,8 +784,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                       );
                                       await widget.dbRefresh?.call();
                                       setState(() =>
-                                          _model.requestCompleter2 = null);
-                                      await _model.waitForRequestCompleted2();
+                                          _model.requestCompleter1 = null);
+                                      await _model.waitForRequestCompleted1();
                                     },
                                     autofocus: true,
                                     obscureText: false,
@@ -877,8 +877,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                       );
                                       await widget.dbRefresh?.call();
                                       setState(() =>
-                                          _model.requestCompleter2 = null);
-                                      await _model.waitForRequestCompleted2();
+                                          _model.requestCompleter1 = null);
+                                      await _model.waitForRequestCompleted1();
                                     },
                                     autofocus: true,
                                     obscureText: false,
@@ -965,8 +965,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                       );
                                       await widget.dbRefresh?.call();
                                       setState(() =>
-                                          _model.requestCompleter2 = null);
-                                      await _model.waitForRequestCompleted2();
+                                          _model.requestCompleter1 = null);
+                                      await _model.waitForRequestCompleted1();
                                     },
                                     autofocus: true,
                                     obscureText: false,
@@ -1059,8 +1059,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                       );
                                       await widget.dbRefresh?.call();
                                       setState(() =>
-                                          _model.requestCompleter2 = null);
-                                      await _model.waitForRequestCompleted2();
+                                          _model.requestCompleter1 = null);
+                                      await _model.waitForRequestCompleted1();
                                     },
                                     autofocus: true,
                                     obscureText: false,
@@ -1152,8 +1152,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                       );
                                       await widget.dbRefresh?.call();
                                       setState(() =>
-                                          _model.requestCompleter2 = null);
-                                      await _model.waitForRequestCompleted2();
+                                          _model.requestCompleter1 = null);
+                                      await _model.waitForRequestCompleted1();
                                     },
                                     autofocus: true,
                                     obscureText: false,
@@ -1245,8 +1245,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                       );
                                       await widget.dbRefresh?.call();
                                       setState(() =>
-                                          _model.requestCompleter2 = null);
-                                      await _model.waitForRequestCompleted2();
+                                          _model.requestCompleter1 = null);
+                                      await _model.waitForRequestCompleted1();
                                     },
                                     autofocus: true,
                                     obscureText: false,
@@ -1316,7 +1316,7 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                             ],
                           ),
                           FutureBuilder<List<ItemsRow>>(
-                            future: (_model.requestCompleter5 ??=
+                            future: (_model.requestCompleter3 ??=
                                     Completer<List<ItemsRow>>()
                                       ..complete(ItemsTable().queryRows(
                                         queryFn: (q) => q
@@ -1350,113 +1350,73 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                   maxHeight: 350.0,
                                 ),
                                 decoration: BoxDecoration(),
-                                child: FutureBuilder<List<PackageItemRow>>(
-                                  future: (_model.requestCompleter1 ??=
-                                          Completer<List<PackageItemRow>>()
-                                            ..complete(
-                                                PackageItemTable().queryRows(
-                                              queryFn: (q) => q.eq(
-                                                'FK_Package',
-                                                widget.packageRow?.pKPackages,
-                                              ),
-                                            )))
-                                      .future,
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: SpinKitChasingDots(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondary,
-                                            size: 50.0,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<PackageItemRow>
-                                        pkgItemDBPackageItemRowList =
-                                        snapshot.data!;
-                                    return Container(
-                                      decoration: BoxDecoration(),
-                                      child: SingleChildScrollView(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Builder(
-                                              builder: (context) {
-                                                final itemRow =
-                                                    itemDBItemsRowList.toList();
-                                                return Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: List.generate(
-                                                      itemRow.length,
+                                child: Container(
+                                  decoration: BoxDecoration(),
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Builder(
+                                          builder: (context) {
+                                            final itemRow =
+                                                itemDBItemsRowList.toList();
+                                            return Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children:
+                                                  List.generate(itemRow.length,
                                                       (itemRowIndex) {
-                                                    final itemRowItem =
-                                                        itemRow[itemRowIndex];
-                                                    return ItemConfigComponentWidget(
-                                                      key: Key(
-                                                          'Keyvhg_${itemRowIndex}_of_${itemRow.length}'),
-                                                      itemRow: itemRowItem,
-                                                      packageRow:
-                                                          widget.packageRow!,
-                                                      onItemDbChange: () async {
-                                                        setState(() => _model
-                                                                .requestCompleter2 =
-                                                            null);
-                                                        await _model
-                                                            .waitForRequestCompleted2();
-                                                        setState(() => _model
-                                                                .requestCompleter2 =
-                                                            null);
-                                                        await _model
-                                                            .waitForRequestCompleted2();
-                                                        setState(() => _model
-                                                                .requestCompleter1 =
-                                                            null);
-                                                        await _model
-                                                            .waitForRequestCompleted1();
-                                                        setState(() => _model
-                                                                .requestCompleter5 =
-                                                            null);
-                                                        await _model
-                                                            .waitForRequestCompleted5();
+                                                final itemRowItem =
+                                                    itemRow[itemRowIndex];
+                                                return ItemConfigComponentWidget(
+                                                  key: Key(
+                                                      'Keyvhg_${itemRowIndex}_of_${itemRow.length}'),
+                                                  itemRow: itemRowItem,
+                                                  packageRow:
+                                                      widget.packageRow!,
+                                                  onItemDbChange: () async {
+                                                    setState(() => _model
+                                                            .requestCompleter1 =
+                                                        null);
+                                                    await _model
+                                                        .waitForRequestCompleted1();
+                                                    setState(() => _model
+                                                            .requestCompleter1 =
+                                                        null);
+                                                    await _model
+                                                        .waitForRequestCompleted1();
+                                                    setState(() => _model
+                                                            .requestCompleter3 =
+                                                        null);
+                                                    await _model
+                                                        .waitForRequestCompleted3();
 
-                                                        setState(() {});
-                                                        await widget.dbRefresh
-                                                            ?.call();
+                                                    setState(() {});
+                                                    await widget.dbRefresh
+                                                        ?.call();
 
-                                                        FFAppState()
-                                                            .update(() {});
-                                                      },
-                                                    );
-                                                  }),
+                                                    FFAppState().update(() {});
+                                                  },
                                                 );
-                                              },
-                                            ),
-                                          ],
+                                              }),
+                                            );
+                                          },
                                         ),
-                                      ),
-                                    );
-                                  },
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               );
                             },
                           ),
-                          FutureBuilder<List<ItemGroupsRow>>(
-                            future: (_model.requestCompleter4 ??=
-                                    Completer<List<ItemGroupsRow>>()
-                                      ..complete(ItemGroupsTable().queryRows(
-                                        queryFn: (q) => q
-                                            .eq(
-                                              'FK_Package',
-                                              widget.packageRow?.pKPackages,
-                                            )
-                                            .order('created_at'),
-                                      )))
+                          FutureBuilder<List<PackageItemGroupRow>>(
+                            future: (_model.requestCompleter2 ??= Completer<
+                                    List<PackageItemGroupRow>>()
+                                  ..complete(PackageItemGroupTable().queryRows(
+                                    queryFn: (q) => q.eq(
+                                      'FK_Package',
+                                      widget.packageRow?.pKPackages,
+                                    ),
+                                  )))
                                 .future,
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
@@ -1473,110 +1433,69 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                   ),
                                 );
                               }
-                              List<ItemGroupsRow> itemGrpDBItemGroupsRowList =
+                              List<PackageItemGroupRow>
+                                  pkgItemGrpDBPackageItemGroupRowList =
                                   snapshot.data!;
                               return Container(
-                                constraints: BoxConstraints(
-                                  minHeight: 0.0,
-                                  maxHeight: 350.0,
-                                ),
                                 decoration: BoxDecoration(),
                                 child: Visibility(
-                                  visible:
-                                      (itemGrpDBItemGroupsRowList.isNotEmpty) ==
-                                          true,
-                                  child: FutureBuilder<List<PackageItemRow>>(
-                                    future: (_model.requestCompleter3 ??=
-                                            Completer<List<PackageItemRow>>()
-                                              ..complete(
-                                                  PackageItemTable().queryRows(
-                                                queryFn: (q) => q.eq(
-                                                  'FK_Package',
-                                                  widget.packageRow?.pKPackages,
+                                  visible: (pkgItemGrpDBPackageItemGroupRowList
+                                          .isNotEmpty) ==
+                                      true,
+                                  child: Container(
+                                    decoration: BoxDecoration(),
+                                    child: SingleChildScrollView(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Text(
+                                            'Item Group Config',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
                                                 ),
-                                              )))
-                                        .future,
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: SpinKitChasingDots(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                              size: 50.0,
-                                            ),
                                           ),
-                                        );
-                                      }
-                                      List<PackageItemRow>
-                                          pkgItemGrpDBPackageItemRowList =
-                                          snapshot.data!;
-                                      return Container(
-                                        decoration: BoxDecoration(),
-                                        child: SingleChildScrollView(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              Text(
-                                                'Item Group Config',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                              ),
-                                              if ((itemGrpDBItemGroupsRowList
-                                                      .isNotEmpty) ==
-                                                  true)
-                                                Builder(
-                                                  builder: (context) {
-                                                    final itemGrpRow =
-                                                        itemGrpDBItemGroupsRowList
-                                                            .toList();
-                                                    return Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      children: List.generate(
-                                                          itemGrpRow.length,
-                                                          (itemGrpRowIndex) {
-                                                        final itemGrpRowItem =
-                                                            itemGrpRow[
-                                                                itemGrpRowIndex];
-                                                        return ItemGrpConfigComponentWidget(
-                                                          key: Key(
-                                                              'Keya4r_${itemGrpRowIndex}_of_${itemGrpRow.length}'),
-                                                          itemGrpRow:
-                                                              itemGrpRowItem,
-                                                          packageRow: widget
-                                                              .packageRow!,
-                                                          onItemGrpDbChange:
-                                                              () async {
-                                                            setState(() => _model
-                                                                    .requestCompleter3 =
-                                                                null);
-                                                            await _model
-                                                                .waitForRequestCompleted3();
+                                          Builder(
+                                            builder: (context) {
+                                              final pkgItemGrpRow =
+                                                  pkgItemGrpDBPackageItemGroupRowList
+                                                      .toList();
+                                              return Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: List.generate(
+                                                    pkgItemGrpRow.length,
+                                                    (pkgItemGrpRowIndex) {
+                                                  final pkgItemGrpRowItem =
+                                                      pkgItemGrpRow[
+                                                          pkgItemGrpRowIndex];
+                                                  return PkgItemGrpConfigComponentWidget(
+                                                    key: Key(
+                                                        'Keya4r_${pkgItemGrpRowIndex}_of_${pkgItemGrpRow.length}'),
+                                                    pkgiIemGrpRow:
+                                                        pkgItemGrpRowItem,
+                                                    packageRow:
+                                                        widget.packageRow!,
+                                                    onPkgItemGrpDbChange:
+                                                        () async {
+                                                      setState(() => _model
+                                                              .requestCompleter2 =
+                                                          null);
+                                                      await _model
+                                                          .waitForRequestCompleted2();
 
-                                                            FFAppState()
-                                                                .update(() {});
-                                                          },
-                                                        );
-                                                      }),
-                                                    );
-                                                  },
-                                                ),
-                                            ],
+                                                      FFAppState()
+                                                          .update(() {});
+                                                    },
+                                                  );
+                                                }),
+                                              );
+                                            },
                                           ),
-                                        ),
-                                      );
-                                    },
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 ),
                               );
@@ -1595,8 +1514,8 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                     'unit_of_measure': 'Guest',
                                   });
                                   setState(
-                                      () => _model.requestCompleter5 = null);
-                                  await _model.waitForRequestCompleted5();
+                                      () => _model.requestCompleter3 = null);
+                                  await _model.waitForRequestCompleted3();
 
                                   _model.updatePage(() {});
                                 },
@@ -1627,13 +1546,12 @@ class _FoodPackageCardWidgetState extends State<FoodPackageCardWidget> {
                                 onPressed: () async {
                                   await ItemGroupsTable().insert({
                                     'FK_Package': widget.packageRow?.pKPackages,
-                                    'FK_Vendor': widget.packageRow?.fKVendor,
                                     'item_group_name': '-',
                                     'hide': false,
                                   });
                                   setState(
-                                      () => _model.requestCompleter4 = null);
-                                  await _model.waitForRequestCompleted4();
+                                      () => _model.requestCompleter2 = null);
+                                  await _model.waitForRequestCompleted2();
 
                                   _model.updatePage(() {});
                                 },

@@ -113,208 +113,207 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
-                              FutureBuilder<List<BookingRulesRow>>(
-                                future: (_model.requestCompleter ??= Completer<
-                                        List<BookingRulesRow>>()
-                                      ..complete(BookingRulesTable().queryRows(
-                                        queryFn: (q) => q.eq(
-                                          'booking_calendar_id',
-                                          bookingCalendarDBBookingCalendarsRowList
-                                              .first.id,
-                                        ),
-                                      )))
-                                    .future,
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: SpinKitChasingDots(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          size: 50.0,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  List<BookingRulesRow>
-                                      bookingRulesDBBookingRulesRowList =
-                                      snapshot.data!;
-                                  return Container(
-                                    decoration: BoxDecoration(),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                await BookingRulesTable()
-                                                    .insert({
-                                                  'booking_rule_name': '-',
-                                                  'booking_calendar_id':
-                                                      bookingCalendarDBBookingCalendarsRowList
-                                                          .first.id,
-                                                });
-                                                setState(() => _model
-                                                    .requestCompleter = null);
-                                                await _model
-                                                    .waitForRequestCompleted();
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await BookingRulesTable().insert({
+                                        'booking_rule_name': '-',
+                                        'booking_calendar_id':
+                                            bookingCalendarDBBookingCalendarsRowList
+                                                .first.id,
+                                      });
+                                      setState(
+                                          () => _model.requestCompleter = null);
+                                      await _model.waitForRequestCompleted();
 
-                                                FFAppState().update(() {});
-                                              },
-                                              child: Icon(
-                                                Icons.add_box,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 24.0,
+                                      FFAppState().update(() {});
+                                    },
+                                    child: Icon(
+                                      Icons.add_box,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Booking Rules',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          fontSize: 18.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              if ((bookingCalendarDBBookingCalendarsRowList
+                                      .isNotEmpty) ==
+                                  true)
+                                FutureBuilder<List<BookingRulesRow>>(
+                                  future: (_model.requestCompleter ??=
+                                          Completer<List<BookingRulesRow>>()
+                                            ..complete(
+                                                BookingRulesTable().queryRows(
+                                              queryFn: (q) => q.eq(
+                                                'booking_calendar_id',
+                                                bookingCalendarDBBookingCalendarsRowList
+                                                    .first.id,
                                               ),
-                                            ),
-                                            Text(
-                                              'Booking Rules',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        fontSize: 18.0,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                            ),
-                                          ],
+                                            )))
+                                      .future,
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: SpinKitChasingDots(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            size: 50.0,
+                                          ),
                                         ),
-                                        Builder(
-                                          builder: (context) {
-                                            final bookingRule =
-                                                bookingRulesDBBookingRulesRowList
-                                                    .toList();
-                                            return Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: List.generate(
-                                                  bookingRule.length,
-                                                  (bookingRuleIndex) {
-                                                final bookingRuleItem =
-                                                    bookingRule[
-                                                        bookingRuleIndex];
-                                                return Container(
-                                                  decoration: BoxDecoration(),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              await BookingRulesTable()
-                                                                  .insert({
-                                                                'booking_rule_name':
-                                                                    '-',
-                                                                'booking_calendar_id':
-                                                                    bookingCalendarDBBookingCalendarsRowList
-                                                                        .first
-                                                                        .id,
-                                                              });
-
-                                                              FFAppState()
-                                                                  .update(
-                                                                      () {});
-                                                            },
-                                                            child: Icon(
-                                                              Icons
-                                                                  .settings_outlined,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 24.0,
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                            valueOrDefault<
-                                                                String>(
-                                                              bookingRuleItem
-                                                                  .bookingRuleName,
-                                                              '-',
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                        ),
-                                                        child: Column(
+                                      );
+                                    }
+                                    List<BookingRulesRow>
+                                        bookingRulesDBBookingRulesRowList =
+                                        snapshot.data!;
+                                    return Container(
+                                      decoration: BoxDecoration(),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Builder(
+                                            builder: (context) {
+                                              final bookingRule =
+                                                  bookingRulesDBBookingRulesRowList
+                                                      .toList();
+                                              return Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: List.generate(
+                                                    bookingRule.length,
+                                                    (bookingRuleIndex) {
+                                                  final bookingRuleItem =
+                                                      bookingRule[
+                                                          bookingRuleIndex];
+                                                  return Container(
+                                                    decoration: BoxDecoration(),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Row(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
                                                           children: [
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [],
+                                                            InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                await BookingRulesTable()
+                                                                    .insert({
+                                                                  'booking_rule_name':
+                                                                      '-',
+                                                                  'booking_calendar_id':
+                                                                      bookingCalendarDBBookingCalendarsRowList
+                                                                          .first
+                                                                          .id,
+                                                                });
+
+                                                                FFAppState()
+                                                                    .update(
+                                                                        () {});
+                                                              },
+                                                              child: Icon(
+                                                                Icons
+                                                                    .settings_outlined,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 24.0,
+                                                              ),
                                                             ),
-                                                            Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [],
+                                                            Text(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                bookingRuleItem
+                                                                    .bookingRuleName,
+                                                                '-',
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
                                                             ),
                                                           ],
                                                         ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              }),
-                                            );
-                                          },
-                                        ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [],
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              ),
+                                                        Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                          ),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [],
+                                                              ),
+                                                              Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                }),
+                                              );
+                                            },
+                                          ),
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [],
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [

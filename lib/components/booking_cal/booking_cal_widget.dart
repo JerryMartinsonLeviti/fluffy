@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -37,6 +38,21 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BookingCalModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.bc = await BookingCalendarsTable().queryRows(
+        queryFn: (q) => q.eq(
+          'venue_id',
+          widget.venueRow?.pKVenues,
+        ),
+      );
+      if ((_model.bc != null && (_model.bc)!.isNotEmpty) != true) {
+        await BookingCalendarsTable().insert({
+          'venue_id': widget.venueRow?.pKVenues,
+        });
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }

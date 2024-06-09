@@ -51,6 +51,8 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
         await BookingCalendarsTable().insert({
           'venue_id': widget.venueRow?.pKVenues,
         });
+        setState(() => _model.requestCompleter = null);
+        await _model.waitForRequestCompleted();
       }
     });
 

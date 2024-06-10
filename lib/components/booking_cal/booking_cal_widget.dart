@@ -542,10 +542,38 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                                         ),
                                                                                     ],
                                                                                   ),
-                                                                                  Icon(
-                                                                                    Icons.timer_sharp,
-                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                    size: 24.0,
+                                                                                  Column(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    children: [
+                                                                                      Icon(
+                                                                                        Icons.timer_sharp,
+                                                                                        color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                        size: 24.0,
+                                                                                      ),
+                                                                                      if (!_model.dontEdit)
+                                                                                        Container(
+                                                                                          decoration: BoxDecoration(),
+                                                                                          child: TimeDropDownWidget(
+                                                                                            key: Key('Key150_${bookingRangeRowIndex}_of_${bookingRangeRow.length}'),
+                                                                                            time: bookingRangeRowItem.startTime!.time,
+                                                                                            onSelected: (selectedTime) async {
+                                                                                              await BookingRangesTable().update(
+                                                                                                data: {
+                                                                                                  'end_time': supaSerialize<PostgresTime>(PostgresTime(selectedTime)),
+                                                                                                },
+                                                                                                matchingRows: (rows) => rows.eq(
+                                                                                                  'id',
+                                                                                                  bookingRangeRowItem.id,
+                                                                                                ),
+                                                                                              );
+                                                                                              setState(() => _model.requestCompleter1 = null);
+                                                                                              await _model.waitForRequestCompleted1();
+
+                                                                                              FFAppState().update(() {});
+                                                                                            },
+                                                                                          ),
+                                                                                        ),
+                                                                                    ],
                                                                                   ),
                                                                                   InkWell(
                                                                                     splashColor: Colors.transparent,

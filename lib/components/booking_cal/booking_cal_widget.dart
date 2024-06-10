@@ -1,4 +1,5 @@
 import '/backend/supabase/supabase.dart';
+import '/components/time_drop_down_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -363,13 +364,17 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                             Colors.transparent,
                                                                         onTap:
                                                                             () async {
-                                                                          await BookingRulesTable()
+                                                                          await BookingRangesTable()
                                                                               .insert({
-                                                                            'booking_rule_name':
-                                                                                '-',
-                                                                            'booking_calendar_id':
-                                                                                bookingCalendarDBBookingCalendarsRowList.first.id,
+                                                                            'booking_rules_id':
+                                                                                bookingRuleItem.id,
+                                                                            'is_date_range':
+                                                                                false,
                                                                           });
+                                                                          setState(() =>
+                                                                              _model.requestCompleter1 = null);
+                                                                          await _model
+                                                                              .waitForRequestCompleted1();
 
                                                                           FFAppState()
                                                                               .update(() {});
@@ -411,13 +416,17 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                             Colors.transparent,
                                                                         onTap:
                                                                             () async {
-                                                                          await BookingRulesTable()
+                                                                          await BookingRangesTable()
                                                                               .insert({
-                                                                            'booking_rule_name':
-                                                                                '-',
-                                                                            'booking_calendar_id':
-                                                                                bookingCalendarDBBookingCalendarsRowList.first.id,
+                                                                            'is_date_range':
+                                                                                true,
+                                                                            'booking_rules_id':
+                                                                                bookingRuleItem.id,
                                                                           });
+                                                                          setState(() =>
+                                                                              _model.requestCompleter1 = null);
+                                                                          await _model
+                                                                              .waitForRequestCompleted1();
 
                                                                           FFAppState()
                                                                               .update(() {});
@@ -500,10 +509,38 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                                     color: FlutterFlowTheme.of(context).secondaryText,
                                                                                     size: 24.0,
                                                                                   ),
-                                                                                  Icon(
-                                                                                    Icons.av_timer,
-                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                    size: 24.0,
+                                                                                  Column(
+                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                    children: [
+                                                                                      Icon(
+                                                                                        Icons.av_timer,
+                                                                                        color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                        size: 24.0,
+                                                                                      ),
+                                                                                      if (!_model.dontEdit)
+                                                                                        Container(
+                                                                                          decoration: BoxDecoration(),
+                                                                                          child: TimeDropDownWidget(
+                                                                                            key: Key('Keyz3d_${bookingRangeRowIndex}_of_${bookingRangeRow.length}'),
+                                                                                            time: bookingRangeRowItem.startTime!.time,
+                                                                                            onSelected: (selectedTime) async {
+                                                                                              await BookingRangesTable().update(
+                                                                                                data: {
+                                                                                                  'start_time': supaSerialize<PostgresTime>(PostgresTime(selectedTime)),
+                                                                                                },
+                                                                                                matchingRows: (rows) => rows.eq(
+                                                                                                  'id',
+                                                                                                  bookingRangeRowItem.id,
+                                                                                                ),
+                                                                                              );
+                                                                                              setState(() => _model.requestCompleter1 = null);
+                                                                                              await _model.waitForRequestCompleted1();
+
+                                                                                              FFAppState().update(() {});
+                                                                                            },
+                                                                                          ),
+                                                                                        ),
+                                                                                    ],
                                                                                   ),
                                                                                   Icon(
                                                                                     Icons.timer_sharp,

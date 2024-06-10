@@ -38,13 +38,9 @@ class BookingRangesRow extends SupabaseDataRow {
   DateTime? get endDate => getField<DateTime>('end_date');
   set endDate(DateTime? value) => setField<DateTime>('end_date', value);
 
-  int? get startDayOfWeekId => getField<int>('start_day_of_week_id');
-  set startDayOfWeekId(int? value) =>
-      setField<int>('start_day_of_week_id', value);
-
-  int? get endDayOfWeekId => getField<int>('end_day_of_week_id');
-  set endDayOfWeekId(int? value) => setField<int>('end_day_of_week_id', value);
-
   int? get bookingRulesId => getField<int>('booking_rules_id');
   set bookingRulesId(int? value) => setField<int>('booking_rules_id', value);
+
+  bool? get isDateRange => getField<bool>('is_date_range');
+  set isDateRange(bool? value) => setField<bool>('is_date_range', value);
 }

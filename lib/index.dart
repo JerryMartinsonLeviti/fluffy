@@ -14,7 +14,7 @@ export '/global_use_pages/assets_page_dashboard/assets_page_dashboard_widget.dar
     show AssetsPageDashboardWidget;
 export '/message/messages_by_event/messages_by_event_widget.dart'
     show MessagesByEventWidget;
-export '/planner_flow/planner_funnel_flow/marketplace_first_page/marketplace_first_page_widget.dart'
+export '/planner_flow/marketplace_first_page/marketplace_first_page_widget.dart'
     show MarketplaceFirstPageWidget;
 export '/archive/vision_board_add_to_drawer/vision_board_add_to_drawer_widget.dart'
     show VisionBoardAddToDrawerWidget;

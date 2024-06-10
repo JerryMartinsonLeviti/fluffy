@@ -510,10 +510,28 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                                     color: FlutterFlowTheme.of(context).secondaryText,
                                                                                     size: 24.0,
                                                                                   ),
-                                                                                  Icon(
-                                                                                    Icons.delete_forever_sharp,
-                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                    size: 24.0,
+                                                                                  InkWell(
+                                                                                    splashColor: Colors.transparent,
+                                                                                    focusColor: Colors.transparent,
+                                                                                    hoverColor: Colors.transparent,
+                                                                                    highlightColor: Colors.transparent,
+                                                                                    onTap: () async {
+                                                                                      await BookingRangesTable().delete(
+                                                                                        matchingRows: (rows) => rows.eq(
+                                                                                          'id',
+                                                                                          bookingRangeRowItem.id,
+                                                                                        ),
+                                                                                      );
+                                                                                      setState(() => _model.requestCompleter1 = null);
+                                                                                      await _model.waitForRequestCompleted1();
+
+                                                                                      _model.updatePage(() {});
+                                                                                    },
+                                                                                    child: Icon(
+                                                                                      Icons.delete_forever_sharp,
+                                                                                      color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                      size: 24.0,
+                                                                                    ),
                                                                                   ),
                                                                                 ],
                                                                               ),

@@ -641,7 +641,7 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                                                                         highlightColor: Colors.transparent,
                                                                                                                         onTap: () async {
                                                                                                                           await BookingRangeDowTable().insert({
-                                                                                                                            'id': dowRowItem.id,
+                                                                                                                            'day_of_week_id': dowRowItem.id,
                                                                                                                             'booking_range_id': bookingRangeRowItem.id,
                                                                                                                           });
                                                                                                                           setState(() => _model.requestCompleter3 = null);

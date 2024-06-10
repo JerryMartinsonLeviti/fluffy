@@ -386,13 +386,13 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                               child: Container(
                                                                                 decoration: BoxDecoration(),
                                                                                 child: Container(
-                                                                                  width: 150.0,
-                                                                                  height: 40.0,
+                                                                                  width: 200.0,
+                                                                                  height: 200.0,
                                                                                   child: custom_widgets.DateRangePicker(
-                                                                                    width: 150.0,
-                                                                                    height: 40.0,
-                                                                                    startDate: null,
-                                                                                    endDate: null,
+                                                                                    width: 200.0,
+                                                                                    height: 200.0,
+                                                                                    startDate: bookingRangeRowItem.startDate,
+                                                                                    endDate: bookingRangeRowItem.endDate,
                                                                                     applyAction: (start, end) async {
                                                                                       await BookingRangesTable().update(
                                                                                         data: {

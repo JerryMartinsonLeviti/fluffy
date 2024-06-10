@@ -20,7 +20,8 @@ class BookingCalModel extends FlutterFlowModel<BookingCalWidget> {
 
   // Stores action output result for [Backend Call - Query Rows] action in BookingCal widget.
   List<BookingCalendarsRow>? bc;
-  Completer<List<BookingCalendarsRow>>? requestCompleter;
+  Completer<List<BookingCalendarsRow>>? requestCompleter2;
+  Completer<List<BookingRangesRow>>? requestCompleter1;
 
   @override
   void initState(BuildContext context) {}
@@ -29,7 +30,7 @@ class BookingCalModel extends FlutterFlowModel<BookingCalWidget> {
   void dispose() {}
 
   /// Additional helper methods.
-  Future waitForRequestCompleted({
+  Future waitForRequestCompleted2({
     double minWait = 0,
     double maxWait = double.infinity,
   }) async {
@@ -37,7 +38,22 @@ class BookingCalModel extends FlutterFlowModel<BookingCalWidget> {
     while (true) {
       await Future.delayed(Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = requestCompleter?.isCompleted ?? false;
+      final requestComplete = requestCompleter2?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
+  }
+
+  Future waitForRequestCompleted1({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter1?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }

@@ -52,8 +52,8 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
         await BookingCalendarsTable().insert({
           'venue_id': widget.venueRow?.pKVenues,
         });
-        setState(() => _model.requestCompleter = null);
-        await _model.waitForRequestCompleted();
+        setState(() => _model.requestCompleter2 = null);
+        await _model.waitForRequestCompleted2();
       }
     });
 
@@ -93,7 +93,7 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
               child: Stack(
                 children: [
                   FutureBuilder<List<BookingCalendarsRow>>(
-                    future: (_model.requestCompleter ??=
+                    future: (_model.requestCompleter2 ??=
                             Completer<List<BookingCalendarsRow>>()
                               ..complete(BookingCalendarsTable().queryRows(
                                 queryFn: (q) => q.eq(
@@ -152,9 +152,9 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                             bookingCalendarDBBookingCalendarsRowList
                                                 .first.id,
                                       });
-                                      setState(
-                                          () => _model.requestCompleter = null);
-                                      await _model.waitForRequestCompleted();
+                                      setState(() =>
+                                          _model.requestCompleter2 = null);
+                                      await _model.waitForRequestCompleted2();
 
                                       FFAppState().update(() {});
                                     },
@@ -298,16 +298,23 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                         FutureBuilder<
                                                             List<
                                                                 BookingRangesRow>>(
-                                                          future:
-                                                              BookingRangesTable()
-                                                                  .queryRows(
-                                                            queryFn: (q) =>
-                                                                q.eq(
-                                                              'booking_rules_id',
-                                                              bookingRuleItem
-                                                                  .id,
-                                                            ),
-                                                          ),
+                                                          future: (_model
+                                                                      .requestCompleter1 ??=
+                                                                  Completer<
+                                                                      List<
+                                                                          BookingRangesRow>>()
+                                                                    ..complete(
+                                                                        BookingRangesTable()
+                                                                            .queryRows(
+                                                                      queryFn:
+                                                                          (q) =>
+                                                                              q.eq(
+                                                                        'booking_rules_id',
+                                                                        bookingRuleItem
+                                                                            .id,
+                                                                      ),
+                                                                    )))
+                                                              .future,
                                                           builder: (context,
                                                               snapshot) {
                                                             // Customize what your widget looks like when it's loading.
@@ -386,7 +393,22 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                                     height: 40.0,
                                                                                     startDate: null,
                                                                                     endDate: null,
-                                                                                    applyAction: (start, end) async {},
+                                                                                    applyAction: (start, end) async {
+                                                                                      await BookingRangesTable().update(
+                                                                                        data: {
+                                                                                          'start_date': supaSerialize<DateTime>(start),
+                                                                                          'end_date': supaSerialize<DateTime>(end),
+                                                                                        },
+                                                                                        matchingRows: (rows) => rows.eq(
+                                                                                          'id',
+                                                                                          bookingRangeRowItem.id,
+                                                                                        ),
+                                                                                      );
+                                                                                      setState(() => _model.requestCompleter1 = null);
+                                                                                      await _model.waitForRequestCompleted1();
+
+                                                                                      FFAppState().update(() {});
+                                                                                    },
                                                                                   ),
                                                                                 ),
                                                                               ),

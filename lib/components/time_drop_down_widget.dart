@@ -15,10 +15,12 @@ class TimeDropDownWidget extends StatefulWidget {
     super.key,
     required this.time,
     required this.onSelected,
+    required this.label,
   });
 
   final DateTime? time;
   final Future Function(DateTime selectedTime)? onSelected;
+  final String? label;
 
   @override
   State<TimeDropDownWidget> createState() => _TimeDropDownWidgetState();
@@ -101,6 +103,11 @@ class _TimeDropDownWidgetState extends State<TimeDropDownWidget> {
       isOverButton: true,
       isSearchable: false,
       isMultiSelect: false,
+      labelText: widget.label,
+      labelTextStyle: FlutterFlowTheme.of(context).labelMedium.override(
+            fontFamily: 'Readex Pro',
+            letterSpacing: 0.0,
+          ),
     );
   }
 }

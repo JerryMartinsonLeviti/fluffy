@@ -512,17 +512,28 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                                   Column(
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
-                                                                                      Icon(
-                                                                                        Icons.av_timer,
-                                                                                        color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                        size: 24.0,
+                                                                                      InkWell(
+                                                                                        splashColor: Colors.transparent,
+                                                                                        focusColor: Colors.transparent,
+                                                                                        hoverColor: Colors.transparent,
+                                                                                        highlightColor: Colors.transparent,
+                                                                                        onTap: () async {
+                                                                                          _model.timeEdit = !_model.timeEdit;
+                                                                                          setState(() {});
+                                                                                        },
+                                                                                        child: Icon(
+                                                                                          Icons.av_timer,
+                                                                                          color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                          size: 24.0,
+                                                                                        ),
                                                                                       ),
-                                                                                      if (!_model.dontEdit)
+                                                                                      if (_model.timeEdit)
                                                                                         Container(
                                                                                           decoration: BoxDecoration(),
                                                                                           child: TimeDropDownWidget(
                                                                                             key: Key('Keyz3d_${bookingRangeRowIndex}_of_${bookingRangeRow.length}'),
                                                                                             time: bookingRangeRowItem.startTime!.time,
+                                                                                            label: 'StartTime',
                                                                                             onSelected: (selectedTime) async {
                                                                                               await BookingRangesTable().update(
                                                                                                 data: {
@@ -545,17 +556,13 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                                   Column(
                                                                                     mainAxisSize: MainAxisSize.max,
                                                                                     children: [
-                                                                                      Icon(
-                                                                                        Icons.timer_sharp,
-                                                                                        color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                        size: 24.0,
-                                                                                      ),
-                                                                                      if (!_model.dontEdit)
+                                                                                      if (_model.timeEdit)
                                                                                         Container(
                                                                                           decoration: BoxDecoration(),
                                                                                           child: TimeDropDownWidget(
                                                                                             key: Key('Key150_${bookingRangeRowIndex}_of_${bookingRangeRow.length}'),
                                                                                             time: bookingRangeRowItem.startTime!.time,
+                                                                                            label: 'endTime',
                                                                                             onSelected: (selectedTime) async {
                                                                                               await BookingRangesTable().update(
                                                                                                 data: {

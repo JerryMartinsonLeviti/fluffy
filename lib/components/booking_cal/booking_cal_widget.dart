@@ -290,30 +290,85 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                         ),
                                                         Container(
                                                           decoration:
-                                                              BoxDecoration(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
+                                                              BoxDecoration(),
+                                                        ),
+                                                        FutureBuilder<
+                                                            List<
+                                                                BookingRangesRow>>(
+                                                          future:
+                                                              BookingRangesTable()
+                                                                  .queryRows(
+                                                            queryFn: (q) =>
+                                                                q.eq(
+                                                              'booking_rules_id',
+                                                              bookingRuleItem
+                                                                  .id,
+                                                            ),
                                                           ),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [],
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            // Customize what your widget looks like when it's loading.
+                                                            if (!snapshot
+                                                                .hasData) {
+                                                              return Center(
+                                                                child: SizedBox(
+                                                                  width: 50.0,
+                                                                  height: 50.0,
+                                                                  child:
+                                                                      SpinKitChasingDots(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary,
+                                                                    size: 50.0,
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            }
+                                                            List<BookingRangesRow>
+                                                                containerBookingRangesRowList =
+                                                                snapshot.data!;
+                                                            return Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
                                                               ),
-                                                              Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [],
+                                                              child: Builder(
+                                                                builder:
+                                                                    (context) {
+                                                                  final bookingRangeRow =
+                                                                      containerBookingRangesRowList
+                                                                          .toList();
+                                                                  return Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: List.generate(
+                                                                        bookingRangeRow
+                                                                            .length,
+                                                                        (bookingRangeRowIndex) {
+                                                                      final bookingRangeRowItem =
+                                                                          bookingRangeRow[
+                                                                              bookingRangeRowIndex];
+                                                                      return Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Expanded(
+                                                                            child:
+                                                                                Container(
+                                                                              decoration: BoxDecoration(),
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      );
+                                                                    }),
+                                                                  );
+                                                                },
                                                               ),
-                                                            ],
-                                                          ),
+                                                            );
+                                                          },
                                                         ),
                                                       ],
                                                     ),

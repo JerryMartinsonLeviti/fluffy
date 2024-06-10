@@ -2,6 +2,7 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -359,6 +360,16 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                             child:
                                                                                 Container(
                                                                               decoration: BoxDecoration(),
+                                                                              child: Container(
+                                                                                width: 200.0,
+                                                                                height: 200.0,
+                                                                                child: custom_widgets.DateRangePicker(
+                                                                                  width: 200.0,
+                                                                                  height: 200.0,
+                                                                                  startDate: null,
+                                                                                  endDate: null,
+                                                                                ),
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                         ],

@@ -69,8 +69,6 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Container(
       decoration: BoxDecoration(),
       child: Align(
@@ -335,7 +333,7 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                               );
                                                             }
                                                             List<BookingRangesRow>
-                                                                containerBookingRangesRowList =
+                                                                bookingRangesDBBookingRangesRowList =
                                                                 snapshot.data!;
                                                             return Container(
                                                               decoration:
@@ -344,81 +342,348 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                         context)
                                                                     .secondaryBackground,
                                                               ),
-                                                              child: Builder(
-                                                                builder:
-                                                                    (context) {
-                                                                  final bookingRangeRow =
-                                                                      containerBookingRangesRowList
-                                                                          .toList();
-                                                                  return Column(
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Row(
                                                                     mainAxisSize:
                                                                         MainAxisSize
                                                                             .max,
-                                                                    children: List.generate(
-                                                                        bookingRangeRow
-                                                                            .length,
-                                                                        (bookingRangeRowIndex) {
-                                                                      final bookingRangeRowItem =
-                                                                          bookingRangeRow[
-                                                                              bookingRangeRowIndex];
-                                                                      return Row(
+                                                                    children: [
+                                                                      InkWell(
+                                                                        splashColor:
+                                                                            Colors.transparent,
+                                                                        focusColor:
+                                                                            Colors.transparent,
+                                                                        hoverColor:
+                                                                            Colors.transparent,
+                                                                        highlightColor:
+                                                                            Colors.transparent,
+                                                                        onTap:
+                                                                            () async {
+                                                                          await BookingRulesTable()
+                                                                              .insert({
+                                                                            'booking_rule_name':
+                                                                                '-',
+                                                                            'booking_calendar_id':
+                                                                                bookingCalendarDBBookingCalendarsRowList.first.id,
+                                                                          });
+
+                                                                          FFAppState()
+                                                                              .update(() {});
+                                                                        },
+                                                                        child:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .add_box,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryText,
+                                                                          size:
+                                                                              24.0,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        'AddDayOfWeek',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Readex Pro',
+                                                                              letterSpacing: 0.0,
+                                                                            ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                  Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      InkWell(
+                                                                        splashColor:
+                                                                            Colors.transparent,
+                                                                        focusColor:
+                                                                            Colors.transparent,
+                                                                        hoverColor:
+                                                                            Colors.transparent,
+                                                                        highlightColor:
+                                                                            Colors.transparent,
+                                                                        onTap:
+                                                                            () async {
+                                                                          await BookingRulesTable()
+                                                                              .insert({
+                                                                            'booking_rule_name':
+                                                                                '-',
+                                                                            'booking_calendar_id':
+                                                                                bookingCalendarDBBookingCalendarsRowList.first.id,
+                                                                          });
+
+                                                                          FFAppState()
+                                                                              .update(() {});
+                                                                        },
+                                                                        child:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .add_box,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryText,
+                                                                          size:
+                                                                              24.0,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        'AddCalendarRange',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Readex Pro',
+                                                                              letterSpacing: 0.0,
+                                                                            ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                  Builder(
+                                                                    builder:
+                                                                        (context) {
+                                                                      final bookingRangeRow =
+                                                                          bookingRangesDBBookingRangesRowList
+                                                                              .toList();
+                                                                      return Column(
                                                                         mainAxisSize:
                                                                             MainAxisSize.max,
-                                                                        children: [
-                                                                          Expanded(
-                                                                            child:
-                                                                                InkWell(
-                                                                              splashColor: Colors.transparent,
-                                                                              focusColor: Colors.transparent,
-                                                                              hoverColor: Colors.transparent,
-                                                                              highlightColor: Colors.transparent,
-                                                                              onTap: () async {
-                                                                                await BookingRangesTable().update(
-                                                                                  data: {
-                                                                                    'start_date': supaSerialize<DateTime>(FFAppState().startDate),
-                                                                                  },
-                                                                                  matchingRows: (rows) => rows.eq(
-                                                                                    'id',
-                                                                                    bookingRangeRowItem.id,
+                                                                        children: List.generate(
+                                                                            bookingRangeRow.length,
+                                                                            (bookingRangeRowIndex) {
+                                                                          final bookingRangeRowItem =
+                                                                              bookingRangeRow[bookingRangeRowIndex];
+                                                                          return Column(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            children: [
+                                                                              Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                children: [
+                                                                                  Expanded(
+                                                                                    child: Container(
+                                                                                      decoration: BoxDecoration(),
+                                                                                      child: Container(
+                                                                                        width: 150.0,
+                                                                                        height: 40.0,
+                                                                                        child: custom_widgets.DateRangePicker(
+                                                                                          width: 150.0,
+                                                                                          height: 40.0,
+                                                                                          startDate: bookingRangeRowItem.startDate,
+                                                                                          endDate: bookingRangeRowItem.endDate,
+                                                                                          applyAction: (start, end) async {
+                                                                                            await BookingRangesTable().update(
+                                                                                              data: {
+                                                                                                'start_date': supaSerialize<DateTime>(start),
+                                                                                                'end_date': supaSerialize<DateTime>(end),
+                                                                                              },
+                                                                                              matchingRows: (rows) => rows.eq(
+                                                                                                'id',
+                                                                                                bookingRangeRowItem.id,
+                                                                                              ),
+                                                                                            );
+                                                                                            setState(() => _model.requestCompleter1 = null);
+                                                                                            await _model.waitForRequestCompleted1();
+
+                                                                                            FFAppState().update(() {});
+                                                                                          },
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
                                                                                   ),
-                                                                                );
-                                                                              },
-                                                                              child: Container(
-                                                                                decoration: BoxDecoration(),
-                                                                                child: Container(
-                                                                                  width: 200.0,
-                                                                                  height: 200.0,
-                                                                                  child: custom_widgets.DateRangePicker(
-                                                                                    width: 200.0,
-                                                                                    height: 200.0,
-                                                                                    startDate: bookingRangeRowItem.startDate,
-                                                                                    endDate: bookingRangeRowItem.endDate,
-                                                                                    applyAction: (start, end) async {
-                                                                                      await BookingRangesTable().update(
-                                                                                        data: {
-                                                                                          'start_date': supaSerialize<DateTime>(start),
-                                                                                          'end_date': supaSerialize<DateTime>(end),
-                                                                                        },
-                                                                                        matchingRows: (rows) => rows.eq(
-                                                                                          'id',
+                                                                                  Icon(
+                                                                                    Icons.calendar_today_outlined,
+                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                    size: 24.0,
+                                                                                  ),
+                                                                                  Icon(
+                                                                                    Icons.av_timer,
+                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                    size: 24.0,
+                                                                                  ),
+                                                                                  Icon(
+                                                                                    Icons.timer_sharp,
+                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                    size: 24.0,
+                                                                                  ),
+                                                                                  Icon(
+                                                                                    Icons.delete_forever_sharp,
+                                                                                    color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                    size: 24.0,
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                              FutureBuilder<List<DaysOfWeekRow>>(
+                                                                                future: DaysOfWeekTable().queryRows(
+                                                                                  queryFn: (q) => q.order('id'),
+                                                                                ),
+                                                                                builder: (context, snapshot) {
+                                                                                  // Customize what your widget looks like when it's loading.
+                                                                                  if (!snapshot.hasData) {
+                                                                                    return Center(
+                                                                                      child: SizedBox(
+                                                                                        width: 50.0,
+                                                                                        height: 50.0,
+                                                                                        child: SpinKitChasingDots(
+                                                                                          color: FlutterFlowTheme.of(context).secondary,
+                                                                                          size: 50.0,
+                                                                                        ),
+                                                                                      ),
+                                                                                    );
+                                                                                  }
+                                                                                  List<DaysOfWeekRow> dowDBDaysOfWeekRowList = snapshot.data!;
+                                                                                  return Container(
+                                                                                    decoration: BoxDecoration(
+                                                                                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                    ),
+                                                                                    child: FutureBuilder<List<BookingRangeDowRow>>(
+                                                                                      future: BookingRangeDowTable().queryRows(
+                                                                                        queryFn: (q) => q.eq(
+                                                                                          'booking_range_id',
                                                                                           bookingRangeRowItem.id,
                                                                                         ),
-                                                                                      );
-                                                                                      setState(() => _model.requestCompleter1 = null);
-                                                                                      await _model.waitForRequestCompleted1();
-
-                                                                                      FFAppState().update(() {});
-                                                                                    },
-                                                                                  ),
-                                                                                ),
+                                                                                      ),
+                                                                                      builder: (context, snapshot) {
+                                                                                        // Customize what your widget looks like when it's loading.
+                                                                                        if (!snapshot.hasData) {
+                                                                                          return Center(
+                                                                                            child: SizedBox(
+                                                                                              width: 50.0,
+                                                                                              height: 50.0,
+                                                                                              child: SpinKitChasingDots(
+                                                                                                color: FlutterFlowTheme.of(context).secondary,
+                                                                                                size: 50.0,
+                                                                                              ),
+                                                                                            ),
+                                                                                          );
+                                                                                        }
+                                                                                        List<BookingRangeDowRow> dowbrDBBookingRangeDowRowList = snapshot.data!;
+                                                                                        return Container(
+                                                                                          decoration: BoxDecoration(),
+                                                                                          child: Column(
+                                                                                            mainAxisSize: MainAxisSize.max,
+                                                                                            children: [
+                                                                                              Builder(
+                                                                                                builder: (context) {
+                                                                                                  final dowRow = dowDBDaysOfWeekRowList.toList();
+                                                                                                  return Row(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    children: List.generate(dowRow.length, (dowRowIndex) {
+                                                                                                      final dowRowItem = dowRow[dowRowIndex];
+                                                                                                      return Column(
+                                                                                                        mainAxisSize: MainAxisSize.max,
+                                                                                                        children: [
+                                                                                                          FutureBuilder<List<BookingRangeDowRow>>(
+                                                                                                            future: BookingRangeDowTable().querySingleRow(
+                                                                                                              queryFn: (q) => q
+                                                                                                                  .eq(
+                                                                                                                    'booking_range_id',
+                                                                                                                    bookingRangeRowItem.id,
+                                                                                                                  )
+                                                                                                                  .eq(
+                                                                                                                    'day_of_week_id',
+                                                                                                                    dowRowItem.id,
+                                                                                                                  ),
+                                                                                                            ),
+                                                                                                            builder: (context, snapshot) {
+                                                                                                              // Customize what your widget looks like when it's loading.
+                                                                                                              if (!snapshot.hasData) {
+                                                                                                                return Center(
+                                                                                                                  child: SizedBox(
+                                                                                                                    width: 50.0,
+                                                                                                                    height: 50.0,
+                                                                                                                    child: SpinKitChasingDots(
+                                                                                                                      color: FlutterFlowTheme.of(context).secondary,
+                                                                                                                      size: 50.0,
+                                                                                                                    ),
+                                                                                                                  ),
+                                                                                                                );
+                                                                                                              }
+                                                                                                              List<BookingRangeDowRow> containerBookingRangeDowRowList = snapshot.data!;
+                                                                                                              final containerBookingRangeDowRow = containerBookingRangeDowRowList.isNotEmpty ? containerBookingRangeDowRowList.first : null;
+                                                                                                              return Container(
+                                                                                                                decoration: BoxDecoration(),
+                                                                                                                child: Column(
+                                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                                  children: [
+                                                                                                                    if (valueOrDefault<bool>(
+                                                                                                                      containerBookingRangeDowRow?.id == null,
+                                                                                                                      false,
+                                                                                                                    ))
+                                                                                                                      Container(
+                                                                                                                        width: 40.0,
+                                                                                                                        height: 40.0,
+                                                                                                                        decoration: BoxDecoration(
+                                                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                                          border: Border.all(
+                                                                                                                            color: FlutterFlowTheme.of(context).primary,
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                        child: Text(
+                                                                                                                          valueOrDefault<String>(
+                                                                                                                            dowRowItem.dayAbrev,
+                                                                                                                            'SUN',
+                                                                                                                          ),
+                                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                                fontFamily: 'Readex Pro',
+                                                                                                                                letterSpacing: 0.0,
+                                                                                                                              ),
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                    if (valueOrDefault<bool>(
+                                                                                                                      containerBookingRangeDowRow?.id != null,
+                                                                                                                      false,
+                                                                                                                    ))
+                                                                                                                      Container(
+                                                                                                                        width: 40.0,
+                                                                                                                        height: 40.0,
+                                                                                                                        decoration: BoxDecoration(
+                                                                                                                          color: FlutterFlowTheme.of(context).primary,
+                                                                                                                          border: Border.all(
+                                                                                                                            color: FlutterFlowTheme.of(context).primary,
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                        child: Text(
+                                                                                                                          valueOrDefault<String>(
+                                                                                                                            dowRowItem.dayAbrev,
+                                                                                                                            'SUN',
+                                                                                                                          ),
+                                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                                fontFamily: 'Readex Pro',
+                                                                                                                                letterSpacing: 0.0,
+                                                                                                                              ),
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                  ],
+                                                                                                                ),
+                                                                                                              );
+                                                                                                            },
+                                                                                                          ),
+                                                                                                        ],
+                                                                                                      );
+                                                                                                    }),
+                                                                                                  );
+                                                                                                },
+                                                                                              ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        );
+                                                                                      },
+                                                                                    ),
+                                                                                  );
+                                                                                },
                                                                               ),
-                                                                            ),
-                                                                          ),
-                                                                        ],
+                                                                            ],
+                                                                          );
+                                                                        }),
                                                                       );
-                                                                    }),
-                                                                  );
-                                                                },
+                                                                    },
+                                                                  ),
+                                                                ],
                                                               ),
                                                             );
                                                           },

@@ -37,6 +37,7 @@ export 'tables/vdr_xref.dart';
 export 'tables/faq_assets.dart';
 export 'tables/description_assets.dart';
 export 'tables/modifier_groups.dart';
+export 'tables/booking_range_dow.dart';
 export 'tables/posts.dart';
 export 'tables/event_times.dart';
 export 'tables/user_infos.dart';

@@ -283,6 +283,8 @@ dynamic deserializeParam<T>(
             return DescriptionAssetsRow(data);
           case ModifierGroupsRow:
             return ModifierGroupsRow(data);
+          case BookingRangeDowRow:
+            return BookingRangeDowRow(data);
           case PostsRow:
             return PostsRow(data);
           case EventTimesRow:

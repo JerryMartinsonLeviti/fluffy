@@ -63,10 +63,6 @@ class _DateRangePickerState extends State<DateRangePicker> {
         if (widget.applyAction != null) {
           widget.applyAction!(start, end);
         }
-
-        FFAppState().startDate = start;
-        FFAppState().endDate = end;
-        FFAppState().rangePickerUpdated = true;
       },
       onCancelClick: () {
         setState(() {
@@ -80,8 +76,8 @@ class _DateRangePickerState extends State<DateRangePicker> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: widget.width ?? double.infinity,
-      height: widget.height ?? double.infinity,
+      width: this.widget.width ?? double.infinity,
+      height: this.widget.height ?? double.infinity,
       child: ElevatedButton(
         onPressed: _showDateRangePicker,
         child: Text('Select Date Range'),

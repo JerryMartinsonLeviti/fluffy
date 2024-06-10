@@ -22,6 +22,7 @@ class BookingCalModel extends FlutterFlowModel<BookingCalWidget> {
   List<BookingCalendarsRow>? bc;
   Completer<List<BookingCalendarsRow>>? requestCompleter2;
   Completer<List<BookingRangesRow>>? requestCompleter1;
+  Completer<List<BookingRangeDowRow>>? requestCompleter3;
 
   @override
   void initState(BuildContext context) {}
@@ -54,6 +55,21 @@ class BookingCalModel extends FlutterFlowModel<BookingCalWidget> {
       await Future.delayed(Duration(milliseconds: 50));
       final timeElapsed = stopwatch.elapsedMilliseconds;
       final requestComplete = requestCompleter1?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
+  }
+
+  Future waitForRequestCompleted3({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter3?.isCompleted ?? false;
       if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
         break;
       }

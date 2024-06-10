@@ -519,7 +519,7 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                               ),
                                                                               FutureBuilder<List<DaysOfWeekRow>>(
                                                                                 future: DaysOfWeekTable().queryRows(
-                                                                                  queryFn: (q) => q.order('id'),
+                                                                                  queryFn: (q) => q.order('id', ascending: true),
                                                                                 ),
                                                                                 builder: (context, snapshot) {
                                                                                   // Customize what your widget looks like when it's loading.
@@ -541,12 +541,14 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                                       color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                     ),
                                                                                     child: FutureBuilder<List<BookingRangeDowRow>>(
-                                                                                      future: BookingRangeDowTable().queryRows(
-                                                                                        queryFn: (q) => q.eq(
-                                                                                          'booking_range_id',
-                                                                                          bookingRangeRowItem.id,
-                                                                                        ),
-                                                                                      ),
+                                                                                      future: (_model.requestCompleter3 ??= Completer<List<BookingRangeDowRow>>()
+                                                                                            ..complete(BookingRangeDowTable().queryRows(
+                                                                                              queryFn: (q) => q.eq(
+                                                                                                'booking_range_id',
+                                                                                                bookingRangeRowItem.id,
+                                                                                              ),
+                                                                                            )))
+                                                                                          .future,
                                                                                       builder: (context, snapshot) {
                                                                                         // Customize what your widget looks like when it's loading.
                                                                                         if (!snapshot.hasData) {
@@ -614,48 +616,87 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                                                                       containerBookingRangeDowRow?.id == null,
                                                                                                                       false,
                                                                                                                     ))
-                                                                                                                      Container(
-                                                                                                                        width: 40.0,
-                                                                                                                        height: 40.0,
-                                                                                                                        decoration: BoxDecoration(
-                                                                                                                          color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                                                          border: Border.all(
-                                                                                                                            color: FlutterFlowTheme.of(context).primary,
+                                                                                                                      InkWell(
+                                                                                                                        splashColor: Colors.transparent,
+                                                                                                                        focusColor: Colors.transparent,
+                                                                                                                        hoverColor: Colors.transparent,
+                                                                                                                        highlightColor: Colors.transparent,
+                                                                                                                        onTap: () async {
+                                                                                                                          await BookingRangeDowTable().insert({
+                                                                                                                            'id': dowRowItem.id,
+                                                                                                                            'booking_range_id': bookingRangeRowItem.id,
+                                                                                                                          });
+                                                                                                                          setState(() => _model.requestCompleter3 = null);
+                                                                                                                          await _model.waitForRequestCompleted3();
+
+                                                                                                                          FFAppState().update(() {});
+                                                                                                                        },
+                                                                                                                        child: Container(
+                                                                                                                          width: 40.0,
+                                                                                                                          height: 40.0,
+                                                                                                                          decoration: BoxDecoration(
+                                                                                                                            color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                                                            border: Border.all(
+                                                                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                                                                            ),
                                                                                                                           ),
-                                                                                                                        ),
-                                                                                                                        child: Text(
-                                                                                                                          valueOrDefault<String>(
-                                                                                                                            dowRowItem.dayAbrev,
-                                                                                                                            'SUN',
+                                                                                                                          child: Text(
+                                                                                                                            valueOrDefault<String>(
+                                                                                                                              dowRowItem.dayAbrev,
+                                                                                                                              'SUN',
+                                                                                                                            ),
+                                                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                                  fontFamily: 'Readex Pro',
+                                                                                                                                  letterSpacing: 0.0,
+                                                                                                                                ),
                                                                                                                           ),
-                                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                                fontFamily: 'Readex Pro',
-                                                                                                                                letterSpacing: 0.0,
-                                                                                                                              ),
                                                                                                                         ),
                                                                                                                       ),
                                                                                                                     if (valueOrDefault<bool>(
                                                                                                                       containerBookingRangeDowRow?.id != null,
                                                                                                                       false,
                                                                                                                     ))
-                                                                                                                      Container(
-                                                                                                                        width: 40.0,
-                                                                                                                        height: 40.0,
-                                                                                                                        decoration: BoxDecoration(
-                                                                                                                          color: FlutterFlowTheme.of(context).primary,
-                                                                                                                          border: Border.all(
+                                                                                                                      InkWell(
+                                                                                                                        splashColor: Colors.transparent,
+                                                                                                                        focusColor: Colors.transparent,
+                                                                                                                        hoverColor: Colors.transparent,
+                                                                                                                        highlightColor: Colors.transparent,
+                                                                                                                        onTap: () async {
+                                                                                                                          await BookingRangeDowTable().delete(
+                                                                                                                            matchingRows: (rows) => rows
+                                                                                                                                .eq(
+                                                                                                                                  'booking_range_id',
+                                                                                                                                  bookingRangeRowItem.id,
+                                                                                                                                )
+                                                                                                                                .eq(
+                                                                                                                                  'day_of_week_id',
+                                                                                                                                  dowRowItem.id,
+                                                                                                                                ),
+                                                                                                                          );
+                                                                                                                          setState(() => _model.requestCompleter3 = null);
+                                                                                                                          await _model.waitForRequestCompleted3();
+
+                                                                                                                          FFAppState().update(() {});
+                                                                                                                        },
+                                                                                                                        child: Container(
+                                                                                                                          width: 40.0,
+                                                                                                                          height: 40.0,
+                                                                                                                          decoration: BoxDecoration(
                                                                                                                             color: FlutterFlowTheme.of(context).primary,
+                                                                                                                            border: Border.all(
+                                                                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                                                                            ),
                                                                                                                           ),
-                                                                                                                        ),
-                                                                                                                        child: Text(
-                                                                                                                          valueOrDefault<String>(
-                                                                                                                            dowRowItem.dayAbrev,
-                                                                                                                            'SUN',
+                                                                                                                          child: Text(
+                                                                                                                            valueOrDefault<String>(
+                                                                                                                              dowRowItem.dayAbrev,
+                                                                                                                              'SUN',
+                                                                                                                            ),
+                                                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                                  fontFamily: 'Readex Pro',
+                                                                                                                                  letterSpacing: 0.0,
+                                                                                                                                ),
                                                                                                                           ),
-                                                                                                                          style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                                                fontFamily: 'Readex Pro',
-                                                                                                                                letterSpacing: 0.0,
-                                                                                                                              ),
                                                                                                                         ),
                                                                                                                       ),
                                                                                                                   ],

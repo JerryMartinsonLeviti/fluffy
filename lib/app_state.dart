@@ -293,6 +293,24 @@ class FFAppState extends ChangeNotifier {
     _PKOrganization = _value;
     prefs.setInt('ff_PKOrganization', _value);
   }
+
+  DateTime? _startDate;
+  DateTime? get startDate => _startDate;
+  set startDate(DateTime? _value) {
+    _startDate = _value;
+  }
+
+  bool _rangePickerUpdated = false;
+  bool get rangePickerUpdated => _rangePickerUpdated;
+  set rangePickerUpdated(bool _value) {
+    _rangePickerUpdated = _value;
+  }
+
+  DateTime? _endDate;
+  DateTime? get endDate => _endDate;
+  set endDate(DateTime? _value) {
+    _endDate = _value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

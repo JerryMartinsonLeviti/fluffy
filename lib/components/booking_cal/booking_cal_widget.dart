@@ -69,6 +69,8 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       decoration: BoxDecoration(),
       child: Align(
@@ -358,16 +360,33 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                         children: [
                                                                           Expanded(
                                                                             child:
-                                                                                Container(
-                                                                              decoration: BoxDecoration(),
+                                                                                InkWell(
+                                                                              splashColor: Colors.transparent,
+                                                                              focusColor: Colors.transparent,
+                                                                              hoverColor: Colors.transparent,
+                                                                              highlightColor: Colors.transparent,
+                                                                              onTap: () async {
+                                                                                await BookingRangesTable().update(
+                                                                                  data: {
+                                                                                    'start_date': supaSerialize<DateTime>(FFAppState().startDate),
+                                                                                  },
+                                                                                  matchingRows: (rows) => rows.eq(
+                                                                                    'id',
+                                                                                    bookingRangeRowItem.id,
+                                                                                  ),
+                                                                                );
+                                                                              },
                                                                               child: Container(
-                                                                                width: 200.0,
-                                                                                height: 200.0,
-                                                                                child: custom_widgets.DateRangePicker(
+                                                                                decoration: BoxDecoration(),
+                                                                                child: Container(
                                                                                   width: 200.0,
                                                                                   height: 200.0,
-                                                                                  startDate: null,
-                                                                                  endDate: null,
+                                                                                  child: custom_widgets.DateRangePicker(
+                                                                                    width: 200.0,
+                                                                                    height: 200.0,
+                                                                                    startDate: null,
+                                                                                    endDate: null,
+                                                                                  ),
                                                                                 ),
                                                                               ),
                                                                             ),

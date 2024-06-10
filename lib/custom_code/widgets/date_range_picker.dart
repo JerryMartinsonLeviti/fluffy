@@ -57,6 +57,9 @@ class _DateRangePickerState extends State<DateRangePicker> {
           endDate = end;
           startDate = start;
         });
+        FFAppState().startDate = start;
+        FFAppState().endDate = end;
+        FFAppState().rangePickerUpdated = true;
       },
       onCancelClick: () {
         setState(() {

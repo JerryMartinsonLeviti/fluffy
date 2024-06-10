@@ -20,12 +20,14 @@ class DateRangePicker extends StatefulWidget {
     this.height,
     this.startDate,
     this.endDate,
+    this.applyAction,
   });
 
   final double? width;
   final double? height;
   final DateTime? startDate;
   final DateTime? endDate;
+  final Future Function(DateTime? start, DateTime? end)? applyAction;
 
   @override
   State<DateRangePicker> createState() => _DateRangePickerState();
@@ -57,6 +59,11 @@ class _DateRangePickerState extends State<DateRangePicker> {
           endDate = end;
           startDate = start;
         });
+
+        if (widget.applyAction != null) {
+          widget.applyAction!(start, end);
+        }
+
         FFAppState().startDate = start;
         FFAppState().endDate = end;
         FFAppState().rangePickerUpdated = true;

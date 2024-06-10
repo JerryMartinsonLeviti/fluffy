@@ -386,6 +386,7 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                                     height: 40.0,
                                                                                     startDate: null,
                                                                                     endDate: null,
+                                                                                    applyAction: (start, end) async {},
                                                                                   ),
                                                                                 ),
                                                                               ),

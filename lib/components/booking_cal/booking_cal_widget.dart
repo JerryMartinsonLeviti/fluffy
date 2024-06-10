@@ -379,11 +379,11 @@ class _BookingCalWidgetState extends State<BookingCalWidget> {
                                                                               child: Container(
                                                                                 decoration: BoxDecoration(),
                                                                                 child: Container(
-                                                                                  width: 200.0,
-                                                                                  height: 200.0,
+                                                                                  width: 150.0,
+                                                                                  height: 40.0,
                                                                                   child: custom_widgets.DateRangePicker(
-                                                                                    width: 200.0,
-                                                                                    height: 200.0,
+                                                                                    width: 150.0,
+                                                                                    height: 40.0,
                                                                                     startDate: null,
                                                                                     endDate: null,
                                                                                   ),
